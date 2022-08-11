@@ -1,0 +1,25 @@
+@use "sass:math";
+// 响应式配置，保留使用
+$designWidth: 1920;
+$designHeight: 1080;
+$baseUnit: math.div(1, 100) * 1rem; // 设计图大小为1920*1080px，对应根字体大小为100px
+$widthHeightRatio: math.div($designWidth, $designHeight);
+@mixin background-setting($url, $width, $height) {
+    width: $width;
+    height: $height;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url($url);
+}
+
+@mixin frame() {
+    border: 1px solid #0851ad;
+    background: rgba(0, 77, 255, 0.1);
+    padding: 10rem *$baseUnit;
+}
+
+@mixin flex-align-center() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

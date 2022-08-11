@@ -1,0 +1,184 @@
+@import "./transition.scss";
+@import "./element-plus.scss";
+body {
+  margin: 0;
+  padding: 0;
+  background: $backgourd-color;
+  color: #ffffff;
+  height: 100%;
+  font-size: 14 * $baseUnit;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+    Microsoft YaHei, Arial, sans-serif;
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.bold {
+  font-weight: bold !important;
+}
+
+$num: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95,
+  100;
+@each $n in $num {
+  .pl-#{$n} {
+    padding-left: $n * $baseUnit !important;
+  }
+  .pr-#{$n} {
+    padding-right: $n * $baseUnit !important;
+  }
+  .pt-#{$n} {
+    padding-top: $n * $baseUnit !important;
+  }
+  .pb-#{$n} {
+    padding-bottom: $n * $baseUnit !important;
+  }
+  .ml-#{$n} {
+    margin-left: $n * $baseUnit !important;
+  }
+  .mr-#{$n} {
+    margin-right: $n * $baseUnit !important;
+  }
+  .mt-#{$n} {
+    margin-top: $n * $baseUnit !important;
+  }
+  .mb-#{$n} {
+    margin-bottom: $n * $baseUnit !important;
+  }
+}
+
+.mt-0 {
+  margin-top: 0 !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+$display: flex, block, inline;
+@each $d in $display {
+  .#{$d} {
+    display: $d;
+  }
+}
+
+$fontSzie: 12, 14, 16, 18, 20, 22, 24, 26, 28, 30;
+@each $f in $fontSzie {
+  .font-#{$f} {
+    font-size: $f * $baseUnit !important;
+  }
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.pointer {
+  cursor: pointer !important;
+}
+
+.clearfix {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+  }
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scroll-style {
+  /*整体样式*/
+  &::-webkit-scrollbar {
+    // display: none;
+    width: 6 * $baseUnit;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 6 * $baseUnit;
+    background: rgba(0, 0, 0, 1);
+  }
+
+  /*滚动条滑块*/
+  &::-webkit-scrollbar-thumb {
+    border-radius: 6 * $baseUnit;
+    box-shadow: none;
+    background: #7acaff;
+  }
+
+  /*滚动条轨道*/
+  &::-webkit-scrollbar-track {
+    box-shadow: none;
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  /*滚动条边角，即两个滚动条的交汇处*/
+  &::-webkit-scrollbar-corner {
+    background: none;
+  }
+}
+
+.width-100 {
+  width: 100% !important;
+}
