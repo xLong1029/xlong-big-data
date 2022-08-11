@@ -15,7 +15,7 @@ $widthHeightRatio: math.div($designWidth, $designHeight);
 @mixin frame() {
     border: 1px solid #0851ad;
     background: rgba(0, 77, 255, 0.1);
-    padding: 10rem *$baseUnit;
+    padding: 10 * $baseUnit;
 }
 
 @mixin flex-align-center() {
