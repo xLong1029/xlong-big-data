@@ -1,9 +1,12 @@
 <template>
-  <div ref="pcScreeRef" class="pc-container">PC端模式正在建设中，敬请期待...</div>
+  <div ref="pcScreeRef" class="pc-container">
+    <Header/>
+  </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import Header from "@/components/screen/Header";
 
 const pcScreeRef = ref(null);
 </script>

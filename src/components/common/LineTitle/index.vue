@@ -11,9 +11,7 @@
 </template>
 
 <script setup>
-import { defineProps } from "@vue/runtime-core";
-
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-undef
 const props = defineProps({
   title: {
     type: String,

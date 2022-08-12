@@ -1,8 +1,42 @@
 // cover some element-plus styles
-.el-loading-mask {
-    background-color: rgb(1 12 47 / 70%) !important;
+:root {
+  --custom-breadcrumb-font-color: #fff;
 }
 
-.el-empty__image{
-    opacity: 0.65;
+.el-loading-mask {
+  background-color: rgb(1 12 47 / 70%) !important;
+}
+
+.el-empty__image {
+  opacity: 0.65;
+}
+
+.custom-breadcrumb-style {
+  .el-breadcrumb__item {
+    font-size: 14 * $baseUnit;
+
+    .el-icon {
+      font-size: 16 * $baseUnit;
+    }
+
+    &:last-child {
+      .el-breadcrumb__inner {
+        color: var(--custom-breadcrumb-font-color);
+      }
+    }
+  }
+
+  .el-breadcrumb__inner {
+    display: flex;
+    align-items: center;
+    color: var(--custom-breadcrumb-font-color);
+
+    &:hover {
+      color: $blue-color;
+    }
+  }
+
+  .el-breadcrumb__separator {
+    color: var(--custom-breadcrumb-font-color);
+  }
 }

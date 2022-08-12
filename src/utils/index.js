@@ -58,6 +58,36 @@ export function debounce(func, wait, immediate) {
 }
 
 /**
+ * localstorage写入本地缓存
+ *
+ * @param {*} key key名
+ * @param {*} value 值
+ */
+ export function setLocalS(key, value) {
+  localStorage.setItem(key, value);
+}
+
+/**
+ * localstorage获取本地缓存
+ *
+ * @param {*} key key名
+ */
+export function getLocalS(key) {
+  const res = localStorage.getItem(key);
+  if (res && res !== "null") return res;
+  else return false;
+}
+
+/**
+ * localstorage删除本地储存
+ *
+ * @param {*} key key名
+ */
+export function delLocalS(key) {
+  localStorage.removeItem(key);
+}
+
+/**
  * 深克隆
  *
  * @param {Array} source
