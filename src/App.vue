@@ -34,6 +34,8 @@ if (window.performance.navigation.type === 1) {
 <style lang="scss" scoped>
 .app-container {
   min-height: 100vh;
+  background-image: url("./assets/images/bg.jpg");
+  background-size: 100% 100%;
   overflow: hidden;
 }
 </style>

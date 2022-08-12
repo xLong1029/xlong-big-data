@@ -3,13 +3,7 @@
     <div class="screen-header__left custom-breadcrumb-style">
       <el-breadcrumb :separator-icon="ArrowRight">
         <el-breadcrumb-item :to="{ path: '/' }">
-          <el-icon class="mr-5"><HomeFilled /></el-icon>首页
-        </el-breadcrumb-item>
-        <el-breadcrumb-item :to="{ path: '/' }">
-          <el-icon class="mr-5"><HomeFilled /></el-icon>首页
-        </el-breadcrumb-item>
-        <el-breadcrumb-item :to="{ path: '/' }">
-          <el-icon class="mr-5"><HomeFilled /></el-icon>首页
+          <el-icon class="mr-5"><HomeFilled /></el-icon><text>首页</text>
         </el-breadcrumb-item>
       </el-breadcrumb>
     </div>
