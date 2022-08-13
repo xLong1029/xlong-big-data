@@ -23,14 +23,14 @@ const props = defineProps({
 <style lang="scss" scoped>
 .line-title-container {
   width: 100%;
-  height: 30 * $baseUnit;
-  line-height: 30 * $baseUnit;
+  height: size(30);
+  line-height: size(30);
   display: flex;
 
   &::before {
     content: "";
     display: block;
-    width: 4 * $baseUnit;
+    width: size(4);
     height: 100%;
     background: rgba(31, 76, 162, 0.6);
   }
@@ -43,13 +43,13 @@ const props = defineProps({
     flex: 1;
     display: flex;
     align-items: center;
-    margin-left: 2 * $baseUnit;
+    margin-left: size(2);
 
     h2 {
       color: #45f3fd;
       font-weight: 500;
-      font-size: 20 * $baseUnit;
-      margin-left: 3 * $baseUnit;
+      font-size: size(20);
+      margin-left: size(3);
       margin-bottom: 0;
       margin-top: 0;
     }

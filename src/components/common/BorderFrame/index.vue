@@ -24,47 +24,43 @@ const props = defineProps({
   width: 100%;
   border: 1 * $baseUnit solid transparent;
   border-image: linear-gradient(transparent, #3f6277) 20 20;
-  padding: 35 * $baseUnit 25 * $baseUnit;
+  padding: size(35) size(25);
 
   &::before,
   &::after {
     content: "";
     display: block;
     position: absolute;
-    
-    // @include background-setting(
-    //   "#{$imgPath}/border-frame-corner.png" , 22 * $baseUnit, 22 * $baseUnit
-    // );
   }
 
   &::before {
-    top: -1 * $baseUnit;   
+    top: size(-1);   
   }
 
   &::after {
-    bottom: -1 * $baseUnit;
+    bottom: size(-1);
   }
 
 
    &.left {
     &::before {
-      left: -1 * $baseUnit;
+      left: size(-1);
     }
 
     &::after {
-      right: -1 * $baseUnit;
+      right: size(-1);
       transform: rotate(180deg);
     }
   }
 
   &.right {
     &::before {
-      right: -1 * $baseUnit;
+      right: size(-1);
       transform: rotate(90deg);
     }
 
     &::after {
-      left: -1 * $baseUnit;
+      left: size(-1);
       transform: rotate(-90deg);
     }
   }

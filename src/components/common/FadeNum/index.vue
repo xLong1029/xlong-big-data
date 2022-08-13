@@ -51,7 +51,7 @@ const setText = () => `${num.value > 0 ? "+" : ""}${num.value}`;
   position: absolute;
   z-index: 999;
   font-weight: normal;
-  font-size: 18 * $baseUnit;
-  margin-left: 5 * $baseUnit;
+  font-size: size(18);
+  margin-left: size(5);
 }
 </style>
