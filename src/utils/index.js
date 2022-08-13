@@ -1,5 +1,5 @@
 import { isArray, isFunction } from "lodash";
-import settings from "@/settings";
+import settings from "./../settings";
 
 /**
  * 输出信息
