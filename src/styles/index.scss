@@ -1,24 +1,27 @@
+
 :root{
-  --app-base-color: #236edd;
-  --app-bg-color: #000233;
-  --app-blue-color: #1adfff;
-  --app-yellow-color: #ffe66d;
+  @each $name, $value in $colors {
+    --app-color-#{"" + $name}: #{$value}; // 输出：--app-color-base: #236edd;
+  }
+}
+
+:root{
   --app-base-unit: 1px;
   // --app-base-unit: 0.01rem; // 对应根字体大小为100px
 
-  // element样式
-  --el-color-primary: var(--app-base-color);
+  // 覆盖element-plus
+  --el-color-primary: var(--app-color-base); // 无法使用color(base)
 }
-// @import "./normal-styles.scss";
+
 @import "./transition.scss";
 @import "./element-plus.scss";
 body {
   margin: 0;
   padding: 0;
-  background: var(--app-bg-color);
+  background: color(bg);
   color: #ffffff;
   height: 100%;
-  font-size: calc(14 * var(--app-base-unit));
+  font-size: size(14);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -81,28 +84,28 @@ $num: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95,
   100;
 @each $n in $num {
   .pl-#{$n} {
-    padding-left: calc($n * var(--app-base-unit)) !important;
+    padding-left: size(#{$n})!important;
   }
   .pr-#{$n} {
-    padding-right: calc($n * var(--app-base-unit)) !important;
+    padding-right: size(#{$n})!important;
   }
   .pt-#{$n} {
-    padding-top: calc($n * var(--app-base-unit)) !important;
+    padding-top: size(#{$n})!important;
   }
   .pb-#{$n} {
-    padding-bottom: calc($n * var(--app-base-unit)) !important;
+    padding-bottom: size(#{$n})!important;
   }
   .ml-#{$n} {
-    margin-left: calc($n * var(--app-base-unit)) !important;
+    margin-left: size(#{$n})!important;
   }
   .mr-#{$n} {
-    margin-right: calc($n * var(--app-base-unit)) !important;
+    margin-right: size(#{$n})!important;
   }
   .mt-#{$n} {
-    margin-top: calc($n * var(--app-base-unit)) !important;
+    margin-top: size(#{$n})!important;
   }
   .mb-#{$n} {
-    margin-bottom: calc($n * var(--app-base-unit)) !important;
+    margin-bottom: size(#{$n})!important;
   }
 }
 
@@ -124,7 +127,7 @@ $display: flex, block, inline;
 $fontSzie: 12, 14, 16, 18, 20, 22, 24, 26, 28, 30;
 @each $f in $fontSzie {
   .font-#{$f} {
-    font-size: calc($f * var(--app-base-unit)) !important;
+    font-size: size(#{$f}) !important;
   }
 }
 
@@ -157,15 +160,15 @@ $fontSzie: 12, 14, 16, 18, 20, 22, 24, 26, 28, 30;
   /*整体样式*/
   &::-webkit-scrollbar {
     // display: none;
-    width: calc(6 * var(--app-base-unit));
+    width: size(6);
     /*高宽分别对应横竖滚动条的尺寸*/
-    height: calc(6 * var(--app-base-unit));
+    height: size(6);
     background: rgba(0, 0, 0, 1);
   }
 
   /*滚动条滑块*/
   &::-webkit-scrollbar-thumb {
-    border-radius: calc(6 * var(--app-base-unit));
+    border-radius: size(6);
     box-shadow: none;
     background: #7acaff;
   }

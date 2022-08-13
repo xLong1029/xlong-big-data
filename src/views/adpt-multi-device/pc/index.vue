@@ -18,11 +18,11 @@ const pcScreeRef = ref(null);
 .pc-container {
   box-sizing: border-box;
   min-height: 100vh;
-  padding: calc(20 * var(--app-base-unit));
+  padding: size(20);
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: calc(20 * var(--app-base-unit));
+  font-size: size(20);
 }
 </style>

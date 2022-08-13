@@ -1,6 +1,8 @@
 import { defineStore } from "pinia";
 import settings from "@/settings";
 
+console.log(settings);
+
 const currentEnv = import.meta.env.VITE_APP_ENV;
 const { sysTitle, copyrightCompany } = settings;
 

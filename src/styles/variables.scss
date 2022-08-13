@@ -1,5 +1,15 @@
-// $primary-color: #236edd;
-// $backgourd-color: #000233;
+$colors: (
+  base: #236edd,
+  bg: #000233,
+  blue: #1adfff,
+  yellow: #ffe66d,
+  white: #ffffff
+);
 
-// $yellow-color: #ffe66d;
-// $blue-color:#1adfff;
+@function color($name) {
+  @return var(--app-color-#{"" + $name});
+}
+
+@function size($value) {
+  @return calc(#{$value} * var(--app-base-unit));
+}

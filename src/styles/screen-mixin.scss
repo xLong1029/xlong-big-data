@@ -9,7 +9,7 @@
 @mixin frame() {
     border: 1px solid #0851ad;
     background: rgba(0, 77, 255, 0.1);
-    padding: calc(10 * var(--app-base-unit));
+    padding: size(10);
 }
 
 @mixin flex-align-center() {

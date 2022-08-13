@@ -83,26 +83,26 @@ export default defineConfig(({ mode }) => {
         "@/": `${path.resolve(__dirname, "src")}/`
       },
     },
-    // 全局使用指定scss变量
-    // css: {
-    //   preprocessorOptions: {
-    //     scss: {
-    //       additionalData: `@use "@/styles/variables.scss" as *;`,
-    //     },
-    //   },
-    //   postcss: {
-    //     plugins: [{
-    //       postcssPlugin: 'internal:charset-removal',
-    //       AtRule: {
-    //         // 去除"@charset" must be the first警告
-    //         charset: (atRule) => {
-    //           if (atRule.name === 'charset') {
-    //             atRule.remove();
-    //           }
-    //         }
-    //       }
-    //     }],
-    //   },
-    // }
+    // 全局使用
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "@/styles/variables.scss" as *;`,
+        },
+      },
+      postcss: {
+        plugins: [{
+          postcssPlugin: 'internal:charset-removal',
+          AtRule: {
+            // 去除"@charset" must be the first警告
+            charset: (atRule) => {
+              if (atRule.name === 'charset') {
+                atRule.remove();
+              }
+            }
+          }
+        }],
+      },
+    }
   }
 })

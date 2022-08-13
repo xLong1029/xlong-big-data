@@ -1,7 +1,4 @@
 // cover some element-plus styles
-:root {
-  --custom-breadcrumb-font-color: #fff;
-}
 
 .el-loading-mask {
   background-color: rgb(1 12 47 / 70%) !important;
@@ -13,18 +10,18 @@
 
 .custom-breadcrumb-style {
   .el-breadcrumb__item {
-    font-size: calc(20 * var(--app-base-unit));
+    font-size: size(20);
 
     .el-icon {
-      font-size: calc(20 * var(--app-base-unit));
+      font-size: size(20);
     }
 
     &:last-child {
       .el-breadcrumb__inner {
-        color: var(--custom-breadcrumb-font-color);
+        color: color(white);
 
         &:hover {
-          color: var(--custom-breadcrumb-font-color);
+          color: color(white);
         }
       }
     }
@@ -33,14 +30,14 @@
   .el-breadcrumb__inner {
     display: flex;
     align-items: center;
-    color: var(--custom-breadcrumb-font-color);
+    color: color(white);
 
     &:hover {
-      color: var(--app-blue-color);
+      color: color(blue);
     }
   }
 
   .el-breadcrumb__separator {
-    color: var(--custom-breadcrumb-font-color);
+    color: color(white);
   }
 }

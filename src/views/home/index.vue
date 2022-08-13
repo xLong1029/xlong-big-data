@@ -35,7 +35,7 @@ const { sysTitle, toPage } = useCommon();
 .home-container {
   box-sizing: border-box;
   min-height: 100vh;
-  padding: 20px;
+  padding: size(20);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -46,18 +46,18 @@ const { sysTitle, toPage } = useCommon();
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
-  border: 1px solid #ffffff;
-  border-radius: 4px;
-  margin-bottom: 20px;
+  padding: size(20);
+  border: size(1) solid #ffffff;
+  border-radius: size(4);
+  margin-bottom: size(20);
 
   &__desc{
     text-align: left;
-    margin-right: 40px;
+    margin-right: size(40);
 
     h3{
       margin: 0;
-      color: var(--app-blue-color);
+      color: color(blue);
     }
   }
 }

@@ -85,7 +85,7 @@ const setTimer = () => {
     color: #fff;
     text-align: center;
     width: 100%;
-    height: calc(70 * var(--app-base-unit));
+    height: size(70);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-image: url("./../../../assets/images/top-bg.png");
@@ -96,35 +96,35 @@ const setTimer = () => {
       background-image: -webkit-linear-gradient(bottom, #fff, #72feff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      font-size: calc(30 * var(--app-base-unit));
+      font-size: size(30);
       font-weight: bold;
-      padding-top: calc(12 * var(--app-base-unit));
-      letter-spacing: calc(2* var(--app-base-unit));
+      padding-top: size(12);
+      letter-spacing: size(2);
     }
   }
 
   &__left,
   &__right {
     position: absolute;
-    top: calc(15 * var(--app-base-unit));
+    top: size(15);
   }
 
   &__left {
     width: 30%;
-    left: calc(20 * var(--app-base-unit));
-    top: calc(20 * var(--app-base-unit));
+    left: size(20);
+    top: size(20);
     display: flex;
     align-items: center;
   }
 
   &__right {
-    right: calc(20 * var(--app-base-unit));
-    font-size: calc(20 * var(--app-base-unit));
+    right: size(20);
+    font-size: size(20);
   }
 
   &__time {
     font-weight: bold;
-    color: var(--app-yellow-color);
+    color: color(yellow);
   }
 }
 </style>
