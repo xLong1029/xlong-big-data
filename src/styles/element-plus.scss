@@ -13,15 +13,19 @@
 
 .custom-breadcrumb-style {
   .el-breadcrumb__item {
-    font-size: 20 * $baseUnit;
+    font-size: calc(20 * var(--app-base-unit));
 
     .el-icon {
-      font-size: 20 * $baseUnit;
+      font-size: calc(20 * var(--app-base-unit));
     }
 
     &:last-child {
       .el-breadcrumb__inner {
         color: var(--custom-breadcrumb-font-color);
+
+        &:hover {
+          color: var(--custom-breadcrumb-font-color);
+        }
       }
     }
   }
@@ -32,7 +36,7 @@
     color: var(--custom-breadcrumb-font-color);
 
     &:hover {
-      color: $blue-color;
+      color: var(--app-blue-color);
     }
   }
 

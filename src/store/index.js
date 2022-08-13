@@ -1,10 +1,10 @@
-const modulesFiles = require.context('./modules', true, /\.js$/)
+const modulesFiles = import.meta.globEager('./modules/*.js');
 
-const modules = modulesFiles.keys().reduce((modules, modulePath) => {
-  const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')
-  modules[moduleName] = modulesFiles(modulePath).default;
-  return modules
-}, {})
+const modules = {};
+Object.keys(modulesFiles).forEach(modulePath => {
+  const moduleName = modulePath.replace(/^\.\/modules\/(.*)\.\w+$/, "$1");
+  modules[moduleName] = modulesFiles[modulePath].default;
+})
 
 export default function useStore(){
   return modules

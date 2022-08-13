@@ -6,12 +6,15 @@ import { createPinia } from 'pinia';
 // 初始化ElementPlus
 import initElementPlus from "./element-plus";
 
+// 字体样式
+// import "./assets/iconfont/iconfont.css";
+
 // 全局样式
 import "./styles/index.scss";
+// import './style.css'
 
-// 启动Mock
-import { setupMock } from './mock/mock-server'
-setupMock()
+// 路由权限
+import "./permission.js";
 
 const app = createApp(App);
 app.config.productionTip = false;

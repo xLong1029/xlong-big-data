@@ -1,5 +1,5 @@
-import { handleMock, handleResponse } from "@/mock/mock-handle.js";
-import { deepClone } from "@/utils";
+import { handleMock, handleResponse } from "./../mock-handle.js";
+import { deepClone } from "./../../utils";
 import Mock from "mockjs";
 const Random = Mock.Random;
 

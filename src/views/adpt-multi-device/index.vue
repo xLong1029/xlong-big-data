@@ -1,20 +1,21 @@
 <template>
-  <div v-if="isLoaded">
+  <div v-if="isLoaded" id="screenContainar">
     <component :is="views[viewActive]" />
   </div>
 </template>
 
 <script setup>
 import hooks from "@/hooks";
+import { onMounted, onUnmounted } from "vue";
 // import { logInfo } from "@/utils";
-import PCScreen from "./pc";
-import WideScreen from "./wide-screen";
-import MobileScreen from "./mobile";
+import PCScreen from "./pc/index.vue";
+import WideScreen from "./wide-screen/index.vue";
+import MobileScreen from "./mobile/index.vue";
 
 const { useViews, useCommon, useScreen } = hooks;
 
 const { isLoaded, views, viewActive, initViews, setViews } = useViews();
-const { setSysLoading } = useCommon();
+const { setSysLoading, setScreenMode } = useCommon();
 
 isLoaded.value = initViews(PCScreen, WideScreen, MobileScreen);
 
@@ -54,13 +55,25 @@ const initHtmlFontSize = () => {
   document.getElementsByTagName("html")[0].style.fontSize =
     contrastRatio.value * 100 + "px";
 };
+
+onMounted(() => {
+  setScreenMode("AdptMultiDevice")
+});
+
+onUnmounted(() => {
+  setScreenMode("Normal")
+});
 </script>
 
-<style lang="scss">
-.screen-container {
+<style lang="scss" scoped>
+#screenContainar {
   width: 100%;
   min-height: 100vh;
   position: relative;
   overflow: hidden;
 }
+</style>
+
+<style lang="scss">
+// @import "@/styles/adpt-multi-device.scss";
 </style>

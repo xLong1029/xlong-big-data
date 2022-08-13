@@ -1,12 +1,24 @@
+:root{
+  --app-base-color: #236edd;
+  --app-bg-color: #000233;
+  --app-blue-color: #1adfff;
+  --app-yellow-color: #ffe66d;
+  --app-base-unit: 1px;
+  // --app-base-unit: 0.01rem; // 对应根字体大小为100px
+
+  // element样式
+  --el-color-primary: var(--app-base-color);
+}
+// @import "./normal-styles.scss";
 @import "./transition.scss";
 @import "./element-plus.scss";
 body {
   margin: 0;
   padding: 0;
-  background: $backgourd-color;
+  background: var(--app-bg-color);
   color: #ffffff;
   height: 100%;
-  font-size: 14 * $baseUnit;
+  font-size: calc(14 * var(--app-base-unit));
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -26,27 +38,10 @@ html {
   box-sizing: border-box;
 }
 
-#app {
-  height: 100%;
-}
-
 *,
 *:before,
 *:after {
   box-sizing: inherit;
-}
-
-.no-padding {
-  padding: 0 !important;
-}
-
-.no-margin {
-  margin: 0 !important;
-}
-
-a:focus,
-a:active {
-  outline: none;
 }
 
 a,
@@ -55,10 +50,19 @@ a:hover {
   cursor: pointer;
   color: inherit;
   text-decoration: none;
+  outline: none;
 }
 
 div:focus {
   outline: none;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-margin {
+  margin: 0 !important;
 }
 
 .fr {
@@ -77,28 +81,28 @@ $num: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95,
   100;
 @each $n in $num {
   .pl-#{$n} {
-    padding-left: $n * $baseUnit !important;
+    padding-left: calc($n * var(--app-base-unit)) !important;
   }
   .pr-#{$n} {
-    padding-right: $n * $baseUnit !important;
+    padding-right: calc($n * var(--app-base-unit)) !important;
   }
   .pt-#{$n} {
-    padding-top: $n * $baseUnit !important;
+    padding-top: calc($n * var(--app-base-unit)) !important;
   }
   .pb-#{$n} {
-    padding-bottom: $n * $baseUnit !important;
+    padding-bottom: calc($n * var(--app-base-unit)) !important;
   }
   .ml-#{$n} {
-    margin-left: $n * $baseUnit !important;
+    margin-left: calc($n * var(--app-base-unit)) !important;
   }
   .mr-#{$n} {
-    margin-right: $n * $baseUnit !important;
+    margin-right: calc($n * var(--app-base-unit)) !important;
   }
   .mt-#{$n} {
-    margin-top: $n * $baseUnit !important;
+    margin-top: calc($n * var(--app-base-unit)) !important;
   }
   .mb-#{$n} {
-    margin-bottom: $n * $baseUnit !important;
+    margin-bottom: calc($n * var(--app-base-unit)) !important;
   }
 }
 
@@ -120,7 +124,7 @@ $display: flex, block, inline;
 $fontSzie: 12, 14, 16, 18, 20, 22, 24, 26, 28, 30;
 @each $f in $fontSzie {
   .font-#{$f} {
-    font-size: $f * $baseUnit !important;
+    font-size: calc($f * var(--app-base-unit)) !important;
   }
 }
 
@@ -153,15 +157,15 @@ $fontSzie: 12, 14, 16, 18, 20, 22, 24, 26, 28, 30;
   /*整体样式*/
   &::-webkit-scrollbar {
     // display: none;
-    width: 6 * $baseUnit;
+    width: calc(6 * var(--app-base-unit));
     /*高宽分别对应横竖滚动条的尺寸*/
-    height: 6 * $baseUnit;
+    height: calc(6 * var(--app-base-unit));
     background: rgba(0, 0, 0, 1);
   }
 
   /*滚动条滑块*/
   &::-webkit-scrollbar-thumb {
-    border-radius: 6 * $baseUnit;
+    border-radius: calc(6 * var(--app-base-unit));
     box-shadow: none;
     background: #7acaff;
   }

@@ -1,4 +1,16 @@
-import { getToken } from "@/utils/auth.js";
+/**
+ * 处理token
+ * 
+ * @param {*} config 请求配置
+ * @returns 
+ */
+ export const handleToken = (config) => {
+    const {
+        authorization
+    } = config.headers
+
+    return authorization.replace("bearer ", "");
+}
 
 /**
  * 处理响应
@@ -13,10 +25,8 @@ export const handleResponse = (code, message = null, data = null) => {
         switch (code) {
             case 200:
                 message = "请求成功";
-                break;
             case 400:
                 message = '请求无效';
-                break;
             case 401:
                 message = '用户未授权';
                 break;
@@ -28,7 +38,6 @@ export const handleResponse = (code, message = null, data = null) => {
                 break;
             case 500:
                 message = "程序内部错误";
-                break;
         }
     }
 
@@ -48,10 +57,16 @@ export const handleResponse = (code, message = null, data = null) => {
  */
 export const handleMock = (config, handleData) => {
     try {
-        const token = getToken();
+        const token = handleToken(config);
+
         const { url } = config;
+
         if (!token && url.indexOf("/api/user/login") < 0) {
-            return handleResponse(401);
+            return {
+                code: 401,
+                message: '未授权',
+                data: null,
+            }
         }
 
         return handleData({ config, token });

@@ -1,38 +1,31 @@
 {
-    "name": "xlong-big-data",
-    "description": "a management system for study only",
-    "author": "xLong <381612175@qq.com>",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "serve": "vue-cli-service serve",
-        "build:test": "vue-cli-service build",
-        "build:release": "vue-cli-service build --mode release",
-        "lint": "vue-cli-service lint"
-    },
-    "dependencies": {
-        "@element-plus/icons-vue": "^2.0.6",
-        "pinia": "^2.0.14",
-        "echarts": "5.2.2",
-        "element-plus": "^2.2.6",
-        "sass-resources-loader": "^2.2.3",
-        "vue": "^3.1.2",
-        "vue-router": "4.0.10",
-        "mockjs": "^1.1.0"
-    },
-    "devDependencies": {
-        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-        "@vue/cli-plugin-babel": "~4.5.0",
-        "@vue/cli-plugin-eslint": "~4.5.0",
-        "@vue/cli-plugin-router": "~4.5.0",
-        "@vue/cli-service": "~4.5.0",
-        "@vue/compiler-sfc": "^3.0.0",
-        "babel-eslint": "^10.1.0",
-        "babel-plugin-component": "^1.1.1",
-        "babel-plugin-import": "^1.13.3",
-        "eslint": "^6.7.2",
-        "eslint-plugin-vue": "^7.0.0",
-        "sass": "^1.35.1",
-        "sass-loader": "^8.0.2"
-    }
+  "name": "my-vue-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:release": "vite build --mode release",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.0.9",
+    "echarts": "^5.3.3",
+    "element-plus": "^2.2.13",
+    "pinia": "^2.0.14",
+    "vue": "^3.2.37",
+    "vue-router": "4.0.10"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.0.3",
+    "mockjs": "^1.1.0",
+    "sass": "^1.35.1",
+    "sass-loader": "^8.0.2",
+    "sass-resources-loader": "^2.2.3",
+    "unplugin-auto-import": "^0.11.1",
+    "unplugin-vue-components": "^0.22.4",
+    "vite": "^3.0.7",
+    "vite-plugin-mock": "^2.9.6"
+  }
 }

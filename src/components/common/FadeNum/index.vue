@@ -54,16 +54,4 @@ const setText = () => `${num.value > 0 ? "+" : ""}${num.value}`;
   font-size: 18 * $baseUnit;
   margin-left: 5 * $baseUnit;
 }
-
-.fade {
-  &-enter-active,
-  &-leave-active {
-    transition: opacity 0.5s;
-  }
-
-  &-enter,
-  &-leave-to {
-    opacity: 0;
-  }
-}
 </style>

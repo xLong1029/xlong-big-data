@@ -14,10 +14,11 @@ export default function() {
   const router = useRouter();
   const store = useStore();
 
-  const { useAppStore } = store;
+  const { useAppStore, useScreenStore } = store;
 
   const { sysTitle, currentEnv, sysLoading } = storeToRefs(useAppStore());
   const { setSysLoading } = useAppStore();
+  const { setScreenMode } = useScreenStore();
 
   /**
    * 跳转页面
@@ -42,6 +43,7 @@ export default function() {
     currentEnv,
     sysLoading,
     setSysLoading,
+    setScreenMode,
     toPage
   };
 }

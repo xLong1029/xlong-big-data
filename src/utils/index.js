@@ -1,4 +1,5 @@
 import { isArray, isFunction } from "lodash";
+import settings from "@/settings";
 
 /**
  * 输出信息
@@ -12,6 +13,20 @@ export function logInfo(msg) {
     return true;
   }
   return false;
+}
+
+/**
+ * 获取页面标题
+ *
+ * @param {*} pageTitle 页面标题
+ */
+ export function getPageTitle(pageTitle) {
+  const title = settings.sysTitle || "XLONG家里蹲平台";
+
+  if (pageTitle) {
+      return `${pageTitle} - ${title}`;
+  }
+  return `${title}`;
 }
 
 /**

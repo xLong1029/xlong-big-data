@@ -18,11 +18,12 @@ import { logInfo } from "@/utils";
 
 const { useCommon } = hooks;
 
-const { currentEnv, sysLoading } = useCommon();
+const { router, currentEnv, sysLoading } = useCommon();
 
 const locale = zhCn;
 
 console.log(`current environment is ${currentEnv.value}`);
+
 
 if (window.performance.navigation.type === 1) {
   logInfo("页面被刷新");
@@ -31,7 +32,7 @@ if (window.performance.navigation.type === 1) {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .app-container {
   min-height: 100vh;
   background-image: url("./assets/images/bg.jpg");

@@ -2,7 +2,7 @@
   <div class="screen-header-container">
     <div class="screen-header__left custom-breadcrumb-style">
       <el-breadcrumb :separator-icon="ArrowRight">
-        <el-breadcrumb-item :to="{ path: '/' }">
+        <el-breadcrumb-item :to="{ path: '/adpt-multi-device' }">
           <el-icon class="mr-5"><HomeFilled /></el-icon><text>首页</text>
         </el-breadcrumb-item>
       </el-breadcrumb>
@@ -85,7 +85,7 @@ const setTimer = () => {
     color: #fff;
     text-align: center;
     width: 100%;
-    height: 70 * $baseUnit;
+    height: calc(70 * var(--app-base-unit));
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-image: url("./../../../assets/images/top-bg.png");
@@ -96,35 +96,35 @@ const setTimer = () => {
       background-image: -webkit-linear-gradient(bottom, #fff, #72feff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      font-size: 34 * $baseUnit;
+      font-size: calc(30 * var(--app-base-unit));
       font-weight: bold;
-      padding-top: 6 * $baseUnit;
-      letter-spacing: 2 * $baseUnit;
+      padding-top: calc(12 * var(--app-base-unit));
+      letter-spacing: calc(2* var(--app-base-unit));
     }
   }
 
   &__left,
   &__right {
     position: absolute;
-    top: 15 * $baseUnit;
+    top: calc(15 * var(--app-base-unit));
   }
 
   &__left {
     width: 30%;
-    left: 20 * $baseUnit;
-    top: 20 * $baseUnit;
+    left: calc(20 * var(--app-base-unit));
+    top: calc(20 * var(--app-base-unit));
     display: flex;
     align-items: center;
   }
 
   &__right {
-    right: 20 * $baseUnit;
-    font-size: 20 * $baseUnit;
+    right: calc(20 * var(--app-base-unit));
+    font-size: calc(20 * var(--app-base-unit));
   }
 
   &__time {
     font-weight: bold;
-    color: $yellow-color;
+    color: var(--app-yellow-color);
   }
 }
 </style>

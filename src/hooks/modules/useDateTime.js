@@ -5,7 +5,7 @@
  * 版本 : version 1.0
  */
 import { ref } from "vue";
-import lunarCalendar from "@/utils/lunarCalendar";
+import calendar from "@/utils/calendar";
 
 export default function() {
   const currentTime = ref(null);
@@ -31,7 +31,7 @@ export default function() {
       hours,
       minutes,
       seconds
-    } = lunarCalendar.data(dateTime);
+    } = calendar.data(dateTime);
 
     currentTime.value = `${hours}:${minutes}:${seconds}`;
     currentDate.value = `${gregorianYear}年${gregorianMonth}月${gregorianDay}日`;

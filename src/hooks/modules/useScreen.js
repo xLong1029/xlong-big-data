@@ -34,14 +34,14 @@ export default function(handleResizeScreen) {
   provide("getScreen", screen);
   provide("getContrastRatio", contrastRatio);
 
-  onMounted(() => {
+  onMounted(() => {    
     if (handleResizeScreen) {
       handleResizeScreen();
       window.addEventListener("resize", handleResizeScreen);
     }
   });
 
-  onUnmounted(() => {
+  onUnmounted(() => {    
     if (handleResizeScreen) {
       window.removeEventListener("resize", handleResizeScreen);
     }
