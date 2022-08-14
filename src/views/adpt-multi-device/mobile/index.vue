@@ -14,7 +14,7 @@ const mobileScreeRef = ref(null);
 .mobile-container {
   box-sizing: border-box;
   min-height: 100vh;
-  padding: 20px;
+  padding: size(15);
   text-align: center;
   display: flex;
   justify-content: center;

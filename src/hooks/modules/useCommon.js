@@ -16,7 +16,7 @@ export default function() {
 
   const { useAppStore, useScreenStore } = store;
 
-  const { sysTitle, currentEnv, sysLoading } = storeToRefs(useAppStore());
+  const { sysTitle, currentEnv, sysLoading, copyrightCompany } = storeToRefs(useAppStore());
   const { setSysLoading } = useAppStore();
   const { setScreenMode } = useScreenStore();
 
@@ -42,6 +42,7 @@ export default function() {
     sysTitle,
     currentEnv,
     sysLoading,
+    copyrightCompany,
     setSysLoading,
     setScreenMode,
     toPage

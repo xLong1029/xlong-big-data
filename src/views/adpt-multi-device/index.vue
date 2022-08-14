@@ -1,13 +1,27 @@
 <template>
-  <div v-if="isLoaded" id="screenContainar">
-    <component :is="views[viewActive]" />
+  <div v-if="isLoaded" class="screen-container">
+    <MobileHeader v-if="viewActive === 'mobile'" />
+    <Header v-else />
+
+    <div
+      class="screen-content"
+      :class="{ 'is-mobile': viewActive === 'mobile' }"
+    >
+      <component :is="views[viewActive]" />
+    </div>
+
+    <Nav :active="activeNavIndex" @change-nav="handleChangeNav" />
   </div>
 </template>
 
 <script setup>
 import hooks from "@/hooks";
-import { onMounted, onUnmounted } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 // import { logInfo } from "@/utils";
+
+import Header from "@/components/screen/Header/index.vue";
+import Nav from "@/components/screen/Nav/index.vue";
+import MobileHeader from "@/components/screen/MobileHeader/index.vue";
 import PCScreen from "./pc/index.vue";
 import WideScreen from "./wide-screen/index.vue";
 import MobileScreen from "./mobile/index.vue";
@@ -16,6 +30,8 @@ const { useViews, useCommon, useScreen } = hooks;
 
 const { isLoaded, views, viewActive, initViews, setViews } = useViews();
 const { setSysLoading, setScreenMode } = useCommon();
+
+const activeNavIndex = ref(0);
 
 isLoaded.value = initViews(PCScreen, WideScreen, MobileScreen);
 
@@ -57,23 +73,29 @@ const initHtmlFontSize = () => {
 };
 
 onMounted(() => {
-  setScreenMode("AdptMultiDevice")
+  setScreenMode("AdptMultiDevice");
 });
 
 onUnmounted(() => {
-  setScreenMode("Normal")
+  setScreenMode("Normal");
 });
+
+const handleChangeNav = (val) => {
+  activeNavIndex.value = val;
+};
 </script>
 
 <style lang="scss" scoped>
-#screenContainar {
+.screen-content {
+  padding-top: size(var(--app-screen-header-height));
+  padding-bottom: size(var(--app-screen-nav-height));
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   position: relative;
   overflow: hidden;
-}
-</style>
 
-<style lang="scss">
-// @import "@/styles/adpt-multi-device.scss";
+  &.is-mobile {
+    overflow-y: auto;
+  }
+}
 </style>

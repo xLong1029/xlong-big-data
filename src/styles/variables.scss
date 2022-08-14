@@ -1,9 +1,14 @@
 $colors: (
   base: #236edd,
-  bg: #000233,
+  bg: #0a0c35,
   blue: #1adfff,
   yellow: #ffe66d,
   white: #ffffff
+);
+
+$screen: (
+  header-height: 55,
+  nav-height: 40
 );
 
 @function color($name) {

@@ -11,9 +11,8 @@ const wideScreenRef = ref(null);
 
 <style lang="scss" scoped>
 .wide-screen-container {
-  box-sizing: border-box;
-  min-height: 100vh;
-  padding: 20px;
+  padding: size(15);
+  height: 100%;
   text-align: center;
   display: flex;
   justify-content: center;

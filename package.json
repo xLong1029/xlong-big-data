@@ -1,7 +1,8 @@
 {
-  "name": "my-vue-app",
-  "private": true,
-  "version": "0.0.0",
+  "name": "xlong-big-data",
+  "description": "a management system for study only",
+  "author": "xLong <381612175@qq.com>",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

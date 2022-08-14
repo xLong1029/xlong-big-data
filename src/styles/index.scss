@@ -3,6 +3,10 @@
   @each $name, $value in $colors {
     --app-color-#{"" + $name}: #{$value}; // 输出：--app-color-base: #236edd;
   }
+
+  @each $name, $value in $screen {
+    --app-screen-#{"" + $name}: #{$value}; // 输出：--app-color-base: #236edd;
+  }
 }
 
 :root{

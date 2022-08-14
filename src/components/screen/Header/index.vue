@@ -2,9 +2,10 @@
   <div class="screen-header-container">
     <div class="screen-header__left custom-breadcrumb-style">
       <el-breadcrumb :separator-icon="ArrowRight">
-        <el-breadcrumb-item :to="{ path: '/adpt-multi-device' }">
+        <el-breadcrumb-item :to="{ path: '/' }">
           <el-icon class="mr-5"><HomeFilled /></el-icon><text>首页</text>
         </el-breadcrumb-item>
+        <el-breadcrumb-item> 数据监控 </el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="screen-header__center">
@@ -76,50 +77,59 @@ const setTimer = () => {
 </script>
 
 <style lang="scss" scoped>
+@import "@/styles/screen-mixin.scss";
+
 .screen-header {
   &-container {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 999;
-    color: #fff;
+    color: color(white);
     text-align: center;
     width: 100%;
-    height: size(70);
-    background-size: 100% 100%;
+    height: size(55);
+    background-size: auto 100%;
     background-repeat: no-repeat;
     background-image: url("./../../../assets/images/top-bg.png");
     background-position: center top;
-    
+    display: flex;
+    justify-content: space-between;
+    padding-top: size(10);
 
     .title {
-      background-image: -webkit-linear-gradient(bottom, #fff, #72feff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      @include gradient-font(bottom, color(blue), color(white));
+
       font-size: size(30);
       font-weight: bold;
-      padding-top: size(12);
+      margin-top: size(-8);
       letter-spacing: size(2);
     }
   }
 
+  &__center {
+    width: 40%;
+  }
+
   &__left,
   &__right {
-    position: absolute;
+    width: 30%;
     top: size(15);
+    display: flex;
+    align-items: center;
+    font-size: size(20);
+    border-bottom: size(2) solid;
   }
 
   &__left {
-    width: 30%;
-    left: size(20);
-    top: size(20);
-    display: flex;
-    align-items: center;
+    padding-left: size(15);
+    border-image: linear-gradient(to right, #0fadf9, transparent) 1;
   }
 
   &__right {
-    right: size(20);
-    font-size: size(20);
+    justify-content: flex-end;
+    padding-right: size(15);
+    border-image: linear-gradient(to left, #0fadf9, transparent) 1;
   }
 
   &__time {

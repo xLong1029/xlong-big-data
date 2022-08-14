@@ -22,7 +22,7 @@ export default function() {
         const width = document.body.clientWidth;
         const height = document.body.clientHeight;
 
-        if (width > 1366) {
+        if (width > 1024) {
             // 超宽屏大于 21：9
             if (width / height >= 21 / 9) {
                 viewActive.value = "wideScreen";

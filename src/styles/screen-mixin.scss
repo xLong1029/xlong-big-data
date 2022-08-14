@@ -1,9 +1,9 @@
-@mixin background-setting($url, $width, $height) {
+@mixin background-setting($path, $width, $height) {
     width: $width;
     height: $height;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-image: url($url);
+    background-image: url("" + $path);
 }
 
 @mixin frame() {
@@ -16,4 +16,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@mixin gradient-font($drection, $color1, $color2) {
+    background-image: -webkit-linear-gradient($drection, $color1, $color2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

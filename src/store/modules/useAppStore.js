@@ -1,8 +1,6 @@
 import { defineStore } from "pinia";
 import settings from "@/settings";
 
-console.log(settings);
-
 const currentEnv = import.meta.env.VITE_APP_ENV;
 const { sysTitle, copyrightCompany } = settings;
 
@@ -17,14 +15,6 @@ const useAppStore = defineStore("app", {
     // 版权公司名称
     copyrightCompany
   }),
-  getters: {
-    // sysTitle(){
-    //   return this.sysTitle
-    // },
-    // copyrightCompany(){
-    //   return this.copyrightCompany
-    // },
-  },
   actions: {
     setSysLoading(sysLoading) {
       this.sysLoading = sysLoading;

@@ -23,12 +23,28 @@
         </div>
       </div>
     </div>
+    <div class="copyright">
+        Copyright © {{ year }}
+        <a class="link" target="blank" href="https://github.com/xLong1029">
+          {{ copyrightCompany }}
+        </a>
+        All Rights Reserved.
+      </div>
   </div>
 </template>
 
 <script setup>
-import useCommon from "@/hooks/modules/useCommon";
-const { sysTitle, toPage } = useCommon();
+import hooks from "@/hooks";
+import { ref } from "@vue/reactivity";
+
+const { useCommon, useDateTime } = hooks;
+
+const { sysTitle, copyrightCompany, toPage } = useCommon();
+
+const { getCurrentDateTime } = useDateTime();
+const { gregorianYear } = getCurrentDateTime();
+
+const year = ref(`${gregorianYear}-${gregorianYear + 1}`);
 </script>
 
 <style lang="scss" scoped>
@@ -47,7 +63,7 @@ const { sysTitle, toPage } = useCommon();
   align-items: center;
   justify-content: space-between;
   padding: size(20);
-  border: size(1) solid #ffffff;
+  border: size(1) solid color(white);
   border-radius: size(4);
   margin-bottom: size(20);
 
@@ -57,6 +73,22 @@ const { sysTitle, toPage } = useCommon();
 
     h3{
       margin: 0;
+      color: color(blue);
+    }
+  }
+}
+
+.copyright {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 24px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+
+  .link {
+    color: color(white);
+    &:hover{
       color: color(blue);
     }
   }
