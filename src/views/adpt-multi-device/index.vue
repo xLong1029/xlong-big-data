@@ -88,6 +88,10 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
+.screen-container{
+  background: var(--app-screen-bg-color);
+}
+
 .screen-content-container {
   padding-top: size(var(--app-screen-header-height));
   // padding-bottom: size(var(--app-screen-nav-height));

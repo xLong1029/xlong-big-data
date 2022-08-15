@@ -1,13 +1,13 @@
 <template>
-  <div class="screen-container">
-    <ScaleContainer>
+  <ScaleContainer>
+    <div class="screen-container">
       <Header />
 
       <div class="screen-content-container"><PCScreen /></div>
 
       <Nav :active="activeNavIndex" @change-nav="handleChangeNav" />
-    </ScaleContainer>
-  </div>
+    </div>
+  </ScaleContainer>
 </template>
 
 <script setup>
@@ -23,6 +23,11 @@ const { activeNavIndex, handleChangeNav } = useScreenNav();
 </script>
 
 <style lang="scss" scoped>
+.screen-container {
+  background: var(--app-screen-bg-color);
+  height: 100%;
+}
+
 .screen-content-container {
   padding-top: size(var(--app-screen-header-height));
   // padding-bottom: size(var(--app-screen-nav-height));
@@ -30,9 +35,5 @@ const { activeNavIndex, handleChangeNav } = useScreenNav();
   height: 100%;
   position: relative;
   overflow: hidden;
-
-  &.is-mobile {
-    overflow-y: auto;
-  }
 }
 </style>

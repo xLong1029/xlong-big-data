@@ -106,7 +106,7 @@ const setScale = debounce(() => {
   scaleBox.value.style.setProperty("--scale", scale.value);
   scaleBox.value.style.setProperty("--height", `${height}px`);
   scaleBox.value.style.setProperty("--width", `${width}px`);
-
+  
   // document.body.style.setProperty("--scale", scale.value);
   // document.body.style.setProperty("--height", `${height}px`);
   // document.body.style.setProperty("--width", `${width}px`);
