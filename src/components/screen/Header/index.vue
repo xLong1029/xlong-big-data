@@ -117,7 +117,7 @@ const setTimer = () => {
     top: size(15);
     display: flex;
     align-items: center;
-    font-size: size(20);
+    font-size: size(18);
     border-bottom: size(2) solid;
   }
 

@@ -1,20 +1,38 @@
 <template>
-  <div class="test-container">
-    自适应缩放示例，功能建设中...
+  <div class="screen-container">
+    <ScaleContainer>
+      <Header />
+
+      <div class="screen-content"><PCScreen /></div>
+
+      <Nav :active="activeNavIndex" @change-nav="handleChangeNav" />
+    </ScaleContainer>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import hooks from "@/hooks";
+
+import ScaleContainer from "@/components/common/ScaleContainer/index.vue";
+import Header from "@/components/screen/Header/index.vue";
+import Nav from "@/components/screen/Nav/index.vue";
+import PCScreen from "@/views/adpt-multi-device/pc/index.vue";
+
+const { useScreenNav } = hooks;
+const { activeNavIndex, handleChangeNav } = useScreenNav();
+</script>
 
 <style lang="scss" scoped>
-.test-container {
-  box-sizing: border-box;
-  min-height: 100vh;
-  padding: 20px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
+.screen-content {
+  padding-top: size(var(--app-screen-header-height));
+  padding-bottom: size(var(--app-screen-nav-height));
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &.is-mobile {
+    overflow-y: auto;
+  }
 }
 </style>

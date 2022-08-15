@@ -193,3 +193,11 @@ $fontSzie: 12, 14, 16, 18, 20, 22, 24, 26, 28, 30;
 .width-100 {
   width: 100% !important;
 }
+
+.pointer-events-none{
+  pointer-events: none;
+}
+
+.pointer-events-auto{
+  pointer-events: auto;
+}
