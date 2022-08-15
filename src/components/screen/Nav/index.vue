@@ -1,10 +1,18 @@
 <template>
   <div class="screen-nav-container">
-    <div class="screen-nav__left" :class="{ 'is-active': active === 0 }">
-      <span class="nav-text" @click="emit('change-nav', 0)">导航一</span>
+    <div
+      class="screen-nav__left"
+      :class="{ 'is-active': active === 0 }"
+      @click="emit('change-nav', 0)"
+    >
+      <span class="nav-text">导航一</span>
     </div>
-    <div class="screen-nav__right" :class="{ 'is-active': active === 1 }">
-      <span class="nav-text" @click="emit('change-nav', 1)">导航二</span>
+    <div
+      class="screen-nav__right"
+      :class="{ 'is-active': active === 1 }"
+      @click="emit('change-nav', 1)"
+    >
+      <span class="nav-text">导航二</span>
     </div>
   </div>
 </template>

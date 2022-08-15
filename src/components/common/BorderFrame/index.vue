@@ -12,19 +12,22 @@
 const props = defineProps({
   direction: {
     type: String,
-    default: "left" // left || right
-  }
+    default: "left", // left || right
+  },
 });
 </script>
 
 <style lang="scss" scoped>
+@import "@/styles/screen-mixin.scss";
+
 .border-frame-container {
   position: relative;
   z-index: 10;
   width: 100%;
-  border: 1 * $baseUnit solid transparent;
-  border-image: linear-gradient(transparent, #3f6277) 20 20;
-  padding: size(35) size(25);
+  border: size(1) solid transparent;
+  border-image: linear-gradient( #0b64ad, #0a345c) 20 20;
+  padding: size(15) size(15);
+  height: 100%;
 
   &::before,
   &::after {
@@ -34,15 +37,25 @@ const props = defineProps({
   }
 
   &::before {
-    top: size(-1);   
+    top: size(-1);
+
+    @include background-setting(
+      "./../../../assets/images/border-frame-corner.png",
+      size(20),
+      size(20)
+    );
   }
 
   &::after {
     bottom: size(-1);
+     @include background-setting(
+      "./../../../assets/images/border-frame-corner.png",
+      size(22),
+      size(22)
+    );
   }
 
-
-   &.left {
+  &.left {
     &::before {
       left: size(-1);
     }

@@ -50,29 +50,28 @@ onUnmounted(() => {
 const init = () => {
   logInfo("第一次加载页面");
   setLocalS("refreshTime", getDateTimeFormat(new Date()));
-  setTimer();
-};
-
-// 设置时间定时器
-const setTimer = () => {
-  clearTimer([dateTimeTimer.value]);
-
+  
+  setTime();
   // 实时更新时间
   dateTimeTimer.value = setInterval(() => {
-    const { hours, minutes } = getCurrentDateTime();
-
-    // 如果是一直展示的大屏，每20分钟进行判断，到达凌晨4点则刷新
-    if (minutes % 20 === 0 && hours == 4) {
-      // if (minutes === 47) {// 测试用
-      const refreshTime = getLocalS("refreshTime");
-      const nowTime = getDateTimeFormat(new Date());
-
-      if (nowTime != refreshTime) {
-        logInfo("即将重载页面...");
-        location.reload();
-      }
-    }
+    setTime();
   }, 1000);
+};
+
+const setTime = () => {
+  const { hours, minutes } = getCurrentDateTime();
+
+  // 如果是一直展示的大屏，每20分钟进行判断，到达凌晨4点则刷新
+  if (minutes % 20 === 0 && hours == 4) {
+    // if (minutes === 47) {// 测试用
+    const refreshTime = getLocalS("refreshTime");
+    const nowTime = getDateTimeFormat(new Date());
+
+    if (nowTime != refreshTime) {
+      logInfo("即将重载页面...");
+      location.reload();
+    }
+  }
 };
 </script>
 

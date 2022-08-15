@@ -1,22 +1,16 @@
 <template>
-  <div ref="wideScreenRef" class="wide-screen-container">
-    宽屏模式正在建设中，敬请期待...
-  </div>
+  <transition mode="out-in" name="fade">
+    <component :is="components[activeNavIndex]" />
+  </transition>
 </template>
 
 <script setup>
-import { ref } from "vue";
-const wideScreenRef = ref(null);
+import { inject } from "vue";
+import ExampleOne from "./example-one/index.vue";
+import ExampleTwo from "./example-two/index.vue";
+
+const activeNavIndex = inject("getActiveNavIndex");
+const components = [ExampleOne, ExampleTwo];
 </script>
 
-<style lang="scss" scoped>
-.wide-screen-container {
-  padding: size(15);
-  height: 100%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-}
-</style>
+<style lang="scss" scoped></style>

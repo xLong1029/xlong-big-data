@@ -3,7 +3,10 @@
     <MobileHeader v-if="viewActive === 'MobileScreen'" />
     <Header v-else />
 
-    <div class="screen-content" :class="{ 'is-mobile': viewActive === 'MobileScreen' }">
+    <div
+      class="screen-content-container"
+      :class="{ 'is-mobile': viewActive === 'MobileScreen' }"
+    >
       <component :is="views[viewActive]" />
     </div>
 
@@ -48,10 +51,10 @@ const initHtmlFontSize = () => {
   screen.width = document.body.clientWidth;
   screen.height = document.body.clientHeight;
 
-  if (screen.width > 1024) {
+  if (screen.width > 1366) {
     // 超宽屏大于 21：9
     if (screen.width / screen.height >= 21 / 9) {
-      setView("wideScreen");
+      setView("WideScreen");
 
       if (screen.width / screen.height > design.ratio) {
         contrastRatio.value =
@@ -69,6 +72,8 @@ const initHtmlFontSize = () => {
     setView("MobileScreen");
   }
 
+  console.log(viewActive);
+
   document.getElementsByTagName("html")[0].style.fontSize =
     contrastRatio.value * 100 + "px";
 };
@@ -83,15 +88,16 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.screen-content {
+.screen-content-container {
   padding-top: size(var(--app-screen-header-height));
-  padding-bottom: size(var(--app-screen-nav-height));
+  // padding-bottom: size(var(--app-screen-nav-height));
   width: 100%;
   height: 100vh;
   position: relative;
   overflow: hidden;
 
   &.is-mobile {
+    padding-top: size(40);
     overflow-y: auto;
   }
 }

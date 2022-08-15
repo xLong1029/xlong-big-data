@@ -1,24 +1,17 @@
 <template>
-  <div ref="mobileScreeRef" class="mobile-container">
-    移动端模式正在建设中，敬请期待...
-  </div>
+  <transition mode="out-in" name="fade">
+    <component :is="components[activeNavIndex]" />
+  </transition>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { inject } from "vue";
+import ExampleOne from "./example-one/index.vue";
+import ExampleTwo from "./example-two/index.vue";
 
-const mobileScreeRef = ref(null);
+const activeNavIndex = inject("getActiveNavIndex");
+const components = [ExampleOne, ExampleTwo];
 </script>
 
 <style lang="scss" scoped>
-.mobile-container {
-  box-sizing: border-box;
-  min-height: 100vh;
-  padding: size(15);
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-}
 </style>

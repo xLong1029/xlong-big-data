@@ -1,9 +1,7 @@
 <template>
-  <div class="pc-container">
-    <transition mode="out-in" name="fade">
-      <component :is="components[activeNavIndex]" />
-    </transition>
-  </div>
+  <transition mode="out-in" name="fade">
+    <component :is="components[activeNavIndex]" />
+  </transition>
 </template>
 
 <script setup>
@@ -16,11 +14,4 @@ const components = [ExampleOne, ExampleTwo];
 </script>
 
 <style lang="scss" scoped>
-.pc-container {
-  padding: size(15);
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
 </style>

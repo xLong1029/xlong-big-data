@@ -3,7 +3,7 @@
     <ScaleContainer>
       <Header />
 
-      <div class="screen-content"><PCScreen /></div>
+      <div class="screen-content-container"><PCScreen /></div>
 
       <Nav :active="activeNavIndex" @change-nav="handleChangeNav" />
     </ScaleContainer>
@@ -23,9 +23,9 @@ const { activeNavIndex, handleChangeNav } = useScreenNav();
 </script>
 
 <style lang="scss" scoped>
-.screen-content {
+.screen-content-container {
   padding-top: size(var(--app-screen-header-height));
-  padding-bottom: size(var(--app-screen-nav-height));
+  // padding-bottom: size(var(--app-screen-nav-height));
   width: 100%;
   height: 100%;
   position: relative;

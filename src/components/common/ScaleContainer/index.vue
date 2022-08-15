@@ -169,14 +169,14 @@ provide("getPageScale", scale);
   transform-origin: 0 0;
   transition: 0.3s;
   overflow: hidden;
-}
 
-.scale-box__scroll {
-  --scale: 1;
-  position: absolute;
-  transform: scale(var(--scale));
-  transform-origin: 0 0;
-  transition: 0.3s;
+  &__scroll {
+    --scale: 1;
+    position: absolute;
+    transform: scale(var(--scale));
+    transform-origin: 0 0;
+    transition: 0.3s;
+  }
 }
 
 .no-scale-box {

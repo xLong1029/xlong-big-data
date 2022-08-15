@@ -1,10 +1,18 @@
 <template>
   <div class="screen-nav-container">
-    <div class="screen-nav__left" :class="{ 'is-active': active === 0 }">
-      <span class="nav-text" @click="emit('change-nav', 0)">导航一</span>
+    <div
+      class="screen-nav__left"
+      :class="{ 'is-active': active === 0 }"
+      @click="emit('change-nav', 0)"
+    >
+      <span class="nav-text">导航一</span>
     </div>
-    <div class="screen-nav__right" :class="{ 'is-active': active === 1 }">
-      <span class="nav-text" @click="emit('change-nav', 1)">导航二</span>
+    <div
+      class="screen-nav__right"
+      :class="{ 'is-active': active === 1 }"
+      @click="emit('change-nav', 1)"
+    >
+      <span class="nav-text">导航二</span>
     </div>
   </div>
 </template>
@@ -27,7 +35,7 @@ const emit = defineEmits(["change-nav"]);
 
 @media screen and (max-width: 1366px) {
   .screen-nav {
-    &-container{
+    &-container {
       width: 80%;
     }
   }
@@ -35,49 +43,50 @@ const emit = defineEmits(["change-nav"]);
 
 @media screen and (max-width: 1024px) {
   .screen-nav {
-    &-container{
+    &-container {
       width: 100%;
+      background-size: 120% 100%;
 
-      .nav-text{
+      .nav-text {
         font-size: size(14);
-        line-height: size(30);
-        padding: size(2) 15%;
       }
     }
 
     &__left,
     &__right {
-      background-size: 120% 100%;
+      line-height: size(30);
+      width: 21.5%;
+
+      &.is-active{
+        width: 21.5%;
+      }
     }
   }
 }
 
 @media screen and (max-width: 768px) {
-  .screen-nav {
-    &__left,
-    &__right {
-      background-size: 120% 100%;
-    }
-  }
 }
 
 @media screen and (max-width: 640px) {
 }
 
 @media screen and (max-width: 560px) {
-  .screen-nav {
-    &__left,
-    &__right {
-      background-size: 140% 100%;
-    }
-  }
 }
 
 @media screen and (max-width: 414px) {
   .screen-nav {
+    &-container {
+      background-size: 160% 100%;
+    }
+
     &__left,
     &__right {
-      background-size: 160% 100%;
+      line-height: size(30);
+      width: 28%;
+
+      &.is-active{
+        width: 28%;
+      }
     }
   }
 }
