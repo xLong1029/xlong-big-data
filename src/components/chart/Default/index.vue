@@ -45,12 +45,18 @@ const props = defineProps({
 
 const emit = defineEmits(["activeIndexChange"]);
 
-const { useChart, useChartAutoPlay } = hooks;
+const { useChart, useTooltipAutoPlay } = hooks;
 
 const chartData = computed(() => props.option.series?.[props.seriesIndex]?.data ?? []);
 
 // 渲染图表
 const { chart, option, container } = useChart();
+
+// 自动播放tooltip
+const { activeIndex, autoplay } = useTooltipAutoPlay({
+  duration: props.duration,
+  data: chartData,
+});
 
 watch(
   () => props.option,
@@ -61,12 +67,6 @@ watch(
     immediate: true,
   }
 );
-
-// 自动播放tooltip
-const { activeIndex, autoplay } = useChartAutoPlay({
-  duration: props.duration,
-  data: chartData,
-});
 
 watch(
   () => props.autoplay,
@@ -84,11 +84,13 @@ watch(activeIndex, (val, preval) => {
     seriesIndex: props.highlightSeriesIndex,
     dataIndex: preval,
   });
+
   chart.value?.dispatchAction({
     type: "highlight",
     seriesIndex: props.highlightSeriesIndex,
     dataIndex: val,
   });
+
   chart.value?.dispatchAction({
     type: "showTip",
     seriesIndex: [0],
@@ -107,9 +109,11 @@ watch(chart, (chartIns) => {
         autoplay.value = true;
       }
     });
+
     chartIns.getDom().addEventListener("mouseout", function (e) {
       autoplay.value = true;
     });
+
     chartIns.on("mouseover", function (e) {
       if (e.dataIndex !== activeIndex.value) {
         chartIns?.dispatchAction({
