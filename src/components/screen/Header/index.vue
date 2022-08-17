@@ -5,7 +5,7 @@
         <el-breadcrumb-item :to="{ path: '/' }">
           <el-icon class="mr-5"><HomeFilled /></el-icon><text>首页</text>
         </el-breadcrumb-item>
-        <el-breadcrumb-item> 数据监控 </el-breadcrumb-item>
+        <el-breadcrumb-item>{{ title }}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="screen-header__center">
@@ -20,14 +20,14 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 import { ArrowRight } from "@element-plus/icons-vue";
 import hooks from "@/hooks";
 // 工具
 import { logInfo, setLocalS, getLocalS, clearTimer } from "@/utils";
 
 const { useCommon, useDateTime } = hooks;
-const { sysTitle } = useCommon();
+const { router, sysTitle } = useCommon();
 
 const {
   currentTime,
@@ -38,8 +38,12 @@ const {
   getCurrentDateTime,
 } = useDateTime();
 
+const title = ref("");
+
 onMounted(() => {
   init();
+
+  title.value = router.currentRoute.value.meta.title;
 });
 
 onUnmounted(() => {
@@ -50,7 +54,7 @@ onUnmounted(() => {
 const init = () => {
   logInfo("第一次加载页面");
   setLocalS("refreshTime", getDateTimeFormat(new Date()));
-  
+
   setTime();
   // 实时更新时间
   dateTimeTimer.value = setInterval(() => {
