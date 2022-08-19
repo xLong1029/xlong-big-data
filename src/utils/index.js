@@ -1,4 +1,4 @@
-import { isArray, isFunction } from "lodash";
+
 import settings from "./../settings";
 
 /**
@@ -136,53 +136,3 @@ export function delLocalS(key) {
       e = null;
   });
 }
-
-// 自定义tooltip
-export const customTooltip = (params, opt = {}) => {
-  const p = isArray(params) ? params : [params];
-  const {
-    unit = "",
-    fontSize = 14,
-    names,
-    markers,
-    seriesNames,
-    values,
-    showTotal,
-    valueFixed
-  } = opt;
-  let total = 0;
-  const unitList=isArray(unit)?unit:[unit]
-  let html= p.reduce((res, item, index) => {
-    
-    const name = isFunction(names)
-      ? names(item.name)
-      : names?.[index] ?? item.name;
-
-    const marker = isFunction(markers)
-      ? markers(item.marker)
-      : markers?.[index] ?? item.marker;
-
-    const seriesName = isFunction(seriesNames)
-      ? seriesNames(item.seriesName)
-      : seriesNames?.[index] ?? item.seriesName;
-
-    const value = isFunction(values)
-      ? values(item.value)
-      : values?.[index] ?? item.value;
-
-    total += value * 1;
-    if (!res) {
-      res = `<div style="font-size:${fontSize * 1.1}px;margin-bottom:${0.67 *
-        fontSize}px;">${name}</div>`;
-    }
-    return (
-      res +
-      `<div style="font-size:${fontSize}px;margin-bottom:${0.53 *
-        fontSize}px;">${marker} ${seriesName}<span style="color:#ff921f;" >${valueFixed?(value).toFixed(valueFixed)*1:value}</span>  ${unitList[index%unitList.length]}</div>`
-    );
-  }, "");
-  if(showTotal){
-    html+=` <div>总计：<span style="font-size:${fontSize * 1.1}px;color:#ff921f;">${total.toFixed(3)}</span><span> ${unit}</span></div>`
-  }
-  return html;
-};

@@ -1,3 +1,10 @@
+/*
+ * 模块 : 图表模块
+ * 作者 : 罗永梅（381612175@qq.com）
+ * 日期 : 2022-08-19
+ * 版本 : version 1.0
+ */
+
 import {
   ref,
   reactive,
@@ -7,8 +14,11 @@ import {
   watch,
 } from "vue";
 import * as echarts from "echarts";
+import useResize from "./useResize";
+import { debounce } from "@/utils";
 
-export default function (props) {
+export default function () {
+  // 默认配置项
   const defaultOption = reactive({
     backgroundColor: "transparent",
     tooltip: {
@@ -22,29 +32,52 @@ export default function (props) {
     },
   });
 
+  // 图表
   const chart = shallowReactive({
     value: null,
   });
+  // dom容器
   const container = ref(null);
+  // 自定义配置项
   const option = ref(null);
 
-  const setOption = () => {
-    chart.value?.setOption({ ...defaultOption, ...option.value });
-  };
+  const { initResizeEvent, destroyResizeEvent } = useResize();
 
-  onMounted(() => {});
+  onMounted(() => {
+    initResizeEvent(handleResizeScreen);
+  });
 
   onUnmounted(() => {
+    destroyResizeEvent(handleResizeScreen);
+
     chart.value?.dispose();
     chart.value = null;
   });
 
+  /**
+   * 设置配置项
+   */
+  const setOption = () => {
+    chart.value?.setOption({ ...defaultOption, ...option.value });
+  };
+
+  // 监听配置项和dom改变
   watch([option, container], ([opt, dom]) => {
     if (dom && !chart.value) {
+      // 暗色系
       chart.value = echarts.init(dom, "dark");
     }
     setOption();
   });
+
+  /**
+   * 处理屏幕尺寸变化
+   */
+  const handleResizeScreen = debounce(() => {
+    if (chart.value) {
+      chart.value.resize();
+    }
+  }, 100);
 
   return {
     chart,

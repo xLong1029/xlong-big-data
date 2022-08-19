@@ -11,7 +11,6 @@
 </template>
 
 <script setup>
-// eslint-disable-next-line no-undef
 const props = defineProps({
   title: {
     type: String,

@@ -3,40 +3,48 @@
 </template>
 
 <script setup>
-import { watch, defineProps, defineEmits, computed, defineExpose } from "vue";
+import { watch, computed } from "vue";
 import hooks from "@/hooks";
 
 const props = defineProps({
+  // 配置项
   option: {
     type: Object,
     default() {
       return {};
     },
   },
+  // 宽度
   width: {
     type: [Number, String],
     default: "100%",
   },
+  // 高度
   height: {
     type: [Number, String],
     default: "100%",
   },
+  //
   seriesIndex: {
     type: Number,
     default: 0,
   },
+  // 是否自动播放
   autoplay: {
     type: Boolean,
     default: false,
   },
+  // 持续时间
   duration: {
     type: Number,
     default: 1500,
   },
+  // 鼠标经过
   hoverActive: {
     type: Boolean,
     default: false,
   },
+  // 高亮系列列表索引
   highlightSeriesIndex: {
     type: Array,
     default: () => [0],
@@ -45,15 +53,13 @@ const props = defineProps({
 
 const emit = defineEmits(["activeIndexChange"]);
 
-const { useChart, useTooltipAutoPlay } = hooks;
+const { useChart, useAutoPlay } = hooks;
 
-const chartData = computed(() => props.option.series?.[props.seriesIndex]?.data ?? []);
+const chartData = computed(() => props.option?.series?.[props.seriesIndex]?.data ?? []);
 
-// 渲染图表
 const { chart, option, container } = useChart();
 
-// 自动播放tooltip
-const { activeIndex, autoplay } = useTooltipAutoPlay({
+const { activeIndex, autoplay } = useAutoPlay({
   duration: props.duration,
   data: chartData,
 });
@@ -68,10 +74,14 @@ watch(
   }
 );
 
+const setAutoplay = (val) => (autoplay.value = val);
+
+const setActiveIndex = (index) => (activeIndex.value = index);
+
 watch(
   () => props.autoplay,
-  (e) => {
-    autoplay.value = e;
+  (val) => {
+    setAutoplay(val);
   },
   {
     immediate: true,
@@ -79,15 +89,16 @@ watch(
 );
 
 watch(activeIndex, (val, preval) => {
+  const { highlightSeriesIndex: seriesIndex } = props;
   chart.value?.dispatchAction({
     type: "downplay",
-    seriesIndex: props.highlightSeriesIndex,
+    seriesIndex,
     dataIndex: preval,
   });
 
   chart.value?.dispatchAction({
     type: "highlight",
-    seriesIndex: props.highlightSeriesIndex,
+    seriesIndex,
     dataIndex: val,
   });
 
@@ -100,38 +111,38 @@ watch(activeIndex, (val, preval) => {
   emit("activeIndexChange", val);
 });
 
-watch(chart, (chartIns) => {
-  if (chartIns && props.autoplay) {
-    chartIns.getZr().on("mousemove", function (e) {
-      if (e.topTarget) {
-        autoplay.value = false;
-      } else {
-        autoplay.value = true;
-      }
-    });
-
-    chartIns.getDom().addEventListener("mouseout", function (e) {
-      autoplay.value = true;
-    });
-
-    chartIns.on("mouseover", function (e) {
-      if (e.dataIndex !== activeIndex.value) {
-        chartIns?.dispatchAction({
-          type: "downplay",
-          seriesIndex: props.highlightSeriesIndex,
-          dataIndex: activeIndex.value,
-        });
-        if (props.hoverActive) {
-          setActiveIndex(e.dataIndex);
+watch(
+  () => chart.value,
+  (newChart) => {
+    // console.log(newChart);
+    const { autoplay } = props;
+    if (newChart && autoplay) {
+      newChart.getZr().on("mousemove", function (e) {
+        if (e.topTarget) {
+          setAutoplay(false);
+        } else {
+          setAutoplay(true);
         }
-      }
-    });
+      });
+      newChart.getDom().addEventListener("mouseout", function (e) {
+        setAutoplay(true);
+      });
+      newChart.on("mouseover", function (e) {
+        const { highlightSeriesIndex: seriesIndex, hoverActive } = props;
+        if (e.dataIndex !== activeIndex.value) {
+          newChart?.dispatchAction({
+            type: "downplay",
+            seriesIndex,
+            dataIndex: activeIndex.value,
+          });
+          if (hoverActive) {
+            setActiveIndex(e.dataIndex);
+          }
+        }
+      });
+    }
   }
-});
-
-const setActiveIndex = (index) => {
-  activeIndex.value = index;
-};
+);
 
 defineExpose({
   setActiveIndex,

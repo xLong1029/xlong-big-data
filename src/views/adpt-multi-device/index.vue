@@ -72,8 +72,6 @@ const initHtmlFontSize = () => {
     setView("MobileScreen");
   }
 
-  console.log(viewActive);
-
   document.getElementsByTagName("html")[0].style.fontSize =
     contrastRatio.value * 100 + "px";
 };

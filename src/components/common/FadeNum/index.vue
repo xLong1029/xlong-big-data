@@ -7,7 +7,6 @@
 
 <script setup>
 import { ref, watch } from "@vue/runtime-core";
-// eslint-disable-next-line no-undef
 const props = defineProps({
   // 数值
   value: {

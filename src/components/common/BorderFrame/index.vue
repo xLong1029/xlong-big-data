@@ -8,7 +8,6 @@
 </template>
 
 <script setup>
-// eslint-disable-next-line no-undef
 const props = defineProps({
   direction: {
     type: String,

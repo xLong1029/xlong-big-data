@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, defineProps, provide, nextTick, watch } from "vue";
+import { ref, onMounted, onUnmounted, provide, nextTick, watch } from "vue";
 import { debounce } from "@/utils";
 
 const props = defineProps({

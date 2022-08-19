@@ -18,7 +18,6 @@
 </template>
 
 <script setup>
-// eslint-disable-next-line
 const props = defineProps({
   active: {
     type: Number,
@@ -26,7 +25,6 @@ const props = defineProps({
   },
 });
 
-// eslint-disable-next-line
 const emit = defineEmits(["change-nav"]);
 </script>
 

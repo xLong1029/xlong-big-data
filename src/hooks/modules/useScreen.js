@@ -5,8 +5,11 @@
  * 版本 : version 1.0
  */
 import { provide, ref, reactive, onMounted, onUnmounted } from "vue";
+import useResize from "./useResize";
 
 export default function(handleResizeScreen) {
+  const { initResizeEvent, destroyResizeEvent } = useResize();
+
   // 设计稿高宽
   const design = reactive({
     width: 1920,
@@ -27,7 +30,7 @@ export default function(handleResizeScreen) {
   });
 
   // 响应式比率
-  const contrastRatio = ref(1);
+  const contrastRatio = ref(1);  
 
   // 顶级组件通过provide传递给子孙组件
   provide("getDesign", design);
@@ -35,16 +38,12 @@ export default function(handleResizeScreen) {
   provide("getContrastRatio", contrastRatio);
 
   onMounted(() => {    
-    if (handleResizeScreen) {
-      handleResizeScreen();
-      window.addEventListener("resize", handleResizeScreen);
-    }
+    handleResizeScreen();
+    initResizeEvent(handleResizeScreen);
   });
 
-  onUnmounted(() => {    
-    if (handleResizeScreen) {
-      window.removeEventListener("resize", handleResizeScreen);
-    }
+  onUnmounted(() => {
+    destroyResizeEvent(handleResizeScreen)
   });
 
   return {
