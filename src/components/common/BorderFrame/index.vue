@@ -27,6 +27,7 @@ const props = defineProps({
   border-image: linear-gradient( #0b64ad, #0a345c) 20 20;
   padding: size(15) size(15);
   height: 100%;
+  background: rgb(2 15 34 / 60%);
 
   &::before,
   &::after {

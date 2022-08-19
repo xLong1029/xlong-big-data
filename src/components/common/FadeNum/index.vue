@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from "@vue/runtime-core";
+import { ref, watch } from "vue";
 const props = defineProps({
   // 数值
   value: {

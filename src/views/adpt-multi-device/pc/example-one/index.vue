@@ -63,7 +63,9 @@
       </div>
     </div>
     <div class="screen-content__center">
-      <div class="screen-content__center-top">111</div>
+      <div class="screen-content__center-top">
+        <TotalStatistics/>
+      </div>
       <div class="screen-content__center-bottom">
         <BorderFrame></BorderFrame>
       </div>
@@ -78,6 +80,7 @@
 import { reactive, inject, onMounted, shallowRef } from "@vue/runtime-core";
 import BorderFrame from "@/components/common/BorderFrame/index.vue";
 import BarChart from "@/components/chart/BarChart/index.vue";
+import TotalStatistics from "./total-statistics/index.vue";
 import useChartOption from "@/hooks/modules/useChartOption";
 
 const contrastRatio = inject("getContrastRatio") ?? 1;
@@ -111,6 +114,19 @@ const chart = reactive({
 onMounted(() => {
   chart.tooltip = {
     trigger: "axis",
+    position: function (pos, params, dom, rect, size) {
+      var obj = {};
+
+      // const horizontalPosIndex = +(pos[0] < size.viewSize[0] / 2);
+      const verticalPosIndex = +(pos[1] < size.viewSize[1] / 2);
+
+      // obj[["left", "right"][horizontalPosIndex]] = "1%";   // 鼠标在左侧时 tooltip 显示到右侧，鼠标在右侧时 tooltip 显示到左侧。
+      obj["right"] = "10";
+      obj[["bottom", "top"][verticalPosIndex]] = [
+        [size.viewSize[1] - pos[1] + 10, pos[1] + 10][verticalPosIndex],
+      ]; // 鼠标在上方时 tooltip 显示到下方，鼠标在下方时 tooltip 显示到上方。
+      return obj;
+    },
     formatter: (p) =>
       customTooltip(p, { unit: "公顷", fontSize: 14 * contrastRatio.value }),
   };

@@ -51,7 +51,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["activeIndexChange"]);
+const emit = defineEmits(["active-index-change"]);
 
 const { useChart, useAutoPlay } = hooks;
 
@@ -108,7 +108,7 @@ watch(activeIndex, (val, preval) => {
     dataIndex: val,
   });
 
-  emit("activeIndexChange", val);
+  emit("active-index-change", val);
 });
 
 watch(

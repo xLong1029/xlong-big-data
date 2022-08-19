@@ -1,5 +1,11 @@
 <template>
-  <Chart :option="option" :width="width" :height="height" :duration="duration" :autoplay="autoplay" />
+  <Chart
+    :option="option"
+    :width="width"
+    :height="height"
+    :duration="duration"
+    :autoplay="autoplay"
+  />
 </template>
 
 <script setup>
@@ -223,11 +229,11 @@ const setOption = (chartData = []) => {
 
   // 提示
   let customTooltip = {
-    ...tooltip,
     textStyle: {
       fontSize,
       color: fontColor,
-    },
+    },    
+    ...tooltip,
   };
 
   // 图例

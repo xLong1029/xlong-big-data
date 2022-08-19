@@ -35,7 +35,7 @@
 
 <script setup>
 import hooks from "@/hooks";
-import { ref } from "@vue/reactivity";
+import { ref } from "vue";
 
 const { useCommon, useDateTime } = hooks;
 
