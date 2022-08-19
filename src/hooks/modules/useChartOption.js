@@ -9,16 +9,16 @@ import { isArray, isFunction } from "lodash";
 export default function () {
   /**
    * 获取坐标轴数值
-   * 
+   *
    * @param {*} data 数据
-   * @param {*} property 属性 
-   * @returns 
+   * @param {*} property 属性
+   * @returns
    */
   const getAxisData = (data, property) => data.map((e) => e[property]);
 
   /**
    * 自定义提示
-   * 
+   *
    * @param {*} params formatter 需要的数据集
    * @param {*} opt 配置项
    * @returns 显示文本
@@ -50,7 +50,7 @@ export default function () {
     let total = 0;
 
     const unitList = isArray(unit) ? unit : [unit];
-    
+
     let html = p.reduce((res, item, index) => {
       const name = isFunction(names)
         ? names(item.name)
@@ -75,28 +75,34 @@ export default function () {
       total += value * 1;
 
       if (!res) {
-        res = `<div style="font-size:${fontSize * 1.1}px;margin-bottom:${
-          0.67 * fontSize
-        }px;">${name}</div>`;
+        res = `<div style="font-size:${fontSize}px; margin-bottom:${
+          0.5 * fontSize
+        }px;">
+        ${name}
+        </div>`;
       }
       return (
         res +
-        `<div style="font-size:${fontSize}px;margin-bottom:${
-          0.53 * fontSize
+        `<div style="font-size:${fontSize}px; margin-bottom:${
+          0.5 * fontSize
         }px;">
         ${marker} ${seriesName}
-        <span style="color:${lightHeightTextColor};" >${
-          valueFixed ? value.toFixed(valueFixed) * 1 : value
-        }</span> 
-        ${unitList[index % unitList.length]}</div>`
+        <span style="color:${lightHeightTextColor};" >
+        ${valueFixed ? value.toFixed(valueFixed) * 1 : value}
+        </span> 
+        ${unitList[index % unitList.length]}
+        </div>`
       );
     }, "");
     if (showTotal) {
-      html += ` <div>总计：<span style="font-size:${
-        fontSize * 1.1
-      }px;color:${lightHeightTextColor};">${total.toFixed(
-        3
-      )}</span><span> ${unit}</span></div>`;
+      html += `
+      <div style="font-size:${fontSize}px;">
+        总计：
+        <span style="color:${lightHeightTextColor};">
+          ${total.toFixed(3)}
+        </span>
+        <span> ${unit}</span>
+      </div>`;
     }
     return html;
   };

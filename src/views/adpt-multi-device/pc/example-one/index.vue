@@ -1,21 +1,66 @@
 <template>
   <div class="screen-content">
     <div class="screen-content__left">
-      <BorderFrame>
-        <BarChart
-          :chart-data="chart.chartData"
-          :axis="chart.axis"
-          :series="chart.series"
-          :scale="contrastRatio"
-          :tooltip="chart.tooltip"
-          :grid="chart.grid"
-          :legend="chart.legend"
-          :label-font-size="chart.labelFontSize"
-          :value-label-visible="chart.valueLabelVisible"
-          :chart-direction="chart.chartDirection"
-          :autoplay="chart.autoplay"
-        />
-      </BorderFrame>
+      <div class="chart-1">
+        <BorderFrame>
+          <LineTitle title="测试数据" />
+          <div class="content">
+            <BarChart
+              :chart-data="chart.chartData"
+              :axis="chart.axis"
+              :series="chart.series"
+              :scale="contrastRatio"
+              :tooltip="chart.tooltip"
+              :grid="chart.grid"
+              :legend="chart.legend"
+              :label-font-size="chart.labelFontSize"
+              :value-label-visible="chart.valueLabelVisible"
+              :chart-direction="chart.chartDirection"
+              :autoplay="chart.autoplay"
+            />
+          </div>
+        </BorderFrame>
+      </div>
+      <div class="chart-2 pt-20">
+        <BorderFrame>
+          <LineTitle title="测试数据" />
+          <div class="content">
+            <BarChart
+              :chart-data="chart.chartData"
+              :axis="chart.axis"
+              :series="chart.series"
+              :scale="contrastRatio"
+              :tooltip="chart.tooltip"
+              :grid="chart.grid"
+              :legend="chart.legend"
+              :label-font-size="chart.labelFontSize"
+              :value-label-visible="chart.valueLabelVisible"
+              :chart-direction="chart.chartDirection"
+              :autoplay="chart.autoplay"
+            />
+          </div>
+        </BorderFrame>
+      </div>
+      <div class="chart-3 pt-20">
+        <BorderFrame>
+          <LineTitle title="测试数据" />
+          <div class="content">
+            <BarChart
+              :chart-data="chart.chartData"
+              :axis="chart.axis"
+              :series="chart.series"
+              :scale="contrastRatio"
+              :tooltip="chart.tooltip"
+              :grid="chart.grid"
+              :legend="chart.legend"
+              :label-font-size="chart.labelFontSize"
+              :value-label-visible="chart.valueLabelVisible"
+              :chart-direction="chart.chartDirection"
+              :autoplay="chart.autoplay"
+            />
+          </div>
+        </BorderFrame>
+      </div>
     </div>
     <div class="screen-content__center">
       <div class="screen-content__center-top">111</div>
@@ -66,7 +111,8 @@ const chart = reactive({
 onMounted(() => {
   chart.tooltip = {
     trigger: "axis",
-    formatter: (p) => customTooltip(p, { unit: "公顷" }),
+    formatter: (p) =>
+      customTooltip(p, { unit: "公顷", fontSize: 14 * contrastRatio.value }),
   };
   chart.chartData = [
     {
@@ -147,6 +193,24 @@ onMounted(() => {
   &__right {
     width: 22%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__left {
+    .chart-1,
+    .chart-2,
+    .chart-3 {
+      height: 33.33%;
+      display: flex;
+      flex-direction: column;
+
+      .content {
+        height: 100%;
+        padding-top: size(20);
+        height: calc(100% - size(30));
+      }
+    }
   }
 
   &__center {

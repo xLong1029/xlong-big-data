@@ -1,12 +1,13 @@
 <template>
-  <div v-if="viewLoaded" class="screen-container">
+  <div
+    v-if="viewLoaded"
+    class="screen-container"
+    :class="{ 'is-mobile': viewActive === 'MobileScreen' }"
+  >
     <MobileHeader v-if="viewActive === 'MobileScreen'" />
     <Header v-else />
 
-    <div
-      class="screen-content-container"
-      :class="{ 'is-mobile': viewActive === 'MobileScreen' }"
-    >
+    <div class="screen-content-container">
       <component :is="views[viewActive]" />
     </div>
 
@@ -86,8 +87,18 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.screen-container{
-  background: var(--app-screen-bg-color);
+.screen-container {
+  // background: var(--app-screen-bg-color);
+  background: url("./../../assets/images/bg.jpg");
+  background-size: 100% 100%;
+
+  &.is-mobile {
+    background-size:auto auto;
+    .screen-content-container {
+      padding-top: size(40);
+      overflow-y: auto;
+    }
+  }
 }
 
 .screen-content-container {
@@ -97,10 +108,5 @@ onUnmounted(() => {
   height: 100vh;
   position: relative;
   overflow: hidden;
-
-  &.is-mobile {
-    padding-top: size(40);
-    overflow-y: auto;
-  }
 }
 </style>

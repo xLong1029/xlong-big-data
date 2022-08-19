@@ -10,8 +10,12 @@
 
 // 自定义面包屑
 .custom-breadcrumb-style {
+  .el-breadcrumb {
+    display: flex;
+    align-items: center;
+  }
   .el-breadcrumb__item {
-    font-size: size(18);
+    font-size: size(16);
     color: color(white);
 
     .el-icon {
@@ -44,7 +48,7 @@
   }
 
   .el-breadcrumb__inner.is-link,
-  .el-breadcrumb__inner a{
+  .el-breadcrumb__inner a {
     font-weight: normal;
   }
 }

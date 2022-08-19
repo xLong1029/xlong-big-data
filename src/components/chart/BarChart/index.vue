@@ -186,7 +186,7 @@ const setOption = (chartData = []) => {
         },
       },
       axisLabel: {
-        interval: 0,
+        // interval: 0,
         color: fontColor,
         fontSize,
       },
@@ -214,7 +214,7 @@ const setOption = (chartData = []) => {
         },
       },
       axisLabel: {
-        interval: 0,
+        // interval: 0,
         color: fontColor,
         fontSize,
       },
@@ -245,7 +245,7 @@ const setOption = (chartData = []) => {
 
   // 网格
   const customGrid = {
-    top: "1%",
+    top: "10%",
     bottom: "1%",
     left: "1%",
     right: "1%",

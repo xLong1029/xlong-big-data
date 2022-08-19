@@ -2,7 +2,6 @@
   <div class="line-title-container">
     <div class="title">
       <div class="text">
-        <span class="dot"></span>
         <h2>{{ title }}</h2>
       </div>
       <slot name="extra"> </slot>
@@ -29,26 +28,22 @@ const props = defineProps({
   &::before {
     content: "";
     display: block;
-    width: size(4);
+    width: size(3);
     height: 100%;
-    background: rgba(31, 76, 162, 0.6);
-  }
-
-  .dot {
-    display: inline-block;
+    background: color(blue);
   }
 
   .title {
     flex: 1;
     display: flex;
     align-items: center;
-    margin-left: size(2);
+    margin-left: size(3);
 
     h2 {
       color: #45f3fd;
       font-weight: 500;
-      font-size: size(20);
-      margin-left: size(3);
+      font-size: size(18);
+      margin-left: size(5);
       margin-bottom: 0;
       margin-top: 0;
     }
