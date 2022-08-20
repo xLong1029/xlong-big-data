@@ -71,7 +71,7 @@ const props = defineProps({
     align-items: center;
     justify-content: center;
     height: size(48);
-    font-size: size(27);
+    font-size: size(30);
     font-weight: bold;
   }
 
@@ -80,6 +80,7 @@ const props = defineProps({
     align-items: center;
     justify-content: center;
     height: size(32);
+    font-size: size(16);
   }
 }
 </style>

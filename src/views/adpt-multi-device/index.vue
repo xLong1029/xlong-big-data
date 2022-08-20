@@ -84,6 +84,10 @@ onMounted(() => {
 onUnmounted(() => {
   setScreenMode("Normal");
 });
+
+const getScreenData = () => {
+  
+}
 </script>
 
 <style lang="scss" scoped>

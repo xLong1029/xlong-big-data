@@ -5,10 +5,13 @@ const Random = Mock.Random;
 
 export default [
   {
-    url: "/api/screen/list",
+    url: "/api/screen/data",
     method: "get",
     response: (config) =>
       handleMock(config, () => {
+
+        console.log(config);
+        
         return handleResponse(200, "success", {});
       }),
   },
