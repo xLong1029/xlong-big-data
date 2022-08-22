@@ -49,8 +49,15 @@
 │  │
 │  ├─assets // 资源目录，这里的资源会被wabpack构建
 │  ├─api // api接口文件
-│  ├─store  // 应用级数据（state）
 │  ├─styles  // 样式
+│  │
+│  ├─store  // 应用级数据（state）
+│  │  │
+│  │  └─modules
+│  │
+│  ├─hooks 钩子函数
+│  │  │
+│  │  └─modules
 │  │
 │  ├─mock // 模拟请求数据
 │  │  │  index.js
