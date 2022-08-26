@@ -86,7 +86,6 @@ const countDown = computed(() => props.startVal > props.endVal);
 const start = () => {
   const { startVal, duration } = props;
 
-  console.log(startVal, duration);
   localStartVal.value = startVal;
   startTime.value = null;
   localDuration.value = duration;

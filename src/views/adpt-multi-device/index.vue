@@ -52,29 +52,30 @@ const initHtmlFontSize = () => {
   screen.width = document.body.clientWidth;
   screen.height = document.body.clientHeight;
 
+  const hr = screen.height / design.height;
+  const wr = screen.width / design.width;
+  const swhr = screen.width / screen.height;
+
   if (screen.width > 1366) {
     // 超宽屏大于 21：9
-    if (screen.width / screen.height >= 21 / 9) {
+    if (swhr >= 21 / 9) {
       setView("WideScreen");
 
-      if (screen.width / screen.height > design.ratio) {
-        contrastRatio.value =
-          screen.height < minScreen.height ? 0.56 : screen.height / design.height; // 以高度为基准制定
+      if (swhr > design.ratio) {
+        contrastRatio.value = screen.height < minScreen.height ? 0.56 : hr; // 以高度为基准制定
       } else {
-        contrastRatio.value =
-          screen.width < minScreen.width ? 0.6 : screen.width / design.width; // 以宽度为基准制定
+        contrastRatio.value = screen.width < minScreen.width ? 0.6 : wr; // 以宽度为基准制定
       }
     } else {
       setView("PCScreen");
 
-      contrastRatio.value = screen.height / design.height; // 以高度为基准制定
+      contrastRatio.value = hr; // 以高度为基准制定
     }
   } else {
     setView("MobileScreen");
   }
 
-  document.getElementsByTagName("html")[0].style.fontSize =
-    contrastRatio.value * 100 + "px";
+  document.documentElement.style.fontSize = contrastRatio.value * 100 + "px";
 };
 
 onMounted(() => {
@@ -85,9 +86,7 @@ onUnmounted(() => {
   setScreenMode("Normal");
 });
 
-const getScreenData = () => {
-  
-}
+const getScreenData = () => {};
 </script>
 
 <style lang="scss" scoped>
@@ -98,7 +97,7 @@ const getScreenData = () => {
   @include background-setting("./../../assets/images/bg.jpg", 100%, 100%);
 
   &.is-mobile {
-    background-size:auto auto;
+    background-size: auto auto;
     .screen-content-container {
       padding-top: size(40);
       overflow-y: auto;
