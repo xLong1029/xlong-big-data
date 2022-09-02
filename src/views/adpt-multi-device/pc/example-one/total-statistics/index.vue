@@ -1,6 +1,11 @@
 <template>
   <div class="total-statistics-container">
     <StarContainer>
+      <div class="bg">
+        <img class="bg__buildings animate-bounce" :src="buildings" />
+        <img class="bg__bottom" :src="buildingsBottom" />
+        <!-- <img class="bg__light animate-scale" :src="buildingsLight" /> -->
+      </div>
       <div class="statistics-1">
         <StatisticsDataFrame :name="serviceCompanines.name">
           <template #value>
@@ -71,6 +76,9 @@ import StatisticsDataFrame from "@/components/common/StatisticsDataFrame/index.v
 // import CountTo from "@/components/common/CountTo/index.vue";
 import FadeNum from "@/components/common/FadeNum/index.vue";
 import hooks from "@/hooks";
+import buildings from "@/assets/images/buildings.png";
+import buildingsBottom from "@/assets/images/buildings-bottom.png";
+// import buildingsLight from "@/assets/images/buildings-light.png";
 
 const { useCountUp } = hooks;
 const { CountUp, countUpOption } = useCountUp();
@@ -139,15 +147,44 @@ watch(
 <style lang="scss" scoped>
 @import "@/styles/screen-mixin.scss";
 .total-statistics-container {
-  @include background-setting(
-    "./../../../../../assets/images/buildings.png",
-    "auto",
-    100%
-  );
-  background-position: center center;
-  background-size: auto 90%;
+  // @include background-setting(
+  //   "./../../../../../assets/images/buildings.png",
+  //   "auto",
+  //   100%
+  // );
+  // background-position: center center;
+  // background-size: auto 90%;
+  height: 100%;
   position: relative;
   overflow: hidden;
+}
+
+.bg {
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__buildings {
+    width: "auto";
+    display: block;
+    height: 95%;
+    margin: 0 auto;
+  }
+
+  &__bottom{
+    position: absolute;
+    height: 50%;
+    width: "auto";
+    bottom: 2%;
+  }
+
+  // &__light{
+  //   position: absolute;
+  //   height: 55%;
+  //   bottom: 2%;
+  // }
 }
 
 .statistics-1,

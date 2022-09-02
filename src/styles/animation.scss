@@ -1,0 +1,51 @@
+// global transition css
+
+.animate-bounce {
+  animation: animate-bounce 2s cubic-bezier(0.6, 2.4, 0.55, 2.5) 1s infinite;
+}
+
+
+@keyframes animate-bounce {
+  from,
+  to {
+    transform: translateY(size(-1));
+  }
+
+  50% {
+    transform: translateY(size(1));
+  }
+}
+
+.animate-twinkle {
+  animation: animate-twinkle 2.2s cubic-bezier(0.6, 2.4, 0.55, 2.5) 1s infinite;
+}
+
+@keyframes animate-twinkle {
+
+  from,
+  to {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-scale {
+  animation: animate-scale 2.2s cubic-bezier(0.6, 2.4, 0.55, 2.5) 1s infinite;
+}
+
+@keyframes animate-scale {
+
+  from,
+  to {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
