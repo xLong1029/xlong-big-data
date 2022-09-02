@@ -64,10 +64,10 @@
     </div>
     <div class="screen-content__center">
       <div class="screen-content__center-top">
-        <TotalStatistics/>
+        <TotalStatistics />
       </div>
       <div class="screen-content__center-bottom">
-        <BorderFrame></BorderFrame>
+        <CityStatistics />
       </div>
     </div>
     <div class="screen-content__left">
@@ -78,9 +78,11 @@
 
 <script setup>
 import { reactive, inject, onMounted, shallowRef } from "@vue/runtime-core";
+import LineTitle from "@/components/common/LineTitle/index.vue";
 import BorderFrame from "@/components/common/BorderFrame/index.vue";
 import BarChart from "@/components/chart/BarChart/index.vue";
 import TotalStatistics from "./total-statistics/index.vue";
+import CityStatistics from "./city-statistics/index.vue";
 import useChartOption from "@/hooks/modules/useChartOption";
 
 const contrastRatio = inject("getContrastRatio") ?? 1;
@@ -222,7 +224,6 @@ onMounted(() => {
       flex-direction: column;
 
       .content {
-        height: 100%;
         padding-top: size(20);
         height: calc(100% - size(30));
       }

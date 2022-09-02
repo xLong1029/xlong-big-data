@@ -232,7 +232,7 @@ const setOption = (chartData = []) => {
     textStyle: {
       fontSize,
       color: fontColor,
-    },    
+    },
     ...tooltip,
   };
 
@@ -263,6 +263,7 @@ const setOption = (chartData = []) => {
     tooltip: customTooltip,
     legend: customLegend,
     grid: customGrid,
+    color: colorList,
     yAxis: chartDirection === "horizontal" ? valueSet : categorySet,
     xAxis: chartDirection === "horizontal" ? categorySet : valueSet,
     series: customSeries,

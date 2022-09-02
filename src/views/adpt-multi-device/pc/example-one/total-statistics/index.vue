@@ -73,7 +73,6 @@
 import { reactive, inject, watch, ref } from "vue";
 import StarContainer from "@/components/common/StarContainer/index.vue";
 import StatisticsDataFrame from "@/components/common/StatisticsDataFrame/index.vue";
-// import CountTo from "@/components/common/CountTo/index.vue";
 import FadeNum from "@/components/common/FadeNum/index.vue";
 import hooks from "@/hooks";
 import buildings from "@/assets/images/buildings.png";
@@ -147,13 +146,6 @@ watch(
 <style lang="scss" scoped>
 @import "@/styles/screen-mixin.scss";
 .total-statistics-container {
-  // @include background-setting(
-  //   "./../../../../../assets/images/buildings.png",
-  //   "auto",
-  //   100%
-  // );
-  // background-position: center center;
-  // background-size: auto 90%;
   height: 100%;
   position: relative;
   overflow: hidden;
@@ -215,34 +207,4 @@ watch(
   right: 5%;
   top: 40%;
 }
-
-// @media screen and (max-width: 1700px) {
-//   .statistics-3 {
-//     transform: translateX(-200%);
-//   }
-
-//   .statistics-4 {
-//     transform: translateX(200%);
-//   }
-// }
-
-// @media screen and (max-width: 1600px) {
-//   .statistics-3 {
-//     transform: translateX(-180%);
-//   }
-
-//   .statistics-4 {
-//     transform: translateX(180%);
-//   }
-// }
-
-// @media screen and (max-width: 1600px) {
-//   .statistics-3 {
-//     transform: translateX(-180%);
-//   }
-
-//   .statistics-4 {
-//     transform: translateX(180%);
-//   }
-// }
 </style>
