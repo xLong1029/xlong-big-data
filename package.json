@@ -17,6 +17,7 @@
     "element-plus": "^2.2.13",
     "pinia": "^2.0.14",
     "vue": "^3.2.37",
+    "vue-countup-v3": "^1.0.14",
     "vue-router": "4.0.10"
   },
   "devDependencies": {

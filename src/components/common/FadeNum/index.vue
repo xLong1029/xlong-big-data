@@ -1,8 +1,10 @@
 <template>
-  <!-- eslint-disable -->
-  <transition name="fade">
-    <span v-if="num !== 0" class="change-num" :style="{ color }">{{ setText() }}</span>
-  </transition>
+  <div class="fade-num-container">
+    <slot></slot>
+    <transition name="fade">
+      <span v-if="value !== 0" class="change-num" :style="{ color }">{{ setText() }}</span>
+    </transition>
+  </div>
 </template>
 
 <script setup>
@@ -25,32 +27,32 @@ const props = defineProps({
   },
 });
 
-const num = ref(0);
+const emit = defineEmits("update:value");
 
 watch(
   () => props.value,
-  (val) => (num.value = val)
-);
-
-watch(
-  () => num,
   (val) => {
     if (val !== 0) {
       setTimeout(() => {
-        num.value = 0;
+        emit("update:value", 0);
       }, props.duration);
     }
   }
 );
 
-const setText = () => `${num.value > 0 ? "+" : ""}${num.value}`;
+const setText = () => `${props.value > 0 ? "+" : ""}${props.value}`;
 </script>
 <style lang="scss" scoped>
+.fade-num-container {
+  position: relative;
+  padding: 0 size(5);
+}
 .change-num {
   position: absolute;
   z-index: 999;
   font-weight: normal;
-  font-size: size(18);
-  margin-left: size(5);
+  font-size: size(14);
+  top: 0;
+  right: size(-20);
 }
 </style>

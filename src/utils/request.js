@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ElMessage } from "element-plus";
-import { getToken } from "utils/auth.js";
+import { getToken } from "@/utils/auth.js";
 
 export function handelRequestError(error) {
     switch (error.response.status) {

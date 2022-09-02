@@ -5,13 +5,13 @@
  * 日期 : 2022-08-20
  * 版本 : version 1.0
  */
-import request from "utils/request.js";
+import request from "@/utils/request.js";
 
 export default {
     /**
      * 获取大屏数据
      */
-    ScreenData: (nav) => {
+    GetScreenData: (nav) => {
         return request({
             url: `/api/screen/data?nav=${nav}`,
             method: 'get'
