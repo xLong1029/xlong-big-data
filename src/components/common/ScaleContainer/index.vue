@@ -74,7 +74,6 @@ const scrollY = ref(false);
 watch(
   () => props.scroll,
   (val) => {
-    console.log(val);
     scrollX.value = val;
   }
 );

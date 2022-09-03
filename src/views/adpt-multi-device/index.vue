@@ -16,31 +16,22 @@
 </template>
 
 <script setup>
+  import { onMounted, onUnmounted, watch, ref, provide } from "vue";
 import hooks from "@/hooks";
-import { onMounted, onUnmounted, watch, ref, provide } from "vue";
-// import { logInfo } from "@/utils";
+import { clearTimer, logInfo } from "@/utils";
 import Header from "@/components/screen/Header/index.vue";
 import AdptNav from "@/components/screen/AdptNav/index.vue";
 import MobileHeader from "@/components/screen/MobileHeader/index.vue";
 import PCScreen from "./pc/index.vue";
 import WideScreen from "./wide-screen/index.vue";
 import MobileScreen from "./mobile/index.vue";
-import Api from "@/api/screen";
-import { ElMessage } from "element-plus";
 
-const { useView, useCommon, useScreen, useScreenNav } = hooks;
+const { useView, useCommon, useScreen, useScreenNav, useScreenApiData } = hooks;
 
 const { viewLoaded, views, viewActive, initViews, setView } = useView();
 const { setSysLoading, setScreenMode } = useCommon();
 const { activeNavIndex, handleChangeNav } = useScreenNav();
-
-const apiLoading = ref(false);
-provide("getApiLoading", apiLoading);
-
-const apiData = ref(null);
-provide("getApiData", apiData);
-
-const apiTimer = ref(null);
+const { apiLoading, apiTimer, getScreenData } = useScreenApiData();
 
 viewLoaded.value = initViews({ PCScreen, WideScreen, MobileScreen });
 
@@ -96,35 +87,17 @@ onMounted(() => {
 
 onUnmounted(() => {
   setScreenMode("Normal");
+
+  clearTimer([apiTimer.value]);
 });
 
 watch(
   () => activeNavIndex.value,
   (val) => {
-    console.log(111);
     apiLoading.value = true;
     getScreenData(val);
   }
 );
-
-const getScreenData = (nav) => {
-  Api.GetScreenData(nav)
-    .then((res) => {
-      
-      const { code, message, data } = res;
-      if (code === 200) {
-        apiData.value = data;
-        apiLoading.value = false;
-      } else {
-        ElMessage.error(message);
-      }
-      
-    })
-    .catch((err) => {
-      console.log(err);
-      apiLoading.value = false;
-    });
-};
 </script>
 
 <style lang="scss" scoped>

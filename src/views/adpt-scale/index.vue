@@ -11,15 +11,37 @@
 </template>
 
 <script setup>
+import { onMounted, onUnmounted, watch, ref, provide } from "vue";
 import hooks from "@/hooks";
-
+import { clearTimer } from "@/utils";
 import ScaleContainer from "@/components/common/ScaleContainer/index.vue";
 import Header from "@/components/screen/Header/index.vue";
 import Nav from "@/components/screen/Nav/index.vue";
 import PCScreen from "@/views/adpt-multi-device/pc/index.vue";
 
-const { useScreenNav } = hooks;
+const { useScreenNav, useScreenApiData } = hooks;
 const { activeNavIndex, handleChangeNav } = useScreenNav();
+const { apiLoading, apiTimer, getScreenData } = useScreenApiData();
+
+watch(
+  () => activeNavIndex.value,
+  (val) => {
+    apiLoading.value = true;
+    getScreenData(val);
+  }
+);
+
+onMounted(() => {
+  apiLoading.value = true;
+  getScreenData(activeNavIndex.value);
+  apiTimer.value = setInterval(() => {
+    getScreenData(activeNavIndex.value);
+  }, 5000);
+});
+
+onUnmounted(() => {
+  clearTimer([apiTimer.value]);
+});
 </script>
 
 <style lang="scss" scoped>

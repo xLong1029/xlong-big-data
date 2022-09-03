@@ -114,7 +114,6 @@ watch(activeIndex, (val, preval) => {
 watch(
   () => chart.value,
   (newChart) => {
-    // console.log(newChart);
     const { autoplay } = props;
     if (newChart && autoplay) {
       newChart.getZr().on("mousemove", function (e) {

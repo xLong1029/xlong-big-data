@@ -209,7 +209,7 @@ onMounted(() => {
 
   &__left,
   &__right {
-    width: 22%;
+    width: 23%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -231,7 +231,7 @@ onMounted(() => {
   }
 
   &__center {
-    width: 56%;
+    width: 54%;
     height: calc(100% - size(var(--app-screen-nav-height)));
     padding: 0 size(15);
     display: flex;

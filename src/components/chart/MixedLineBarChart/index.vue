@@ -161,11 +161,9 @@ const setOption = (chartData = []) => {
   // 处理显示数据
   let customSeries = [];
   series.forEach((e, index) => {
-    console.log(e);
     const { name, property } = e;
 
-    const dataArr = props.chartData.map((i) => i[property]);
-    console.log(dataArr);
+    const data = props.chartData.map((i) => i[property]);
 
     // 柱状图
     if (props.barProperty.indexOf(property) >= 0) {
@@ -174,7 +172,7 @@ const setOption = (chartData = []) => {
         type: "bar",
         yAxisIndex: 0,
         barMaxWidth: "40%",
-        data: dataArr,
+        data,
       });
     }
 
@@ -184,12 +182,10 @@ const setOption = (chartData = []) => {
         name,
         type: "line",
         yAxisIndex: 1,
-        data: dataArr,
+        data,
       });
     }
   });
-
-  console.log(customSeries);
 
   // 提示
   let customTooltip = {
@@ -298,7 +294,5 @@ const setOption = (chartData = []) => {
     ],
     series: customSeries,
   };
-
-  console.log(option.value);
 };
 </script>
