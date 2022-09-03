@@ -13,6 +13,7 @@
 
 .el-empty {
   --el-empty-padding: size(20) 0 !important;
+  --el-empty-image-width: 35% !important;
   --el-empty-description-margin-top: size(20) !important;
   --el-empty-fill-color-1: #cff7ff !important;
   --el-empty-fill-color-2: #29bdf3 !important;
@@ -26,10 +27,11 @@
 
   &__description p {
     color: color(blue) !important;
+    font-size: size(12) !important;
   }
 
   &__image {
-    opacity: 0.65;
+    opacity: 0.85;
   }
 
 }

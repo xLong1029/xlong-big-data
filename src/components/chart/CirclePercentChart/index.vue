@@ -26,7 +26,7 @@ const props = defineProps({
   },
   // 图表数值
   chartValue: {
-    type: Number,
+    type: [Number, String],
     default: 100,
   },
   // 颜色列表
@@ -96,8 +96,6 @@ const setOption = (chartValue = 0) => {
     title,
     polar,
   } = props;
-
-  console.log(colorList[0], colorList[1]);
 
   const fontSize = labelFontSize * scale;
   const fontColor = "#FFFFFF";

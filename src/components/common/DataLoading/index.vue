@@ -11,6 +11,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "DataLoading",
+};
+</script>
+
 <script setup>
 const props = defineProps({
   loading: {

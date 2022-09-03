@@ -1,7 +1,7 @@
-import { handleMock, handleResponse } from "./../mock-handle.js";
-import { deepClone } from "./../../utils";
-import calendar from "./../../utils/calendar";
 import Mock from "mockjs";
+import { handleMock, handleResponse } from "./../mock-handle.js";
+import guangXiCityJson from "./../../assets/json/guangxi-city.json";
+
 const Random = Mock.Random;
 
 let statisticsData = {
@@ -17,7 +17,7 @@ let projectType = [
     name: "网站/应用开发",
   },
   {
-    num: 26,
+    num: 31,
     name: "UI/平面设计",
   },
   {
@@ -52,7 +52,7 @@ const getWeekData = () => {
     }
   })
 }
-const weekData = getWeekData();
+let weekData = getWeekData();
 
 // 获取项目类别占比
 const getProjectTypePercentData = () => {
@@ -69,7 +69,23 @@ const getProjectTypePercentData = () => {
     }
   })
 }
-const projectTypePercentData = getProjectTypePercentData();
+let projectTypePercentData = getProjectTypePercentData();
+
+// 获取地市数据
+const getCityData = () => {
+  // console.log(guangXiCityJson);
+
+  return guangXiCityJson.map(({ name, coordinate }) => {
+    return {
+      name,
+      coordinate,
+      companines: Math.floor(Math.random() * 150 + 50),
+      users: Math.floor(Math.random() * 3000 + 1000)
+    }
+  })
+}
+
+let cityData = getCityData();
 
 export default [
   {
@@ -89,7 +105,8 @@ export default [
           return handleResponse(200, "success", {
             statisticsData,
             weekData,
-            projectTypePercentData
+            projectTypePercentData,
+            cityData
           });
         }
 

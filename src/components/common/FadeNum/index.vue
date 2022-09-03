@@ -27,7 +27,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits("update:value");
+const emit = defineEmits(["update:value"]);
 
 watch(
   () => props.value,

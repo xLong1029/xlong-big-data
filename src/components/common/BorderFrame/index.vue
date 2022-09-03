@@ -7,6 +7,13 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "BorderFrame",
+};
+</script>
+
+
 <script setup>
 const props = defineProps({
   direction: {
@@ -24,7 +31,7 @@ const props = defineProps({
   z-index: 10;
   width: 100%;
   border: size(1) solid transparent;
-  border-image: linear-gradient( #0b64ad, #0a345c) 20 20;
+  border-image: linear-gradient(#0b64ad, #0a345c) 20 20;
   padding: size(15) size(15);
   height: 100%;
   background: rgb(2 15 34 / 60%);
@@ -48,7 +55,7 @@ const props = defineProps({
 
   &::after {
     bottom: size(-1);
-     @include background-setting(
+    @include background-setting(
       "./../../../assets/images/border-frame-corner.png",
       size(22),
       size(22)

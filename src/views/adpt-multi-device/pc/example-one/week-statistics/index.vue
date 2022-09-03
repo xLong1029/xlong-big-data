@@ -11,7 +11,6 @@
             :scale="contrastRatio"
             :tooltip="chart.tooltip"
             :grid="chart.grid"
-            :legend="chart.legend"
             :label-font-size="chart.labelFontSize"
             :value-label-visible="chart.valueLabelVisible"
             :chart-direction="chart.chartDirection"
@@ -24,17 +23,11 @@
 </template>
 
 <script setup>
-import { reactive, inject, watch } from "vue";
-import LineTitle from "@/components/common/LineTitle/index.vue";
-import BorderFrame from "@/components/common/BorderFrame/index.vue";
-import DataLoading from "@/components/common/DataLoading/index.vue";
+import { reactive } from "vue";
 import BarChart from "@/components/chart/BarChart/index.vue";
-import useChartOption from "@/hooks/modules/useChartOption";
+import hooks from "@/hooks";
 
-const apiData = inject("getApiData");
-const apiLoading = inject("getApiLoading");
-const contrastRatio = inject("getContrastRatio") ?? 1;
-
+const { useChartOption, useScreenModuleData } = hooks;
 const { customTooltip } = useChartOption();
 
 const chart = reactive({
@@ -70,12 +63,11 @@ const chart = reactive({
     formatter: (p) => customTooltip(p, { unit: "次", scale: contrastRatio.value }),
   },
   grid: {
-    top: "12%",
+    top: "11%",
     bottom: 0,
     left: "1%",
     right: "7%",
   },
-  legend: {},
   valueLabelVisible: false,
   labelFontSize: 14,
   chartDirection: "vertical",
@@ -83,20 +75,10 @@ const chart = reactive({
 });
 
 const handleApiData = (data) => {
-  if (!data) return false;
-
-  chart.chartData = data.weekData || [];
+  chart.chartData = data?.weekData || [];
 };
 
-watch(
-  () => apiData.value,
-  (val) => {
-    handleApiData(val);
-  },
-  {
-    immediate: true,
-  }
-);
+const { apiData, apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 </script>
 
 <style lang="scss" scoped></style>

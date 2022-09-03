@@ -70,7 +70,7 @@
 </template>
 
 <script setup>
-import { reactive, inject, watch, ref } from "vue";
+import { reactive, ref } from "vue";
 import StarContainer from "@/components/common/StarContainer/index.vue";
 import StatisticsDataFrame from "@/components/common/StatisticsDataFrame/index.vue";
 import FadeNum from "@/components/common/FadeNum/index.vue";
@@ -79,10 +79,9 @@ import buildings from "@/assets/images/buildings.png";
 import buildingsBottom from "@/assets/images/buildings-bottom.png";
 // import buildingsLight from "@/assets/images/buildings-light.png";
 
-const { useCountUp } = hooks;
+const { useCountUp, useScreenModuleData } = hooks;
 const { CountUp, countUpOption } = useCountUp();
 
-const apiData = inject("getApiData");
 const isFrist = ref(true);
 
 const serviceCompanines = reactive({
@@ -113,7 +112,7 @@ const monitorServers = reactive({
   changeNum: 0,
 });
 
-const getApiData = (data) => {
+const handleApiData = (data) => {
   if (!data) return false;
 
   const {
@@ -139,15 +138,7 @@ const getApiData = (data) => {
   }
 };
 
-watch(
-  () => apiData.value,
-  (val) => {
-    getApiData(val);
-  },
-  {
-    immediate: true,
-  }
-);
+const { apiData } = useScreenModuleData(handleApiData);
 </script>
 
 <style lang="scss" scoped>

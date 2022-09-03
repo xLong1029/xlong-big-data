@@ -9,12 +9,18 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "LineTitle",
+};
+</script>
+
 <script setup>
 const props = defineProps({
   title: {
     type: String,
-    default: "标题"
-  }
+    default: "标题",
+  },
 });
 </script>
 

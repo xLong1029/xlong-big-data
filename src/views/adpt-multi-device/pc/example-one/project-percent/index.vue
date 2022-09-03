@@ -22,17 +22,11 @@
 </template>
 
 <script setup>
-import { reactive, ref, inject, watch } from "vue";
-import LineTitle from "@/components/common/LineTitle/index.vue";
-import BorderFrame from "@/components/common/BorderFrame/index.vue";
-import DataLoading from "@/components/common/DataLoading/index.vue";
+import { ref } from "vue";
 import CirclePercentChart from "@/components/chart/CirclePercentChart/index.vue";
-import useChartOption from "@/hooks/modules/useChartOption";
+import hooks from "@/hooks";
 
-const apiData = inject("getApiData");
-const apiLoading = inject("getApiLoading");
-const contrastRatio = inject("getContrastRatio") ?? 1;
-
+const { useChartOption, useScreenModuleData } = hooks;
 const { customTooltip } = useChartOption();
 
 const chartData = ref([]);
@@ -46,20 +40,10 @@ const colorList = ref([
 const year = new Date().getFullYear();
 
 const handleApiData = (data) => {
-  if (!data) return false;
-
-  chartData.value = data.projectTypePercentData;
+  chartData.value = data?.projectTypePercentData || [];
 };
 
-watch(
-  () => apiData.value,
-  (val) => {
-    handleApiData(val);
-  },
-  {
-    immediate: true,
-  }
-);
+const { apiData, apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 </script>
 
 <style lang="scss" scoped>
