@@ -268,7 +268,6 @@ const setOption = (chartData = []) => {
 watch(
   () => props.chartData,
   (data) => {
-    console.log(111, data);
     setOption(data);
   },
   {

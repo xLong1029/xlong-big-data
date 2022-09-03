@@ -1,14 +1,14 @@
 <template>
   <div class="screen-content">
     <div class="screen-content__left">
-      <div class="chart-1"><WeekStatistics /></div>
-      <div class="chart-2 pt-20">
-        <BorderFrame>
-        </BorderFrame>
+      <div class="chart-1">
+        <ProjectPercent />
       </div>
-      <div class="chart-3 pt-20">
-        <BorderFrame>
-        </BorderFrame>
+      <div class="chart-2 pt-15">
+        <BorderFrame> </BorderFrame>
+      </div>
+      <div class="chart-3 pt-15">
+        <WeekStatistics />
       </div>
     </div>
     <div class="screen-content__center">
@@ -31,7 +31,7 @@ import LineTitle from "@/components/common/LineTitle/index.vue";
 import BorderFrame from "@/components/common/BorderFrame/index.vue";
 import BarChart from "@/components/chart/BarChart/index.vue";
 import WeekStatistics from "./week-statistics/index.vue";
-// import ProjectProgress from "./project-progress/index.vue";
+import ProjectPercent from "./project-percent/index.vue";
 import TotalStatistics from "./total-statistics/index.vue";
 import CityStatistics from "./city-statistics/index.vue";
 </script>
@@ -62,17 +62,14 @@ import CityStatistics from "./city-statistics/index.vue";
   }
 
   &__left {
-    .chart-1,
-    .chart-2,
+    .chart-1 {
+      height: 24%;
+    }
+    .chart-2 {
+      height: 33%;
+    }
     .chart-3 {
-      height: 33.33%;
-      display: flex;
-      flex-direction: column;
-
-      .content {
-        padding-top: size(20);
-        height: calc(100% - size(30));
-      }
+      height: 43%;
     }
   }
 

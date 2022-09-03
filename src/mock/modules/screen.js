@@ -11,6 +11,21 @@ let statisticsData = {
   monitorServers: 10
 }
 
+let projectType = [
+  {
+    num: 55,
+    name: "研发项目",
+  },
+  {
+    num: 26,
+    name: "设计项目",
+  },
+  {
+    num: 18,
+    name: "其他项目",
+  },
+]
+
 // 获取星期数据
 const getWeekData = () => {
   const now = new Date();
@@ -26,7 +41,7 @@ const getWeekData = () => {
     "星期日"
   ];
 
-  return data = weekday.map((name, i) => {
+  return weekday.map((name, i) => {
     const obj = {
       mobile: i <= currentWeek ? Math.floor(Math.random() * 2000 + 500) : 0,
       pc: i <= currentWeek ? Math.floor(Math.random() * 5000 + 1000) : 0
@@ -38,6 +53,24 @@ const getWeekData = () => {
   })
 }
 const weekData = getWeekData();
+
+// 获取项目类别占比
+const getProjectTypePercentData = () => {
+  let total = 0;
+
+  for (let i = 0; i < projectType.length; i++) {
+    console.log(111, projectType[i]);
+    total += projectType[i].num
+  }
+
+  return projectType.map(({ name, num }) => {
+    return {
+      name,
+      percent: (num / total * 100).toFixed(2)
+    }
+  })
+}
+const projectTypePercentData = getProjectTypePercentData();
 
 export default [
   {
@@ -56,7 +89,8 @@ export default [
 
           return handleResponse(200, "success", {
             statisticsData,
-            weekData
+            weekData,
+            projectTypePercentData
           });
         }
 

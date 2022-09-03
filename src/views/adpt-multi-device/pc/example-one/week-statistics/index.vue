@@ -1,6 +1,6 @@
 <template>
   <BorderFrame>
-    <LineTitle title="本周平台访问量" />
+    <LineTitle title="本周监控平台访问量" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <template #content>
@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { reactive, inject, watch, ref, onMounted } from "vue";
+import { reactive, inject, watch } from "vue";
 import LineTitle from "@/components/common/LineTitle/index.vue";
 import BorderFrame from "@/components/common/BorderFrame/index.vue";
 import DataLoading from "@/components/common/DataLoading/index.vue";
@@ -52,22 +52,7 @@ const chart = reactive({
       property: "pc",
     },
   ],
-  tooltip: {},
-  grid: {
-    top: "10%",
-    bottom: "1%",
-    left: "1%",
-    right: "8%",
-  },
-  legend: {},
-  valueLabelVisible: false,
-  labelFontSize: 14,
-  chartDirection: "vertical",
-  autoplay: true,
-});
-
-onMounted(() => {
-  chart.tooltip = {
+  tooltip: {
     trigger: "axis",
     position: function (pos, params, dom, rect, size) {
       var obj = {};
@@ -83,14 +68,24 @@ onMounted(() => {
       return obj;
     },
     formatter: (p) => customTooltip(p, { unit: "次", scale: contrastRatio.value }),
-  };
+  },
+  grid: {
+    top: "12%",
+    bottom: 0,
+    left: "1%",
+    right: "7%",
+  },
+  legend: {},
+  valueLabelVisible: false,
+  labelFontSize: 14,
+  chartDirection: "vertical",
+  autoplay: true,
 });
 
 const handleApiData = (data) => {
   if (!data) return false;
 
   chart.chartData = data.weekData || [];
-  console.log(chart.chartData);
 };
 
 watch(

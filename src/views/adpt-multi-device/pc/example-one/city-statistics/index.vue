@@ -2,7 +2,7 @@
   <BorderFrame>
     <LineTitle title="各地市数据统计" />
     <div class="content">
-      <MixedLineBarChart
+      <!-- <MixedLineBarChart
         :chart-data="chart.chartData"
         :axis="chart.axis"
         :series="chart.series"
@@ -17,7 +17,7 @@
         :line-property="chart.lineProperty"
         :line-axisName="chart.lineAxisName"
         :autoplay="chart.autoplay"
-      />
+      /> -->
     </div>
   </BorderFrame>
 </template>
