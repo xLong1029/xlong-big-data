@@ -26,22 +26,28 @@ const { apiLoading, apiTimer, getScreenData } = useScreenApiData();
 watch(
   () => activeNavIndex.value,
   (val) => {
-    apiLoading.value = true;
-    getScreenData(val);
+    init();
   }
 );
 
 onMounted(() => {
-  apiLoading.value = true;
-  getScreenData(activeNavIndex.value);
-  apiTimer.value = setInterval(() => {
-    getScreenData(activeNavIndex.value);
-  }, 5000);
+  init();
 });
 
 onUnmounted(() => {
   clearTimer([apiTimer.value]);
 });
+
+const init = () => {
+  clearTimer([apiTimer.value]);
+
+  apiLoading.value = true;
+  getScreenData(activeNavIndex.value);
+  apiTimer.value = setInterval(() => {
+    getScreenData(activeNavIndex.value);
+  }, 5000);
+};
+
 </script>
 
 <style lang="scss" scoped>

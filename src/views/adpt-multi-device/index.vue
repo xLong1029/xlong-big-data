@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-  import { onMounted, onUnmounted, watch, ref, provide } from "vue";
+import { onMounted, onUnmounted, watch, ref, provide } from "vue";
 import hooks from "@/hooks";
 import { clearTimer, logInfo } from "@/utils";
 import Header from "@/components/screen/Header/index.vue";
@@ -75,14 +75,17 @@ const initHtmlFontSize = () => {
   document.documentElement.style.fontSize = contrastRatio.value * 100 + "px";
 };
 
+watch(
+  () => activeNavIndex.value,
+  () => {
+    init();
+  }
+);
+
 onMounted(() => {
   setScreenMode("AdptMultiDevice");
 
-  apiLoading.value = true;
-  getScreenData(activeNavIndex.value);
-  apiTimer.value = setInterval(() => {
-    getScreenData(activeNavIndex.value);
-  }, 5000);
+  init();
 });
 
 onUnmounted(() => {
@@ -91,13 +94,15 @@ onUnmounted(() => {
   clearTimer([apiTimer.value]);
 });
 
-watch(
-  () => activeNavIndex.value,
-  (val) => {
-    apiLoading.value = true;
-    getScreenData(val);
-  }
-);
+const init = () => {
+  clearTimer([apiTimer.value]);
+
+  apiLoading.value = true;
+  getScreenData(activeNavIndex.value);
+  apiTimer.value = setInterval(() => {
+    getScreenData(activeNavIndex.value);
+  }, 5000);
+};
 </script>
 
 <style lang="scss" scoped>

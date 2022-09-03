@@ -1,6 +1,6 @@
 <template>
   <BorderFrame>
-    <LineTitle title="本周监控平台访问量" />
+    <LineTitle title="监控平台周访问量" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <template #content>

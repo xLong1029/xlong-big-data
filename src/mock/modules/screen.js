@@ -14,15 +14,15 @@ let statisticsData = {
 let projectType = [
   {
     num: 55,
-    name: "研发项目",
+    name: "网站/应用开发",
   },
   {
     num: 26,
-    name: "设计项目",
+    name: "UI/平面设计",
   },
   {
     num: 18,
-    name: "其他项目",
+    name: "推广运营",
   },
 ]
 
@@ -59,7 +59,6 @@ const getProjectTypePercentData = () => {
   let total = 0;
 
   for (let i = 0; i < projectType.length; i++) {
-    console.log(111, projectType[i]);
     total += projectType[i].num
   }
 
