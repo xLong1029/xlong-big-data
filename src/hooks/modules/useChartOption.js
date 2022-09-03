@@ -45,6 +45,8 @@ export default function () {
       valueFixed,
       // 高亮数值颜色
       lightHeightValColor,
+      // 缩放比例
+      scale = 1
     } = opt;
 
     let total = 0;
@@ -75,16 +77,14 @@ export default function () {
       total += value * 1;
 
       if (!res) {
-        res = `<div style="font-size:${fontSize}px; margin-bottom:${
-          0.5 * fontSize
-        }px;">
+        res = `<div style="font-size:${fontSize}px; transform:scale(${scale}); margin-bottom:${0.5 * fontSize
+          }px;">
         ${name}
         </div>`;
       }
       return (
         res +
-        `<div style="font-size:${fontSize}px; margin-bottom:${
-          0.5 * fontSize
+        `<div style="font-size:${fontSize}px; transform:scale(${scale}); margin-bottom:${0.5 * fontSize
         }px;">
         ${marker} ${seriesName}
         <span style="color:${lightHeightTextColor};" >
@@ -96,7 +96,7 @@ export default function () {
     }, "");
     if (showTotal) {
       html += `
-      <div style="font-size:${fontSize}px;">
+      <div style="font-size:${fontSize}px; transform:scale(${scale});">
         总计：
         <span style="color:${lightHeightTextColor};">
           ${total.toFixed(3)}

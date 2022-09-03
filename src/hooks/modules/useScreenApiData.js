@@ -27,7 +27,9 @@ export default function (handleResizeScreen) {
         const { code, message, data } = res;
         if (code === 200) {
           apiData.value = data;
-          apiLoading.value = false;
+          setTimeout(() => {
+            apiLoading.value = false;
+          }, 500);
         } else {
           ElMessage.error(message);
         }

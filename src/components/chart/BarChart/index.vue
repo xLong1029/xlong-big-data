@@ -107,11 +107,6 @@ const props = defineProps({
     type: Object,
     default: () => ({
       trigger: "axis",
-      axisPointer: {
-        type: "shadow",
-        shadowStyle: "rgba(0, 0, 0, 0.5)",
-      },
-      backgroundColor: "rgba(0,0,0,0.6)",
     }),
   },
 });
@@ -120,13 +115,6 @@ const { useChartOption } = hooks;
 const { getAxisData } = useChartOption();
 
 const option = ref(null);
-
-watch(
-  () => props.chartData,
-  (data) => {
-    setOption(data);
-  }
-);
 
 const setOption = (chartData = []) => {
   const {
@@ -233,6 +221,13 @@ const setOption = (chartData = []) => {
       fontSize,
       color: fontColor,
     },
+    trigger: "axis",
+    axisPointer: {
+      type: "line",
+    },
+    backgroundColor: "rgba(0,0,0,0.6)",
+    borderColor: "transparent",
+    padding: 5 * scale,
     ...tooltip,
   };
 
@@ -269,4 +264,15 @@ const setOption = (chartData = []) => {
     series: customSeries,
   };
 };
+
+watch(
+  () => props.chartData,
+  (data) => {
+    console.log(111, data);
+    setOption(data);
+  },
+  {
+    immediate: true,
+  }
+);
 </script>

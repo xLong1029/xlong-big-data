@@ -1,27 +1,25 @@
 <template>
-  <div class="city-statistics-container">
-    <BorderFrame>
-      <LineTitle title="各地市数据统计" />
-      <div class="content">
-        <MixedLineBarChart
-          :chart-data="chart.chartData"
-          :axis="chart.axis"
-          :series="chart.series"
-          :scale="contrastRatio"
-          :tooltip="chart.tooltip"
-          :grid="chart.grid"
-          :legend="chart.legend"
-          :color-list="chart.colorList"
-          :label-font-size="chart.labelFontSize"
-          :bar-property="chart.barProperty"
-          :bar-axisName="chart.barAxisName"
-          :line-property="chart.lineProperty"
-          :line-axisName="chart.lineAxisName"
-          :autoplay="chart.autoplay"
-        />
-      </div>
-    </BorderFrame>
-  </div>
+  <BorderFrame>
+    <LineTitle title="各地市数据统计" />
+    <div class="content">
+      <MixedLineBarChart
+        :chart-data="chart.chartData"
+        :axis="chart.axis"
+        :series="chart.series"
+        :scale="contrastRatio"
+        :tooltip="chart.tooltip"
+        :grid="chart.grid"
+        :legend="chart.legend"
+        :color-list="chart.colorList"
+        :label-font-size="chart.labelFontSize"
+        :bar-property="chart.barProperty"
+        :bar-axisName="chart.barAxisName"
+        :line-property="chart.lineProperty"
+        :line-axisName="chart.lineAxisName"
+        :autoplay="chart.autoplay"
+      />
+    </div>
+  </BorderFrame>
 </template>
 
 <script setup>
@@ -159,13 +157,4 @@ watch(
 </script>
 
 <style lang="scss" scoped>
-.city-statistics-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  .content {
-    padding-top: size(20);
-    height: calc(100% - size(20));
-  }
-}
 </style>

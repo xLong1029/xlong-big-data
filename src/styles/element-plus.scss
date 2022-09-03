@@ -1,12 +1,39 @@
 // cover some element-plus styles
+:root {
+  // 覆盖element-plus
+  --el-color-primary: var(--app-color-base); // 无法使用color(base)
 
-.el-loading-mask {
-  background-color: rgb(1 12 47 / 70%) !important;
+  --el-svg-monochrome-grey: #8cfaf9;
+  --el-mask-color: rgb(1 12 47 / 70%)
 }
 
-.el-empty__image {
-  opacity: 0.65;
+// .el-loading-mask {
+//   background-color: rgb(1 12 47 / 70%) !important;
+// }
+
+.el-empty {
+  --el-empty-padding: size(20) 0 !important;
+  --el-empty-description-margin-top: size(20) !important;
+  --el-empty-fill-color-1: #cff7ff !important;
+  --el-empty-fill-color-2: #29bdf3 !important;
+  --el-empty-fill-color-3: rgb(23 55 110 / 0%) !important;
+  --el-empty-fill-color-4: #22daff !important;
+  --el-empty-fill-color-5: #2cc7ff !important;
+  --el-empty-fill-color-6: #22daff !important;
+  --el-empty-fill-color-7: #0058af !important;
+  --el-empty-fill-color-8: #22a4ed !important;
+  --el-empty-fill-color-9: #1869ab !important;
+
+  &__description p {
+    color: color(blue) !important;
+  }
+
+  &__image {
+    opacity: 0.65;
+  }
+
 }
+
 
 // 自定义面包屑
 .custom-breadcrumb-style {
@@ -14,6 +41,7 @@
     display: flex;
     align-items: center;
   }
+
   .el-breadcrumb__item {
     font-size: size(16);
     color: color(white);

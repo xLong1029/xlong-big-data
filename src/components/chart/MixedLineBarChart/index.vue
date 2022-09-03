@@ -116,12 +116,7 @@ const props = defineProps({
   tooltip: {
     type: Object,
     default: () => ({
-      trigger: "axis",
-      axisPointer: {
-        type: "shadow",
-        shadowStyle: "rgba(0, 0, 0, 0.5)",
-      },
-      backgroundColor: "rgba(0,0,0,0.6)",
+      trigger: "axis"
     }),
   },
 });
@@ -130,13 +125,6 @@ const { useChartOption } = hooks;
 const { getAxisData } = useChartOption();
 
 const option = ref(null);
-
-watch(
-  () => props.chartData,
-  (data) => {
-    setOption(data);
-  }
-);
 
 const setOption = (chartData = []) => {
   const {
@@ -193,6 +181,14 @@ const setOption = (chartData = []) => {
       fontSize,
       color: fontColor,
     },
+    trigger: "axis",
+    axisPointer: {
+      type: "shadow",
+      shadowStyle: "rgba(0, 0, 0, 0.5)",
+    },
+    backgroundColor: "rgba(0,0,0,0.6)",
+    borderColor: "transparent",
+    padding: 5 * scale,
     ...tooltip,
   };
 
@@ -229,17 +225,17 @@ const setOption = (chartData = []) => {
         splitLine: {
           show: true,
           lineStyle: {
-            // type: "dashed",
+            color: "#4b647f",
             width: 0.8 * scale,
           },
-        },        
+        },
         axisLabel: {
           // interval: 0,
           color: fontColor,
           fontSize,
         },
         axisTick: {
-          show: false
+          show: false,
         },
         axisLine: {
           show: false,
@@ -253,13 +249,20 @@ const setOption = (chartData = []) => {
           fontSize,
           padding: 10 * scale,
         },
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: "#4b647f",
+            width: 0.8 * scale,
+          },
+        },
         axisLabel: {
           interval: 0,
           color: fontColor,
           fontSize,
         },
         axisTick: {
-          show: false
+          show: false,
         },
         axisLine: {
           show: false,
@@ -272,11 +275,6 @@ const setOption = (chartData = []) => {
         type: "category",
         axisTick: {
           show: false,
-          lineStyle: {
-            color: "#9dadc3",
-            // type: "dashed",
-            width: 0.8 * scale,
-          },
         },
         axisLine: {
           show: true,
@@ -295,4 +293,14 @@ const setOption = (chartData = []) => {
     series: customSeries,
   };
 };
+
+watch(
+  () => props.chartData,
+  (data) => {
+    setOption(data);
+  },
+  {
+    immediate: true,
+  }
+);
 </script>

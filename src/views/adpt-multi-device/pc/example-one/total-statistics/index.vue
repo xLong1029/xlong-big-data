@@ -116,16 +116,23 @@ const monitorServers = reactive({
 const getApiData = (data) => {
   if (!data) return false;
 
+  const {
+    serviceCompanines: companines,
+    serviceUsers: users,
+    developApps: apps,
+    monitorServers: servers,
+  } = data.statisticsData;
+
   if (!isFrist.value) {
-    serviceCompanines.changeNum = data.serviceCompanines - serviceCompanines.value;
-    serviceUsers.changeNum = data.serviceUsers - serviceUsers.value;
+    serviceCompanines.changeNum = companines - serviceCompanines.value;
+    serviceUsers.changeNum = users - serviceUsers.value;
   }
 
-  serviceCompanines.value = data.serviceCompanines;
-  serviceUsers.value = data.serviceUsers;
+  serviceCompanines.value = companines;
+  serviceUsers.value = users;
 
-  developApps.value = data.developApps;
-  monitorServers.value = data.monitorServers;
+  developApps.value = apps;
+  monitorServers.value = servers;
 
   if (isFrist.value) {
     isFrist.value = false;
@@ -165,7 +172,7 @@ watch(
     margin: 0 auto;
   }
 
-  &__bottom{
+  &__bottom {
     position: absolute;
     height: 50%;
     width: "auto";

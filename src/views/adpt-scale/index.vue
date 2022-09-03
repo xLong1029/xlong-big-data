@@ -45,8 +45,10 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
+@import "@/styles/screen-mixin.scss";
 .screen-container {
-  background: var(--app-screen-bg-color);
+  // background: var(--app-screen-bg-color);
+  @include background-setting("./../../assets/images/bg.jpg", 100%, 100%);
   height: 100%;
 }
 

@@ -12,9 +12,6 @@
 :root{
   --app-base-unit: 1px;
   // --app-base-unit: 0.01rem; // 对应根字体大小为100px
-
-  // 覆盖element-plus
-  --el-color-primary: var(--app-color-base); // 无法使用color(base)
 }
 
 @import "./transition.scss";
@@ -145,6 +142,14 @@ $fontSzie: 12, 14, 16, 18, 20, 22, 24, 26, 28, 30;
   cursor: pointer !important;
 }
 
+.pointer-events-none{
+  pointer-events: none;
+}
+
+.pointer-events-auto{
+  pointer-events: auto;
+}
+
 .clearfix {
   &:after {
     content: "";
@@ -194,12 +199,4 @@ $fontSzie: 12, 14, 16, 18, 20, 22, 24, 26, 28, 30;
 
 .width-100 {
   width: 100% !important;
-}
-
-.pointer-events-none{
-  pointer-events: none;
-}
-
-.pointer-events-auto{
-  pointer-events: auto;
 }
