@@ -4,36 +4,38 @@ import guangXiCityJson from "./../../assets/json/guangxi-city.json";
 
 const Random = Mock.Random;
 
+// let ceateData = Mock.mock({
+//   "companyProjectData|list": [{
+
+//   }]
+// })
+
 let statisticsData = {
-  serviceCompanines: 3004,
-  serviceUsers: 60293,
-  developApps: 55,
+  serviceCompanines: Random.integer(3000, 3500),
+  serviceUsers: Random.integer(6000, 6500),
+  developApps: Random.integer(50, 55),
   monitorServers: 10
 }
 
 let projectType = [
   {
-    num: 55,
+    num: Random.integer(50, 60),
     name: "网站/应用开发",
   },
   {
-    num: 31,
+    num: Random.integer(25, 35),
     name: "UI/平面设计",
   },
   {
-    num: 18,
+    num: Random.integer(15, 20),
     name: "推广运营",
   },
 ]
 
 // 获取星期数据
 const getWeekData = () => {
-  const now = new Date();
-  let currentWeek = now.getDay() - 1;
-
-  if (currentWeek < 0) {
-    currentWeek = 7;
-  }
+  let currentWeek = (new Date()).getDay() - 1;
+  currentWeek = currentWeek < 0 ? 7 : currentWeek
 
   const weekday = [
     "星期一",
@@ -47,8 +49,8 @@ const getWeekData = () => {
 
   return weekday.map((name, i) => {
     const obj = {
-      mobile: i <= currentWeek ? Math.floor(Math.random() * 2000 + 500) : 0,
-      pc: i <= currentWeek ? Math.floor(Math.random() * 5000 + 1000) : 0
+      mobile: i <= currentWeek ? Random.integer(500, 2500) : 0,
+      pc: i <= currentWeek ? Random.integer(1000, 6000) : 0
     }
     return {
       name,
@@ -66,30 +68,40 @@ const getProjectTypePercentData = () => {
     total += projectType[i].num
   }
 
-  return projectType.map(({ name, num }) => {
-    return {
-      name,
-      percent: (num / total * 100).toFixed(2)
-    }
-  })
+  return projectType.map(({ name, num }) => ({
+    name,
+    percent: (num / total * 100).toFixed(2)
+  }))
 }
 let projectTypePercentData = getProjectTypePercentData();
 
 // 获取地市数据
 const getCityData = () => {
-  // console.log(guangXiCityJson);
+  return guangXiCityJson.map(({ name, coordinate }) => ({
+    name,
+    coordinate,
+    companines: Random.integer(50, 200),
+    users: Random.integer(1000, 4000)
+  }))
+}
 
-  return guangXiCityJson.map(({ name, coordinate }) => {
+let cityData = getCityData();
+
+// 获取企业常用项目
+const getCompanyProjectData = () => {
+  let companyType = ["国有企业", "外商投资企业", "股份制企业", "集体企业", "私营企业", ]
+
+  return companyType.map((name) => {
     return {
       name,
-      coordinate,
-      companines: Math.floor(Math.random() * 150 + 50),
-      users: Math.floor(Math.random() * 3000 + 1000)
+      web: Random.integer(10, 60),
+      cms: Random.integer(20, 30),
+      applets: Random.integer(15, 50),
     }
   })
 }
 
-let cityData = getCityData();
+let companyProjectData = getCompanyProjectData();
 
 export default [
   {
@@ -102,15 +114,22 @@ export default [
         // 导航一
         if (nav == 0) {
 
-          // 模拟数据变化
-          statisticsData.serviceCompanines += [1, 2, 3][Math.floor(Math.random() * 3)];
-          statisticsData.serviceUsers += [1, 2, 3][Math.floor(Math.random() * 3)];
+          // 总数统计
+          const serviceCompaninesChangeNum = [1, 2, 3][Random.integer(0, 2)];
+          const serviceUsersChangeNum = [1, 2, 3][Random.integer(0, 2)];
+          statisticsData.serviceCompanines += serviceCompaninesChangeNum;
+          statisticsData.serviceUsers += serviceUsersChangeNum;
+
+          // 各地市数据统计
+          cityData[Random.integer(0, cityData.length - 1)].companines += serviceCompaninesChangeNum;
+          cityData[Random.integer(0, cityData.length - 1)].users += serviceUsersChangeNum;
 
           return handleResponse(200, "success", {
             statisticsData,
             weekData,
             projectTypePercentData,
-            cityData
+            cityData,
+            companyProjectData
           });
         }
 

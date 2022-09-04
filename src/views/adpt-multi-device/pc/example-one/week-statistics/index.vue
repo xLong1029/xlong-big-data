@@ -28,7 +28,7 @@ import BarChart from "@/components/chart/BarChart/index.vue";
 import hooks from "@/hooks";
 
 const { useChartOption, useScreenModuleData } = hooks;
-const { customTooltip } = useChartOption();
+const { formatTooltip } = useChartOption();
 
 const chart = reactive({
   chartData: [],
@@ -60,7 +60,7 @@ const chart = reactive({
       ]; // 鼠标在上方时 tooltip 显示到下方，鼠标在下方时 tooltip 显示到上方。
       return obj;
     },
-    formatter: (p) => customTooltip(p, { unit: "次", scale: contrastRatio.value }),
+    formatter: (p) => formatTooltip(p, { unit: "次", scale: contrastRatio.value }),
   },
   grid: {
     top: "11%",
@@ -75,7 +75,6 @@ const chart = reactive({
 });
 
 const handleApiData = (data) => {
-  console.log(data);
   chart.chartData = data?.weekData || [];
 };
 

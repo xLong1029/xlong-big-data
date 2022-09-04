@@ -32,7 +32,7 @@ import MixedLineBarChart from "@/components/chart/MixedLineBarChart/index.vue";
 import hooks from "@/hooks";
 
 const { useChartOption, useScreenModuleData } = hooks;
-const { customTooltip } = useChartOption();
+const { formatTooltip } = useChartOption();
 
 const chart = reactive({
   chartData: [],
@@ -52,10 +52,10 @@ const chart = reactive({
   tooltip: {
         trigger: "axis",
     formatter: (p) =>
-      customTooltip(p, { unit: ["家", "人"], fontSize: 14 * contrastRatio.value }),
+      formatTooltip(p, { unit: ["家", "人"], scale: contrastRatio.value }),
   },
   grid: {
-    top: "18%",
+    top: "20%",
     bottom: "1%",
     left: "1%",
     right: "1%",

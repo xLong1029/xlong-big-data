@@ -1,10 +1,10 @@
 <template>
   <BorderFrame>
-    <LineTitle title="服务企业常用项目统计" />
+    <LineTitle title="企业常用项目统计" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <template #content>
-          <BarChart
+          <GradientLineChart
             :chart-data="chart.chartData"
             :axis="chart.axis"
             :series="chart.series"
@@ -12,9 +12,8 @@
             :tooltip="chart.tooltip"
             :grid="chart.grid"
             :label-font-size="chart.labelFontSize"
-            :value-label-visible="chart.valueLabelVisible"
-            :chart-direction="chart.chartDirection"
             :autoplay="chart.autoplay"
+            :color-list="chart.colorList"
           />
         </template>
       </DataLoading>
@@ -24,11 +23,11 @@
 
 <script setup>
 import { reactive } from "vue";
-import BarChart from "@/components/chart/BarChart/index.vue";
+import GradientLineChart from "@/components/chart/GradientLineChart/index.vue";
 import hooks from "@/hooks";
 
 const { useChartOption, useScreenModuleData } = hooks;
-const { customTooltip } = useChartOption();
+const { formatTooltip } = useChartOption();
 
 const chart = reactive({
   chartData: [],
@@ -37,45 +36,36 @@ const chart = reactive({
   },
   series: [
     {
-      name: "移动端访问量",
-      property: "mobile",
+      name: "企业官网",
+      property: "web",
     },
     {
-      name: "PC端访问量",
-      property: "pc",
+      name: "CMS系统",
+      property: "cms",
+    },
+    {
+      name: "小程序",
+      property: "applets",
     },
   ],
   tooltip: {
     trigger: "axis",
-    position: function (pos, params, dom, rect, size) {
-      var obj = {};
-
-      // const horizontalPosIndex = +(pos[0] < size.viewSize[0] / 2);
-      const verticalPosIndex = +(pos[1] < size.viewSize[1] / 2);
-
-      // obj[["left", "right"][horizontalPosIndex]] = "1%";   // 鼠标在左侧时 tooltip 显示到右侧，鼠标在右侧时 tooltip 显示到左侧。
-      obj["right"] = "10";
-      obj[["bottom", "top"][verticalPosIndex]] = [
-        [size.viewSize[1] - pos[1] + 10, pos[1] + 10][verticalPosIndex],
-      ]; // 鼠标在上方时 tooltip 显示到下方，鼠标在下方时 tooltip 显示到上方。
-      return obj;
-    },
-    formatter: (p) => customTooltip(p, { unit: "次", scale: contrastRatio.value }),
+    formatter: (p) => formatTooltip(p, { unit: "项", scale: contrastRatio.value }),
   },
   grid: {
-    top: "11%",
+    top: "12%",
     bottom: 0,
-    left: "1%",
-    right: "7%",
+    left: "2%",
+    right: "6%",
   },
-  valueLabelVisible: false,
   labelFontSize: 14,
-  chartDirection: "vertical",
   autoplay: true,
+  colorList: ["#42cdff", "#1473ff", "#1fff83","#39ddff",  "#ff4a95", "#9e55ff"],
 });
 
 const handleApiData = (data) => {
-  chart.chartData = data?.weekData || [];
+  console.log(data);
+  chart.chartData = data?.companyProjectData || [];
 };
 
 const { apiData, apiLoading, contrastRatio } = useScreenModuleData(handleApiData);

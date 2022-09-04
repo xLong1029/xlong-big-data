@@ -11,6 +11,7 @@
 <script setup>
 import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch } from "vue";
+import { graphic } from "echarts";
 import hooks from "@/hooks";
 
 const props = defineProps({
@@ -33,11 +34,6 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
-  // 图表方向
-  chartDirection: {
-    type: String,
-    default: "vertical", // horizontal | vertical
-  },
   // 坐标轴数值配置
   axis: {
     type: Object,
@@ -59,7 +55,7 @@ const props = defineProps({
   // 颜色列表
   colorList: {
     type: Array,
-    default: () => ["#71ffaa", "#09ddff", "#00e8ff", "#71ffaa"],
+    default: () => ["#71ffaa", "#09ddff"],
   },
   // 缩放基数
   scale: {
@@ -80,11 +76,6 @@ const props = defineProps({
   labelFontSize: {
     type: Number,
     default: 14,
-  },
-  // 数值轴文字显示
-  valueLabelVisible: {
-    type: Boolean,
-    default: true,
   },
   // 图例
   legend: {
@@ -109,6 +100,11 @@ const props = defineProps({
       trigger: "axis",
     }),
   },
+  // 线条粗细
+  lineWidth: {
+    type: Number,
+    default: 2,
+  },
 });
 
 const { useChartOption } = hooks;
@@ -118,16 +114,15 @@ const option = ref(null);
 
 const setOption = (chartData = []) => {
   const {
-    chartDirection,
     axis,
     series,
     colorList,
     scale,
     labelFontSize,
-    valueLabelVisible,
     legend,
     grid,
     tooltip,
+    lineWidth
   } = props;
 
   // 处理坐标轴数据
@@ -139,81 +134,51 @@ const setOption = (chartData = []) => {
   // 处理显示数据
   let customSeries = [];
   series.forEach((e, index) => {
+    const data = chartData.map((i) => i[e.property]);
     customSeries.push({
       name: e.name,
-      type: "bar",
-      // stack: "all",
-      barMaxWidth: "25%",
-      z: index + 5,
-      barGap: "10%",
-      itemStyle: {
-        color: colorList[index],
+      type: "line",
+      smooth: true,
+      areaStyle: {
+        color: new graphic.LinearGradient(
+          0,
+          0,
+          0,
+          1,
+          [
+            {
+              offset: 0,
+              color: colorList[2 * index],
+            },
+            {
+              offset: 1,
+              color: "transparent",
+            },
+          ],
+          false
+        ),
+        shadowColor: "rgba(0, 0, 0, 0.1)",
+        shadowBlur: 20,
       },
-      label: {
-        show: valueLabelVisible,
-        color: fontColor,
-        fontSize,
-        position: chartDirection === "horizontal" ? "top" : "right",
-        formatter: (params) => {
-          return params.value > 0 ? params.value : "";
+      lineStyle: {
+        width: lineWidth * scale,
+        color: {
+          type: "linear",
+          colorStops: [
+            {
+              offset: 0,
+              color: colorList[2 * index], // 0% 处的颜色
+            },
+            {
+              offset: 1,
+              color: colorList[2 * index + 1], // 100% 处的颜色
+            },
+          ],
         },
       },
-      data: chartData.map((i) => i[e.property]),
+      data,
     });
   });
-
-  let categorySet = [
-    {
-      type: "category",
-      axisTick: {
-        show: false,
-        lineStyle: {
-          color: "#9dadc3",
-          // type: "dashed",
-          width: 0.8 * scale,
-        },
-      },
-      axisLine: {
-        show: true,
-        lineStyle: {
-          color: "#4b647f",
-        },
-      },
-      axisLabel: {
-        // interval: 0,
-        color: fontColor,
-        fontSize,
-      },
-      data: axisData,
-    },
-  ];
-  let valueSet = [
-    {
-      stack: "all",
-      type: "value",
-      splitLine: {
-        show: true,
-        lineStyle: {
-          color: "#4b647f",
-          // type: "dashed",
-          width: 0.8 * scale,
-        },
-      },
-      axisLine: {
-        show: false,
-        lineStyle: {
-          color: "#4b647f",
-          // type: "dashed",
-          width: 0.8 * scale,
-        },
-      },
-      axisLabel: {
-        // interval: 0,
-        color: fontColor,
-        fontSize,
-      },
-    },
-  ];
 
   // 提示
   let customTooltip = {
@@ -233,9 +198,9 @@ const setOption = (chartData = []) => {
 
   // 图例
   const customLegend = {
-    itemWidth: 12 * scale,
-    itemHeight: 12 * scale,
-    itemGap: 20 * scale,
+    itemWidth: 30 * scale,
+    itemHeight: 10 * scale,
+    itemGap: 10 * scale,
     textStyle: {
       color: fontColor,
       fontSize,
@@ -258,9 +223,58 @@ const setOption = (chartData = []) => {
     tooltip: customTooltip,
     legend: customLegend,
     grid: customGrid,
-    color: colorList,
-    yAxis: chartDirection === "horizontal" ? valueSet : categorySet,
-    xAxis: chartDirection === "horizontal" ? categorySet : valueSet,
+    color: colorList.filter((e, index) => index % 2 === 0),
+    xAxis: [
+      {
+        type: "category",
+        // boundaryGap: false,
+        splitLine: {
+          show: false,
+        },
+        splitArea: {
+          show: false,
+        },
+        axisLine: {
+          show: false,
+        },
+        axisTick: {
+          show: false,
+        },
+        axisLabel: {
+          interval: 0,
+          color: fontColor,
+          fontSize,
+        },
+        boundaryGap: false, // 去掉两边留白
+        data: axisData,
+      },
+    ],
+    yAxis: [
+      {
+        type: "value",
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: "#4b647f",
+            width: 0.8 * scale,
+          },
+        },
+        splitArea: {
+          show: false,
+        },
+        axisLine: {
+          show: false,
+        },
+        axisTick: {
+          show: false,
+        },
+        axisLabel: {
+          // interval: 0,
+          color: fontColor,
+          fontSize,
+        },
+      },
+    ],
     series: customSeries,
   };
 };

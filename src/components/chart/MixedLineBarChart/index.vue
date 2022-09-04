@@ -194,6 +194,7 @@ const setOption = (chartData = []) => {
 
   // 图例
   const customLegend = {
+    itemHeight: 10 * scale,
     textStyle: {
       color: fontColor,
       fontSize,
@@ -222,6 +223,10 @@ const setOption = (chartData = []) => {
         stack: "all",
         type: "value",
         name: barAxisName,
+        nameTextStyle: {
+          fontSize,
+          padding: 10 * scale,
+        },
         splitLine: {
           show: true,
           lineStyle: {

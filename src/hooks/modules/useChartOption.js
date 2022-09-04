@@ -17,13 +17,13 @@ export default function () {
   const getAxisData = (data, property) => data.map((e) => e[property]);
 
   /**
-   * 自定义提示
+   * 格式化提示
    *
    * @param {*} params formatter 需要的数据集
    * @param {*} opt 配置项
    * @returns 显示文本
    */
-  const customTooltip = (params, opt = {}) => {
+  const formatTooltip = (params, opt = {}) => {
     const p = isArray(params) ? params : [params];
 
     const {
@@ -109,6 +109,6 @@ export default function () {
 
   return {
     getAxisData,
-    customTooltip,
+    formatTooltip,
   };
 }
