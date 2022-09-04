@@ -89,7 +89,7 @@ let cityData = getCityData();
 
 // 获取企业常用项目
 const getCompanyProjectData = () => {
-  let companyType = ["国有企业", "外商投资企业", "股份制企业", "集体企业", "私营企业", ]
+  let companyType = ["国有企业", "外商投资企业", "集体企业", "股份制企业", "私营企业",]
 
   return companyType.map((name) => {
     return {
