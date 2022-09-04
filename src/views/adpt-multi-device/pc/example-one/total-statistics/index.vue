@@ -157,7 +157,7 @@ const { apiData } = useScreenModuleData(handleApiData);
   justify-content: center;
 
   &__buildings {
-    width: "auto";
+    width: auto;
     display: block;
     height: 95%;
     margin: 0 auto;
@@ -166,7 +166,7 @@ const { apiData } = useScreenModuleData(handleApiData);
   &__bottom {
     position: absolute;
     height: 50%;
-    width: "auto";
+    width: auto;
     bottom: 2%;
   }
 
@@ -204,5 +204,21 @@ const { apiData } = useScreenModuleData(handleApiData);
 .statistics-4 {
   right: 5%;
   top: 40%;
+}
+
+@media screen and (max-width: 1840px) {
+  .bg {
+    &__buildings {
+      height: auto;
+      width: 75%;
+      margin: 0 auto;
+    }
+
+    &__bottom {
+      width: 90%;
+      height: auto;
+      bottom: 2%;
+    }
+  }
 }
 </style>

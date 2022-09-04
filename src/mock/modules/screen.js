@@ -29,7 +29,11 @@ let projectType = [
 // 获取星期数据
 const getWeekData = () => {
   const now = new Date();
-  const currentWeek = now.getDay();
+  let currentWeek = now.getDay() - 1;
+
+  if (currentWeek < 0) {
+    currentWeek = 7;
+  }
 
   const weekday = [
     "星期一",
@@ -38,7 +42,7 @@ const getWeekData = () => {
     "星期四",
     "星期五",
     "星期六",
-    "星期日"
+    "星期日",
   ];
 
   return weekday.map((name, i) => {

@@ -117,11 +117,12 @@ const setTime = () => {
   &__left,
   &__right {
     width: 30%;
-    top: size(15);
+    height: 100%;
     display: flex;
     align-items: center;
     font-size: size(16);
     border-bottom: size(2) solid;
+    line-height: size(55);
   }
 
   &__left {

@@ -1,6 +1,6 @@
 <template>
   <BorderFrame>
-    <LineTitle title="监控平台周访问量" />
+    <LineTitle title="服务企业常用项目统计" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <template #content>
@@ -75,7 +75,6 @@ const chart = reactive({
 });
 
 const handleApiData = (data) => {
-  console.log(data);
   chart.chartData = data?.weekData || [];
 };
 

@@ -5,7 +5,7 @@
         <ProjectPercent />
       </div>
       <div class="chart-2 pt-15">
-        <BorderFrame> </BorderFrame>
+        <CompanyProject />
       </div>
       <div class="chart-3 pt-15">
         <WeekStatistics />
@@ -31,6 +31,7 @@ import LineTitle from "@/components/common/LineTitle/index.vue";
 import BorderFrame from "@/components/common/BorderFrame/index.vue";
 import BarChart from "@/components/chart/BarChart/index.vue";
 import WeekStatistics from "./week-statistics/index.vue";
+import CompanyProject from "./company-project/index.vue";
 import ProjectPercent from "./project-percent/index.vue";
 import TotalStatistics from "./total-statistics/index.vue";
 import CityStatistics from "./city-statistics/index.vue";
@@ -66,10 +67,10 @@ import CityStatistics from "./city-statistics/index.vue";
       height: 24%;
     }
     .chart-2 {
-      height: 33%;
+      height: 33.5%;
     }
     .chart-3 {
-      height: 43%;
+      height: 42.5%;
     }
   }
 

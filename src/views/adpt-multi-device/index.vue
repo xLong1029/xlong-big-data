@@ -53,22 +53,34 @@ const initHtmlFontSize = () => {
   const wr = screen.width / design.width;
   const swhr = screen.width / screen.height;
 
-  if (screen.width > 1366) {
-    // 超宽屏大于 21：9
-    if (swhr >= 21 / 9) {
-      setView("WideScreen");
+  // 横屏
+  if (swhr > 1) {
+    if (screen.width > 1366) {
+      // 超宽屏大于 21：9
+      if (swhr >= 21 / 9) {
+        setView("WideScreen");
 
-      if (swhr > design.ratio) {
-        contrastRatio.value = screen.height < minScreen.height ? 0.56 : hr; // 以高度为基准制定
+        if (swhr > design.ratio) {
+          contrastRatio.value = screen.height < minScreen.height ? 0.56 : hr; // 以高度为基准制定
+        } else {
+          contrastRatio.value = screen.width < minScreen.width ? 0.6 : wr; // 以宽度为基准制定
+        }
       } else {
-        contrastRatio.value = screen.width < minScreen.width ? 0.6 : wr; // 以宽度为基准制定
+        setView("PCScreen");
+
+        // contrastRatio.value = hr; // 以高度为基准制定
+        if (swhr > design.ratio) {
+          contrastRatio.value = screen.height < minScreen.height ? 0.56 : hr; // 以高度为基准制定
+        } else {
+          contrastRatio.value = screen.width < minScreen.width ? 0.6 : wr; // 以宽度为基准制定
+        }
       }
     } else {
-      setView("PCScreen");
-
-      contrastRatio.value = hr; // 以高度为基准制定
+      setView("MobileScreen");
     }
-  } else {
+  }
+  // 竖屏
+  else {
     setView("MobileScreen");
   }
 
