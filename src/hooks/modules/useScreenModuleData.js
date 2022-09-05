@@ -7,9 +7,9 @@
 import { inject, watch } from "vue";
 
 export default function (handleApiData) {
-  const apiData = inject("getApiData") ?? null;
-  const apiLoading = inject("getApiLoading") ?? false;
-  const contrastRatio = inject("getContrastRatio") ?? 1;
+  const apiData = inject("getApiData", null);
+  const apiLoading = inject("getApiLoading", false);
+  const contrastRatio = inject("getContrastRatio", 1);
 
   watch(
     () => apiData.value,
@@ -24,6 +24,6 @@ export default function (handleApiData) {
   return {
     apiData,
     apiLoading,
-    contrastRatio
+    contrastRatio,
   };
 }
