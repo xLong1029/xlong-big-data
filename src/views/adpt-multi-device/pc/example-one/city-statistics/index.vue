@@ -1,6 +1,6 @@
 <template>
   <BorderFrame>
-    <LineTitle title="各地市数据统计" />
+    <LineTitle title="各地市服务数据统计" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <template #content>

@@ -42,7 +42,7 @@ const props = defineProps({
       property: "name",
     }),
   },
-  // 条形数值配置
+  // 数值配置
   series: {
     type: Array,
     default: () => [

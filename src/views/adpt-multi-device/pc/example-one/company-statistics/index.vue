@@ -1,10 +1,10 @@
 <template>
   <BorderFrame>
-    <LineTitle title="各类企业项目维护情况" />
+    <LineTitle title="服务企业类型统计" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <template #content>
-          <GradientLineChart
+          <Radar
             :chart-data="chart.chartData"
             :axis="chart.axis"
             :series="chart.series"
@@ -23,7 +23,7 @@
 
 <script setup>
 import { reactive } from "vue";
-import GradientLineChart from "@/components/chart/GradientLineChart/index.vue";
+import Radar from "@/components/chart/Radar/index.vue";
 import hooks from "@/hooks";
 
 const { useChartOption, useScreenModuleData } = hooks;
@@ -34,29 +34,18 @@ const chart = reactive({
   axis: {
     property: "name",
   },
-  series: [
-    {
-      name: "企业官网",
-      property: "web",
-    },
-    {
-      name: "CMS系统",
-      property: "cms",
-    },
-    {
-      name: "小程序",
-      property: "applets",
-    },
-  ],
+  series: {
+    property: "num",
+  },
   tooltip: {
     trigger: "axis",
     formatter: (p) => formatTooltip(p, { unit: "项", scale: contrastRatio.value }),
   },
   grid: {
-    top: "2%",
+    top: "12%",
     bottom: 0,
-    left: "4%",
-    right: "2%",
+    left: "2%",
+    right: "7%",
   },
   labelFontSize: 14,
   autoplay: true,
@@ -64,7 +53,8 @@ const chart = reactive({
 });
 
 const handleApiData = (data) => {
-  chart.chartData = data?.companyProjectData || [];
+  console.log(data);
+  chart.chartData = data?.companinesData || [];
 };
 
 const { apiData, apiLoading, contrastRatio } = useScreenModuleData(handleApiData);

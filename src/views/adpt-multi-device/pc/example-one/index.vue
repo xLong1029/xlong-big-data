@@ -5,10 +5,10 @@
         <ProjectPercent />
       </div>
       <div class="chart-2 pt-15">
-        <CompanyProject />
+         <CompanyStatistics />
       </div>
       <div class="chart-3 pt-15">
-        <WeekStatistics />
+        <CompanyProject />
       </div>
     </div>
     <div class="screen-content__center">
@@ -27,10 +27,8 @@
 
 <script setup>
 import { reactive, inject, onMounted, shallowRef } from "@vue/runtime-core";
-import LineTitle from "@/components/common/LineTitle/index.vue";
 import BorderFrame from "@/components/common/BorderFrame/index.vue";
-import BarChart from "@/components/chart/BarChart/index.vue";
-import WeekStatistics from "./week-statistics/index.vue";
+import CompanyStatistics from "./company-statistics/index.vue";
 import CompanyProject from "./company-project/index.vue";
 import ProjectPercent from "./project-percent/index.vue";
 import TotalStatistics from "./total-statistics/index.vue";

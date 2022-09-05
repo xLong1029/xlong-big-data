@@ -98,6 +98,8 @@ const getScale = () => {
 
 // 设置缩放大小
 const setScale = debounce(() => {
+  if(!scaleBox.value) return;
+
   scale.value = getScale();
 
   const { width, height, scrollPosition, scroll } = props;
@@ -105,10 +107,6 @@ const setScale = debounce(() => {
   scaleBox.value.style.setProperty("--scale", scale.value);
   scaleBox.value.style.setProperty("--height", `${height}px`);
   scaleBox.value.style.setProperty("--width", `${width}px`);
-  
-  // document.body.style.setProperty("--scale", scale.value);
-  // document.body.style.setProperty("--height", `${height}px`);
-  // document.body.style.setProperty("--width", `${width}px`);
 
   visible.value = false;
   setTimeout(() => {

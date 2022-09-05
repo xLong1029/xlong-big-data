@@ -210,14 +210,15 @@ const { apiData } = useScreenModuleData(handleApiData);
   .bg {
     &__buildings {
       height: auto;
-      width: 75%;
+      max-width: 70%;
+      max-height: 80%;
       margin: 0 auto;
     }
 
     &__bottom {
-      width: 90%;
+      width: 80%;
       height: auto;
-      bottom: 2%;
+      bottom: 5%;
     }
   }
 }

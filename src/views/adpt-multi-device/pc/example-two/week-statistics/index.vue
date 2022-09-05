@@ -75,7 +75,8 @@ const chart = reactive({
 });
 
 const handleApiData = (data) => {
-  chart.chartData = data?.weekData || [];
+  let chartData = data?.weekData || [];
+  chart.chartData = chartData.reverse();
 };
 
 const { apiData, apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
