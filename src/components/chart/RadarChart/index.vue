@@ -64,23 +64,6 @@ const props = defineProps({
     type: Number,
     default: 14,
   },
-  // 图例
-  legend: {
-    type: Object,
-    default: () => ({}),
-  },
-  // 网格
-  grid: {
-    type: Object,
-    default: () => ({
-      containLabel: true,
-    }),
-  },
-  // 提示
-  tooltip: {
-    type: Object,
-    default: () => ({}),
-  },
   // 雷达半径
   radius: {
     type: Number,
@@ -106,9 +89,6 @@ const setOption = (chartData = []) => {
     colorList,
     scale,
     labelFontSize,
-    legend,
-    grid,
-    tooltip,
     center,
     radius,
   } = props;
@@ -125,46 +105,10 @@ const setOption = (chartData = []) => {
   const fontSize = labelFontSize * scale;
   const fontColor = "#FFFFFF";
 
-  // 提示
-  let customTooltip = {
-    textStyle: {
-      fontSize,
-      color: fontColor,
-    },
-    trigger: "item",
-    backgroundColor: "rgba(0,0,0,0.6)",
-    borderColor: "transparent",
-    padding: 5 * scale,
-    ...tooltip,
-  };
-
-  // 图例
-  const customLegend = {
-    itemWidth: 12 * scale,
-    itemHeight: 12 * scale,
-    itemGap: 20 * scale,
-    textStyle: {
-      color: fontColor,
-      fontSize,
-    },
-    data: chartData.map((e) => e[series.property]),
-    ...legend,
-  };
-
-  // 网格
-  const customGrid = {
-    top: "1%",
-    bottom: "1%",
-    left: "1%",
-    right: "1%",
-    containLabel: true,
-    ...grid,
-  };
-
   option.value = {
-    tooltip: customTooltip,
-    legend: customLegend,
-    grid: customGrid,
+    tooltip:{
+      show: false,
+    },
     color: colorList,
     radar: {
       splitNumber: 3,

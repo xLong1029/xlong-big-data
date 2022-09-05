@@ -10,8 +10,6 @@
             :axis="chart.axis"
             :series="chart.series"
             :scale="contrastRatio"
-            :tooltip="chart.tooltip"
-            :legend="chart.legend"
             :label-font-size="chart.labelFontSize"
             :radius="chart.radius"
             :center="chart.center"
@@ -39,12 +37,6 @@ const chart = reactive({
   },
   series: {
     property: "num",
-  },
-  tooltip: {
-    show: false,
-  },
-  legend: {
-    show: false,
   },
   labelFontSize: 14,
   center: ["50%", "57%"],
