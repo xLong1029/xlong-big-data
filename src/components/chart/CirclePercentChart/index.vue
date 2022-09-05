@@ -42,11 +42,7 @@ const props = defineProps({
   // 图例
   legend: {
     type: Object,
-    default: () => ({
-      textStyle: {
-        color: "#fff",
-      },
-    }),
+    default: () => ({}),
   },
   // 网格
   grid: {
@@ -58,9 +54,7 @@ const props = defineProps({
   // 提示
   tooltip: {
     type: Object,
-    default: () => ({
-      trigger: "axis",
-    }),
+    default: () => ({}),
   },
   // 文本大小
   labelFontSize: {

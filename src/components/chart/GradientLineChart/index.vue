@@ -80,11 +80,7 @@ const props = defineProps({
   // 图例
   legend: {
     type: Object,
-    default: () => ({
-      textStyle: {
-        color: "#fff",
-      },
-    }),
+    default: () => ({}),
   },
   // 网格
   grid: {
@@ -96,9 +92,7 @@ const props = defineProps({
   // 提示
   tooltip: {
     type: Object,
-    default: () => ({
-      trigger: "axis",
-    }),
+    default: () => ({}),
   },
   // 线条粗细
   lineWidth: {
@@ -208,6 +202,8 @@ const setOption = (chartData = []) => {
     data: series.map((e) => e.name),
     ...legend,
   };
+
+  console.log(customLegend);
 
   // 网格
   const customGrid = {

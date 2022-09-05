@@ -112,24 +112,20 @@ let companyProjectData = getCompanyProjectData();
 // 获取服务企业数量
 const getCompaninesData = () => {
   let average = statisticsData.serviceCompanines / companyType.length;
-
   let arr = [];
-  let last = 0;
+  let last = statisticsData.serviceCompanines;
   for (let i = 0; i < companyType.length; i++) {
-    const name = companyType[i];
-
     let num = Random.integer(
       Math.floor(average - 200),
       Math.floor(average + 200)
     );
 
-    console.log(num);
-    last = statisticsData.serviceCompanines - num;
-
     arr.push({
-      name,
+      name: companyType[i],
       num: i < companyType.length - 1 ? num : last,
     });
+
+    last -= num;
   }
   return arr;
 };

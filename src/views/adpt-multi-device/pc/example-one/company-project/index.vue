@@ -53,7 +53,7 @@ const chart = reactive({
     formatter: (p) => formatTooltip(p, { unit: "项", scale: contrastRatio.value }),
   },
   grid: {
-    top: "2%",
+    top: "12%",
     bottom: 0,
     left: "4%",
     right: "2%",

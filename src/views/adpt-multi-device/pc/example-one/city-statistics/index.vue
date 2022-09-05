@@ -55,7 +55,7 @@ const chart = reactive({
       formatTooltip(p, { unit: ["家", "人"], scale: contrastRatio.value }),
   },
   grid: {
-    top: "20%",
+    top: "18%",
     bottom: "1%",
     left: "1%",
     right: "1%",

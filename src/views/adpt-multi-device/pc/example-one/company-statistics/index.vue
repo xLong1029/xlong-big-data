@@ -1,17 +1,20 @@
 <template>
   <BorderFrame>
-    <LineTitle title="服务企业类型统计" />
+    <LineTitle :title="chart.title" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <template #content>
-          <Radar
+          <RadarChart
+            :title="chart.title"
             :chart-data="chart.chartData"
             :axis="chart.axis"
             :series="chart.series"
             :scale="contrastRatio"
             :tooltip="chart.tooltip"
-            :grid="chart.grid"
+            :legend="chart.legend"
             :label-font-size="chart.labelFontSize"
+            :radius="chart.radius"
+            :center="chart.center"
             :autoplay="chart.autoplay"
             :color-list="chart.colorList"
           />
@@ -23,13 +26,13 @@
 
 <script setup>
 import { reactive } from "vue";
-import Radar from "@/components/chart/Radar/index.vue";
+import RadarChart from "@/components/chart/RadarChart/index.vue";
 import hooks from "@/hooks";
 
-const { useChartOption, useScreenModuleData } = hooks;
-const { formatTooltip } = useChartOption();
+const { useScreenModuleData } = hooks;
 
 const chart = reactive({
+  title: "服务企业数量统计",
   chartData: [],
   axis: {
     property: "name",
@@ -38,18 +41,15 @@ const chart = reactive({
     property: "num",
   },
   tooltip: {
-    trigger: "axis",
-    formatter: (p) => formatTooltip(p, { unit: "项", scale: contrastRatio.value }),
+    show: false,
   },
-  grid: {
-    top: "12%",
-    bottom: 0,
-    left: "2%",
-    right: "7%",
+  legend: {
+    show: false,
   },
   labelFontSize: 14,
-  autoplay: true,
-  colorList: ["#42cdff", "#21afff", "#1fff83", "#46ffea", "#ff62b5", "#ff46fd"],
+  center: ["50%", "57%"],
+  radius: 62,
+  colorList: ["#42cdff", "#1fff83"],
 });
 
 const handleApiData = (data) => {
