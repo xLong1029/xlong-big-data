@@ -60,7 +60,7 @@ import ProjectDescription from "./project-description/index.vue";
     flex-direction: column;
 
     .chart-1 {
-      height: size(340);
+      height: size(280);
     }
     .chart-2 {
       height: 32%;

@@ -71,7 +71,7 @@ const { activeIndex, setActiveIndex } = useAutoPlay({
 
   &-item {
     width: 25%;
-    margin: size(5);
+    margin: 0 size(5);
     font-size: size(20);
     text-align: center;
     position: relative;
@@ -96,7 +96,7 @@ const { activeIndex, setActiveIndex } = useAutoPlay({
       left: 12%;
       @include background-setting(
         "./../../../../../assets/images/light.png",
-        76%,
+        75%,
         size(25)
       );
     }
@@ -110,9 +110,9 @@ const { activeIndex, setActiveIndex } = useAutoPlay({
 
 .tab-content {
   text-indent: 2em;
-  line-height: 2;
-  font-size: size(16);
-  margin-top: size(10);  
+  line-height: 1.8;
+  font-size: size(14);
+  margin-top: size(15);  
   margin-bottom: 0;
 }
 </style>
