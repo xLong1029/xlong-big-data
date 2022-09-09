@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.9",
+    "autoprefixer": "^10.4.8",
     "axios": "^0.27.2",
     "echarts": "^5.3.3",
     "element-plus": "^2.2.13",

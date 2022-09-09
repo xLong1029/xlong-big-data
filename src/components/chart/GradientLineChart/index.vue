@@ -203,8 +203,6 @@ const setOption = (chartData = []) => {
     ...legend,
   };
 
-  console.log(customLegend);
-
   // 网格
   const customGrid = {
     top: "10%",

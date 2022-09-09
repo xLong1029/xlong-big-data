@@ -77,17 +77,15 @@ export default function () {
       total += value * 1;
 
       if (!res) {
-        res = `<div style="font-size:${fontSize}px; transform:scale(${scale}); margin-bottom:${0.5 * fontSize
-          }px;">
+        res = `<div style="font-size:${fontSize}px; transform:scale(${scale}); margin-bottom:${0.5 * fontSize}px;">
         ${name}
         </div>`;
       }
       return (
         res +
-        `<div style="font-size:${fontSize}px; transform:scale(${scale}); margin-bottom:${0.5 * fontSize
-        }px;">
+        `<div style="font-size:${fontSize}px; transform:scale(${scale}); margin-bottom:${0.5 * fontSize}px;">
         ${marker} ${seriesName}
-        <span style="color:${lightHeightTextColor};" >
+        <span style="color:${lightHeightTextColor};">
         ${valueFixed ? value.toFixed(valueFixed) * 1 : value}
         </span> 
         ${unitList[index % unitList.length]}

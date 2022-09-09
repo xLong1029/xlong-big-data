@@ -5,6 +5,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { viteMockServe } from "vite-plugin-mock";
+import autoprefixer from "autoprefixer";
 
 import settings from "./src/settings";
 
@@ -101,7 +102,8 @@ export default defineConfig(({ mode }) => {
               }
             }
           }
-        }],
+        },
+        autoprefixer],
       },
     }
   }

@@ -5,7 +5,7 @@
         <ProjectPercent />
       </div>
       <div class="chart-2 pt-15">
-         <CompanyStatistics />
+        <CompanyStatistics />
       </div>
       <div class="chart-3 pt-15">
         <CompanyProject />
@@ -19,8 +19,13 @@
         <CityStatistics />
       </div>
     </div>
-    <div class="screen-content__left">
-      <BorderFrame direction="right"></BorderFrame>
+    <div class="screen-content__right">
+      <div class="chart-1">
+        <ProjectType />
+      </div>
+      <div class="chart-2 pt-15">
+        <CityRanking />
+      </div>
     </div>
   </div>
 </template>
@@ -33,6 +38,8 @@ import CompanyProject from "./company-project/index.vue";
 import ProjectPercent from "./project-percent/index.vue";
 import TotalStatistics from "./total-statistics/index.vue";
 import CityStatistics from "./city-statistics/index.vue";
+import ProjectType from "./project-type/index.vue";
+import CityRanking from "./city-ranking/index.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -86,6 +93,15 @@ import CityStatistics from "./city-statistics/index.vue";
     &-bottom {
       height: 40%;
       padding-top: size(15);
+    }
+  }
+
+  &__right {
+    .chart-1 {
+      height: 30%;
+    }
+    .chart-2 {
+      height: 70%;
     }
   }
 }

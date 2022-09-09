@@ -1,10 +1,10 @@
 <template>
   <BorderFrame>
-    <LineTitle :title="chart.title" />
+    <LineTitle title="各地市服务用户排行" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <template #content>
-          <GradientRadarChart
+          <!-- <GradientRadarChart
             :title="chart.title"
             :chart-data="chart.chartData"
             :axis="chart.axis"
@@ -15,7 +15,7 @@
             :center="chart.center"
             :autoplay="chart.autoplay"
             :color-list="chart.colorList"
-          />
+          /> -->
         </template>
       </DataLoading>
     </div>

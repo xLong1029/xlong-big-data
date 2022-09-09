@@ -5,7 +5,6 @@
 <script setup>
 import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch } from "vue";
-import hooks from "@/hooks";
 import { graphic } from "echarts";
 
 const props = defineProps({
@@ -47,7 +46,7 @@ const props = defineProps({
   // 颜色列表
   colorList: {
     type: Array,
-    default: () => ["#71ffaa", "#09ddff", "#00e8ff", "#71ffaa"],
+    default: () => ["#71ffaa", "#09ddff"],
   },
   // 缩放基数
   scale: {
@@ -75,9 +74,6 @@ const props = defineProps({
     default: () => ["50%", "50%"],
   },
 });
-
-const { useChartOption } = hooks;
-const { getAxisData } = useChartOption();
 
 const option = ref(null);
 
@@ -109,7 +105,6 @@ const setOption = (chartData = []) => {
     tooltip:{
       show: false,
     },
-    color: colorList,
     radar: {
       splitNumber: 3,
       indicator: indicatorData,
@@ -126,7 +121,7 @@ const setOption = (chartData = []) => {
         },
         rich: {
           a: {
-            color: "#FFFFFF",
+            color: fontColor,
             align: "center",
             fontSize,
             width: 60,

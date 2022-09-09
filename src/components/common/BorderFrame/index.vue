@@ -48,8 +48,8 @@ const props = defineProps({
 
     @include background-setting(
       "./../../../assets/images/border-frame-corner.png",
-      size(20),
-      size(20)
+      size(15),
+      size(15)
     );
   }
 
@@ -57,8 +57,8 @@ const props = defineProps({
     bottom: size(-1);
     @include background-setting(
       "./../../../assets/images/border-frame-corner.png",
-      size(22),
-      size(22)
+      size(15),
+      size(15)
     );
   }
 

@@ -3,8 +3,8 @@ import { ref, reactive, onMounted, onUnmounted, watch } from "vue";
 
 export default function (props) {
   const defaultConfig = reactive({
-    duration: props.duration || 3000,
-    data: props.data || [],
+    duration: props?.duration || 3000,
+    data: props?.data || [],
   });
   const activeIndex = ref(0);
   const timer = ref(null);

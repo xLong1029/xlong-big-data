@@ -2,7 +2,7 @@
   <div class="screen-content">
     <div class="screen-content__left">
       <div class="chart-1">
-        <BorderFrame></BorderFrame>
+        <ProjectDescription />
       </div>
       <div class="chart-2 pt-15">
         <BorderFrame></BorderFrame>
@@ -20,7 +20,7 @@
         <BorderFrame></BorderFrame>
       </div>
     </div>
-    <div class="screen-content__left">
+    <div class="screen-content__right">
       <BorderFrame direction="right"></BorderFrame>
     </div>
   </div>
@@ -29,6 +29,7 @@
 <script setup>
 import BorderFrame from "@/components/common/BorderFrame/index.vue";
 import WeekStatistics from "./week-statistics/index.vue";
+import ProjectDescription from "./project-description/index.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -55,14 +56,17 @@ import WeekStatistics from "./week-statistics/index.vue";
   }
 
   &__left {
+    display: flex;
+    flex-direction: column;
+
     .chart-1 {
-      height: 24%;
+      height: size(340);
     }
     .chart-2 {
-      height: 33.5%;
+      height: 32%;
     }
     .chart-3 {
-      height: 42.5%;
+      flex: 1;
     }
   }
 
