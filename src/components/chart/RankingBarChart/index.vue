@@ -112,7 +112,7 @@ const setOption = (chartData = []) => {
   const customGrid = {
     top: 0,
     bottom: -70 * scale,
-    left: -65 * scale,
+    left: -50 * scale,
     right: 0,
     containLabel: true,
     ...grid,
