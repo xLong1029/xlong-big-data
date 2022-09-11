@@ -1,3 +1,6 @@
+
+import { deepClone } from "@/utils";
+
 /*
  * 模块 : 图表配置项模块
  * 作者 : 罗永梅（381612175@qq.com）
@@ -77,13 +80,13 @@ export default function () {
       total += value * 1;
 
       if (!res) {
-        res = `<div style="font-size:${fontSize}px; transform:scale(${scale}); margin-bottom:${0.5 * fontSize}px;">
+        res = `<div style="font-size:${fontSize}px; transform:scale(${scale});">
         ${name}
         </div>`;
       }
       return (
         res +
-        `<div style="font-size:${fontSize}px; transform:scale(${scale}); margin-bottom:${0.5 * fontSize}px;">
+        `<div style="font-size:${fontSize}px; transform:scale(${scale}); margin-top:${0.5 * fontSize}px;">
         ${marker} ${seriesName}
         <span style="color:${lightHeightTextColor};">
         ${valueFixed ? value.toFixed(valueFixed) * 1 : value}
@@ -105,8 +108,52 @@ export default function () {
     return html;
   };
 
+  /**
+   * 比较数据大小
+   * 
+   * @param {*} propertys 
+   * @returns 
+   */
+  const compareData = (propertys) => {
+    return function (a, b) {
+      let value1 = 0;
+      let value2 = 0;
+      propertys.forEach(e => {
+        value1 += a[e];
+        value2 += b[e];
+      });
+      return value2 - value1;
+    };
+  };
+
+  /**
+   * 数据排序
+   * 
+   * @param {*} data 
+   * @returns 
+   */
+  const sortData = (data, series) => {
+    // 解决因为排序改变图表数据，切换图表时导致死循环的问题
+    let tempData = deepClone(data);
+
+    // 处理属性值
+    let propertys = [];
+    if (series.constructor == Array) {
+      series.forEach(e => propertys.push(e.property));
+    }
+    else if (series.constructor == Object) {
+      propertys = [series.property];
+    };
+
+    // 图表数据排序
+    tempData.sort(compareData(propertys));
+    return tempData;
+  };
+
   return {
     getAxisData,
     formatTooltip,
+    compareData,
+    sortData
   };
 }

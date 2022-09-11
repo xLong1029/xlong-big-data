@@ -1,5 +1,10 @@
 <template>
-  <Chart :option="option" :width="width" :height="height" :duration="duration" />
+  <Chart
+    :option="option"
+    :width="width"
+    :height="height"
+    :duration="duration"
+  />
 </template>
 
 <script setup>
@@ -89,6 +94,9 @@ const setOption = (chartData = []) => {
     radius,
   } = props;
 
+  const fontSize = labelFontSize * scale;
+  const fontColor = "#FFFFFF";
+
   const seriesData = chartData.map((e) => e[series.property]);
   // const maxValue = Math.max(...seriesData);
 
@@ -98,11 +106,8 @@ const setOption = (chartData = []) => {
     value: e[series.property],
   }));
 
-  const fontSize = labelFontSize * scale;
-  const fontColor = "#FFFFFF";
-
   option.value = {
-    tooltip:{
+    tooltip: {
       show: false,
     },
     radar: {

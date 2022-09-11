@@ -152,7 +152,7 @@ export default [
         if (nav == 0) {
           // 总数统计
           const serviceCompaninesChangeNum = [1, 2, 3][Random.integer(0, 2)];
-          const serviceUsersChangeNum = [1, 2, 3][Random.integer(0, 2)];
+          const serviceUsersChangeNum = Random.integer(50, 200);
           statisticsData.serviceCompanines += serviceCompaninesChangeNum;
           statisticsData.serviceUsers += serviceUsersChangeNum;
 

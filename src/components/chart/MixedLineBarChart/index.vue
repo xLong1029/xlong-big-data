@@ -134,11 +134,11 @@ const setOption = (chartData = []) => {
     tooltip,
   } = props;
 
-  // 处理坐标轴数据
-  const axisData = getAxisData(chartData, axis.property);
-
   const fontSize = labelFontSize * scale;
   const fontColor = "#FFFFFF";
+
+  // 处理坐标轴数据
+  const axisData = getAxisData(chartData, axis.property);
 
   // 处理显示数据
   let customSeries = [];
@@ -182,7 +182,7 @@ const setOption = (chartData = []) => {
     },
     backgroundColor: "rgba(0,0,0,0.6)",
     borderColor: "transparent",
-    padding: 5 * scale,
+    padding: [10 * scale, 0 * scale],
     ...tooltip,
   };
 

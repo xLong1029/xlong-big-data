@@ -4,18 +4,18 @@
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <template #content>
-          <!-- <BarChart
+          <RankingBarChart
             :title="chart.title"
             :chart-data="chart.chartData"
             :axis="chart.axis"
             :series="chart.series"
             :scale="contrastRatio"
             :label-font-size="chart.labelFontSize"
-            :radius="chart.radius"
-            :center="chart.center"
-            :autoplay="chart.autoplay"
-            :color-list="chart.colorList"
-          /> -->
+            :top-num="chart.topNum"
+            :top-colors="chart.topColors"
+            :default-colors="chart.defaultColors"
+            :grid="chart.grid"
+          />
         </template>
       </DataLoading>
     </div>
@@ -24,31 +24,34 @@
 
 <script setup>
 import { reactive } from "vue";
-// import BarChart from "@/components/chart/BarChart/index.vue";
+import RankingBarChart from "@/components/chart/RankingBarChart/index.vue";
 import hooks from "@/hooks";
 
 const { useScreenModuleData } = hooks;
 
 const chart = reactive({
-  title: "服务企业数量统计",
   chartData: [],
   axis: {
     property: "name",
   },
   series: {
-    property: "num",
+    property: "users",
   },
   labelFontSize: 14,
-  center: ["50%", "57%"],
-  radius: 70,
-  colorList: ["#42cdff", "#1fff83"],
+  topNum: 3,
+  topColors: ["#9749ff", "#ff65e5"],
+  defaultColors: ["#3368ff", "#50ffef"],
+  grid: {
+    right: 0
+  }
 });
 
 const handleApiData = (data) => {
-  chart.chartData = data?.companinesData || [];
+  chart.chartData = data?.cityData || [];
 };
 
-const { apiData, apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
+const { apiData, apiLoading, contrastRatio } =
+  useScreenModuleData(handleApiData);
 </script>
 
 <style lang="scss" scoped></style>
