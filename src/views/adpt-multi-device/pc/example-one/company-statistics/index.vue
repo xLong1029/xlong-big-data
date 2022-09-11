@@ -4,6 +4,13 @@
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <template #content>
+          <div class="wave-container">
+            <div class="animate-wave wave1">
+              <div class="animate-wave wave2">
+                <div class="animate-wave wave3"></div>
+              </div>
+            </div>
+          </div>
           <GradientRadarChart
             :title="chart.title"
             :chart-data="chart.chartData"
@@ -48,7 +55,33 @@ const handleApiData = (data) => {
   chart.chartData = data?.companinesData || [];
 };
 
-const { apiData, apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
+const { apiData, apiLoading, contrastRatio } =
+  useScreenModuleData(handleApiData);
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.wave-container {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translateX(-50%) translateY(-50%);
+
+  .wave1 {
+    width: size(150);
+    height: size(150);
+    border-radius: 50%;
+  }
+
+  .wave2 {
+    width: size(80);
+    height: size(80);
+    border-radius: 50%;
+  }
+
+  .wave3 {
+    width: size(30);
+    height: size(30);
+    border-radius: 50%;
+  }
+}
+</style>

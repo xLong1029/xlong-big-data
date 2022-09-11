@@ -90,11 +90,11 @@ const setOption = (chartData = []) => {
   } = props;
 
   const seriesData = chartData.map((e) => e[series.property]);
-  const maxValue = Math.max(...seriesData);
+  // const maxValue = Math.max(...seriesData);
 
   const indicatorData = chartData.map((e) => ({
     name: e[axis.property],
-    max: Math.floor(1.2 * maxValue),
+    // max: Math.floor(1.2 * maxValue),
     value: e[series.property],
   }));
 

@@ -24,7 +24,7 @@ const props = defineProps({
     type: [Number, String],
     default: "100%",
   },
-  //
+  // 系列列表索引
   seriesIndex: {
     type: Number,
     default: 0,
@@ -116,17 +116,17 @@ watch(
   (newChart) => {
     const { autoplay } = props;
     if (newChart && autoplay) {
-      newChart.getZr().on("mousemove", function (e) {
+      newChart.getZr().on("mousemove", (e) => {
         if (e.topTarget) {
           setAutoplay(false);
         } else {
           setAutoplay(true);
         }
       });
-      newChart.getDom().addEventListener("mouseout", function (e) {
+      newChart.getDom().addEventListener("mouseout", (e) => {
         setAutoplay(true);
       });
-      newChart.on("mouseover", function (e) {
+      newChart.on("mouseover", (e) => {
         const { highlightSeriesIndex: seriesIndex, hoverActive } = props;
         if (e.dataIndex !== activeIndex.value) {
           newChart?.dispatchAction({
@@ -134,7 +134,7 @@ watch(
             seriesIndex,
             dataIndex: activeIndex.value,
           });
-          if (hoverActive) {
+          if (hoverActive) {            
             setActiveIndex(e.dataIndex);
           }
         }
@@ -145,5 +145,6 @@ watch(
 
 defineExpose({
   setActiveIndex,
+  chart,
 });
 </script>

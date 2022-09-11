@@ -1,10 +1,11 @@
 <template>
-  <Chart :option="option" :width="width" :height="height" />
+  <div ref="container" :style="{ height, width }" />
 </template>
 
 <script setup>
-import Chart from "@/components/chart/Default/index.vue";
+// import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch, onUnmounted } from "vue";
+import hooks from "@/hooks";
 
 const props = defineProps({
   title: {
@@ -26,18 +27,32 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  // 指示器数值配置
+  axis: {
+    type: Object,
+    default: () => ({
+      name: "名称",
+      property: "name",
+    }),
+  },
+  // 数值配置
+  series: {
+    type: Object,
+    default: () => ({
+      name: "名称",
+      property: "name",
+    }),
+  },
   // 颜色列表
   colorList: {
     type: Array,
     default: () => [
-      "#45FBF7",
-      "#48FF58",
-      "#EAE809",
-      "#FF7E3F",
-      "#FF4746",
-      "#E177F9",
-      "#4E6BFF",
-      "#5EA6FE",
+      "#ffbf4b",
+      "#fd65b9",
+      "#b14bff",
+      "#3886fb",
+      "#45f3fd",
+      "#97ff84",
     ],
   },
   // 缩放基数
@@ -89,9 +104,12 @@ const props = defineProps({
   },
 });
 
-const option = ref(null);
+const { useChart } = hooks;
+
+const { chart, option, container } = useChart();
 
 const activeIndex = ref(0);
+const autoplay = ref(false);
 
 const timer = ref(null);
 
@@ -161,7 +179,7 @@ const setOption = (chartData = []) => {
       {
         type: "pie",
         center,
-        radius: [radius + 20 * scale, radius + 30 * scale],
+        radius: [radius[1] + 15 * scale, radius[1] + 25 * scale],
         label: {
           show: false,
           // formatter: "{c}",
@@ -170,7 +188,8 @@ const setOption = (chartData = []) => {
         labelLine: {
           show: false,
         },
-        data: appendBaseColor(chartData, colorList, 1 * scale),
+        selectedMode: "single",
+        data: handleData(chartData, 1),
       },
       {
         type: "pie",
@@ -179,21 +198,30 @@ const setOption = (chartData = []) => {
         label: {
           show: false,
           formatter: "{c}",
-          fontSize
+          fontSize,
         },
         itemStyle: {},
         labelLine: {
           show: false,
         },
-        data: appendBaseColor(chartData, colorList, 0.6 * scale),
+        selectedMode: "single",
+        select: {
+          itemStyle: {
+            opacity: 1,
+          },
+        },
+        data: handleData(chartData, 0.6),
       },
     ],
   };
 };
 
-const appendBaseColor = (dataList, colorList, opacity) => {
-  return dataList.map((e, i) => ({
-    ...e,
+const handleData = (chartData, opacity) => {
+  const { axis, series, colorList } = props;
+
+  return chartData.map((e, i) => ({
+    name: e[axis.property],
+    value: e[series.property],
     itemStyle: {
       color: colorList[i],
       opacity,
@@ -208,58 +236,97 @@ const restartTimer = () => {
 
 const stopTimer = () => {
   if (timer.value) {
-    timer.value();
+    clearInterval(timer.value);
+    timer.value = null;
   }
 };
 
 const startLoopMove = () => {
-  if (!autoplay.value) {
+  const { autoplay, chartData } = props;
+
+  if (!autoplay) {
     stopTimer();
     return;
   }
+
   activeIndex.value++;
-  if (activeIndex.value === defaultConfig.data.length) {
+  if (activeIndex.value >= chartData.length) {
     activeIndex.value = 0;
   }
-
-  const { chartData } = props;
-
-  // let idx = 0;
-  // setInterval(() => {
-  //   clearSelectedStatus();
-
-  //   let opt = JSON.parse(JSON.stringify(option.value));
-  //   opt?.series[0].data[idx]["selected"] = true;
-  //   opt?.series[0].data[idx]["itemStyle"]["opacity"] = 1;
-  //   opt?.series[1].data[idx]["selected"] = true;
-  //   option.value = opt;
-
-  //   idx++;
-  //   if (idx >= chartData.length) {
-  //     idx = 0;
-  //   }
-  // }, 1000);
-};
-
-const clearSelectedStatus = () => {
-  // const { chartData, colorList } = props;
-  // let opt = JSON.parse(JSON.stringify(option.value));
-  // opt?.series[0].data = appendBaseColor(chartData, colorList, 0.6);
-  // opt?.series[1].data = appendBaseColor(chartData, colorList, 1);
-  // option.value = opt;
 };
 
 watch(
   () => props.chartData,
   (data) => {
     setOption(data);
+  },
+  {
+    immediate: true,
+  }
+);
 
-    if (props.autoplay) {
+const setAutoplay = (val) => (autoplay.value = val);
+
+watch(
+  () => props.autoplay,
+  (val) => {
+    setAutoplay(val);
+  },
+  {
+    immediate: true,
+  }
+);
+
+watch(
+  autoplay,
+  (val) => {
+    if (val) {
       restartTimer();
+    } else {
+      stopTimer();
     }
   },
   {
     immediate: true,
+  }
+);
+
+watch(activeIndex, (val, preval) => {
+  chart.value?.dispatchAction({
+    type: "select",
+    seriesIndex: [0, 1],
+    dataIndex: val,
+  });
+
+  chart.value?.dispatchAction({
+    type: "showTip",
+    seriesIndex: [0],
+    dataIndex: val,
+  });
+});
+
+watch(
+  () => chart.value,
+  (newChart) => {
+    const { autoplay } = props;
+    if (newChart && autoplay) {
+      newChart.getZr().on("mousemove", (e) => {
+        if (e.topTarget) {
+          setAutoplay(false);
+
+          newChart.dispatchAction({
+            type: "unselect",
+            seriesIndex: [0, 1],
+            dataIndex: activeIndex.value,
+          });
+        } else {
+          setAutoplay(true);
+        }
+      });
+      newChart.getDom().addEventListener("mouseout", (e) => {
+        setAutoplay(true);
+      });
+    }
   }
 );
 

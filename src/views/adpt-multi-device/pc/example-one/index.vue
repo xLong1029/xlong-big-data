@@ -21,7 +21,7 @@
     </div>
     <div class="screen-content__right">
       <div class="chart-1">
-        <ProjectType />
+        <ProjectStatistics />
       </div>
       <div class="chart-2 pt-15">
         <CityRanking />
@@ -38,7 +38,7 @@ import CompanyProject from "./company-project/index.vue";
 import ProjectPercent from "./project-percent/index.vue";
 import TotalStatistics from "./total-statistics/index.vue";
 import CityStatistics from "./city-statistics/index.vue";
-import ProjectType from "./project-type/index.vue";
+import ProjectStatistics from "./project-statistics/index.vue";
 import CityRanking from "./city-ranking/index.vue";
 </script>
 

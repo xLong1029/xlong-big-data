@@ -23,7 +23,7 @@ export default function (props) {
       return;
     }
     activeIndex.value++;
-    if (activeIndex.value === defaultConfig.data.length) {
+    if (activeIndex.value >= defaultConfig.data.length) {
       activeIndex.value = 0;
       loopCount.value++;
     }

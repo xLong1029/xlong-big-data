@@ -4,7 +4,7 @@
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <template #content>
-          <!-- <GradientRadarChart
+          <!-- <BarChart
             :title="chart.title"
             :chart-data="chart.chartData"
             :axis="chart.axis"
@@ -24,7 +24,7 @@
 
 <script setup>
 import { reactive } from "vue";
-import GradientRadarChart from "@/components/chart/GradientRadarChart/index.vue";
+// import BarChart from "@/components/chart/BarChart/index.vue";
 import hooks from "@/hooks";
 
 const { useScreenModuleData } = hooks;

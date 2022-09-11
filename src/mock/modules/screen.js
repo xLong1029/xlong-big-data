@@ -7,9 +7,18 @@ const Random = Mock.Random;
 let statisticsData = {
   serviceCompanines: Random.integer(3000, 3500),
   serviceUsers: Random.integer(6000, 6500),
-  developApps: Random.integer(50, 55),
+  developApps: 55,
   monitorServers: 10,
 };
+
+let projectStatistics = [
+  { value: 10, name: "智慧城市项目" },
+  { value: 10, name: "小程序应用" },
+  { value: 20, name: "企业网站" },
+  { value: 5, name: "电商项目" },
+  { value: 5, name: "App应用" },
+  { value: 5, name: "H5场景应用" },
+];
 
 let projectType = [
   {
@@ -160,6 +169,7 @@ export default [
             cityData,
             companyProjectData,
             companinesData,
+            projectStatistics
           });
         }
 
