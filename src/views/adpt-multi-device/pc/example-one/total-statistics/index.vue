@@ -138,7 +138,7 @@ const handleApiData = (data) => {
   }
 };
 
-const { apiData } = useScreenModuleData(handleApiData);
+useScreenModuleData(handleApiData);
 </script>
 
 <style lang="scss" scoped>

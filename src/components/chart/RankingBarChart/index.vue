@@ -120,6 +120,7 @@ const setOption = (chartData = []) => {
 
   const customYAxisRich = {
     color: fontColor,
+    fontSize,
     width: 24 * scale,
     height: 24 * scale,
     align: "center",

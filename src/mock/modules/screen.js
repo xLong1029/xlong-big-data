@@ -11,6 +11,29 @@ let statisticsData = {
   monitorServers: 10,
 };
 
+let projectDescription = [
+  {
+    title: "项目研发",
+    desciption:
+      "我们拥有顶尖的IT技术团队，拥有一套完善的技术标准和技术架构，可以为企业提供信息化支持和解决方案。可开发但不限于H5响应式网站、企业管理系统、小程序和门户网站。",
+  },
+  {
+    title: "设计服务",
+    desciption:
+      "我们拥有专业的设计师，可以为您提供整站页面设计、App设计、平面广告图以及微信/QQ表情包等服务。",
+  },
+  {
+    title: "项目申报",
+    desciption:
+      "我们拥有丰富的行业取到和项目申报经验，可以协助企业获得政府支持和关注，为企业发展添砖加瓦。可申请的项目资金包括但不限于科技资金、文化资金和创新资金等。",
+  },
+  {
+    title: "推广运营",
+    desciption:
+      "我们拥有专业的运营团队，可以为您提供网站SEO、公众号图文托管维护、H5策划吸粉和用户运营等服务。",
+  },
+];
+
 let projectStatistics = [
   { value: 10, name: "智慧城市项目" },
   { value: 10, name: "小程序应用" },
@@ -18,6 +41,16 @@ let projectStatistics = [
   { value: 5, name: "电商项目" },
   { value: 5, name: "App应用" },
   { value: 5, name: "H5场景应用" },
+];
+
+let hotProjects = [
+  { name: "智慧灯杆" },
+  { name: "智慧园区" },
+  { name: "智慧物流" },
+  { name: "扫码抗疫情" },
+  { name: "在线开发票" },
+  { name: "柳州乘车码" },
+  { name: "医疗照护" },
 ];
 
 let projectType = [
@@ -176,7 +209,9 @@ export default [
         // 导航二
         else if (nav == 1) {
           return handleResponse(200, "success", {
+            projectDescription,
             weekData,
+            hotProjects,
           });
         }
       }),

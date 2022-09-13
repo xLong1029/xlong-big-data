@@ -43,7 +43,7 @@ const handleApiData = (data) => {
   chartData.value = data?.projectTypePercentData || [];
 };
 
-const { apiData, apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
+const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 </script>
 
 <style lang="scss" scoped>

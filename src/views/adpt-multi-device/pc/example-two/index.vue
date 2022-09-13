@@ -21,7 +21,12 @@
       </div>
     </div>
     <div class="screen-content__right">
-      <BorderFrame direction="right"></BorderFrame>
+      <div class="chart-1">
+        <HotProjects />
+      </div>
+      <div class="chart-2 pt-15">
+        <BorderFrame></BorderFrame>
+      </div>
     </div>
   </div>
 </template>
@@ -29,6 +34,7 @@
 <script setup>
 import BorderFrame from "@/components/common/BorderFrame/index.vue";
 import WeekStatistics from "./week-statistics/index.vue";
+import HotProjects from "./hot-projects/index.vue";
 import ProjectDescription from "./project-description/index.vue";
 </script>
 
@@ -88,6 +94,15 @@ import ProjectDescription from "./project-description/index.vue";
 
     &-bottom {
       height: 20%;
+    }
+  }
+
+  &__right {
+    .chart-1 {
+      height: 25%;
+    }
+    .chart-2 {
+      height: 75%;
     }
   }
 }

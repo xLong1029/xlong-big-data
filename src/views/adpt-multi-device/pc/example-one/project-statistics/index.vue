@@ -40,7 +40,7 @@ const chart = reactive({
   },
   labelFontSize: 14,
   center: ["35%", "50%"],
-  radius: [0, 60],
+  radius: [0, 75],
   tooltip: {
     trigger: "item",
     formatter: (p) => {
@@ -86,7 +86,7 @@ const handleApiData = (data) => {
   });
 };
 
-const { apiData, apiLoading, contrastRatio } =
+const { apiLoading, contrastRatio } =
   useScreenModuleData(handleApiData);
 </script>
 

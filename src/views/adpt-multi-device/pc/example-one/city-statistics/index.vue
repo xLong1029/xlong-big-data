@@ -74,7 +74,7 @@ const handleApiData = (data) => {
   chart.chartData = data?.cityData || [];
 };
 
-const { apiData, apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
+const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 </script>
 
 <style lang="scss" scoped>

@@ -47,7 +47,7 @@ const chart = reactive({
   },
   labelFontSize: 14,
   center: ["50%", "57%"],
-  radius: 70,
+  radius: 55,
   colorList: ["#42cdff", "#1fff83"],
 });
 
@@ -55,7 +55,7 @@ const handleApiData = (data) => {
   chart.chartData = data?.companinesData || [];
 };
 
-const { apiData, apiLoading, contrastRatio } =
+const { apiLoading, contrastRatio } =
   useScreenModuleData(handleApiData);
 </script>
 
