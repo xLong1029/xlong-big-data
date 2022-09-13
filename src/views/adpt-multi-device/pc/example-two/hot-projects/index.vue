@@ -134,7 +134,7 @@ const move = () => {
 
   contentEle.value = contentEle.value.map((singleEle) => {
     const { x, y, z } = singleEle;
-    const fallLength = width.value;
+    const fallLength = width.value * 1.3;
     const RADIUS = width.value / 2;
     const scale = fallLength / (fallLength - z);
     const alpha = (z + RADIUS) / (2 * RADIUS);
