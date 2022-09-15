@@ -52,8 +52,8 @@ const timer = ref(null);
 const contentRef = ref();
 
 const init = (data) => {
-  width.value = contentRef.value.clientWidth;
-  height.value = contentRef.value.clientHeight;
+  width.value = contentRef.value?.clientWidth ?? 0;
+  height.value = contentRef.value?.clientHeight ?? 0;
 
   const RADIUSX = width.value / 2;
   const RADIUSY = (height.value - 20) / 2;
@@ -173,10 +173,10 @@ const startCloud = () => {
 };
 
 const handleApiData = (data) => {
-  tags.value = data?.hotProjects || [];
+  tags.value = data?.hotProjectData || [];
 };
 
-const { apiLoading, apiData, contrastRatio } = useScreenModuleData(handleApiData);
+const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 
 watch(
   () => apiLoading.value,

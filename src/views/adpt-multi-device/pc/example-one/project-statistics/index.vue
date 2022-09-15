@@ -78,7 +78,7 @@ const chart = reactive({
 const total = ref(0);
 
 const handleApiData = (data) => {
-  chart.chartData = data?.projectStatistics || [];
+  chart.chartData = data?.projectStatisticsData || [];
 
   total.value = 0;
   chart.chartData.forEach((e) => {

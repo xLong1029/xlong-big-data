@@ -5,7 +5,7 @@
         <ProjectDescription />
       </div>
       <div class="chart-2 pt-15">
-        <ProjectUse />
+        <BorderFrame></BorderFrame>
       </div>
       <div class="chart-3 pt-15">
         <WeekStatistics />
@@ -25,6 +25,9 @@
         <HotProjects />
       </div>
       <div class="chart-2 pt-15">
+        <ProjectUse />
+      </div>
+      <div class="chart-3 pt-15">
         <BorderFrame></BorderFrame>
       </div>
     </div>
@@ -99,11 +102,17 @@ import ProjectUse from "./project-use/index.vue";
   }
 
   &__right {
+    display: flex;
+    flex-direction: column;
+
     .chart-1 {
       height: 25%;
     }
     .chart-2 {
-      height: 75%;
+      height: 40%;
+    }
+    .chart-3 {
+      flex: 1;
     }
   }
 }

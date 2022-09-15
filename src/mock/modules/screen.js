@@ -34,16 +34,16 @@ let projectDescription = [
   },
 ];
 
-let projectStatistics = [
-  { value: 10, name: "智慧城市项目" },
-  { value: 10, name: "小程序应用" },
-  { value: 20, name: "企业网站" },
-  { value: 5, name: "电商项目" },
-  { value: 5, name: "App应用" },
-  { value: 5, name: "H5场景应用" },
+let projectStatisticsData = [
+  { value: Random.integer(5, 10), name: "智慧城市项目" },
+  { value: Random.integer(5, 10), name: "小程序应用" },
+  { value: Random.integer(5, 20), name: "企业网站" },
+  { value: Random.integer(1, 5), name: "电商项目" },
+  { value: Random.integer(1, 5), name: "App应用" },
+  { value: Random.integer(1, 5), name: "H5场景应用" },
 ];
 
-let hotProjects = [
+let projects = [
   { name: "智慧灯杆" },
   { name: "智慧园区" },
   { name: "智慧物流" },
@@ -157,7 +157,7 @@ let companyProjectData = getCompanyProjectData();
 
 // 获取服务企业数量
 const getCompaninesData = () => {
-  let average = statisticsData.serviceCompanines / companyType.length;
+  const average = statisticsData.serviceCompanines / companyType.length;
   let arr = [];
   let last = statisticsData.serviceCompanines;
   for (let i = 0; i < companyType.length; i++) {
@@ -176,6 +176,32 @@ const getCompaninesData = () => {
   return arr;
 };
 let companinesData = getCompaninesData();
+
+// 获取项目使用情况
+const getProjectUseData = () => {
+  return projects.map((e) => ({
+    ...e,
+    users: Random.integer(
+      Math.floor(statisticsData.serviceUsers / 2),
+      Math.floor(statisticsData.serviceUsers)
+    ),
+    companines: Random.integer(
+      Math.floor(statisticsData.serviceCompanines / 2),
+      Math.floor(statisticsData.serviceCompanines)
+    ),
+  }));
+};
+let projectUseData = getProjectUseData();
+
+// 获取热门项目
+const getHotProjectData = () => {
+  let data = projectUseData.sort(
+    (a, b) => b.users + b.companines - (a.users + a.companines)
+  );
+
+  return data.slice(0, 8);
+};
+let hotProjectData = getHotProjectData();
 
 export default [
   {
@@ -206,7 +232,9 @@ export default [
             cityData,
             companyProjectData,
             companinesData,
-            projectStatistics
+            projectStatisticsData,
+            projectUseData,
+            
           });
         }
 
@@ -215,7 +243,7 @@ export default [
           return handleResponse(200, "success", {
             projectDescription,
             weekData,
-            hotProjects,
+           hotProjectData
           });
         }
       }),

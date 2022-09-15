@@ -72,6 +72,7 @@ export const handleMock = (config, handleData) => {
         return handleData({ config, token });
     }
     catch (err) {
+        console.log(err);
         return handleResponse(500);
     }
 }
