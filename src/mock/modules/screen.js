@@ -53,6 +53,8 @@ let hotProjects = [
   { name: "医疗照护" },
   { name: "大数据驾驶舱" },
   { name: "OA办公" },
+  { name: "项目申报" },
+  { name: "H5邀请函" },
 ];
 
 let projectType = [

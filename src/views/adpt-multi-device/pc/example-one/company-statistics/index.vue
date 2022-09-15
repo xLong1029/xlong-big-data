@@ -1,6 +1,10 @@
 <template>
-  <BorderFrame>
-    <LineTitle :title="chart.title" />
+  <BorderFrame class="company-statistics-container">
+    <LineTitle :title="chart.title">
+      <template #extra>
+        <span class="unit">(单位：项)</span>
+      </template>
+    </LineTitle>
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <template #content>
@@ -55,11 +59,16 @@ const handleApiData = (data) => {
   chart.chartData = data?.companinesData || [];
 };
 
-const { apiLoading, contrastRatio } =
-  useScreenModuleData(handleApiData);
+const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 </script>
 
 <style lang="scss" scoped>
+@import "@/styles/screen-mixin.scss";
+
+.company-statistics-container{
+  @include line-title-set-unit();
+}
+
 .wave-container {
   position: absolute;
   left: 50%;

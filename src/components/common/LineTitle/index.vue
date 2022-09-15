@@ -25,6 +25,8 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
+@import "@/styles/screen-mixin.scss";
+
 .line-title-container {
   width: 100%;
   height: size(30);

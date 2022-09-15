@@ -59,7 +59,7 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 <style lang="scss" scoped>
 @import "@/styles/screen-mixin.scss";
 
-.tab-wrapper{
+.tab-wrapper {
   width: 100%;
   height: 100%;
 }
@@ -78,14 +78,12 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 
     &__text {
       font-weight: bold;
-      background-image: linear-gradient(180deg, #72ffe6, #178be9);
-      background-clip: text;
-      color: transparent;
+      @include gradient-font(180deg, #72ffe6, #178be9);
     }
 
     &.is-active {
       .tab-title-item__text {
-        background-image: linear-gradient(180deg, #fabb13, #f08814);
+        @include gradient-font(180deg, #fabb13, #f08814);
       }
     }
 

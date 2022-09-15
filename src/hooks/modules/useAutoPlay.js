@@ -5,9 +5,8 @@
  * 版本 : version 1.0
  */
 
-import { isFunction } from "@vue/shared";
 import { ref, reactive, onMounted, onUnmounted, watch } from "vue";
-import { logInfo } from "@/utils";
+// import { logInfo } from "@/utils";
 
 export default function (props) {
   // 默认配置
@@ -20,8 +19,6 @@ export default function (props) {
   const activeIndex = ref(0);
   // 定时器
   const timer = ref(null);
-  // 改变事件
-  const onChange = ref(null);
   // 是否开启自动播放
   const autoplay = ref(true);
   // 记录村黄次数
@@ -107,13 +104,6 @@ export default function (props) {
     }
   };
 
-  // 监听激活索引值的改变
-  watch(activeIndex, (val, preVal) => {
-    if (isFunction(onChange.value)) {
-      onChange.value(val, preVal);
-    }
-  });
-
   // 监听自动播放变量
   watch(autoplay, (val) => {
     if (val) {
@@ -132,5 +122,5 @@ export default function (props) {
   onUnmounted(() => {
     stopTimer();
   });
-  return { activeIndex, autoplay, setActiveIndex, onChange, loopCount };
+  return { activeIndex, autoplay, setActiveIndex, loopCount };
 }

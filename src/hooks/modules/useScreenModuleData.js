@@ -5,6 +5,7 @@
  * 版本 : version 1.0
  */
 import { inject, watch } from "vue";
+import { isFunction } from "lodash";
 
 export default function (handleApiData) {
   const apiData = inject("getApiData", null);
@@ -14,7 +15,9 @@ export default function (handleApiData) {
   watch(
     () => apiData.value,
     (val) => {
-      handleApiData(val);
+      if (handleApiData && isFunction(handleApiData)) {
+        handleApiData(val);
+      }
     },
     {
       immediate: true,

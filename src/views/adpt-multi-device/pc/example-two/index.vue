@@ -5,7 +5,7 @@
         <ProjectDescription />
       </div>
       <div class="chart-2 pt-15">
-        <BorderFrame></BorderFrame>
+        <ProjectUse />
       </div>
       <div class="chart-3 pt-15">
         <WeekStatistics />
@@ -36,6 +36,7 @@ import BorderFrame from "@/components/common/BorderFrame/index.vue";
 import WeekStatistics from "./week-statistics/index.vue";
 import HotProjects from "./hot-projects/index.vue";
 import ProjectDescription from "./project-description/index.vue";
+import ProjectUse from "./project-use/index.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -69,7 +70,7 @@ import ProjectDescription from "./project-description/index.vue";
       height: size(280);
     }
     .chart-2 {
-      height: 32%;
+      height: 40%;
     }
     .chart-3 {
       flex: 1;

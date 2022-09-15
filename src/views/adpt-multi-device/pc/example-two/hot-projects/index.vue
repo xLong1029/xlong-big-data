@@ -174,22 +174,28 @@ const startCloud = () => {
 
 const handleApiData = (data) => {
   tags.value = data?.hotProjects || [];
-
-  if (isFirst.value) {
-    isFirst.value = false;
-
-    startCloud();
-  }
 };
 
-const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
+const { apiLoading, apiData, contrastRatio } = useScreenModuleData(handleApiData);
+
+watch(
+  () => apiLoading.value,
+  (val) => {
+    if (!val && isFirst.value) {
+      isFirst.value = false;      
+      startCloud();
+    }
+  },
+  {
+    immediate: true,
+  }
+);
 
 watch(
   () => contrastRatio.value,
   () => {
     contentEle.value = [];
-    init(tags.value);
-    runTags(duration.value);
+    startCloud();
   }
 );
 </script>
