@@ -229,7 +229,7 @@ const handleData = (chartData, opacity) => {
   }));
 };
 
-const restartTimer = () => {
+const startTimer = () => {
   stopTimer();
   timer.value = setInterval(startLoopMove, props.duration);
 };
@@ -281,7 +281,7 @@ watch(
   autoplay,
   (val) => {
     if (val) {
-      restartTimer();
+      startTimer();
     } else {
       stopTimer();
     }

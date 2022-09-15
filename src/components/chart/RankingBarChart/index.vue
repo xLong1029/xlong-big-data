@@ -209,7 +209,7 @@ const setOption = (chartData = []) => {
 
             return colors;
           },
-          barBorderRadius: [0, 15, 15, 0],
+          borderRadius: [0, 15, 15, 0],
         },
         label: {
           show: true,

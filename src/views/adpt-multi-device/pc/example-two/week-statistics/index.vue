@@ -15,6 +15,7 @@
             :value-label-visible="chart.valueLabelVisible"
             :chart-direction="chart.chartDirection"
             :autoplay="chart.autoplay"
+            :color-list="chart.colorList"
           />
         </template>
       </DataLoading>
@@ -72,6 +73,7 @@ const chart = reactive({
   labelFontSize: 14,
   chartDirection: "vertical",
   autoplay: true,
+  colorList: ["#4992ff", "#7cffb2"],
 });
 
 const handleApiData = (data) => {

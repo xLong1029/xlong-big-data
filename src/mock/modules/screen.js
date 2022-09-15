@@ -51,6 +51,8 @@ let hotProjects = [
   { name: "在线开发票" },
   { name: "柳州乘车码" },
   { name: "医疗照护" },
+  { name: "大数据驾驶舱" },
+  { name: "OA办公" },
 ];
 
 let projectType = [
