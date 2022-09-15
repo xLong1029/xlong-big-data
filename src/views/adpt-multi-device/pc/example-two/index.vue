@@ -70,7 +70,7 @@ import ProjectUse from "./project-use/index.vue";
     flex-direction: column;
 
     .chart-1 {
-      height: size(280);
+      min-height: size(280);
     }
     .chart-2 {
       height: 40%;

@@ -11,6 +11,7 @@ import registerComponents from "./components";
 
 // 全局样式
 import "./styles/index.scss";
+import "@/assets/font/iconfont.css";
 
 // 路由权限
 import "./permission.js";

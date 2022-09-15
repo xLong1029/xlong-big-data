@@ -6,7 +6,7 @@ const Random = Mock.Random;
 
 let statisticsData = {
   serviceCompanines: Random.integer(3000, 3500),
-  serviceUsers: Random.integer(6000, 6500),
+  serviceUsers: Random.integer(60000, 65000),
   developApps: 55,
   monitorServers: 10,
 };
@@ -44,17 +44,18 @@ let projectStatisticsData = [
 ];
 
 let projects = [
-  { name: "智慧灯杆" },
-  { name: "智慧园区" },
-  { name: "智慧物流" },
-  { name: "扫码抗疫情" },
-  { name: "在线开发票" },
-  { name: "柳州乘车码" },
-  { name: "医疗照护" },
-  { name: "大数据驾驶舱" },
-  { name: "OA办公" },
-  { name: "项目申报" },
-  { name: "H5邀请函" },
+  { name: "智慧灯杆", status: -1, type: "web" },
+  { name: "智慧园区", status: 1, type: "web" },
+  { name: "智慧物流", status: 1, type: "web" },
+  { name: "扫码抗疫情", status: 1, type: "app" },
+  { name: "在线开发票", status: 1, type: "web" },
+  { name: "柳州乘车码", status: 1, type: "app" },
+  { name: "医疗照护", status: -1, type: "web" },
+  { name: "大数据驾驶舱", status: 1, type: "web" },
+  { name: "OA办公", status: 1, type: "web" },
+  { name: "项目申报", status: -1, type: "project" },
+  { name: "H5邀请函", status: 1, type: "design" },
+  { name: "微信表情包", status: 1, type: "design" },
 ];
 
 let projectType = [

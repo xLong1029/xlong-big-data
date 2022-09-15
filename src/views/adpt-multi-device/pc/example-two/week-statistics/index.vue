@@ -1,6 +1,10 @@
 <template>
-  <BorderFrame>
-    <LineTitle title="监控平台周访问量" />
+  <BorderFrame class="week-statistics-container">
+    <LineTitle title="监控平台周访问量">
+      <template #extra>
+        <span class="unit">(单位：次)</span>
+      </template>
+    </LineTitle>
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <template #content>
@@ -84,4 +88,10 @@ const handleApiData = (data) => {
 const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "@/styles/screen-mixin.scss";
+
+.week-statistics-container {
+  @include line-title-set-unit();
+}
+</style>

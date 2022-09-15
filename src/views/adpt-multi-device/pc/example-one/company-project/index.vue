@@ -1,6 +1,10 @@
 <template>
-  <BorderFrame>
-    <LineTitle title="各类企业项目维护情况" />
+  <BorderFrame class="company-project-container">
+    <LineTitle title="各类企业项目维护情况">
+      <template #extra>
+        <span class="unit">(单位：项)</span>
+      </template>
+    </LineTitle>
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <template #content>
@@ -70,4 +74,10 @@ const handleApiData = (data) => {
 const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "@/styles/screen-mixin.scss";
+
+.company-project-container {
+  @include line-title-set-unit();
+}
+</style>

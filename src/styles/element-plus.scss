@@ -33,7 +33,10 @@
   &__image {
     opacity: 0.85;
   }
+}
 
+.el-tag--dark{
+  --el-tag-bg-color: #0095ff;
 }
 
 
@@ -81,4 +84,8 @@
   .el-breadcrumb__inner a {
     font-weight: normal;
   }
+}
+
+.el-tag{
+  height: size(24) !important;
 }
