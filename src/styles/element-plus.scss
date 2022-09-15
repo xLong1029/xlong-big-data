@@ -4,7 +4,7 @@
   --el-color-primary: var(--app-color-base); // 无法使用color(base)
 
   --el-svg-monochrome-grey: #8cfaf9;
-  --el-mask-color: rgb(1 12 47 / 70%)
+  --el-mask-color: rgb(1 12 47 / 70%);
 }
 
 // .el-loading-mask {
@@ -35,10 +35,13 @@
   }
 }
 
-.el-tag--dark{
+.el-tag--dark {
   --el-tag-bg-color: #0095ff;
 }
 
+.el-tag--dark.el-tag--success {
+  --el-tag-bg-color: #59c72e;
+}
 
 // 自定义面包屑
 .custom-breadcrumb-style {
@@ -86,6 +89,6 @@
   }
 }
 
-.el-tag{
+.el-tag {
   height: size(24) !important;
 }
