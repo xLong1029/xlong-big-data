@@ -233,8 +233,6 @@ export default [
             companyProjectData,
             companinesData,
             projectStatisticsData,
-            projectUseData,
-            
           });
         }
 
@@ -243,7 +241,8 @@ export default [
           return handleResponse(200, "success", {
             projectDescription,
             weekData,
-           hotProjectData
+            hotProjectData,
+            projectUseData,
           });
         }
       }),

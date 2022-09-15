@@ -2,12 +2,12 @@
   <BorderFrame>
     <LineTitle title="项目使用情况" />
     <div class="content">
-      <DataLoading :loading="apiLoading" :data="tabs">
+      <DataLoading :loading="apiLoading" :data="list">
         <template #content>
-          <!-- <ul>
+          <ul>
             <li
               class="project-list-item"
-              v-for="(item, index) in listData"
+              v-for="(item, index) in list"
               :key="'task-item' + index"
             >
               <div class="project-list-item__left">
@@ -25,15 +25,17 @@
                 </div>
                 <div class="statistics-card ml-5">
                   <span
-                    ><a-tag v-if="item.status === 1" color="#0095ff" class="mr-0">
+                    >
+                    <!-- <a-tag v-if="item.status === 1" color="#0095ff" class="mr-0">
                       正常
-                    </a-tag></span
+                    </a-tag> -->
+                    </span
                   >
                   <span class="mt-5 font-12 gray">当前状态</span>
                 </div>
               </div>
             </li>
-          </ul> -->
+          </ul>
         </template>
       </DataLoading>
     </div>
@@ -46,19 +48,16 @@ import hooks from "@/hooks";
 import descBg from "@/assets/images/desc-bg.png";
 import descBgActive from "@/assets/images/desc-bg-active.png";
 
-const { useAutoPlay, useScreenModuleData, useFilter } = hooks;
+const { useScreenModuleData, useFilter } = hooks;
 
 const tabs = ref([]);
 
 const { toThousands } = useFilter();
 
-const { activeIndex, setActiveIndex } = useAutoPlay({
-  data: tabs,
-  duration: 5000,
-});
+const list = ref([]);
 
 const handleApiData = (data) => {
-  tabs.value = data?.projectDescription || [];
+  list.value = data?.projectUseData || [];
 };
 
 const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
