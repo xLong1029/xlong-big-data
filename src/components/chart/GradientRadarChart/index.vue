@@ -3,7 +3,6 @@
     :option="option"
     :width="width"
     :height="height"
-    :duration="duration"
   />
 </template>
 
@@ -57,11 +56,6 @@ const props = defineProps({
   scale: {
     type: Number,
     default: 1,
-  },
-  // 持续时间
-  duration: {
-    type: Number,
-    default: 1500,
   },
   // 文本大小
   labelFontSize: {

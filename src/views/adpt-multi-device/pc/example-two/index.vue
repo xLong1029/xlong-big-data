@@ -15,7 +15,9 @@
       <div class="screen-content__center-top">
         <BorderFrame></BorderFrame>
       </div>
-      <div class="screen-content__center-center">222</div>
+      <div class="screen-content__center-center">
+        <MapStatistics />
+      </div>
       <div class="screen-content__center-bottom">
         <BorderFrame></BorderFrame>
       </div>
@@ -41,6 +43,7 @@ import HotProjects from "./hot-projects/index.vue";
 import ProjectDescription from "./project-description/index.vue";
 import ProjectUse from "./project-use/index.vue";
 import DataMonitor from "./data-monitor/index.vue";
+import MapStatistics from "./map-statistics/index.vue";
 </script>
 
 <style lang="scss" scoped>

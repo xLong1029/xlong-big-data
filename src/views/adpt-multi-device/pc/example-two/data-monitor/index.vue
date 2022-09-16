@@ -10,7 +10,6 @@
             :fly-line-data="chart.flyLineData"
             :scale="contrastRatio"
             :tooltip="chart.tooltip"
-            :grid="chart.grid"
             :label-font-size="chart.labelFontSize"
           />
         </template>
@@ -21,7 +20,7 @@
 
 <script setup>
 import { reactive, watch } from "vue";
-import StatisticsDiagram from "@/components/screen/StatisticsDiagram/index.vue";
+import StatisticsDiagram from "@/components/chart/StatisticsDiagram/index.vue";
 import hooks from "@/hooks";
 
 const { useScreenModuleData } = hooks;
@@ -82,65 +81,65 @@ const chart = reactive({
     // 企业网站
     {
       coords: [
-        [280, 30],
-        [280, 190],
+        [275, 30],
+        [275, 180],
       ],
     },
     {
       coords: [
-        [280, 190],
-        [280, 30],
+        [275, 180],
+        [275, 30],
       ],
     },
     // 智慧城市项目
     {
       coords: [
-        [280, 190],
+        [275, 180],
         [500, 250],
       ],
     },
     {
       coords: [
         [500, 250],
-        [280, 190],
+        [275, 180],
       ],
     },
     // 小程序应用
     {
       coords: [
-        [280, 190],
+        [275, 180],
         [500, 120],
       ],
     },
     {
       coords: [
         [500, 120],
-        [280, 190],
+        [275, 180],
       ],
     },
     // 电商项目
     {
       coords: [
-        [280, 190],
-        [280, 320],
+        [275, 180],
+        [275, 320],
       ],
     },
     {
       coords: [
-        [280, 320],
-        [280, 190],
+        [275, 320],
+        [275, 180],
       ],
     },
     // App应用
     {
       coords: [
         [50, 100],
-        [280, 190],
+        [275, 180],
       ],
     },
     {
       coords: [
-        [280, 190],
+        [275, 180],
         [50, 100],
       ],
     },
@@ -148,12 +147,12 @@ const chart = reactive({
     {
       coords: [
         [50, 250],
-        [280, 190],
+        [275, 180],
       ],
     },
     {
       coords: [
-        [280, 190],
+        [275, 180],
         [50, 250],
       ],
     },
@@ -163,7 +162,7 @@ const chart = reactive({
     {
       name: "监控平台",
       category: 1,
-      value: [280, 190],
+      value: [275, 180],
     },
     {
       name: "智慧城市项目",
@@ -178,7 +177,7 @@ const chart = reactive({
     {
       name: "企业网站",
       category: 2,
-      value: [280, 30],
+      value: [275, 30],
     },
     {
       name: "App应用",
@@ -188,7 +187,7 @@ const chart = reactive({
     {
       name: "电商项目",
       category: 2,
-      value: [280, 320],
+      value: [275, 320],
     },
     {
       name: "H5场景应用",
@@ -228,7 +227,6 @@ const chart = reactive({
 const handleApiData = (data) => {
   const monitorData = data?.projectMonitorData || [];
 
-  console.log(monitorData);
   if (monitorData.length) {
     chart.chartData = chart.chartData.map((e) => {
       const obj = monitorData.find((o) => o.name === e.name);

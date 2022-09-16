@@ -6,6 +6,7 @@
         <img class="bg__bottom" :src="buildingsBottom" />
         <!-- <img class="bg__light animate-scale" :src="buildingsLight" /> -->
       </div>
+      
       <div class="statistics-1">
         <StatisticsDataFrame :name="serviceCompanines.name">
           <template #value>

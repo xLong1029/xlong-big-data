@@ -1,6 +1,5 @@
 <template>
   <Chart :option="option" :width="width" :height="height" />
-  <!-- <div>2</div> -->
 </template>
 
 <script setup>

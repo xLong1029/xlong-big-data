@@ -1,6 +1,3 @@
-
-import { deepClone } from "@/utils";
-
 /*
  * 模块 : 图表配置项模块
  * 作者 : 罗永梅（381612175@qq.com）
@@ -8,6 +5,7 @@ import { deepClone } from "@/utils";
  * 版本 : version 1.0
  */
 import { isArray, isFunction } from "lodash";
+import { deepClone } from "@/utils";
 
 export default function () {
   /**

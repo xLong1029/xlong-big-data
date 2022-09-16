@@ -24,7 +24,6 @@
             :label-font-size="chart.labelFontSize"
             :radius="chart.radius"
             :center="chart.center"
-            :autoplay="chart.autoplay"
             :color-list="chart.colorList"
           />
         </template>

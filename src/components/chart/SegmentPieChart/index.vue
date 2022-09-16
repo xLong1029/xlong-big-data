@@ -3,7 +3,6 @@
 </template>
 
 <script setup>
-// import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch, onUnmounted } from "vue";
 import hooks from "@/hooks";
 

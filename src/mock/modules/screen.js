@@ -1,6 +1,6 @@
 import Mock from "mockjs";
 import { handleMock, handleResponse } from "./../mock-handle.js";
-import guangXiCityJson from "./../../assets/json/guangxi-city.json";
+import guangxiCityJson from "./../../assets/json/guangxi-city.json";
 
 const Random = Mock.Random;
 
@@ -126,11 +126,12 @@ let projectTypePercentData = getProjectTypePercentData();
 
 // 获取地市数据
 const getCityData = () => {
-  return guangXiCityJson.map(({ name, coordinate }) => ({
+  return guangxiCityJson.map(({ name, coordinate }) => ({
     name,
     coordinate,
     companines: Random.integer(50, 200),
     users: Random.integer(1000, 4000),
+    visit: Random.integer(20, 100),
   }));
 };
 let cityData = getCityData();
@@ -261,6 +262,7 @@ export default [
             hotProjectData,
             projectUseData,
             projectMonitorData,
+            cityData
           });
         }
       }),

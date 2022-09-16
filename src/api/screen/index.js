@@ -17,4 +17,13 @@ export default {
             method: 'get'
         })
     },
+    /**
+     * 获取地图信息
+     */
+    GetMapData: () => {
+        return request({
+            url: `/api/map/data`,
+            method: 'get'
+        })
+    },
 };
