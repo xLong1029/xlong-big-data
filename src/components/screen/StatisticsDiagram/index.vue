@@ -5,6 +5,7 @@
 <script setup>
 import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch } from "vue";
+import symbolJson from "@/assets/json/symbol.json";
 
 const props = defineProps({
   title: {
@@ -36,20 +37,20 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
-  // 中心点
-  centerPoint: {
-    type: Array,
-    default: () => [
-      {
-        name: "xLong家里蹲",
-        value: [0, 0],
-      },
-    ],
-  },
   // 颜色列表
   colorList: {
     type: Array,
-    default: () => ["#71ffaa", "#09ddff", "#00e8ff", "#71ffaa"],
+    default: () => [
+      "#5470c6",
+      "#91cc75",
+      "#fac858",
+      "#ee6666",
+      "#73c0de",
+      "#3ba272",
+      "#fc8452",
+      "#9a60b4",
+      "#ea7ccc",
+    ],
   },
   // 缩放基数
   scale: {
@@ -78,13 +79,25 @@ const props = defineProps({
 const option = ref(null);
 
 const setOption = (chartData = []) => {
-  const { lineData, flyLineData, colorList, scale, labelFontSize, grid, tooltip } = props;
+  const { colorList, lineData, flyLineData, scale, labelFontSize, grid, tooltip } = props;
 
   const fontSize = labelFontSize * scale;
   const fontColor = "#FFFFFF";
 
-  const data = chartData.map((e) => {
-    const { name, value, category, categoryType, offer, get, symbolSize, symbol } = e;
+  const symbolData = chartData.map((e) => {
+    const { name, value, category, extraData } = e;
+
+    let symbol = null;
+    let symbolSize = [60 * scale, 60 * scale];
+    if (category === 1) {
+      symbol = `image://${symbolJson[0].base64}`;
+      symbolSize = [90 * scale, 70 * scale];
+    }
+    if (category === 2) {
+      symbolSize = [70 * scale, 50 * scale];
+      symbol = `image://${symbolJson[1].base64}`;
+    }
+
     return {
       name,
       value,
@@ -94,16 +107,12 @@ const setOption = (chartData = []) => {
       symbolSize,
       fixed: true,
       zlevel: 20,
-      label:
-        category === 4
-          ? false
-          : {
-              color: fontColor,
-              position: category === 3 ? "top" : "bottom",
-              fontSize,
-            },
-      offer,
-      get,
+      label: {
+        color: fontColor,
+        position: "bottom",
+        fontSize,
+      },
+      extraData,
     };
   });
 
@@ -113,10 +122,7 @@ const setOption = (chartData = []) => {
       fontSize,
       color: fontColor,
     },
-    trigger: "axis",
-    axisPointer: {
-      type: "line",
-    },
+    trigger: "item",
     backgroundColor: "rgba(0,0,0,0.6)",
     borderColor: "transparent",
     padding: [10 * scale, 0 * scale],
@@ -125,10 +131,10 @@ const setOption = (chartData = []) => {
 
   // 网格
   const customGrid = {
-    top: "10%",
+    top: "2%",
     bottom: "1%",
     left: "1%",
-    right: "1%",
+    right: "16%",
     containLabel: true,
     ...grid,
   };
@@ -136,7 +142,7 @@ const setOption = (chartData = []) => {
   option.value = {
     tooltip: customTooltip,
     grid: customGrid,
-    color: colorList,
+    color: ["#4992ff", "#7cffb2"],
     xAxis: {
       show: false,
       type: "value",
@@ -152,25 +158,19 @@ const setOption = (chartData = []) => {
         draggable: false,
         coordinateSystem: "cartesian2d", //使用二维的直角坐标系（也称笛卡尔坐标系）
         symbol: "rect",
-        symbolOffset: ["15%", 0],
+        symbolOffset: [0, 0],
         label: {
-          normal: {
-            show: true,
-            textStyle: {
-              // 隐藏不需要显示的文本标签
-              color: "transparent",
-            },
-          },
+          show: true,
+          // 隐藏不需要显示的文本标签
+          color: "transparent",
         },
-        data,
+        data: symbolData,
         links: lineData,
         lineStyle: {
-          normal: {
-            opacity: 1,
-            color: "#99e8ff",
-            curveness: 0.05,
-            width: 1,
-          },
+          opacity: 1,
+          color: "#57b4d2",
+          curveness: 0.05,
+          width: 1,
         },
       },
       {
@@ -183,17 +183,15 @@ const setOption = (chartData = []) => {
           show: true,
           period: 5,
           trailLength: 0.01,
-          symbolSize: 10,
+          symbolSize: 8 * scale,
           symbol: "pin",
           loop: true,
-          color: "rgba(55,155,255,0.5)",
+          color: "#00e3ff9e",
         },
         lineStyle: {
-          normal: {
-            color: "#99e8ff",
-            width: 0,
-            curveness: 0.05,
-          },
+          color: "#99e8ff",
+          width: 0,
+          curveness: 0.05,
         },
         data: flyLineData,
       },
@@ -207,17 +205,15 @@ const setOption = (chartData = []) => {
           show: true,
           period: 6,
           trailLength: 0.01,
-          symbolSize: 10,
+          symbolSize: 8 * scale,
           symbol: "pin",
           loop: true,
-          color: "rgba(55,155,255,0.5)",
+          color: "#00e3ff9e",
         },
         lineStyle: {
-          normal: {
-            color: "#99e8ff",
-            width: 0,
-            curveness: 0.05,
-          },
+          color: "#99e8ff",
+          width: 0,
+          curveness: 0.05,
         },
         data: flyLineData,
       },
@@ -231,17 +227,15 @@ const setOption = (chartData = []) => {
           show: true,
           period: 8,
           trailLength: 0.01,
-          symbolSize: 10,
+          symbolSize: 8 * scale,
           symbol: "pin",
           loop: true,
-          color: "rgba(55,155,255,0.5)",
+          color: "#00e3ff9e",
         },
         lineStyle: {
-          normal: {
-            color: "#99e8ff",
-            width: 0,
-            curveness: 0.05,
-          },
+          color: "#99e8ff",
+          width: 0,
+          curveness: 0.05,
         },
         data: flyLineData,
       },
@@ -258,4 +252,12 @@ watch(
     immediate: true,
   }
 );
+
+watch(
+  () => props.scale,
+  () => {
+    setOption(props.chartData);
+  }
+);
+
 </script>

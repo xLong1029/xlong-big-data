@@ -204,6 +204,22 @@ const getHotProjectData = () => {
 };
 let hotProjectData = getHotProjectData();
 
+// 获取监控项目数据
+const geProjecttMonitorData = () => {
+  return projectStatisticsData.map((e) => ({
+    ...e,
+    users: Random.integer(
+      Math.floor(statisticsData.serviceUsers / 2),
+      Math.floor(statisticsData.serviceUsers)
+    ),
+    companines: Random.integer(
+      Math.floor(statisticsData.serviceCompanines / 2),
+      Math.floor(statisticsData.serviceCompanines)
+    ),
+  }));
+};
+let projectMonitorData = geProjecttMonitorData();
+
 export default [
   {
     url: "/api/screen/data",
@@ -244,6 +260,7 @@ export default [
             weekData,
             hotProjectData,
             projectUseData,
+            projectMonitorData,
           });
         }
       }),

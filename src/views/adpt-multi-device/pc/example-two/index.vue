@@ -5,10 +5,10 @@
         <ProjectDescription />
       </div>
       <div class="chart-2 pt-15">
-        <DataShare/>
+        <DataMonitor />
       </div>
       <div class="chart-3 pt-15">
-        <BorderFrame></BorderFrame>
+        <WeekStatistics />
       </div>
     </div>
     <div class="screen-content__center">
@@ -28,7 +28,7 @@
         <ProjectUse />
       </div>
       <div class="chart-3 pt-15">
-        <WeekStatistics />
+        <BorderFrame></BorderFrame>
       </div>
     </div>
   </div>
@@ -40,7 +40,7 @@ import WeekStatistics from "./week-statistics/index.vue";
 import HotProjects from "./hot-projects/index.vue";
 import ProjectDescription from "./project-description/index.vue";
 import ProjectUse from "./project-use/index.vue";
-import DataShare from "./data-share/index.vue";
+import DataMonitor from "./data-monitor/index.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -74,7 +74,7 @@ import DataShare from "./data-share/index.vue";
       min-height: size(280);
     }
     .chart-2 {
-      height: 35%;
+      height: 36%;
     }
     .chart-3 {
       flex: 1;
