@@ -40,7 +40,7 @@ watch(
 <style lang="scss" scoped>
 @font-face {
   font-family: Lets-go-Digital;
-  src: url("./../../../../../assets/font/Lets-go-Digital.ttf");
+  src: url("./../../../assets/font/Lets-go-Digital.ttf");
 }
 
 .digital-number {

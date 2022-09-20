@@ -74,11 +74,6 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 <style lang="scss" scoped>
 @import "@/styles/screen-mixin.scss";
 
-@font-face {
-  font-family: Lets-go-Digital;
-  src: url("./../../../../../assets/font/Lets-go-Digital.ttf");
-}
-
 :deep(.data-loading-container) {
   position: relative;
   display: flex;
