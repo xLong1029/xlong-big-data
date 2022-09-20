@@ -78,12 +78,12 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 
     &__text {
       font-weight: bold;
-      @include gradient-font(180deg, #72ffe6, #178be9);
+      @include gradient-font(-90deg, #72ffe6, #178be9);
     }
 
     &.is-active {
       .tab-title-item__text {
-        @include gradient-font(180deg, #fabb13, #f08814);
+        @include gradient-font(-90deg, #fae313, #ffb223);
       }
     }
 

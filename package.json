@@ -20,7 +20,8 @@
     "vue": "^3.2.37",
     "vue-countup-v3": "^1.0.14",
     "vue-router": "4.0.10",
-    "vue3-seamless-scroll": "^2.0.1"
+    "vue3-seamless-scroll": "^2.0.1",
+    "swiper": "^7.3.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.3",

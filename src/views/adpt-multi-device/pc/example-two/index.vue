@@ -19,7 +19,7 @@
         <MapStatistics />
       </div>
       <div class="screen-content__center-bottom">
-        <BorderFrame></BorderFrame>
+        <MsgStatistics />
       </div>
     </div>
     <div class="screen-content__right">
@@ -30,7 +30,7 @@
         <ProjectUse />
       </div>
       <div class="chart-3 pt-15">
-        <BorderFrame></BorderFrame>
+        <ProjectIncome />
       </div>
     </div>
   </div>
@@ -44,6 +44,8 @@ import ProjectDescription from "./project-description/index.vue";
 import ProjectUse from "./project-use/index.vue";
 import DataMonitor from "./data-monitor/index.vue";
 import MapStatistics from "./map-statistics/index.vue";
+import MsgStatistics from "./msg-statistics/index.vue";
+import ProjectIncome from "./project-income/index.vue";
 </script>
 
 <style lang="scss" scoped>

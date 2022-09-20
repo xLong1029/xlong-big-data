@@ -44,13 +44,11 @@ const props = defineProps({
   },
   // 中心点
   centerPoint: {
-    type: Array,
-    default: () => [
-      {
-        name: "南宁市",
-        value: [108.467414, 23.055856],
-      },
-    ],
+    type: Object,
+    default: () => ({
+      name: "南宁市",
+      value: [108.467414, 23.055856],
+    }),
   },
   // 地图名称
   mapName: {
@@ -313,7 +311,7 @@ const setOption = (chartData = []) => {
           },
           textStyle: {
             color: fontColor,
-            fontSize
+            fontSize,
           },
         },
         itemStyle: {
