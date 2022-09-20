@@ -9,6 +9,7 @@ let statisticsData = {
   serviceUsers: Random.integer(60000, 65000),
   developApps: 55,
   monitorServers: 10,
+  money: 131,
 };
 
 let projectDescription = [
@@ -256,7 +257,10 @@ export default [
 
         // 导航二
         else if (nav == 1) {
+          statisticsData.money += Random.integer(1, 5);
+
           return handleResponse(200, "success", {
+            money: statisticsData.money,
             projectDescription,
             weekData,
             hotProjectData,

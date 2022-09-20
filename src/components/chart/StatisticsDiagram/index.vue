@@ -257,6 +257,9 @@ watch(
   () => props.scale,
   () => {
     setOption(props.chartData);
+  },
+  {
+    immediate: true,
   }
 );
 

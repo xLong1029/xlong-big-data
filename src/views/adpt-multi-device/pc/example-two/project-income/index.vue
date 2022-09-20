@@ -4,19 +4,24 @@
     <div class="content">
       <DataLoading :loading="apiLoading" :data="list">
         <template #content>
-          <div class="baseBG"></div>
-          <div class="circle-wrapper">
-            <div
-              v-for="(item, index) in list"
-              :key="'circle' + index"
-              class="circle-item"
-            >
-              <div
-                :class="['circle circle1', isHover && 'stop-move']"
-                @mouseenter="isHover = true"
-                @mouseleave="isHover = false"
-              >
-                <div class="title">{{ item.name }}</div>
+          <div class="number-content">
+            <div class="number-unit">总收益</div>
+            <DigitalNumber :data="money" />
+            <div class="number-unit">万元</div>
+          </div>
+          <div class="spinning-ball mt-20">
+            <div class="spinning-ball__bottom"></div>
+            <div class="spinning-ball__wrapper">
+              <div class="spinning-ball__content">
+                <div
+                  v-for="(item, index) in list"
+                  :key="'' + index"
+                  :class="[`ball ball${index + 1}`, isHover && 'stop-move']"
+                  @mouseenter="isHover = true"
+                  @mouseleave="isHover = false"
+                >
+                  <div class="spinning-ball__title">{{ item.name }}</div>
+                </div>
               </div>
             </div>
           </div>
@@ -28,7 +33,10 @@
 
 <script setup>
 import { ref } from "vue";
+import DigitalNumber from "@/components/common/DigitalNumber/index.vue";
 import hooks from "@/hooks";
+
+const { useScreenModuleData } = hooks;
 
 const list = ref([
   {
@@ -52,92 +60,205 @@ const list = ref([
 ]);
 
 const isHover = ref(false);
+
+const money = ref(0);
+
+const handleApiData = (data) => {
+  list.value = data?.hotProjectData.filter((e, i) => i < 6) || [];
+  money.value = data?.money || 0;
+};
+
+const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 </script>
 
 <style lang="scss" scoped>
 @import "@/styles/screen-mixin.scss";
 
+@font-face {
+  font-family: Lets-go-Digital;
+  src: url("./../../../../../assets/font/Lets-go-Digital.ttf");
+}
+
 :deep(.data-loading-container) {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: inherit;
 }
 
-.baseBG {
-  height: 72%;
-  top: 70px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0;
-  position: absolute;
-  background: url("./../../../../../assets/images/baseBG.png") center center no-repeat;
-  background-size: auto 70%;
-  background-position: 50% 100%;
+.spinning-ball {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &__wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__content {
+    width: size(260);
+    height: size(260);
+    border-radius: 50%;
+    color: #1f6f9b;
+    transform-style: preserve-3d;
+    transform: rotateZ(90deg) rotateY(70deg);
+    transform-origin: center;
+  }
+
+  &__bottom {
+    height: 70%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    background: url("./../../../../../assets/images/spinning-ball-bottom.png") center
+      center no-repeat;
+    background-size: 100% auto;
+    opacity: 0.75;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: size(16);
+    font-weight: bold;
+    color: #fff;
+    width: 60%;
+  }
 }
 
-.circle-wrapper {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-.circle-item {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  color: #1f6f9b;
-  transform-style: preserve-3d;
-  transform: rotateZ(90deg) rotateY(70deg);
-  transform-origin: center;
-}
-
-.circle-item .circle {
+.ball {
   width: 50%;
   height: 50%;
   border-radius: 50%;
   top: 0;
-  left: 0;
+  left: -15%;
   right: 0;
   bottom: 0;
   margin: auto;
   position: absolute;
-  // background: #555;
-  background: url("./../../../../../assets/images/ringBG.png") center center no-repeat;
-  background-size: auto 80%;
-  background-position: 50% 100%;
+  background: url("./../../../../../assets/images/ball.png") center center no-repeat;
+  background-size: auto 75%;
   animation: move 30s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+
+  &:hover {
+    .spinning-ball__title {
+      color: color(blue);
+    }
+  }
+
+  &.stop-move {
+    animation-play-state: paused !important;
+  }
+
+  &.ball2 {
+    animation: move2 30s linear infinite;
+  }
+
+  &.ball3 {
+    animation: move3 30s linear infinite;
+  }
+
+  &.ball4 {
+    animation: move4 30s linear infinite;
+  }
+
+  &.ball5 {
+    animation: move5 30s linear infinite;
+  }
+
+  &.ball6 {
+    animation: move6 30s linear infinite;
+  }
 }
 
-.stop-move {
-  animation-play-state: paused !important;
+.number {
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-unit {
+    font-size: size(20);
+    margin: 0 size(12);
+  }
 }
 
-.circle-item .circle2 {
-  animation: move2 30s linear infinite;
+@keyframes move {
+  from {
+    transform: rotateZ(0) translateX(size(130)) rotateZ(0) rotateY(-70deg) rotate(-90deg);
+  }
+
+  to {
+    transform: rotateZ(360deg) translateX(size(130)) rotateZ(-360deg) rotateY(-70deg)
+      rotate(-90deg);
+  }
 }
 
-.circle-item .circle3 {
-  animation: move3 30s linear infinite;
+@keyframes move2 {
+  from {
+    transform: rotateZ(-60deg) translateX(size(130)) rotateZ(60deg) rotateY(-70deg)
+      rotate(-90deg);
+  }
+
+  to {
+    transform: rotateZ(300deg) translateX(size(130)) rotateZ(-300deg) rotateY(-70deg)
+      rotate(-90deg);
+  }
 }
 
-.circle-item .circle4 {
-  animation: move4 30s linear infinite;
+@keyframes move3 {
+  from {
+    transform: rotateZ(-120deg) translateX(size(130)) rotateZ(120deg) rotateY(-70deg)
+      rotate(-90deg);
+  }
+
+  to {
+    transform: rotateZ(240deg) translateX(size(130)) rotateZ(-240deg) rotateY(-70deg)
+      rotate(-90deg);
+  }
 }
 
-.circle-item .circle5 {
-  animation: move5 30s linear infinite;
+@keyframes move4 {
+  from {
+    transform: rotateZ(-180deg) translateX(size(130)) rotateZ(180deg) rotateY(-70deg)
+      rotate(-90deg);
+  }
+
+  to {
+    transform: rotateZ(180deg) translateX(size(130)) rotateZ(-180deg) rotateY(-70deg)
+      rotate(-90deg);
+  }
 }
 
-.circle-item .circle6 {
-  animation: move6 30s linear infinite;
+@keyframes move5 {
+  from {
+    transform: rotateZ(-240deg) translateX(size(130)) rotateZ(240deg) rotateY(-70deg)
+      rotate(-90deg);
+  }
+
+  to {
+    transform: rotateZ(120deg) translateX(size(130)) rotateZ(-120deg) rotateY(-70deg)
+      rotate(-90deg);
+  }
 }
 
-.title {
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  color: #fff;
-  width: 60%;
-  transform: translateX(30px) translateY(75px);
+@keyframes move6 {
+  from {
+    transform: rotateZ(60deg) translateX(size(130)) rotateZ(-60deg) rotateY(-70deg)
+      rotate(-90deg);
+  }
+
+  to {
+    transform: rotateZ(420deg) translateX(size(130)) rotateZ(-420deg) rotateY(-70deg)
+      rotate(-90deg);
+  }
 }
 </style>
