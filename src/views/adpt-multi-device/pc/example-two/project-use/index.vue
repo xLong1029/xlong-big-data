@@ -9,7 +9,7 @@
               <div
                 class="project-list-item"
                 v-for="(item, index) in list"
-                :key="'task-item' + index"
+                :key="'project-item' + index"
               >
                 <div :class="getBackgroundClassName(item)">
                   <i :class="getIconClassName(item)"></i>

@@ -4,10 +4,10 @@
     <div class="content">
       <DataLoading :loading="apiLoading" :data="list">
         <template #content>
-          <div class="number-content">
-            <div class="number-unit">总收益</div>
+          <div class="number">
+            <div class="number__text">总收益</div>
             <DigitalNumber :data="money" />
-            <div class="number-unit">万元</div>
+            <div class="number__text">万元</div>
           </div>
           <div class="spinning-ball mt-20">
             <div class="spinning-ball__bottom"></div>
@@ -109,8 +109,8 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
     right: 0;
     bottom: 0;
     position: absolute;
-    background: url("./../../../../../assets/images/spinning-ball-bottom.png") center
-      center no-repeat;
+    background: url("./../../../../../assets/images/spinning-ball-bottom.png")
+      center center no-repeat;
     background-size: 100% auto;
     opacity: 0.75;
   }
@@ -134,7 +134,8 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
   bottom: 0;
   margin: auto;
   position: absolute;
-  background: url("./../../../../../assets/images/ball.png") center center no-repeat;
+  background: url("./../../../../../assets/images/ball.png") center center
+    no-repeat;
   background-size: auto 75%;
   animation: move 30s linear infinite;
   display: flex;
@@ -174,13 +175,11 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 }
 
 .number {
-  &-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  &-unit {
+  &__text {
     font-size: size(20);
     margin: 0 size(12);
   }
@@ -188,72 +187,73 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 
 @keyframes move {
   from {
-    transform: rotateZ(0) translateX(size(130)) rotateZ(0) rotateY(-70deg) rotate(-90deg);
+    transform: rotateZ(0) translateX(size(130)) rotateZ(0) rotateY(-70deg)
+      rotate(-90deg);
   }
 
   to {
-    transform: rotateZ(360deg) translateX(size(130)) rotateZ(-360deg) rotateY(-70deg)
-      rotate(-90deg);
+    transform: rotateZ(360deg) translateX(size(130)) rotateZ(-360deg)
+      rotateY(-70deg) rotate(-90deg);
   }
 }
 
 @keyframes move2 {
   from {
-    transform: rotateZ(-60deg) translateX(size(130)) rotateZ(60deg) rotateY(-70deg)
-      rotate(-90deg);
+    transform: rotateZ(-60deg) translateX(size(130)) rotateZ(60deg)
+      rotateY(-70deg) rotate(-90deg);
   }
 
   to {
-    transform: rotateZ(300deg) translateX(size(130)) rotateZ(-300deg) rotateY(-70deg)
-      rotate(-90deg);
+    transform: rotateZ(300deg) translateX(size(130)) rotateZ(-300deg)
+      rotateY(-70deg) rotate(-90deg);
   }
 }
 
 @keyframes move3 {
   from {
-    transform: rotateZ(-120deg) translateX(size(130)) rotateZ(120deg) rotateY(-70deg)
-      rotate(-90deg);
+    transform: rotateZ(-120deg) translateX(size(130)) rotateZ(120deg)
+      rotateY(-70deg) rotate(-90deg);
   }
 
   to {
-    transform: rotateZ(240deg) translateX(size(130)) rotateZ(-240deg) rotateY(-70deg)
-      rotate(-90deg);
+    transform: rotateZ(240deg) translateX(size(130)) rotateZ(-240deg)
+      rotateY(-70deg) rotate(-90deg);
   }
 }
 
 @keyframes move4 {
   from {
-    transform: rotateZ(-180deg) translateX(size(130)) rotateZ(180deg) rotateY(-70deg)
-      rotate(-90deg);
+    transform: rotateZ(-180deg) translateX(size(130)) rotateZ(180deg)
+      rotateY(-70deg) rotate(-90deg);
   }
 
   to {
-    transform: rotateZ(180deg) translateX(size(130)) rotateZ(-180deg) rotateY(-70deg)
-      rotate(-90deg);
+    transform: rotateZ(180deg) translateX(size(130)) rotateZ(-180deg)
+      rotateY(-70deg) rotate(-90deg);
   }
 }
 
 @keyframes move5 {
   from {
-    transform: rotateZ(-240deg) translateX(size(130)) rotateZ(240deg) rotateY(-70deg)
-      rotate(-90deg);
+    transform: rotateZ(-240deg) translateX(size(130)) rotateZ(240deg)
+      rotateY(-70deg) rotate(-90deg);
   }
 
   to {
-    transform: rotateZ(120deg) translateX(size(130)) rotateZ(-120deg) rotateY(-70deg)
-      rotate(-90deg);
+    transform: rotateZ(120deg) translateX(size(130)) rotateZ(-120deg)
+      rotateY(-70deg) rotate(-90deg);
   }
 }
 
 @keyframes move6 {
   from {
-    transform: rotateZ(60deg) translateX(size(130)) rotateZ(-60deg) rotateY(-70deg)
-      rotate(-90deg);
+    transform: rotateZ(60deg) translateX(size(130)) rotateZ(-60deg)
+      rotateY(-70deg) rotate(-90deg);
   }
 
   to {
-    transform: rotateZ(420deg) translateX(size(130)) rotateZ(-420deg) rotateY(-70deg)
-      rotate(-90deg);
+    transform: rotateZ(420deg) translateX(size(130)) rotateZ(-420deg)
+      rotateY(-70deg) rotate(-90deg);
   }
 }
 </style>

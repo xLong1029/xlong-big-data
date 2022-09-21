@@ -13,7 +13,7 @@
     </div>
     <div class="screen-content__center">
       <div class="screen-content__center-top">
-        <BorderFrame></BorderFrame>
+        <CountStatistics/>
       </div>
       <div class="screen-content__center-center">
         <MapStatistics />
@@ -46,6 +46,7 @@ import DataMonitor from "./data-monitor/index.vue";
 import MapStatistics from "./map-statistics/index.vue";
 import MsgStatistics from "./msg-statistics/index.vue";
 import ProjectIncome from "./project-income/index.vue";
+import CountStatistics from "./count-statistics/index.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -67,7 +68,7 @@ import ProjectIncome from "./project-income/index.vue";
 
   &__left,
   &__right {
-    width: 22%;
+    width: 23%;
     height: 100%;
   }
 
@@ -94,7 +95,7 @@ import ProjectIncome from "./project-income/index.vue";
     flex-direction: column;
 
     &-top {
-      height: 20%;
+      height: 10%;
     }
 
     &-center {
@@ -103,7 +104,7 @@ import ProjectIncome from "./project-income/index.vue";
     }
 
     &-bottom {
-      height: 20%;
+      height: 30%;
     }
   }
 
