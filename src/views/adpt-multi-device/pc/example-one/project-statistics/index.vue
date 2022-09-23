@@ -40,7 +40,7 @@ const chart = reactive({
   },
   labelFontSize: 14,
   center: ["35%", "50%"],
-  radius: [0, 75],
+  radius: [0, 65],
   tooltip: {
     trigger: "item",
     formatter: (p) => {

@@ -13,7 +13,7 @@
     </div>
     <div class="screen-content__center">
       <div class="screen-content__center-top">
-        <CountStatistics/>
+        <CountStatistics />
       </div>
       <div class="screen-content__center-center">
         <MapStatistics />
@@ -95,7 +95,7 @@ import CountStatistics from "./count-statistics/index.vue";
     flex-direction: column;
 
     &-top {
-      height: 10%;
+      height: 12%;
     }
 
     &-center {
@@ -104,7 +104,7 @@ import CountStatistics from "./count-statistics/index.vue";
     }
 
     &-bottom {
-      height: 30%;
+      height: 28%;
     }
   }
 

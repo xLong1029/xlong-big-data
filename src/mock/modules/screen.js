@@ -12,6 +12,10 @@ let statisticsData = {
   money: 131,
 };
 
+let countData = {
+  coverCity: 13,
+}
+
 let projectDescription = [
   {
     title: "项目研发",
@@ -266,7 +270,8 @@ export default [
             hotProjectData,
             projectUseData,
             projectMonitorData,
-            cityData
+            cityData,
+            countData
           });
         }
       }),

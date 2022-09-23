@@ -1,47 +1,26 @@
 <template>
   <BorderFrame>
-    <div class="count">
-      <div class="count-item">
-        <div class="icon__circle">
-          <img class="icon__content" :src="iconCover" />
+    <div class="count-container">
+      <div
+        v-for="(item, index) in list"
+        :key="'count' + index"
+        class="count-item"
+      >
+        <div class="count-item__icon icon__circle">
+          <img class="icon__content" :src="item.img" />
         </div>
-        <div>
-          <div class="number">
-            <span class="number__content">13</span
-            ><span class="number__unit">个</span>
+        <div class="count-item__content ml-20">
+          <div class="count-item__number number">
+            <span class="number__value mr-10" :style="{ color: item.valueColor}">
+              {{ item.value }}
+            </span>
+            <span class="number__unit">
+              {{ item.unit }}
+            </span>
           </div>
-          <div>当前覆盖城市</div>
+          <div class="count-item__name mt-5">{{ item.name }}</div>
         </div>
       </div>
-      <!-- <div
-          class="count-list-item"
-          v-for="(item, index) in list"
-          :key="'task-item' + index"
-        >
-          <div :class="getBackgroundClassName(item)">
-            <i :class="getIconClassName(item)"></i>
-          </div>
-          <div class="project-list-item__name ellipsis">
-            {{ item.name }}
-          </div>
-          <div class="statistics-card">
-            <span class="statistics-card__num font-16">{{
-              toThousands(item.users)
-            }}</span>
-            <span class="statistics-card__text mt-5">累计使用人数</span>
-          </div>
-          <div class="statistics-card ml-10">
-            <span>
-              <el-tag v-if="item.status === 1" effect="dark" type="success"
-                >正常</el-tag
-              >
-              <el-tag v-if="item.status === -1" effect="dark" type=""
-                >维护</el-tag
-              >
-            </span>
-            <span class="statistics-card__text mt-5">当前状态</span>
-          </div>
-        </div> -->
     </div>
   </BorderFrame>
 </template>
@@ -50,71 +29,90 @@
 import { ref } from "vue";
 import hooks from "@/hooks";
 import iconCover from "@/assets/images/icon-cover.png";
+import iconApp from "@/assets/images/icon-app.png";
+import iconVip from "@/assets/images/icon-vip.png";
 
-const { useScreenModuleData, useFilter } = hooks;
+const { useScreenModuleData } = hooks;
 
-const tabs = ref([]);
+const isFrist = ref(true);
 
-const { toThousands } = useFilter();
-
-const list = ref([]);
+const list = ref([
+  {
+    name: "覆盖城市数",
+    img: iconCover,
+    unit: "个",
+    value: 0,
+    valueColor: "#45f3fd",
+    changeNum: 0,
+  },
+  {
+    name: "维护应用数",
+    img: iconApp,
+    unit: "个",
+    value: 0,
+    valueColor: "#71ffaa",
+    changeNum: 0,
+  },
+  {
+    name: "Vip用户数",
+    img: iconVip,
+    unit: "个",
+    value: 0,
+    valueColor: "#ffe66d",
+    changeNum: 0,
+  },
+]);
 
 const handleApiData = (data) => {
-  list.value = data?.projectUseData || [];
+  if (!data) return false;
+
+  const { coverCity: citys } = data.countData;
+
+  if (!isFrist.value) {
+    list.value[0].changeNum = citys - list.value[0].value;
+  }
+
+  list.value[0].value = citys;
+
+  if (isFrist.value) {
+    isFrist.value = false;
+  }
 };
 
 const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
-
-const getBackgroundClassName = ({ type }) => {
-  let className = "project-list-item__icon";
-  switch (type) {
-    case "web":
-      className += " web";
-      break;
-    case "design":
-      className += " design";
-      break;
-    case "app":
-      className += " app";
-      break;
-    case "project":
-      className += " project";
-      break;
-  }
-  return className;
-};
-
-const getIconClassName = ({ type }) => {
-  let className = "iconfont";
-
-  switch (type) {
-    case "web":
-      className += " icon-webduan";
-      break;
-    case "design":
-      className += " icon-shejimeigong";
-      break;
-    case "app":
-      className += " icon-appyingyong";
-      break;
-    case "project":
-      className += " icon-app";
-      break;
-  }
-
-  return className;
-};
 </script>
 
 <style lang="scss" scoped>
 @import "@/styles/screen-mixin.scss";
 
-.count-item{
+.count-container{
+  height: 100%;
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.count-item {
+  display: flex;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .icon {
   &__circle {
+    @include background-setting(
+      "./../../../../../assets/images/circle.png",
+      size(75),
+      size(75)
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__content {
@@ -126,11 +124,9 @@ const getIconClassName = ({ type }) => {
 .number {
   display: flex;
   align-items: center;
-  justify-content: center;
 
-  &__text {
-    font-size: size(20);
-    margin: 0 size(12);
+  &__value {
+    font-size: size(30);
   }
 }
 </style>
