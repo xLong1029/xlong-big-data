@@ -69,7 +69,7 @@ const init = () => {
   getMapData();
   apiTimer.value = setInterval(() => {
     getMapData();
-  }, 3500);
+  }, 5000);
 };
 
 const getMapData = () => {

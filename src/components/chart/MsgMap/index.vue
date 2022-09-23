@@ -316,7 +316,20 @@ const setOption = (chartData = []) => {
         },
         itemStyle: {
           normal: {
-            color: "#ec2c68", //标志颜色
+            //标志颜色
+            color: (params) => {
+              let color = "#ec2c68";
+
+              if (changeData) {
+                if (
+                  params.data.value[0] === changeData.coordinate[0] &&
+                  params.data.value[1] === changeData.coordinate[1]
+                ) {
+                  color = "#fba320";
+                }
+              }
+              return color;
+            },
           },
         },
         zlevel: 10,
