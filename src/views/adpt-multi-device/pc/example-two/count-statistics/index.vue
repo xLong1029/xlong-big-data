@@ -1,27 +1,79 @@
 <template>
   <BorderFrame>
     <div class="count-container">
-      <div v-for="(item, index) in list" :key="'count' + index" class="count-item">
+      <div class="count-item">
         <div class="count-item__icon">
           <div class="icon__circle animate-rotation"></div>
-          <img class="icon__content" :src="item.img" />
+          <img class="icon__content" :src="coverCities.img" />
         </div>
         <div class="count-item__content ml-20">
           <div class="count-item__number number">
-            <span class="number__value mr-5" :style="{ color: item.valueColor }">
-              <FadeNum v-model:value="item.changeNum">
+            <span class="number__value mr-5" :style="{ color: coverCities.valueColor }">
+              <FadeNum v-model:value="coverCities.changeNum">
                 <CountUp
                   :delay="countUpOption.delay"
-                  :endVal="item.value"
+                  :endVal="coverCities.value"
                   :options="countUpOption"
                 />
               </FadeNum>
             </span>
             <span class="number__unit">
-              {{ item.unit }}
+              {{ coverCities.unit }}
             </span>
           </div>
-          <div class="count-item__name mt-5">{{ item.name }}</div>
+          <div class="count-item__name mt-5">{{ coverCities.name }}</div>
+        </div>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="count-item">
+        <div class="count-item__icon">
+          <div class="icon__circle animate-rotation"></div>
+          <img class="icon__content" :src="normalApps.img" />
+        </div>
+        <div class="count-item__content ml-20">
+          <div class="count-item__number number">
+            <span class="number__value mr-5" :style="{ color: normalApps.valueColor }">
+              <FadeNum v-model:value="normalApps.changeNum">
+                <CountUp
+                  :delay="countUpOption.delay"
+                  :endVal="normalApps.value"
+                  :options="countUpOption"
+                />
+              </FadeNum>
+            </span>
+            <span class="number__unit">
+              {{ normalApps.unit }}
+            </span>
+          </div>
+          <div class="count-item__name mt-5">{{ normalApps.name }}</div>
+        </div>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="count-item">
+        <div class="count-item__icon">
+          <div class="icon__circle animate-rotation"></div>
+          <img class="icon__content" :src="vipUsers.img" />
+        </div>
+        <div class="count-item__content ml-20">
+          <div class="count-item__number number">
+            <span class="number__value mr-5" :style="{ color: vipUsers.valueColor }">
+              <FadeNum v-model:value="vipUsers.changeNum">
+                <CountUp
+                  :delay="countUpOption.delay"
+                  :endVal="vipUsers.value"
+                  :options="countUpOption"
+                />
+              </FadeNum>
+            </span>
+            <span class="number__unit">
+              {{ vipUsers.unit }}
+            </span>
+          </div>
+          <div class="count-item__name mt-5">{{ vipUsers.name }}</div>
         </div>
       </div>
     </div>
@@ -29,7 +81,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 import hooks from "@/hooks";
 import FadeNum from "@/components/common/FadeNum/index.vue";
 import iconCover from "@/assets/images/icon-cover.png";
@@ -41,32 +93,32 @@ const { CountUp, countUpOption } = useCountUp();
 
 const isFrist = ref(true);
 
-const list = ref([
-  {
-    name: "累计覆盖城市",
-    img: iconCover,
-    unit: "个",
-    value: 0,
-    valueColor: "#45f3fd",
-    changeNum: 0,
-  },
-  {
-    name: "正常运行应用",
-    img: iconApp,
-    unit: "个",
-    value: 0,
-    valueColor: "#71ffaa",
-    changeNum: 0,
-  },
-  {
-    name: "Vip注册用户",
-    img: iconVip,
-    unit: "个",
-    value: 0,
-    valueColor: "#ffe66d",
-    changeNum: 0,
-  },
-]);
+const coverCities = reactive({
+  name: "累计覆盖城市",
+  img: iconCover,
+  unit: "个",
+  value: 0,
+  valueColor: "#45f3fd",
+  changeNum: 0,
+});
+
+const normalApps = reactive({
+  name: "正常运行应用",
+  img: iconApp,
+  unit: "个",
+  value: 0,
+  valueColor: "#71ffaa",
+  changeNum: 0,
+});
+
+const vipUsers = reactive({
+  name: "Vip注册用户",
+  img: iconVip,
+  unit: "个",
+  value: 0,
+  valueColor: "#ffe66d",
+  changeNum: 0,
+});
 
 const handleApiData = (data) => {
   if (!data) return false;
@@ -74,14 +126,14 @@ const handleApiData = (data) => {
   const { coverCities: cities, normalApps: apps, vipUsers: vips } = data.countData;
 
   if (!isFrist.value) {
-    list.value[0].changeNum = cities - list.value[0].value;
-    list.value[1].changeNum = apps - list.value[1].value;
-    list.value[2].changeNum = vips - list.value[2].value;
+    coverCities.changeNum = cities - coverCities.value;
+    normalApps.changeNum = apps - normalApps.value;
+    vipUsers.changeNum = vips - vipUsers.value;
   }
 
-  list.value[0].value = cities;
-  list.value[1].value = apps;
-  list.value[2].value = vips;
+  coverCities.value = cities;
+  normalApps.value = apps;
+  vipUsers.value = vips;
 
   if (isFrist.value) {
     isFrist.value = false;
@@ -101,6 +153,13 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
   align-items: center;
 }
 
+.line {
+  width: size(1);
+  height: 100%;
+  background: url("./../../../../../assets/images/line.png") no-repeat;
+  background-size: 100% 100%;
+}
+
 .count-item {
   display: flex;
 
@@ -117,8 +176,8 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
     justify-content: center;
   }
 
-  &__number{
-    :deep(.change-num){
+  &__number {
+    :deep(.change-num) {
       top: size(-10);
     }
   }
