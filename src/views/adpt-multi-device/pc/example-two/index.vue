@@ -15,11 +15,8 @@
       <div class="screen-content__center-top">
         <CountStatistics />
       </div>
-      <div class="screen-content__center-center">
+      <div class="screen-content__center-center pt-15">
         <MapStatistics />
-      </div>
-      <div class="screen-content__center-bottom">
-        <MsgStatistics />
       </div>
     </div>
     <div class="screen-content__right">
@@ -44,7 +41,6 @@ import ProjectDescription from "./project-description/index.vue";
 import ProjectUse from "./project-use/index.vue";
 import DataMonitor from "./data-monitor/index.vue";
 import MapStatistics from "./map-statistics/index.vue";
-import MsgStatistics from "./msg-statistics/index.vue";
 import ProjectIncome from "./project-income/index.vue";
 import CountStatistics from "./count-statistics/index.vue";
 </script>
@@ -99,12 +95,7 @@ import CountStatistics from "./count-statistics/index.vue";
     }
 
     &-center {
-      height: 60%;
-      padding: size(15) 0;
-    }
-
-    &-bottom {
-      height: 28%;
+      flex: 1;
     }
   }
 
