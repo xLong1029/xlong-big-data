@@ -1,18 +1,21 @@
 <template>
   <BorderFrame>
     <div class="count-container">
-      <div
-        v-for="(item, index) in list"
-        :key="'count' + index"
-        class="count-item"
-      >
-        <div class="count-item__icon icon__circle">
+      <div v-for="(item, index) in list" :key="'count' + index" class="count-item">
+        <div class="count-item__icon">
+          <div class="icon__circle animate-rotation"></div>
           <img class="icon__content" :src="item.img" />
         </div>
         <div class="count-item__content ml-20">
           <div class="count-item__number number">
-            <span class="number__value mr-10" :style="{ color: item.valueColor}">
-              {{ item.value }}
+            <span class="number__value mr-5" :style="{ color: item.valueColor }">
+              <FadeNum v-model:value="item.changeNum">
+                <CountUp
+                  :delay="countUpOption.delay"
+                  :endVal="item.value"
+                  :options="countUpOption"
+                />
+              </FadeNum>
             </span>
             <span class="number__unit">
               {{ item.unit }}
@@ -28,17 +31,19 @@
 <script setup>
 import { ref } from "vue";
 import hooks from "@/hooks";
+import FadeNum from "@/components/common/FadeNum/index.vue";
 import iconCover from "@/assets/images/icon-cover.png";
 import iconApp from "@/assets/images/icon-app.png";
 import iconVip from "@/assets/images/icon-vip.png";
 
-const { useScreenModuleData } = hooks;
+const { useCountUp, useScreenModuleData } = hooks;
+const { CountUp, countUpOption } = useCountUp();
 
 const isFrist = ref(true);
 
 const list = ref([
   {
-    name: "覆盖城市数",
+    name: "累计覆盖城市",
     img: iconCover,
     unit: "个",
     value: 0,
@@ -46,7 +51,7 @@ const list = ref([
     changeNum: 0,
   },
   {
-    name: "维护应用数",
+    name: "正常运行应用",
     img: iconApp,
     unit: "个",
     value: 0,
@@ -54,7 +59,7 @@ const list = ref([
     changeNum: 0,
   },
   {
-    name: "Vip用户数",
+    name: "Vip注册用户",
     img: iconVip,
     unit: "个",
     value: 0,
@@ -66,13 +71,17 @@ const list = ref([
 const handleApiData = (data) => {
   if (!data) return false;
 
-  const { coverCity: citys } = data.countData;
+  const { coverCities: cities, normalApps: apps, vipUsers: vips } = data.countData;
 
   if (!isFrist.value) {
-    list.value[0].changeNum = citys - list.value[0].value;
+    list.value[0].changeNum = cities - list.value[0].value;
+    list.value[1].changeNum = apps - list.value[1].value;
+    list.value[2].changeNum = vips - list.value[2].value;
   }
 
-  list.value[0].value = citys;
+  list.value[0].value = cities;
+  list.value[1].value = apps;
+  list.value[2].value = vips;
 
   if (isFrist.value) {
     isFrist.value = false;
@@ -85,7 +94,7 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 <style lang="scss" scoped>
 @import "@/styles/screen-mixin.scss";
 
-.count-container{
+.count-container {
   height: 100%;
   display: flex;
   justify-content: space-around;
@@ -95,10 +104,23 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 .count-item {
   display: flex;
 
+  &__icon {
+    width: size(75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  &__number{
+    :deep(.change-num){
+      top: size(-10);
+    }
   }
 }
 
@@ -110,9 +132,7 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
       size(75)
     );
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
   }
 
   &__content {
@@ -127,6 +147,7 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 
   &__value {
     font-size: size(30);
+    font-weight: bold;
   }
 }
 </style>

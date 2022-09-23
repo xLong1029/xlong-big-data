@@ -13,7 +13,9 @@ let statisticsData = {
 };
 
 let countData = {
-  coverCity: 13,
+  coverCities: 13,
+  normalApps: 55,
+  vipUsers: statisticsData.serviceUsers - Random.integer(10000, 20000),
 }
 
 let projectDescription = [
@@ -261,7 +263,15 @@ export default [
 
         // 导航二
         else if (nav == 1) {
+          // 收益统计
           statisticsData.money += Random.integer(1, 5);
+
+          // 正常运营应用数量统计
+          const maintanApps = (projects.filter(e => e.status === -1)).length;
+          countData.normalApps = statisticsData.developApps - maintanApps;
+
+          const vipUsersChangeNum = [1, 2, 3][Random.integer(0, 2)];
+          countData.vipUsers += vipUsersChangeNum;
 
           return handleResponse(200, "success", {
             money: statisticsData.money,

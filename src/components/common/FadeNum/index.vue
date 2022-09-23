@@ -2,7 +2,12 @@
   <div class="fade-num-container">
     <slot></slot>
     <transition name="fade">
-      <span v-if="value !== 0" class="change-num" :style="{ color }">{{ setText() }}</span>
+      <span
+        v-if="value !== 0"
+        class="change-num"
+        :style="{ color, right: geRightPos(value) }"
+        >{{ setText() }}</span
+      >
     </transition>
   </div>
 </template>
@@ -41,11 +46,13 @@ watch(
 );
 
 const setText = () => `${props.value > 0 ? "+" : ""}${props.value}`;
+
+const geRightPos = (value) => `-${value.toString().length * 10 + 10}px`;
 </script>
 <style lang="scss" scoped>
 .fade-num-container {
   position: relative;
-  padding: 0 size(5);
+  // padding: 0 size(5);
 }
 .change-num {
   position: absolute;
@@ -53,6 +60,6 @@ const setText = () => `${props.value > 0 ? "+" : ""}${props.value}`;
   font-weight: normal;
   font-size: size(14);
   top: 0;
-  right: size(-20);
+  right: size(-40);
 }
 </style>
