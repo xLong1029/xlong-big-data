@@ -104,7 +104,7 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
   }
 
   &__bottom {
-    height: 70%;
+    height: 65%;
     left: 0;
     right: 0;
     bottom: 0;
