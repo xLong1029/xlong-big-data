@@ -32,14 +32,13 @@
 
 <script setup>
 import { reactive, inject, onMounted, shallowRef } from "@vue/runtime-core";
-import BorderFrame from "@/components/common/BorderFrame/index.vue";
-import CompanyStatistics from "./company-statistics/index.vue";
-import CompanyProject from "./company-project/index.vue";
-import ProjectPercent from "./project-percent/index.vue";
-import TotalStatistics from "./total-statistics/index.vue";
-import CityStatistics from "./city-statistics/index.vue";
-import ProjectStatistics from "./project-statistics/index.vue";
-import CityRanking from "./city-ranking/index.vue";
+import CompanyStatistics from "@/components/screen/Content/CompanyStatistics/index.vue";
+import CompanyProject from "@/components/screen/Content/CompanyProject/index.vue";
+import ProjectPercent from "@/components/screen/Content/ProjectPercent/index.vue";
+import TotalStatistics from "@/components/screen/Content/TotalStatistics/index.vue";
+import CityStatistics from "@/components/screen/Content/CityStatistics/index.vue";
+import ProjectStatistics from "@/components/screen/Content/ProjectStatistics/index.vue";
+import CityRanking from "@/components/screen/Content/CityRanking/index.vue";
 </script>
 
 <style lang="scss" scoped>

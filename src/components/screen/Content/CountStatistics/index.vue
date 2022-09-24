@@ -156,7 +156,7 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 .line {
   width: size(1);
   height: 100%;
-  background: url("./../../../../../assets/images/line.png") no-repeat;
+  background: url("./../../../../assets/images/line.png") no-repeat;
   background-size: 100% 100%;
 }
 
@@ -186,7 +186,7 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 .icon {
   &__circle {
     @include background-setting(
-      "./../../../../../assets/images/circle.png",
+      "./../../../../assets/images/circle.png",
       size(75),
       size(75)
     );

@@ -60,7 +60,7 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 @import "@/styles/screen-mixin.scss";
 @font-face {
   font-family: ShiShangZhongHeiJianTi;
-  src: url("./../../../../../assets/font/ShiShangZhongHeiJianTi.ttf");
+  src: url("./../../../../assets/font/ShiShangZhongHeiJianTi.ttf");
 }
 
 
@@ -98,7 +98,7 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
       top: size(30);
       left: 12%;
       @include background-setting(
-        "./../../../../../assets/images/light.png",
+        "./../../../../assets/images/light.png",
         75%,
         size(25)
       );

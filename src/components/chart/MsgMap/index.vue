@@ -123,7 +123,14 @@ const convertData = (data, coordinateData) => {
 
 const getLineData = (changeData, centerPoint) => {
   if (!changeData) return [];
-  return [[{ coord: changeData.coordinate }, { coord: centerPoint.value }]];
+  return [
+    {
+      coords: [
+        changeData.coordinate,
+        centerPoint.value,
+      ],
+    },
+  ];
 };
 
 const setOption = (chartData = []) => {
@@ -199,7 +206,9 @@ const setOption = (chartData = []) => {
       map: mapName,
       label: {
         show: false,
-        emphasis: {
+      },
+      emphasis: {
+        label: {
           show: false,
         },
       },
@@ -209,11 +218,11 @@ const setOption = (chartData = []) => {
       roam: true,
       // 地图样式
       itemStyle: {
-        normal: {
-          areaColor: "#04235b",
-          borderColor: "#47a5fc",
-        },
-        emphasis: {
+        areaColor: "#04235b",
+        borderColor: "#47a5fc",
+      },
+      emphasis: {
+        itemStyle: {
           areaColor: "rgba(0,0,0, 0.35)",
         },
       },
@@ -309,27 +318,23 @@ const setOption = (chartData = []) => {
             const data = val.data.value[2];
             return data;
           },
-          textStyle: {
-            color: fontColor,
-            fontSize,
-          },
+          color: fontColor,
+          fontSize,
         },
         itemStyle: {
-          normal: {
-            //标志颜色
-            color: (params) => {
-              let color = "#ec2c68";
+          //标志颜色
+          color: (params) => {
+            let color = "#ec2c68";
 
-              if (changeData) {
-                if (
-                  params.data.value[0] === changeData.coordinate[0] &&
-                  params.data.value[1] === changeData.coordinate[1]
-                ) {
-                  color = "#fba320";
-                }
+            if (changeData) {
+              if (
+                params.data.value[0] === changeData.coordinate[0] &&
+                params.data.value[1] === changeData.coordinate[1]
+              ) {
+                color = "#fba320";
               }
-              return color;
-            },
+            }
+            return color;
           },
         },
         zlevel: 10,
@@ -340,12 +345,10 @@ const setOption = (chartData = []) => {
       //   type: "lines",
       //   zlevel: 1,
       //   lineStyle: {
-      //     normal: {
-      //       color: "#3ed4ff",
-      //       width: 1, //尾迹线条宽度
-      //       opacity: 0.7, //尾迹线条透明度
-      //       curveness: 0.2, //尾迹线条曲直度
-      //     },
+      //     color: "#3ed4ff",
+      //     width: 1, //尾迹线条宽度
+      //     opacity: 0.7, //尾迹线条透明度
+      //     curveness: 0.2, //尾迹线条曲直度
       //   },
       //   data: getLineData(changeData, centerPoint),
       // },
@@ -361,11 +364,9 @@ const setOption = (chartData = []) => {
           symbolSize: 4 * scale,
         },
         lineStyle: {
-          normal: {
-            color: "#3ed4ff",
-            width: 0,
-            curveness: 0.2,
-          },
+          color: "#3ed4ff",
+          width: 0,
+          curveness: 0.2,
         },
         animationDelayUpdate: 5000,
         data: getLineData(changeData, centerPoint),

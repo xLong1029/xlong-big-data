@@ -34,15 +34,14 @@
 </template>
 
 <script setup>
-import BorderFrame from "@/components/common/BorderFrame/index.vue";
-import WeekStatistics from "./week-statistics/index.vue";
-import HotProjects from "./hot-projects/index.vue";
-import ServiceDescription from "./service-description/index.vue";
-import ProjectUse from "./project-use/index.vue";
-import DataMonitor from "./data-monitor/index.vue";
-import MapStatistics from "./map-statistics/index.vue";
-import ProjectIncome from "./project-income/index.vue";
-import CountStatistics from "./count-statistics/index.vue";
+import WeekStatistics from "@/components/screen/Content/WeekStatistics/index.vue";
+import HotProjects from "@/components/screen/Content/HotProjects/index.vue";
+import ServiceDescription from "@/components/screen/Content/ServiceDescription/index.vue";
+import ProjectUse from "@/components/screen/Content/ProjectUse/index.vue";
+import DataMonitor from "@/components/screen/Content/DataMonitor/index.vue";
+import MapStatistics from "@/components/screen/Content/MapStatistics/index.vue";
+import ProjectIncome from "@/components/screen/Content/ProjectIncome/index.vue";
+import CountStatistics from "@/components/screen/Content/CountStatistics/index.vue";
 </script>
 
 <style lang="scss" scoped>

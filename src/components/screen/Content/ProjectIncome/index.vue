@@ -109,7 +109,7 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
     right: 0;
     bottom: 0;
     position: absolute;
-    background: url("./../../../../../assets/images/spinning-ball-bottom.png")
+    background: url("./../../../../assets/images/spinning-ball-bottom.png")
       center center no-repeat;
     background-size: 100% auto;
     opacity: 0.75;
@@ -134,7 +134,7 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
   bottom: 0;
   margin: auto;
   position: absolute;
-  background: url("./../../../../../assets/images/ball.png") center center
+  background: url("./../../../../assets/images/ball.png") center center
     no-repeat;
   background-size: auto 75%;
   animation: move 30s linear infinite;

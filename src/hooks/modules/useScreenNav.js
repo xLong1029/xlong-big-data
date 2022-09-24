@@ -7,7 +7,7 @@
 import { provide, ref } from "vue";
 
 export default function () {
-  const activeNavIndex = ref(1);
+  const activeNavIndex = ref(0);
 
   provide("getActiveNavIndex", activeNavIndex);
 

@@ -112,6 +112,7 @@ const highlightConfig = ref({
   include: [],
   style: {
     fontSize: 14,
+    // color: "#71ffaa",
     fontWeight: "normal",
     fontStyle: "normal",
   },
@@ -149,7 +150,7 @@ const getMapData = () => {
           if (activeMsgIndex.value < 0) {
             activeMsgIndex.value = msgList.value.length - 1;
           }
-          console.log(activeMsgIndex.value, data?.newMsg);
+          // console.log(activeMsgIndex.value, data?.newMsg);
           msgList.value[activeMsgIndex.value] = data?.newMsg || {};
         } else {
           isFirst.value = false;
@@ -222,7 +223,12 @@ const formatContent = (val) => {
 }
 
 .msg-item {
-  background-image: linear-gradient(-90deg, #3dddff00 0%, #32a8ff3d 45%, #2468ff0a 100%);
+  background-image: linear-gradient(
+    -90deg,
+    #3dddff00 0%,
+    #32a8ff3d 45%,
+    #2468ff0a 100%
+  );
   padding: size(6) size(10) size(6) 0;
   display: flex;
   justify-content: space-between;
@@ -230,7 +236,10 @@ const formatContent = (val) => {
 
   &__content {
     width: 80%;
-    height: size(20);
+    // height: size(20);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
   }
 
   &__time {
