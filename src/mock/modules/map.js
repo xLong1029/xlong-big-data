@@ -64,7 +64,7 @@ let mapData = getMapData();
 // 获取事项消息
 const getMsgData = () => {
   return msg.list.map(({ realname, mobile, system, createdTime }) => ({
-    content: `[${realname}（${mobile}）]在${guangxiCityJson[Random.integer(0, guangxiCityJson.length - 1)].name}使用了[${system}]`,
+    content: `[${realname}(${mobile})]在[${guangxiCityJson[Random.integer(0, guangxiCityJson.length - 1)].name}]使用了[${system}]`,
     createdTime,
   }));
 };
@@ -81,7 +81,7 @@ export default [
 
         const mobile = phonePrefixs[Math.floor(Math.random() * phonePrefixs.length)] + Mock.mock(/\d{8}/);
         const newMsg = {
-          content: `[${Random.cname()}（${mobile}）]在${mapData[changeMapIndex].name}使用了[${systems[Random.integer(0, systems.length - 1)]}]`,
+          content: `[${Random.cname()}(${mobile})]在[${mapData[changeMapIndex].name}]使用了[${systems[Random.integer(0, systems.length - 1)]}]`,
           createdTime: Mock.mock('@now("yyyy-MM-dd hh:mm:ss")')
         };
 

@@ -37,12 +37,13 @@
                 :rewind="true"
                 loop
                 class="swiper-container"
-                @active-index-change="handleActiveIndexChange"
               >
                 <swiper-slide v-for="(item, index) in msgList" :key="index">
                   <div class="msg-item">
-                    <span class="msg-item__content ellipsis"
-                      >{{ item.content }}</span
+                    <span
+                      v-highlight="highlightConfig"
+                      class="msg-item__content ellipsis"
+                      >{{ formatContent(item.content) }}</span
                     >
                     <span class="msg-item__time">{{ item.createdTime }}</span>
                   </div>
@@ -57,12 +58,12 @@
 </template>
 
 <script setup>
-import { reactive, ref, inject, onMounted, onUnmounted } from "vue";
+import { reactive, ref, inject, watch, onMounted, onUnmounted } from "vue";
 import StarContainer from "@/components/common/StarContainer/index.vue";
 import MsgMap from "@/components/chart/MsgMap/index.vue";
 import geoJson from "@/assets/json/guangxi.json";
 import Api from "@/api/screen";
-import { clearTimer } from "@/utils";
+import { uniqueArr, deepClone, clearTimer } from "@/utils";
 // swiper
 import { Scrollbar, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -97,14 +98,23 @@ const msgList = ref([]);
 const activeMsgIndex = ref(0);
 
 const autoplayOptions = reactive({
-  delay: 4500, // 与请求有时间差才能替换数据
-  observer: true,
-  observeParents: true,
+  delay: 5000, // 与请求有时间差才能替换数据
+  // observer: true,
+  // observeParents: true,
   reverseDirection: true, // 反向
   disableOnInteraction: true,
 });
 
 const modules = [Scrollbar, Autoplay];
+
+const highlightConfig = ref({
+  include: [],
+  style: {
+    fontSize: 14,
+    fontWeight: "normal",
+    fontStyle: "normal",
+  },
+});
 
 onMounted(() => {
   isFirst.value = true;
@@ -126,7 +136,6 @@ const init = () => {
 };
 
 const getMapData = () => {
-
   Api.GetMapData()
     .then((res) => {
       const { code, message, data } = res;
@@ -135,8 +144,8 @@ const getMapData = () => {
         if (!isFirst.value) {
           chart.changeData = data?.changeMapObj || null;
 
-          // 替换对应索引数据
-          activeMsgIndex.value--
+          // TODO: 替换对应索引数据，有BUG
+          activeMsgIndex.value--;
           if (activeMsgIndex.value < 0) {
             activeMsgIndex.value = 5;
           }
@@ -145,6 +154,25 @@ const getMapData = () => {
           isFirst.value = false;
           msgList.value = data?.msgData || [];
         }
+
+        /* 高亮设置 */
+        const highlightList = deepClone(msgList.value).reduce((pre, cur) => {
+          return [...pre, ...getHighlightList(cur.content)];
+        }, []);
+
+        const style = {
+          fontSize: 14 * contrastRatio.value,
+        };
+
+        highlightConfig.value = {
+          ...highlightConfig.value,
+          include: uniqueArr([
+            ...(highlightConfig.value?.include || []),
+            ...highlightList,
+          ]),
+          style: { ...(highlightConfig.value?.style || {}), ...style },
+        };
+        /* 高亮设置 */
 
         chart.chartData = data?.mapData || [];
         chart.coordinateData = data?.coordinateData || [];
@@ -162,12 +190,34 @@ const getMapData = () => {
     });
 };
 
-const handleActiveIndexChange = (params) => {
-  // if(activeMsgIndex.value === 0){
-  //   activeMsgIndex.value = 5;
-  // }
-  // console.log(activeMsgIndex.value--);
+// 获取高亮文字，中括号内容
+const getHighlightList = (val) => {
+  return val.match(/(?<=\[)([^\]]*)(?=\])/g) ?? [];
 };
+
+// 格式化内容，去掉中括号
+const formatContent = (val) => {
+  return val.replaceAll(/\[([^\]]*)\]/g, "$1");
+};
+
+// watch(
+//   () => msgList.value,
+//   (val) => {
+//     const highlightList = deepClone(val).reduce((pre, cur) => {
+//       return [...pre, ...getHighlightList(cur.content)];
+//     }, []);
+
+//     const style = {
+//       fontSize: 14 * contrastRatio.value,
+//     };
+
+//     highlightConfig.value = {
+//       ...highlightConfig.value,
+//       include: uniqueArr([...(highlightConfig.value?.include || []), ...highlightList]),
+//       style: { ...(highlightConfig.value?.style || {}), ...style },
+//     };
+//   }
+// );
 </script>
 
 <style lang="scss" scoped>
@@ -201,7 +251,7 @@ const handleActiveIndexChange = (params) => {
     height: size(20);
   }
 
-  &__time{
+  &__time {
     color: color(blue);
   }
 }
