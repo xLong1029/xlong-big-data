@@ -1,7 +1,6 @@
 
 import {
   isString,
-  isPlainObject,
   cssToInline,
   createUUID,
   getClassNames
