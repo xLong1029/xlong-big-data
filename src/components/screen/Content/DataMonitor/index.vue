@@ -1,10 +1,11 @@
 <template>
-  <BorderFrame class="week-statistics-container">
+  <BorderFrame>
     <LineTitle title="数据监控" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <template #content>
           <StatisticsDiagram
+            height="95%"
             :chart-data="chart.chartData"
             :line-data="chart.lineData"
             :fly-line-data="chart.flyLineData"
@@ -247,7 +248,12 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 <style lang="scss" scoped>
 @import "@/styles/screen-mixin.scss";
 
-.week-statistics-container {
-  @include line-title-set-unit();
+// :deep(.content) {
+//   padding-bottom: size(15);
+//   height: calc(100% - size(30)) !important;
+// }
+
+:deep(.data-loading-container){
+  align-items: flex-start;
 }
 </style>

@@ -73,12 +73,15 @@ import CountStatistics from "@/components/screen/Content/CountStatistics/index.v
 
     .chart-1 {
       min-height: size(280);
+      height: auto;
     }
     .chart-2 {
-      height: 36%;
+      flex: 1;
+      height: 30%;
     }
     .chart-3 {
-      flex: 1;
+      // flex: 1;
+      height: 35%;
     }
   }
 

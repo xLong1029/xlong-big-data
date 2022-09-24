@@ -1,5 +1,5 @@
 <template>
-  <BorderFrame>
+  <BorderFrame class="count-statistics">
     <div class="count-container">
       <div class="count-item">
         <div class="count-item__icon">

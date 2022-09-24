@@ -31,7 +31,6 @@
 </template>
 
 <script setup>
-import { reactive, inject, onMounted, shallowRef } from "@vue/runtime-core";
 import CompanyStatistics from "@/components/screen/Content/CompanyStatistics/index.vue";
 import CompanyProject from "@/components/screen/Content/CompanyProject/index.vue";
 import ProjectPercent from "@/components/screen/Content/ProjectPercent/index.vue";

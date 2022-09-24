@@ -50,7 +50,6 @@ const props = defineProps({
     display: flex;
     align-items: center;
     margin-left: size(3);
-    
 
     h2 {
       color: #45f3fd;
@@ -73,6 +72,16 @@ const props = defineProps({
   .text {
     display: flex;
     align-items: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .line-title-container {
+    .title {
+      h2 {
+        font-size: size(18);
+      }
+    }
   }
 }
 </style>

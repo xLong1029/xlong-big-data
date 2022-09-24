@@ -206,10 +206,6 @@ const formatContent = (val) => {
 <style lang="scss" scoped>
 @import "@/styles/screen-mixin.scss";
 
-.week-statistics-container {
-  @include line-title-set-unit();
-}
-
 .map-statistics {
   &-contaienr {
     display: flex;

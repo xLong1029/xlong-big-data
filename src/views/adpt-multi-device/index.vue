@@ -129,6 +129,7 @@ const init = () => {
     background-size: auto auto;
     .screen-content-container {
       padding-top: size(40);
+      padding-bottom: size(45);
       overflow-y: auto;
     }
   }

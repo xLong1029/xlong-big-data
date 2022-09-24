@@ -1,17 +1,97 @@
 <template>
   <div class="screen-content">
-    <BorderFrame>111</BorderFrame>
-    <BorderFrame class="mt-15"></BorderFrame>
-    <BorderFrame class="mt-15"></BorderFrame>
+    <div class="module-1">
+      <TotalStatistics />
+    </div>
+    <div class="module-2 mt-15">
+      <ProjectPercent />
+    </div>
+    <div class="module-3 mt-15">
+      <CompanyStatistics />
+    </div>
+    <div class="module-4 mt-15">
+      <CompanyProject />
+    </div>
+    <div class="module-5 mt-15">
+      <ProjectStatistics />
+    </div>
+    <div class="module-6 mt-15">
+      <CityStatistics />
+    </div>
+    <div class="module-7 mt-15">
+      <CityRanking />
+    </div>
   </div>
 </template>
 
 <script setup>
-import BorderFrame from "@/components/common/BorderFrame/index.vue";
+import CompanyStatistics from "@/components/screen/Content/CompanyStatistics/index.vue";
+import CompanyProject from "@/components/screen/Content/CompanyProject/index.vue";
+import ProjectPercent from "@/components/screen/Content/ProjectPercent/index.vue";
+import TotalStatistics from "@/components/screen/Content/TotalStatistics/index.vue";
+import CityStatistics from "@/components/screen/Content/CityStatistics/index.vue";
+import ProjectStatistics from "@/components/screen/Content/ProjectStatistics/index.vue";
+import CityRanking from "@/components/screen/Content/CityRanking/index.vue";
 </script>
 
 <style lang="scss" scoped>
 .screen-content {
   padding: size(15);
+
+  :deep(.border-frame-container) {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .content {
+      padding-top: size(15);
+      height: calc(100% - size(15));
+    }
+  }
+}
+
+.module-1 {
+  height: size(500);
+}
+
+.module-2 {
+  height: size(300);
+}
+
+.module-3 {
+  height: size(300);
+}
+
+.module-4{
+  height: size(400);
+}
+
+.module-5{
+  height: size(300);
+}
+
+.module-6{
+  height: size(350);
+}
+
+.module-7{
+  height: size(600);
+}
+
+@media screen and (max-width: 560px) {
+  .module-2 {
+    height: auto;
+
+    :deep(.project-percent){
+      .data-loading-container{
+        flex-direction: column;
+      }
+
+      .chart-module{
+        margin: size(10);
+        height: size(150);
+        width: 100%;
+      }
+    }
+  }
 }
 </style>
