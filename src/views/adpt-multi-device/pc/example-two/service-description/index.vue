@@ -58,6 +58,11 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 
 <style lang="scss" scoped>
 @import "@/styles/screen-mixin.scss";
+@font-face {
+  font-family: ShiShangZhongHeiJianTi;
+  src: url("./../../../../../assets/font/ShiShangZhongHeiJianTi.ttf");
+}
+
 
 .tab-wrapper {
   width: 100%;
@@ -78,6 +83,7 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 
     &__text {
       font-weight: bold;
+      font-family: "ShiShangZhongHeiJianTi";
       @include gradient-font(-90deg, #72ffe6, #178be9);
     }
 

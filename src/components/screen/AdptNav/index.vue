@@ -46,7 +46,7 @@ const emit = defineEmits(["change-nav"]);
       background-size: 120% 100%;
 
       .nav-text {
-        font-size: size(14);
+        font-size: size(16);
       }
     }
 

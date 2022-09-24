@@ -81,6 +81,10 @@ const setTime = () => {
 
 <style lang="scss" scoped>
 @import "@/styles/screen-mixin.scss";
+@font-face {
+  font-family: PangMenZhengDaoBiaoTiTi;
+  src: url("./../../../assets/font/PangMenZhengDaoBiaoTiTi.ttf");
+}
 
 .screen-header {
   &-container {
@@ -103,10 +107,11 @@ const setTime = () => {
     .title {
       @include gradient-font(bottom, color(blue), color(white));
 
-      font-size: size(30);
-      font-weight: bold;
+      font-family: "PangMenZhengDaoBiaoTiTi";
+      font-size: size(34);
       margin-top: size(-8);
       letter-spacing: size(2);
+      line-height: size(42);
     }
   }
 

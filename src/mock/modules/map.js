@@ -85,8 +85,6 @@ export default [
           createdTime: Mock.mock('@now("yyyy-MM-dd hh:mm:ss")')
         };
 
-        console.log(newMsg);
-
         return handleResponse(200, "success", {
           coordinateData,
           mapData,

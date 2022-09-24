@@ -100,7 +100,7 @@ const autoplayOptions = reactive({
   delay: 4500, // 与请求有时间差才能替换数据
   observer: true,
   observeParents: true,
-  reverseDirection: true,
+  reverseDirection: true, // 反向
   disableOnInteraction: true,
 });
 

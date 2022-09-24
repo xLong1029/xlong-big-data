@@ -76,6 +76,7 @@ const initHtmlFontSize = () => {
         }
       }
     } else {
+      contrastRatio.value = 1;
       setView("MobileScreen");
     }
   }

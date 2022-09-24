@@ -13,6 +13,10 @@ const { sysTitle } = useCommon();
 
 <style lang="scss" scoped>
 @import "@/styles/screen-mixin.scss";
+@font-face {
+  font-family: PangMenZhengDaoBiaoTiTi;
+  src: url("./../../../assets/font/PangMenZhengDaoBiaoTiTi.ttf");
+}
 
 .screen-header {
   &-container {
@@ -37,35 +41,38 @@ const { sysTitle } = useCommon();
       @include gradient-font(bottom, color(blue), color(white));
 
       width: 100%;
-      font-size: size(20);
-      font-weight: bold;
-      margin-top: size(-8);
+      font-family: "PangMenZhengDaoBiaoTiTi";
+      font-weight: normal;
+      font-size: size(22);
       letter-spacing: size(2);
+      line-height: size(17);
     }
   }
 }
 
 @media screen and (max-width: 640px) {
-  .screen-header {  
-    &-container{
-       background-image: url("./../../../assets/images/mobile-top-bg.png");
-       background-size: 100% 100%;
+  .screen-header {
+    &-container {
+      background-image: url("./../../../assets/images/mobile-top-bg.png");
+      background-size: 100% 100%;
 
-       .title{
-         font-size: size(18);
-         margin-top: size(-6);
-       }
+      .title {
+        line-height: size(28);
+        font-size: size(18);
+        margin-top: size(-6);
+      }
     }
   }
 }
 
 @media screen and (max-width: 560px) {
-  .screen-header {  
-    &-container{
-       .title{
-         font-size: size(18);
-         margin-top: size(-6);
-       }
+  .screen-header {
+    &-container {
+      .title {
+        
+        font-size: size(18);
+        margin-top: size(-6);
+      }
     }
   }
 }

@@ -1,4 +1,8 @@
 @import "./screen-mixin.scss";
+@font-face {
+  font-family: ShiShangZhongHeiJianTi;
+  src: url("./../assets/font/ShiShangZhongHeiJianTi.ttf");
+}
 
 .screen-nav {
   &-container {
@@ -28,8 +32,9 @@
 
     .nav-text {
       @include gradient-font(bottom, color(blue), color(white));
-      font-weight: bold;
-      font-size: size(20);
+      font-family: "ShiShangZhongHeiJianTi";
+      font-weight: 500;
+      font-size: size(22);
     }
 
     &.is-active {

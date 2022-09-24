@@ -26,6 +26,10 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 @import "@/styles/screen-mixin.scss";
+@font-face {
+  font-family: ShiShangZhongHeiJianTi;
+  src: url("./../../../assets/font/ShiShangZhongHeiJianTi.ttf");
+}
 
 .line-title-container {
   width: 100%;
@@ -46,12 +50,15 @@ const props = defineProps({
     display: flex;
     align-items: center;
     margin-left: size(3);
+    
 
     h2 {
       color: #45f3fd;
+      font-family: "ShiShangZhongHeiJianTi";
       font-weight: 500;
-      font-size: size(18);
+      font-size: size(22);
       margin-left: size(5);
+      letter-spacing: size(1);
       margin-bottom: 0;
       margin-top: 0;
     }

@@ -2,7 +2,7 @@
   <div class="screen-content">
     <div class="screen-content__left">
       <div class="chart-1">
-        <ProjectDescription />
+        <ServiceDescription />
       </div>
       <div class="chart-2 pt-15">
         <DataMonitor />
@@ -37,7 +37,7 @@
 import BorderFrame from "@/components/common/BorderFrame/index.vue";
 import WeekStatistics from "./week-statistics/index.vue";
 import HotProjects from "./hot-projects/index.vue";
-import ProjectDescription from "./project-description/index.vue";
+import ServiceDescription from "./service-description/index.vue";
 import ProjectUse from "./project-use/index.vue";
 import DataMonitor from "./data-monitor/index.vue";
 import MapStatistics from "./map-statistics/index.vue";
