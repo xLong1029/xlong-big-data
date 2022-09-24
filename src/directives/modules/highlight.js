@@ -33,6 +33,8 @@ const getBindingValue = (binding) => {
 }
 
 const highlight = (el, binding, vnode, prevNode) => {
+  const content = el?.dataset?.content || el.innerHTML;  
+
   // 获取el下的子元素
   let orginElWrap = el.querySelector(`.${HIGH_LIGHT_ORIGIN_CLASS}`);
   let highlightElWrap = el.querySelector(`.${HIGH_LIGHT_CLASS}`);
@@ -42,14 +44,16 @@ const highlight = (el, binding, vnode, prevNode) => {
     orginElWrap = document.createElement("div");
     orginElWrap.classList.add(HIGH_LIGHT_ORIGIN_CLASS);
     orginElWrap.style.display = "none";
-    orginElWrap.innerHTML = el.innerHTML;
   }
+  orginElWrap.innerHTML = content;
+
   // 新增节点-高亮数据
   if (!highlightElWrap) {
     highlightElWrap = document.createElement("div");
     highlightElWrap.classList.add(HIGH_LIGHT_CLASS);
   }
 
+  
   el.innerHTML = "";
   el.appendChild(orginElWrap);
   el.appendChild(highlightElWrap);

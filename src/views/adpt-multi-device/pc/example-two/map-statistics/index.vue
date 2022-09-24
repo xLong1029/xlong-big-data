@@ -42,6 +42,7 @@
                   <div class="msg-item">
                     <span
                       v-highlight="highlightConfig"
+                      :data-content="formatContent(item.content)"
                       class="msg-item__content ellipsis"
                       >{{ formatContent(item.content) }}</span
                     >
@@ -98,7 +99,7 @@ const msgList = ref([]);
 const activeMsgIndex = ref(0);
 
 const autoplayOptions = reactive({
-  delay: 5000, // 与请求有时间差才能替换数据
+  delay: 4000, // 与请求有时间差才能替换数据
   // observer: true,
   // observeParents: true,
   reverseDirection: true, // 反向
@@ -144,11 +145,11 @@ const getMapData = () => {
         if (!isFirst.value) {
           chart.changeData = data?.changeMapObj || null;
 
-          // TODO: 替换对应索引数据，有BUG
           activeMsgIndex.value--;
           if (activeMsgIndex.value < 0) {
-            activeMsgIndex.value = 5;
+            activeMsgIndex.value = msgList.value.length - 1;
           }
+          console.log(activeMsgIndex.value, data?.newMsg);
           msgList.value[activeMsgIndex.value] = data?.newMsg || {};
         } else {
           isFirst.value = false;
@@ -199,25 +200,6 @@ const getHighlightList = (val) => {
 const formatContent = (val) => {
   return val.replaceAll(/\[([^\]]*)\]/g, "$1");
 };
-
-// watch(
-//   () => msgList.value,
-//   (val) => {
-//     const highlightList = deepClone(val).reduce((pre, cur) => {
-//       return [...pre, ...getHighlightList(cur.content)];
-//     }, []);
-
-//     const style = {
-//       fontSize: 14 * contrastRatio.value,
-//     };
-
-//     highlightConfig.value = {
-//       ...highlightConfig.value,
-//       include: uniqueArr([...(highlightConfig.value?.include || []), ...highlightList]),
-//       style: { ...(highlightConfig.value?.style || {}), ...style },
-//     };
-//   }
-// );
 </script>
 
 <style lang="scss" scoped>
@@ -241,7 +223,7 @@ const formatContent = (val) => {
 
 .msg-item {
   background-image: linear-gradient(-90deg, #3dddff00 0%, #32a8ff3d 45%, #2468ff0a 100%);
-  padding: size(5) size(10);
+  padding: size(6) size(10) size(6) 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -258,7 +240,7 @@ const formatContent = (val) => {
 
 .swiper-container {
   width: 100%;
-  height: size(218);
+  height: size(220);
 
   :deep(.swiper-slide) {
     height: auto;
