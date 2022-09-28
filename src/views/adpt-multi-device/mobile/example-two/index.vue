@@ -100,6 +100,10 @@ import CountStatistics from "@/components/screen/Content/CountStatistics/index.v
         height: size(80);
       }
     }
+
+    :deep(.border-frame-container) {
+      align-items: center;
+    }
   }
 
   .module-2 {
@@ -130,13 +134,13 @@ import CountStatistics from "@/components/screen/Content/CountStatistics/index.v
 
 @media screen and (max-width: 560px) {
   .module-2 {
-    height: size(600);
+    height: size(650);
   }
 
   .module-3 {
-     :deep(.tab-title-item__text) {
-       font-size: size(18);
-     }
+    :deep(.tab-title-item__text) {
+      font-size: size(18);
+    }
   }
 }
 </style>

@@ -1,7 +1,8 @@
 <template>
   <div class="screen-content">
     <div class="module-1">
-      <TotalStatistics />
+      <TotalStatistics v-if="screen.width >= 1024" />
+      <TotalStatisticsMobile v-else />
     </div>
     <div class="module-2 mt-15">
       <ProjectPercent />
@@ -29,9 +30,12 @@ import CompanyStatistics from "@/components/screen/Content/CompanyStatistics/ind
 import CompanyProject from "@/components/screen/Content/CompanyProject/index.vue";
 import ProjectPercent from "@/components/screen/Content/ProjectPercent/index.vue";
 import TotalStatistics from "@/components/screen/Content/TotalStatistics/index.vue";
+import TotalStatisticsMobile from "@/components/screen/Content/TotalStatisticsMobile/index.vue";
 import CityStatistics from "@/components/screen/Content/CityStatistics/index.vue";
 import ProjectStatistics from "@/components/screen/Content/ProjectStatistics/index.vue";
 import CityRanking from "@/components/screen/Content/CityRanking/index.vue";
+import { inject } from "vue";
+const screen = inject("getScreen");
 </script>
 
 <style lang="scss" scoped>
@@ -61,32 +65,38 @@ import CityRanking from "@/components/screen/Content/CityRanking/index.vue";
   height: size(300);
 }
 
-.module-4{
+.module-4 {
   height: size(400);
 }
 
-.module-5{
+.module-5 {
   height: size(300);
 }
 
-.module-6{
+.module-6 {
   height: size(350);
 }
 
-.module-7{
+.module-7 {
   height: size(600);
+}
+
+@media screen and (max-width: 1024px) {
+  .module-1 {
+    height: auto;
+  }
 }
 
 @media screen and (max-width: 560px) {
   .module-2 {
     height: auto;
 
-    :deep(.project-percent){
-      .data-loading-container{
+    :deep(.project-percent) {
+      .data-loading-container {
         flex-direction: column;
       }
 
-      .chart-module{
+      .chart-module {
         margin: size(10);
         height: size(150);
         width: 100%;

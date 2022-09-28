@@ -1,11 +1,11 @@
 <template>
-  <div class="statistics-data" :class="`statistics-data-${direction}`">
-    <div class="statistics-data__value">
+  <div class="statistics-data-frame" :class="`statistics-data-frame--${direction}`">
+    <div class="statistics-data-frame__value">
       <slot name="value">
         <span :style="`color: ${valueColor}`">{{ value }}</span>
       </slot>
     </div>
-    <div class="statistics-data__name">
+    <div class="statistics-data-frame__name">
       <slot name="name">
         <span :style="`color: ${nameColor}`">{{ name }}</span>
       </slot>
@@ -41,12 +41,12 @@ const props = defineProps({
 <style lang="scss" scoped>
 @import "@/styles/screen-mixin.scss";
 
-.statistics-data {
+.statistics-data-frame {
   top: size(20);
   display: flex;
   flex-direction: column;
 
-  &-left {
+  &--left {
     @include background-setting(
       "./../../../assets/images/border-left.png",
       size(232),
@@ -56,7 +56,7 @@ const props = defineProps({
     padding: size(1) size(30) size(115) size(15);
   }
 
-  &-right {
+  &--right {
     @include background-setting(
       "./../../../assets/images/border-right.png",
       size(232),
