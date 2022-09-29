@@ -1,13 +1,13 @@
 <template>
   <div class="screen-content">
     <div class="screen-content__left">
-      <div class="chart-1">
+      <div class="module-1">
         <ServiceDescription />
       </div>
-      <div class="chart-2 pt-15">
+      <div class="module-2 pt-15">
         <DataMonitor />
       </div>
-      <div class="chart-3 pt-15">
+      <div class="module-3 pt-15">
         <WeekStatistics />
       </div>
     </div>
@@ -15,18 +15,18 @@
       <div class="screen-content__center-top">
         <CountStatistics />
       </div>
-      <div class="screen-content__center-center pt-15">
+      <div class="screen-content__center-bottom pt-15">
         <MapStatistics />
       </div>
     </div>
     <div class="screen-content__right">
-      <div class="chart-1">
+      <div class="module-1">
         <HotProjects />
       </div>
-      <div class="chart-2 pt-15">
+      <div class="module-2 pt-15">
         <ProjectUse />
       </div>
-      <div class="chart-3 pt-15">
+      <div class="module-3 pt-15">
         <ProjectIncome />
       </div>
     </div>
@@ -71,22 +71,22 @@ import CountStatistics from "@/components/screen/Content/CountStatistics/index.v
     display: flex;
     flex-direction: column;
 
-    .chart-1 {
+    .module-1 {
       min-height: size(280);
       height: auto;
     }
-    .chart-2 {
+    .module-2 {
       flex: 1;
       height: 30%;
     }
-    .chart-3 {
+    .module-3 {
       // flex: 1;
       height: 35%;
     }
   }
 
   &__center {
-    width: 56%;
+    flex: 1;
     height: calc(100% - size(var(--app-screen-nav-height)));
     padding: 0 size(15);
     display: flex;
@@ -96,7 +96,7 @@ import CountStatistics from "@/components/screen/Content/CountStatistics/index.v
       height: 12%;
     }
 
-    &-center {
+    &-bottom {
       flex: 1;
     }
   }
@@ -105,13 +105,13 @@ import CountStatistics from "@/components/screen/Content/CountStatistics/index.v
     display: flex;
     flex-direction: column;
 
-    .chart-1 {
+    .module-1 {
       height: 25%;
     }
-    .chart-2 {
+    .module-2 {
       height: 40%;
     }
-    .chart-3 {
+    .module-3 {
       flex: 1;
     }
   }

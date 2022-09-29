@@ -5,7 +5,8 @@
       <TotalStatisticsMobile v-else />
     </div>
     <div class="module-2 mt-15">
-      <ProjectPercent />
+      <ProjectPercent v-if="screen.width >= 560" />
+      <ProjectPercentMobile v-else />
     </div>
     <div class="module-3 mt-15">
       <CompanyStatistics />
@@ -29,6 +30,7 @@
 import CompanyStatistics from "@/components/screen/Content/CompanyStatistics/index.vue";
 import CompanyProject from "@/components/screen/Content/CompanyProject/index.vue";
 import ProjectPercent from "@/components/screen/Content/ProjectPercent/index.vue";
+import ProjectPercentMobile from "@/components/screen/Content/ProjectPercentMobile/index.vue";
 import TotalStatistics from "@/components/screen/Content/TotalStatistics/index.vue";
 import TotalStatisticsMobile from "@/components/screen/Content/TotalStatisticsMobile/index.vue";
 import CityStatistics from "@/components/screen/Content/CityStatistics/index.vue";

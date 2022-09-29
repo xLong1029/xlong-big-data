@@ -1,27 +1,44 @@
 <template>
   <div class="screen-content">
     <div class="screen-content__left">
-      <BorderFrame></BorderFrame>
+      <div class="module-1"><ServiceDescription /></div>
+      <div class="module-2 pt-15">
+        <ProjectUse />
+      </div>
     </div>
     <div class="screen-content__center">
-      <div class="screen-content__center-top">
-         <BorderFrame></BorderFrame>
+      <div class="screen-content__center-left pr-15">
+        <MapStatisticsWide />
       </div>
-      <div class="screen-content__center-center">
-        222
-      </div>
-      <div class="screen-content__center-bottom">
-        <BorderFrame></BorderFrame>
+      <div class="screen-content__center-right">
+        <div class="module-1">
+          <DataMonitor />
+        </div>
+        <div class="module-2 pt-15">
+          <WeekStatistics />
+        </div>
       </div>
     </div>
-    <div class="screen-content__left">
-      <BorderFrame direction="right"></BorderFrame>
+    <div class="screen-content__right">
+      <div class="module-1">
+        <HotProjects />
+      </div>
+      <div class="module-2 pt-15">
+        <ProjectIncome />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import BorderFrame from "@/components/common/BorderFrame/index.vue";
+import WeekStatistics from "@/components/screen/Content/WeekStatistics/index.vue";
+import HotProjects from "@/components/screen/Content/HotProjects/index.vue";
+import ServiceDescription from "@/components/screen/Content/ServiceDescription/index.vue";
+import ProjectUse from "@/components/screen/Content/ProjectUse/index.vue";
+import DataMonitor from "@/components/screen/Content/DataMonitor/index.vue";
+import MapStatisticsWide from "@/components/screen/Content/MapStatisticsWide/index.vue";
+import ProjectIncome from "@/components/screen/Content/ProjectIncome/index.vue";
+import CountStatistics from "@/components/screen/Content/CountStatistics/index.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -31,30 +48,69 @@ import BorderFrame from "@/components/common/BorderFrame/index.vue";
   width: 100%;
   display: flex;
 
+  :deep(.border-frame-container) {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .content {
+      padding-top: size(15);
+      height: calc(100% - size(15));
+    }
+  }
+
   &__left,
   &__right {
-    width: 22%;
+    width: 18%;
     height: 100%;
   }
 
-  &__center {
-    width: 56%;
-    height: calc(100% - size(var(--app-screen-nav-height)));
-    padding: 0 size(15);
+  &__left {
     display: flex;
     flex-direction: column;
 
-    &-top{
-      height: 20%;
+    .module-1 {
+      min-height: size(280);
+      height: auto;
+    }
+    .module-2 {
+      flex: 1;
+      height: 30%;
+    }
+  }
+
+  &__center {
+    flex: 1;
+    height: calc(100% - size(var(--app-screen-nav-height)));
+    padding: 0 size(15);
+    display: flex;
+
+    &-left {
+      width: 70%;
     }
 
-    &-center{
-      height: 60%;
-      padding: size(15) 0;
-    }
+    &-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
 
-    &-bottom{
-      height: 20%;
+      .module-1 {
+        height: 50%;
+      }
+      .module-2 {
+        flex: 1;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+
+    .module-1 {
+      height: 47.5%;
+    }
+    .module-2 {
+      flex: 1;
     }
   }
 }

@@ -8,7 +8,10 @@
         </div>
         <div class="count-item__content ml-20">
           <div class="count-item__number number">
-            <span class="number__value mr-5" :style="{ color: coverCities.valueColor }">
+            <span
+              class="number__value mr-5"
+              :style="{ color: coverCities.valueColor }"
+            >
               <FadeNum v-model:value="coverCities.changeNum">
                 <CountUp
                   :delay="countUpOption.delay"
@@ -34,7 +37,10 @@
         </div>
         <div class="count-item__content ml-20">
           <div class="count-item__number number">
-            <span class="number__value mr-5" :style="{ color: normalApps.valueColor }">
+            <span
+              class="number__value mr-5"
+              :style="{ color: normalApps.valueColor }"
+            >
               <FadeNum v-model:value="normalApps.changeNum">
                 <CountUp
                   :delay="countUpOption.delay"
@@ -60,7 +66,10 @@
         </div>
         <div class="count-item__content ml-20">
           <div class="count-item__number number">
-            <span class="number__value mr-5" :style="{ color: vipUsers.valueColor }">
+            <span
+              class="number__value mr-5"
+              :style="{ color: vipUsers.valueColor }"
+            >
               <FadeNum v-model:value="vipUsers.changeNum">
                 <CountUp
                   :delay="countUpOption.delay"
@@ -123,7 +132,11 @@ const vipUsers = reactive({
 const handleApiData = (data) => {
   if (!data) return false;
 
-  const { coverCities: cities, normalApps: apps, vipUsers: vips } = data.countData;
+  const {
+    coverCities: cities,
+    normalApps: apps,
+    vipUsers: vips,
+  } = data.countData;
 
   if (!isFrist.value) {
     coverCities.changeNum = cities - coverCities.value;
@@ -146,22 +159,29 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 <style lang="scss" scoped>
 @import "@/styles/screen-mixin.scss";
 
+.border-frame-container{
+  align-items: center !important;
+}
+
 .count-container {
   height: 100%;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-around;
-  align-items: center;
 }
 
 .line {
-  width: size(1);
-  height: 100%;
-  background: url("./../../../../assets/images/line-vertical.png") no-repeat;
+  width: 100%;
+  height: size(1);
+  background: url("./../../../../assets/images/line-horizontal.png") no-repeat;
   background-size: 100% 100%;
 }
 
 .count-item {
   display: flex;
+  margin: size(10);
+  height: size(100);
 
   &__icon {
     width: size(75);

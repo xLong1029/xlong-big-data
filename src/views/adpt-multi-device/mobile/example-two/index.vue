@@ -1,7 +1,8 @@
 <template>
   <div class="screen-content">
     <div class="module-1">
-      <CountStatistics />
+      <CountStatistics v-if="screen.width >= 768" />
+      <CountStatisticsMobile v-else />
     </div>
     <div class="module-2 mt-15">
       <MapStatistics />
@@ -36,6 +37,9 @@ import DataMonitor from "@/components/screen/Content/DataMonitor/index.vue";
 import MapStatistics from "@/components/screen/Content/MapStatistics/index.vue";
 import ProjectIncome from "@/components/screen/Content/ProjectIncome/index.vue";
 import CountStatistics from "@/components/screen/Content/CountStatistics/index.vue";
+import CountStatisticsMobile from "@/components/screen/Content/CountStatisticsMobile/index.vue";
+import { inject } from "vue";
+const screen = inject("getScreen");
 </script>
 
 <style lang="scss" scoped>
@@ -85,25 +89,9 @@ import CountStatistics from "@/components/screen/Content/CountStatistics/index.v
   height: size(380);
 }
 
-@media screen and (max-width: 756px) {
+@media screen and (max-width: 768px) {
   .module-1 {
     height: auto;
-
-    :deep(.count-statistics) {
-      .count-container {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .count-item {
-        margin: size(10);
-        height: size(80);
-      }
-    }
-
-    :deep(.border-frame-container) {
-      align-items: center;
-    }
   }
 
   .module-2 {

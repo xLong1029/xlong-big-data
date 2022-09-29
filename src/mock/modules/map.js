@@ -77,7 +77,7 @@ export default [
     response: (config) =>
       handleMock(config, () => {
         let changeMapIndex = Random.integer(0, mapData.length - 1);
-        mapData[changeMapIndex].visit += Random.integer(1, 10);
+        mapData[changeMapIndex].visit += 1;
 
         const mobile = phonePrefixs[Math.floor(Math.random() * phonePrefixs.length)] + Mock.mock(/\d{8}/);
         const newMsg = {

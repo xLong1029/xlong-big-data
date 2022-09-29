@@ -61,9 +61,9 @@ const initHtmlFontSize = () => {
         setView("WideScreen");
 
         if (swhr > design.ratio) {
-          contrastRatio.value = screen.height < minScreen.height ? 0.56 : hr; // 以高度为基准制定
+          contrastRatio.value = screen.height < minScreen.height ? 0.56 : hr * 1.2; // 以高度为基准制定
         } else {
-          contrastRatio.value = screen.width < minScreen.width ? 0.6 : wr; // 以宽度为基准制定
+          contrastRatio.value = screen.width < minScreen.width ? 0.6 : wr * 1.2; // 以宽度为基准制定
         }
       } else {
         setView("PCScreen");

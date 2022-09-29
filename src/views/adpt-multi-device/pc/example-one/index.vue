@@ -1,13 +1,13 @@
 <template>
   <div class="screen-content">
     <div class="screen-content__left">
-      <div class="chart-1">
+      <div class="module-1">
         <ProjectPercent />
       </div>
-      <div class="chart-2 pt-15">
+      <div class="module-2 pt-15">
         <CompanyStatistics />
       </div>
-      <div class="chart-3 pt-15">
+      <div class="module-3 pt-15">
         <CompanyProject />
       </div>
     </div>
@@ -15,15 +15,15 @@
       <div class="screen-content__center-top">
         <TotalStatistics />
       </div>
-      <div class="screen-content__center-bottom">
+      <div class="screen-content__center-bottom pt-15">
         <CityStatistics />
       </div>
     </div>
     <div class="screen-content__right">
-      <div class="chart-1">
+      <div class="module-1">
         <ProjectStatistics />
       </div>
-      <div class="chart-2 pt-15">
+      <div class="module-2 pt-15">
         <CityRanking />
       </div>
     </div>
@@ -66,19 +66,19 @@ import CityRanking from "@/components/screen/Content/CityRanking/index.vue";
   }
 
   &__left {
-    .chart-1 {
+    .module-1 {
       height: 24%;
     }
-    .chart-2 {
+    .module-2 {
       height: 33.5%;
     }
-    .chart-3 {
+    .module-3 {
       height: 42.5%;
     }
   }
 
   &__center {
-    width: 54%;
+    flex: 1;
     height: calc(100% - size(var(--app-screen-nav-height)));
     padding: 0 size(15);
     display: flex;
@@ -89,17 +89,16 @@ import CityRanking from "@/components/screen/Content/CityRanking/index.vue";
     }
 
     &-bottom {
-      height: 40%;
-      padding-top: size(15);
+      flex: 1;
     }
   }
 
   &__right {
-    .chart-1 {
+    .module-1 {
       height: 30%;
     }
-    .chart-2 {
-      height: 70%;
+    .module-2 {
+      flex: 1;
     }
   }
 }

@@ -188,7 +188,7 @@ const setOption = (chartData = []) => {
     series: [
       {
         type: "bar",
-        barMaxWidth: "50%",
+        barMaxWidth: 24 * scale,
         itemStyle: {
           color: (params) => {
             let colors = {
