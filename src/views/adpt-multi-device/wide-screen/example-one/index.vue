@@ -93,6 +93,7 @@ import CityRanking from "@/components/screen/Content/CityRanking/index.vue";
       }
       .module-2 {
         width: 65%;
+        max-width: size(1000);
       }
     }
 
