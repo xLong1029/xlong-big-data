@@ -32,10 +32,6 @@ xlong-big-data是一套基于 Vite + Vue3 + Element Plus + ECharts 开发的单�
 
 gif文件稍微有点大，被压缩了，丢失了部分色彩：<br/>
 
-* 自适应
-
-![Image text](static/images/adpt.gif)
-
 * PC界面
 
 ![Image text](static/images/screen-2.gif)
@@ -54,6 +50,9 @@ gif文件稍微有点大，被压缩了，丢失了部分色彩：<br/>
 
 ![Image text](static/images/screen-7.gif)
 
+* 自适应
+
+![Image text](static/images/adpt.gif)
 
 ## 目录结构
 
