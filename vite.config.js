@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import path from "path";
 import vue from '@vitejs/plugin-vue';
 import AutoImport from 'unplugin-auto-import/vite'
@@ -8,14 +8,13 @@ import { viteMockServe } from "vite-plugin-mock";
 import autoprefixer from "autoprefixer";
 
 import settings from "./src/settings";
-
 const port = settings.webPort;
 
 // 获取打包文件
-function getOutputDir() {
+function getOutputDir(env) {
   let dir = "xLongBigData";
 
-  switch (process.env.VITE_APP_ENV) {
+  switch (env.VITE_APP_ENV) {
     case "test":
       dir = "xLongBigDataTest";
       break;
@@ -29,10 +28,12 @@ function getOutputDir() {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+
   return {
     base: mode === 'production' ? "./" : "/",
     build: {
-      outDir: getOutputDir(),
+      outDir: getOutputDir(env),
       // 修改打包块限制大小
       chunkSizeWarningLimit: 10000
     },
@@ -56,7 +57,7 @@ export default defineConfig(({ mode }) => {
         mockPath: "./src/mock", // mock地址
         supportTs: false, // 如果使用 js发开，则需要配置 supportTs 为 false
         watchFiles: true, // 监视文件更改
-        prodEnabled: process.env.VITE_USE_MOCK,
+        prodEnabled: env.VITE_USE_MOCK,
         // mock生产环境配置
         injectCode: `
           import { setupProdMockServer } from "./mock/mock-server.js";
