@@ -1,13 +1,17 @@
 # xlong-big-data
 
 ## 介绍
+xlong-big-data是一套基于 Vite + Vue3 + Element Plus + ECharts 开发的单页面客户端渲染的数据监控平台示例。  
 
+温馨提示：
+1. 使用Mock.js随机生成数据，拦截 Ajax 请求
+2. 项目启动成功后需要等待一段时间加载资源
 
 * 该项目仅作学习参考，请勿商用
 
 ## 项目展示
 
-> DEMO地址：https://xlong1029.github.io/xlong-map-admin/
+> DEMO地址：https://xlong1029.github.io/xlong-big-data/
 
 ## 项目说明
 
@@ -22,6 +26,7 @@
 [Vite](https://cn.vitejs.dev/)<br/>
 [Mockjs](http://mockjs.com/)<br/>
 [Element Plus](https://github.com/element-plus)<br/>
+[ECharts](https://echarts.apache.org)<br/>
 
 ## 部分项目运行截图
 
@@ -43,7 +48,9 @@
 │
 ├─src
 │  │  main.js // 项目入口js
-│  │  permission.js // 路由权限配置
+│  │  permission.js // 路由权限
+│  │  components.js // 全局注册组件
+│  │  element-plus.js // element plus配置
 │  │  settings.js // 设置文件
 │  │  App.vue // 根组件
 │  │
@@ -76,6 +83,15 @@
 │  │  ├─screen // 大屏组件
 │  │  │
 │  │  └─charts // 图表组件
+│  │
+│  ├─directives // 自定义指令
+│  │  │  index.js
+│  │  │
+│  │  └─modules
+│  │
+│  ├─hooks 钩子函数
+│  │  │
+│  │  └─modules
 │  │
 │  ├─views // 视图
 │  │  │
