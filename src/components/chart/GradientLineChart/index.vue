@@ -235,7 +235,7 @@ const setOption = (chartData = []) => {
           show: false,
         },
         axisLabel: {
-          interval: 0,
+          // interval: 0,
           color: fontColor,
           fontSize,
         },

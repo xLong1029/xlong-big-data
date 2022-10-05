@@ -72,7 +72,7 @@ const screen = inject("getScreen");
 }
 
 .module-5 {
-  height: size(300);
+  height: size(260);
 }
 
 .module-6 {

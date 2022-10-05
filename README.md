@@ -30,6 +30,30 @@ xlong-big-data是一套基于 Vite + Vue3 + Element Plus + ECharts 开发的单�
 
 ## 部分项目运行截图
 
+gif文件稍微有点大，被压缩了，丢失了部分色彩：<br/>
+
+* 自适应
+
+![Image text](static/images/adpt.gif)
+
+* PC界面
+
+![Image text](static/images/screen-2.gif)
+
+![Image text](static/images/screen-3.gif)
+
+* 宽屏超界面
+
+![Image text](static/images/screen-4.jpg)
+
+![Image text](static/images/screen-5.jpg)
+
+* 移动端界面
+
+![Image text](static/images/screen-6.gif)
+
+![Image text](static/images/screen-7.gif)
+
 
 ## 目录结构
 
@@ -130,5 +154,3 @@ github：https://github.com/xLong1029/
 站酷主页：http://xlong.zcool.com.cn/
 
 UI 中国：http://i.ui.cn/ucenter/358591.html
-
-- 此项目做学习 Vue3 + Vite 测试使用，ArcGis 我只是外行
