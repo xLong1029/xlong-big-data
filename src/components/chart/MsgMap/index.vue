@@ -125,10 +125,7 @@ const getLineData = (changeData, centerPoint) => {
   if (!changeData) return [];
   return [
     {
-      coords: [
-        changeData.coordinate,
-        centerPoint.value,
-      ],
+      coords: [changeData.coordinate, centerPoint.value],
     },
   ];
 };
@@ -207,11 +204,6 @@ const setOption = (chartData = []) => {
       label: {
         show: false,
       },
-      emphasis: {
-        label: {
-          show: false,
-        },
-      },
       // 地图变形，1为不变形
       aspectScale: 1,
       // 缩放操作
@@ -222,6 +214,9 @@ const setOption = (chartData = []) => {
         borderColor: "#47a5fc",
       },
       emphasis: {
+        label: {
+          show: false,
+        },
         itemStyle: {
           areaColor: "rgba(0,0,0, 0.35)",
         },
