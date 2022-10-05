@@ -47,6 +47,7 @@ const chart = reactive({
   defaultColors: ["#3368ff", "#50ffef"],
   grid: {
     right: 0,
+    bottom: "-12%"
   },
 });
 

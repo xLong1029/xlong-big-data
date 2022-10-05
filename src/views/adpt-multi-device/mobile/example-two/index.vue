@@ -89,6 +89,14 @@ const screen = inject("getScreen");
   height: size(380);
 }
 
+@media screen and (max-width: 1360px) {
+   .module-8{
+    :deep(.spinning-ball__bottom){
+      background-size: auto 100%;
+    }
+  }
+}
+
 @media screen and (max-width: 768px) {
   .module-1 {
     height: auto;

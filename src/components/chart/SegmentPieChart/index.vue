@@ -94,7 +94,7 @@ const props = defineProps({
   // 饼图半径
   radius: {
     type: Array,
-    default: [0, 55],
+    default: [0, "70%"],
   },
   // 饼图中心
   center: {
@@ -178,7 +178,7 @@ const setOption = (chartData = []) => {
       {
         type: "pie",
         center,
-        radius: [radius[1] + 15 * scale, radius[1] + 25 * scale],
+        radius: ["80%", "90%"],
         label: {
           show: false,
           // formatter: "{c}",

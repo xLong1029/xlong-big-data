@@ -11,7 +11,6 @@
             :scale="contrastRatio"
             :tooltip="chart.tooltip"
             :label-font-size="chart.labelFontSize"
-            :radius="chart.radius"
             :center="chart.center"
             :autoplay="chart.autoplay"
             :color-list="chart.colorList"
@@ -40,7 +39,6 @@ const chart = reactive({
   },
   labelFontSize: 14,
   center: ["35%", "50%"],
-  radius: [0, 65],
   tooltip: {
     trigger: "item",
     formatter: (p) => {
