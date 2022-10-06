@@ -125,7 +125,7 @@ const setOption = (chartData = []) => {
     trigger: "item",
     backgroundColor: "rgba(0,0,0,0.6)",
     borderColor: "transparent",
-    padding: [10 * scale, 0 * scale],
+    padding: [10 * scale,10 * scale],
     ...tooltip,
   };
 
