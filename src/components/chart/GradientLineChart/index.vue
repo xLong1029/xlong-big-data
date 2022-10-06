@@ -186,7 +186,7 @@ const setOption = (chartData = []) => {
     },
     backgroundColor: "rgba(0,0,0,0.6)",
     borderColor: "transparent",
-    padding: [10 * scale,10 * scale],
+    // padding: [10 * scale,10 * scale],
     ...tooltip,
   };
 
