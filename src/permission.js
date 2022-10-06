@@ -8,7 +8,6 @@ router.beforeEach(async (to, from, next) => {
     const { setSysLoading } = useAppStore();
 
     document.title = getPageTitle(to.meta.title);
-
     setTimeout(() => setSysLoading(false), 500);
     next();
 });

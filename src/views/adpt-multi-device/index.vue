@@ -7,7 +7,7 @@
     <MobileHeader v-if="viewActive === 'MobileScreen'" />
     <Header v-else />
 
-    <div class="screen-content-container">
+    <div ref="screenContentContainer" class="screen-content-container">
       <component :is="views[viewActive]" />
     </div>
 
@@ -17,14 +17,15 @@
 
 <script setup>
 import { onMounted, onUnmounted, watch, ref, provide } from "vue";
-import hooks from "@/hooks";
-import { clearTimer, logInfo } from "@/utils";
 import Header from "@/components/screen/Header/index.vue";
 import AdptNav from "@/components/screen/AdptNav/index.vue";
 import MobileHeader from "@/components/screen/MobileHeader/index.vue";
 import PCScreen from "./pc/index.vue";
 import WideScreen from "./wide-screen/index.vue";
 import MobileScreen from "./mobile/index.vue";
+import hooks from "@/hooks";
+import { clearTimer, logInfo } from "@/utils";
+import { docElmScrollTo } from "@/utils/scroll-to";
 
 const { useView, useCommon, useScreen, useScreenNav, useScreenApiData } = hooks;
 
@@ -34,6 +35,8 @@ const { activeNavIndex, handleChangeNav } = useScreenNav();
 const { apiLoading, apiTimer, getScreenData } = useScreenApiData();
 
 viewLoaded.value = initViews({ PCScreen, WideScreen, MobileScreen });
+
+const screenContentContainer = ref(null);
 
 // 处理屏幕尺寸变化
 const { design, screen, minScreen, contrastRatio } = useScreen(() => {
@@ -91,6 +94,9 @@ const initHtmlFontSize = () => {
 watch(
   () => activeNavIndex.value,
   () => {
+    if(screenContentContainer.value){
+      docElmScrollTo(screenContentContainer.value, 0);
+    }
     init();
   }
 );
