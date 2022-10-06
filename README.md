@@ -83,10 +83,12 @@ gif文件稍微有点大，被压缩了，丢失了部分色彩：<br/>
 │  ├─styles  // 样式
 │  │
 │  ├─store  // 应用级数据（state）
+│  │  │  index.js
 │  │  │
 │  │  └─modules
 │  │
 │  ├─hooks 钩子函数
+│  │  │  index.js
 │  │  │
 │  │  └─modules
 │  │
@@ -96,9 +98,6 @@ gif文件稍微有点大，被压缩了，丢失了部分色彩：<br/>
 │  │  │  mock-server.js // 正式环境使用配置
 │  │  │
 │  │  └─modules
-│  │
-│  ├─config // 项目配置
-│  │    index.js
 │  │
 │  ├─components // 组件
 │  │  │
@@ -110,10 +109,7 @@ gif文件稍微有点大，被压缩了，丢失了部分色彩：<br/>
 │  │
 │  ├─directives // 自定义指令
 │  │  │  index.js
-│  │  │
-│  │  └─modules
-│  │
-│  ├─hooks 钩子函数
+│  │  │  utils.js // 工具
 │  │  │
 │  │  └─modules
 │  │
@@ -128,6 +124,7 @@ gif文件稍微有点大，被压缩了，丢失了部分色彩：<br/>
 │  │    index.js
 │  │    auth.js // 读写token
 │  │    calendar.js // 日历
+│  │    request.js // 请求配置
 │  │
 │  └─router  // 路由配置
 │     │  index.js
