@@ -1,7 +1,7 @@
 # xlong-big-data
 
 ## 介绍
-xlong-big-data是一个基于 Vite + Vue3 + Element Plus + ECharts 开发的单页面客户端渲染的自适应数据监控平台示例，包含2种预览模式。
+xlong-big-data是一个基于 Vite + Vue3 + Element Plus + Pinia + ECharts 开发的单页面客户端渲染的自适应数据监控平台示例，包含2种预览模式。
  
 #### 1. 多设备尺寸自适应  
 一套设计稿，根据平台（移动端、PC端和超宽屏幕设备）自适应展示对应内容
@@ -23,11 +23,14 @@ xlong-big-data是一个基于 Vite + Vue3 + Element Plus + ECharts 开发的单�
 
 #### 2. 项目用到技术、框架与插件
 
-[Vue3](https://v3.vuejs.org/)<br/>
-[Vite](https://cn.vitejs.dev/)<br/>
-[Mockjs](http://mockjs.com/)<br/>
+[Vue3](https://v3.vuejs.org)<br/>
+[Vite](https://cn.vitejs.dev)<br/>
+[Pinia](https://github.com/vuejs/pinia)<br/>
+[Mockjs](http://mockjs.com)<br/>
 [Element Plus](https://github.com/element-plus)<br/>
 [ECharts](https://echarts.apache.org)<br/>
+[Swiper](https://www.swiper.com.cn)<br/>
+[vue3-seamless-scroll](https://github.com/xfy520/vue3-seamless-scroll)<br/>
 
 ## 部分项目运行截图
 
@@ -51,7 +54,7 @@ gif文件稍微有点大，被压缩了，丢失了部分色彩：<br/>
 
 ![Image text](static/images/screen-7.gif)
 
-* 自适应
+* 自适应展示
 
 ![Image text](static/images/adpt.gif)
 
