@@ -6,7 +6,6 @@
  */
 
 import { ref, reactive, onMounted, onUnmounted, watch } from "vue";
-// import { logInfo } from "@/utils";
 
 export default function (props) {
   // 默认配置
@@ -49,42 +48,6 @@ export default function (props) {
       loopCount.value++;
     }
   };
-
-  // /**
-  //  * 定时器
-  //  *
-  //  * @param {*} cb
-  //  * @param {*} duration
-  //  * @returns
-  //  */
-  // const setInterval = (cb, duration) => {
-  //   let timer = null;
-  //   let st = null;
-  //   let pt = null;
-  //   let et = null;
-  //   let count = 0;
-
-  //   const loop = () => {
-  //     st = st || new Date().getTime();
-  //     et = new Date().getTime();
-  //     const dt = et - st;
-  //     if (props.showCount && et - pt >= 1000) {
-  //       pt = et;
-  //     }
-  //     if (dt >= duration) {
-  //       st = et;
-  //       cb();
-  //       if (props.showCount) {
-  //         logInfo(count++);
-  //       }
-  //     }
-  //     timer = window.requestAnimationFrame(loop);
-  //   };
-  //   loop();
-  //   return () => {
-  //     window.cancelAnimationFrame(timer);
-  //   };
-  // };
 
   /**
    * 启动自动播放
