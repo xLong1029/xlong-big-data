@@ -42,7 +42,7 @@ gif文件稍微有点大，被压缩了，丢失了部分色彩：<br/>
 
 ![Image text](static/images/screen-3.gif)
 
-* 宽屏超界面
+* 宽屏界面
 
 ![Image text](static/images/screen-4.jpg)
 
