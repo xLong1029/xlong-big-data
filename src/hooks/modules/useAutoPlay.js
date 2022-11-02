@@ -20,7 +20,7 @@ export default function (props) {
   const timer = ref(null);
   // 是否开启自动播放
   const autoplay = ref(true);
-  // 记录村黄次数
+  // 记录循环次数
   const loopCount = ref(0);
 
   /**
