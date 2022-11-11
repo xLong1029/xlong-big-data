@@ -1,6 +1,7 @@
 <template>
   <div class="total-statistics-container">
-    <StarContainer>
+    <!-- <StarContainer> -->
+      <Particles id="starParticles" class="particles-star"/>
       <div class="bg">
         <img class="bg__buildings animate-bounce" :src="buildings" />
         <img class="bg__bottom" :src="buildingsBottom" />
@@ -66,13 +67,14 @@
           </template>
         </StatisticsDataFrame>
       </div>
-    </StarContainer>
+    <!-- </StarContainer> -->
   </div>
 </template>
 
 <script setup>
 import { reactive, ref } from "vue";
-import StarContainer from "@/components/common/StarContainer/index.vue";
+// import StarContainer from "@/components/common/StarContainer/index.vue";
+import Particles from "@/components/common/Particles/index.vue";
 import StatisticsDataFrame from "@/components/common/StatisticsDataFrame/index.vue";
 import FadeNum from "@/components/common/FadeNum/index.vue";
 import hooks from "@/hooks";
@@ -205,6 +207,13 @@ useScreenModuleData(handleApiData);
 .statistics-4 {
   right: 5%;
   top: 40%;
+}
+
+.particles-star{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
 }
 
 @media screen and (max-width: 1840px) {

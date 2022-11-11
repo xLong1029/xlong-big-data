@@ -78,7 +78,7 @@ const animate = () => {
 };
 
 const runTags = (duration) => {
-  clearTimer(timer.value);
+  clearTimer([timer.value]);
 
   animate();
 
@@ -154,7 +154,7 @@ const move = () => {
 };
 
 const handleMouseMove = (e) => {
-  clearTimer();
+  clearTimer([timer.value]);
 };
 
 const handleMouseOut = (e) => {
