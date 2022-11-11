@@ -28,7 +28,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, provide, nextTick, watch } from "vue";
-import { debounce } from "@/utils";
+import { debounce, clearTimer } from "@/utils";
 
 const props = defineProps({
   // 设计稿宽度
@@ -71,6 +71,8 @@ const scale = ref(1);
 const scrollX = ref(false);
 const scrollY = ref(false);
 
+const timer = ref(null);
+
 watch(
   () => props.scroll,
   (val) => {
@@ -109,7 +111,8 @@ const setScale = debounce(() => {
   scaleBox.value.style.setProperty("--width", `${width}px`);
 
   visible.value = false;
-  setTimeout(() => {
+  clearTimer([timer.value]);
+      timer.value = setTimeout(() => {
     visible.value = true;
     nextTick(() => {
       if (scrollX.value) {

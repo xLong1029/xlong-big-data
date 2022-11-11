@@ -7,6 +7,7 @@
 import { provide, ref } from "vue";
 import Api from "@/api/screen";
 import { ElMessage } from "element-plus";
+import { clearTimer } from "@/utils";
 
 export default function (handleResizeScreen) {
   const apiLoading = ref(false);
@@ -16,6 +17,8 @@ export default function (handleResizeScreen) {
   provide("getApiData", apiData);
 
   const apiTimer = ref(null);
+
+  const getApiDataTimer = ref(null);
 
   /**
    * 通过导航获取大屏数据
@@ -27,7 +30,9 @@ export default function (handleResizeScreen) {
         const { code, message, data } = res;
         if (code === 200) {
           apiData.value = data;
-          setTimeout(() => {
+
+          clearTimer([getApiDataTimer.value]);
+          getApiDataTimer.value = setTimeout(() => {
             apiLoading.value = false;
           }, 500);
         } else {

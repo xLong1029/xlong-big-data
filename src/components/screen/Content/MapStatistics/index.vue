@@ -74,6 +74,7 @@ const contrastRatio = inject("getContrastRatio", 1);
 
 const apiLoading = ref(false);
 const apiTimer = ref(null);
+const apiLoadingTimer = ref(null);
 
 const isFirst = ref(true); // 第一次加载
 
@@ -124,14 +125,14 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  clearTimer([apiTimer.value]);
+  clearTimer([apiTimer.value, apiLoadingTimer.value]);
 });
 
 const init = () => {
-  clearTimer([apiTimer.value]);
-
   apiLoading.value = true;
   getMapData();
+
+  clearTimer([apiTimer.value]);
   apiTimer.value = setInterval(() => {
     getMapData();
   }, 5000);
@@ -179,7 +180,8 @@ const getMapData = () => {
         chart.chartData = data?.mapData || [];
         chart.coordinateData = data?.coordinateData || [];
 
-        setTimeout(() => {
+        clearTimer([apiLoadingTimer.value]);
+        apiLoadingTimer.value = setTimeout(() => {
           apiLoading.value = false;
         }, 500);
       } else {

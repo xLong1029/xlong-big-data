@@ -14,6 +14,8 @@
 
 <script setup>
 import { ref, watch } from "vue";
+import { clearTimer } from "@/utils";
+
 const props = defineProps({
   // 数值
   value: {
@@ -33,12 +35,14 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["update:value"]);
+const timer = ref(null);
 
 watch(
   () => props.value,
   (val) => {
     if (val !== 0) {
-      setTimeout(() => {
+      clearTimer([timer.value]);
+      timer.value = setTimeout(() => {
         emit("update:value", 0);
       }, props.duration);
     }

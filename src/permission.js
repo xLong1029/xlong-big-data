@@ -1,6 +1,8 @@
 import router from "./router";
 import useStore from "@/store";
-import { getPageTitle } from "@/utils";
+import { getPageTitle, clearTimer } from "@/utils";
+
+let timer = null;
 
 router.beforeEach(async (to, from, next) => {
     const store = useStore();
@@ -8,6 +10,9 @@ router.beforeEach(async (to, from, next) => {
     const { setSysLoading } = useAppStore();
 
     document.title = getPageTitle(to.meta.title);
-    setTimeout(() => setSysLoading(false), 500);
+
+    clearTimer([timer]);
+    timer = setTimeout(() => setSysLoading(false), 500);
+
     next();
 });

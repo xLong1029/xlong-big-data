@@ -44,6 +44,7 @@ export function debounce(fn, delay) {
     let args = arguments;
     if (timer) {
       clearTimeout(timer);
+      timer = null;
     }
     timer = setTimeout(function () {
       timer = null;
@@ -132,6 +133,7 @@ export function delLocalS(key) {
   timers.forEach((e) => {
       if (e) {
           clearInterval(e);
+          clearTimeout(e);
       }
       e = null;
   });
