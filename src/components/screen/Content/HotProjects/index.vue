@@ -35,6 +35,7 @@
 
 <script setup>
 import { ref, nextTick, watch } from "vue";
+import { clearTimer } from "@/utils";
 import hooks from "@/hooks";
 
 const { useScreenModuleData } = hooks;
@@ -77,18 +78,13 @@ const animate = () => {
 };
 
 const runTags = (duration) => {
-  clearTimer();
+  clearTimer(timer.value);
 
   animate();
 
   timer.value = setInterval(() => {
     animate();
   }, duration);
-};
-
-const clearTimer = () => {
-  clearInterval(timer.value);
-  timer.value = null;
 };
 
 const rotateX = () => {
@@ -182,7 +178,7 @@ watch(
   () => apiLoading.value,
   (val) => {
     if (!val && isFirst.value) {
-      isFirst.value = false;      
+      isFirst.value = false;
       startCloud();
     }
   },
