@@ -5,25 +5,26 @@
         <CountStatisticsMobile />
       </div>
       <div class="module-2">
-        <StarContainer>
-          <DataLoading :loading="apiLoading" :data="chart.chartData">
-            <template #content>
-              <MsgMap
-                :geo-data="geoJson"
-                :scale="contrastRatio"
-                :chart-data="chart.chartData"
-                :change-data="chart.changeData"
-                :coordinate-data="chart.coordinateData"
-                :center-point="chart.centerPoint"
-                :axis="chart.axis"
-                :series="chart.series"
-                :map-name="chart.mapName"
-                :map-zoom="1.2"
-                :label-font-size="chart.labelFontSize"
-              />
-            </template>
-          </DataLoading>
-        </StarContainer>
+        <!-- <StarContainer> -->
+        <Particles id="starParticles" class="particles-star" />
+        <DataLoading :loading="apiLoading" :data="chart.chartData">
+          <template #content>
+            <MsgMap
+              :geo-data="geoJson"
+              :scale="contrastRatio"
+              :chart-data="chart.chartData"
+              :change-data="chart.changeData"
+              :coordinate-data="chart.coordinateData"
+              :center-point="chart.centerPoint"
+              :axis="chart.axis"
+              :series="chart.series"
+              :map-name="chart.mapName"
+              :map-zoom="1.2"
+              :label-font-size="chart.labelFontSize"
+            />
+          </template>
+        </DataLoading>
+        <!-- </StarContainer> -->
       </div>
     </div>
     <div class="map-statistics__msg pt-15">
@@ -65,7 +66,8 @@
 
 <script setup>
 import { reactive, ref, inject, watch, onMounted, onUnmounted } from "vue";
-import StarContainer from "@/components/common/StarContainer/index.vue";
+// import StarContainer from "@/components/common/StarContainer/index.vue";
+import Particles from "@/components/common/Particles/index.vue";
 import CountStatisticsMobile from "@/components/screen/Content/CountStatisticsMobile/index.vue";
 import MsgMap from "@/components/chart/MsgMap/index.vue";
 import geoJson from "@/assets/json/guangxi.json";
@@ -124,6 +126,7 @@ const highlightConfig = ref({
     fontStyle: "normal",
   },
 });
+
 
 onMounted(() => {
   isFirst.value = true;
@@ -225,23 +228,19 @@ const formatContent = (val) => {
     flex: 1;
     display: flex;
 
-    .module-1{
+    .module-1 {
       width: 30%;
     }
 
-    .module-2{
+    .module-2 {
       flex: 1;
+      position: relative;
     }
   }
 }
 
 .msg-item {
-  background-image: linear-gradient(
-    -90deg,
-    #3dddff00 0%,
-    #32a8ff3d 45%,
-    #2468ff0a 100%
-  );
+  background-image: linear-gradient(-90deg, #3dddff00 0%, #32a8ff3d 45%, #2468ff0a 100%);
   padding: size(6) size(10) size(6) 0;
   display: flex;
   justify-content: space-between;
@@ -268,5 +267,12 @@ const formatContent = (val) => {
     height: auto;
     box-sizing: border-box;
   }
+}
+
+.particles-star{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
 }
 </style>

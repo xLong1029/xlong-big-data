@@ -63,7 +63,6 @@
 
 <script setup>
 import { reactive, ref } from "vue";
-import StarContainer from "@/components/common/StarContainer/index.vue";
 import StatisticsCard from "@/components/common/StatisticsCard/index.vue";
 import FadeNum from "@/components/common/FadeNum/index.vue";
 import hooks from "@/hooks";

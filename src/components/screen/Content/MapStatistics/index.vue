@@ -1,7 +1,8 @@
 <template>
   <div class="map-statistics-contaienr">
     <div class="map-statistics__map">
-      <StarContainer>
+      <!-- <StarContainer> -->
+        <Particles id="starParticles" class="particles-star" />
         <DataLoading :loading="apiLoading" :data="chart.chartData">
           <template #content>
             <MsgMap
@@ -19,7 +20,7 @@
             />
           </template>
         </DataLoading>
-      </StarContainer>
+      <!-- </StarContainer> -->
     </div>
     <div class="map-statistics__msg">
       <BorderFrame>
@@ -60,7 +61,8 @@
 
 <script setup>
 import { reactive, ref, inject, watch, onMounted, onUnmounted } from "vue";
-import StarContainer from "@/components/common/StarContainer/index.vue";
+// import StarContainer from "@/components/common/StarContainer/index.vue";
+import Particles from "@/components/common/Particles/index.vue";
 import MsgMap from "@/components/chart/MsgMap/index.vue";
 import geoJson from "@/assets/json/guangxi.json";
 import Api from "@/api/screen";
@@ -217,6 +219,7 @@ const formatContent = (val) => {
 
   &__map {
     flex: 1;
+    position: relative;
   }
 }
 
@@ -253,5 +256,12 @@ const formatContent = (val) => {
     height: auto;
     box-sizing: border-box;
   }
+}
+
+.particles-star{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
 }
 </style>
