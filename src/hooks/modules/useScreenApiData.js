@@ -32,7 +32,7 @@ export default function (handleResizeScreen) {
           apiData.value = data;
 
           clearTimer([getApiDataTimer.value]);
-          getApiDataTimer = setTimeout(() => {
+          getApiDataTimer.value = setTimeout(() => {
             apiLoading.value = false;
           }, 500);
         } else {
