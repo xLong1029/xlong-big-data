@@ -213,7 +213,7 @@ const getHotProjectData = () => {
 let hotProjectData = getHotProjectData();
 
 // 获取监控项目数据
-const geProjecttMonitorData = () => {
+const getProjecttMonitorData = () => {
   return projectStatisticsData.map((e) => ({
     ...e,
     users: Random.integer(
@@ -226,7 +226,7 @@ const geProjecttMonitorData = () => {
     ),
   }));
 };
-let projectMonitorData = geProjecttMonitorData();
+let projectMonitorData = getProjecttMonitorData();
 
 export default [
   {
