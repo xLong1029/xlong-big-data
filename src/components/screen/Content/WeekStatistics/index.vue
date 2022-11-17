@@ -53,7 +53,7 @@ const chart = reactive({
   tooltip: {
     trigger: "axis",
     position: function (pos, params, dom, rect, size) {
-      var obj = {};
+      let obj = {};
 
       // const horizontalPosIndex = +(pos[0] < size.viewSize[0] / 2);
       const verticalPosIndex = +(pos[1] < size.viewSize[1] / 2);

@@ -64,8 +64,8 @@ export default function () {
   // 监听配置项和dom改变
   watch([option, container], ([opt, dom]) => {
     if (dom && !chart.value) {
-      // 暗色系
-      chart.value = echarts.init(dom, "dark");
+      // 暗色系，svg减少内存
+      chart.value = echarts.init(dom, { theme: "dark" }, { render: 'svg' });
     }
     setOption();
   });
