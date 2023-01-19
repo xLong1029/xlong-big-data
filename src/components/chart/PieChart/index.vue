@@ -168,7 +168,7 @@ const setOption = (chartData = []) => {
         center,
         radius,
         label: {
-          formatter: `{b}: ({c}${unit})`,
+          formatter: `{b}: {c}${unit}`,
         },
         data: chartData.map((e) => ({
           name: e[axis.property],
