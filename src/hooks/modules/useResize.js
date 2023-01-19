@@ -9,7 +9,7 @@ import { isFunction } from "lodash";
 
 export default function () {
   /**
-   * 处理话屏幕尺寸改变事件
+   * 初始化屏幕尺寸改变事件
    */
   const initResizeEvent = (handleResizeScreen) => {
     if (handleResizeScreen && isFunction(handleResizeScreen)) {
@@ -18,11 +18,11 @@ export default function () {
   };
 
   /**
-   * 处理话屏幕尺寸改变事件
+   * 销毁屏幕尺寸改变事件
    */
   const destroyResizeEvent = (handleResizeScreen) => {
     if (handleResizeScreen && isFunction(handleResizeScreen)) {
-      window.addEventListener("resize", handleResizeScreen);
+      window.removeEventListener("resize", handleResizeScreen);
     }
   };
 
