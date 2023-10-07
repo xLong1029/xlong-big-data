@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-const useAppStore = defineStore("screen", {
+const useScreenStore = defineStore("screen", {
   state: () => ({
     // 当前模式：AdptMultiDevice 多设备自适应 | Normal 正常
     mode: "Normal"
@@ -25,4 +25,4 @@ const useAppStore = defineStore("screen", {
   }
 })
 
-export default useAppStore;
+export default useScreenStore;
