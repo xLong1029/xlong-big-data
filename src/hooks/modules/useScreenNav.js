@@ -14,7 +14,7 @@ export default function () {
   /**
    * 导航改变事件
    *
-   * @param {String} url 地址
+   * @param {String} val 导航索引
    */
   const handleChangeNav = (val) => (activeNavIndex.value = val);
 
