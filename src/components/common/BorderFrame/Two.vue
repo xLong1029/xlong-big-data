@@ -20,7 +20,9 @@
       <polyline class="stroke-width5" points="-18, 0 0, 0 0, 18"></polyline>
       <polyline class="stroke-width5" points="0, -18 0, 0 18, 0"></polyline>
     </svg>
-    <slot />
+    <div class="border-frame-content">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -31,17 +33,9 @@ export default {
 </script>
 
 <script setup>
-const props = defineProps({
-  direction: {
-    type: String,
-    default: "left", // left || right
-  },
-});
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/screen-styles.scss";
-
 .border-frame-container {
   position: relative;
   z-index: 10;
@@ -49,7 +43,7 @@ const props = defineProps({
   border: size(1) solid transparent;
   border-image: linear-gradient(#0b64ad, #0a345c) 20 20;
   box-shadow: rgba(69, 112, 144, 0.3) 0px 0px size(34) inset;
-  padding: size(15) size(15);
+
   height: 100%;
 }
 
@@ -95,5 +89,10 @@ const props = defineProps({
 .border-svg-container > polyline {
   fill: none;
   stroke-width: 1;
+}
+
+.border-frame-content {
+  padding: size(15);
+  height: 100%;
 }
 </style>
