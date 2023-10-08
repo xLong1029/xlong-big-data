@@ -39,57 +39,7 @@ viewLoaded.value = initViews({ PCScreen, WideScreen, MobileScreen });
 const screenContentContainer = ref(null);
 
 // 处理屏幕尺寸变化
-const { design, screen, minScreen, contrastRatio } = useScreen(() => {
-  initHtmlFontSize();
-});
-
-// 制定html根字体大小
-const initHtmlFontSize = () => {
-  // logInfo(
-  //   `设计稿为：${design.width}*${design.height}px；当前视图为：${viewActive.value}，可视区域大小：${screen.width}*${screen.height}px`
-  // );
-
-  screen.width = document.body.clientWidth;
-  screen.height = document.body.clientHeight;
-
-  const hr = screen.height / design.height;
-  const wr = screen.width / design.width;
-  const swhr = screen.width / screen.height;
-
-  // 横屏
-  if (swhr > 1) {
-    if (screen.width > 1366) {
-      // 超宽屏大于 21：9
-      if (swhr >= 21 / 9) {
-        setView("WideScreen");
-
-        if (swhr > design.ratio) {
-          contrastRatio.value = screen.height < minScreen.height ? 0.56 : hr * 1.2; // 以高度为基准制定
-        } else {
-          contrastRatio.value = screen.width < minScreen.width ? 0.6 : wr * 1.2; // 以宽度为基准制定
-        }
-      } else {
-        setView("PCScreen");
-
-        // contrastRatio.value = hr; // 以高度为基准制定
-        if (swhr > design.ratio) {
-          contrastRatio.value = screen.height < minScreen.height ? 0.56 : hr; // 以高度为基准制定
-        } else {
-          contrastRatio.value = screen.width < minScreen.width ? 0.6 : wr; // 以宽度为基准制定
-        }
-      }
-    } else {
-      contrastRatio.value = 1;
-      setView("MobileScreen");
-    }
-  }
-  // 竖屏
-  else {
-    setView("MobileScreen");
-  }
-
-  document.documentElement.style.fontSize = contrastRatio.value * 100 + "px";
-};
+const { design, screen, screenRate, minScreen, contrastRatio } = useScreen();
 
 watch(
   () => activeNavIndex.value,
@@ -98,6 +48,32 @@ watch(
       docElmScrollTo(screenContentContainer.value, 0);
     }
     init();
+  }
+);
+
+watch(
+  () => screenRate.swhr,
+  (swhr) => {
+    // 横屏
+    if (swhr > 1) {
+      if (screen.width > 1366) {
+        // 超宽屏大于 21：9
+        if (swhr >= 21 / 9) {
+          setView("WideScreen");
+        } else {
+          setView("PCScreen");
+        }
+      } else {
+        setView("MobileScreen");
+      }
+    }
+    // 竖屏
+    else {
+      setView("MobileScreen");
+    }
+  },
+  {
+    immediate: true,
   }
 );
 

@@ -4,11 +4,11 @@
  * 日期 : 2022-08-15
  * 版本 : version 1.0
  */
-import { provide, ref, reactive, onMounted, onUnmounted } from "vue";
-import useResize from "./useResize";
+import { provide, ref, reactive, onMounted, watch } from "vue";
+import { useWindowSize } from '@vueuse/core'
 
-export default function(handleResizeScreen) {
-  const { initResizeEvent, destroyResizeEvent } = useResize();
+export default function() {
+  const { width: winWidth, height: winHeight } = useWindowSize();
 
   // 设计稿高宽
   const design = reactive({
@@ -20,8 +20,16 @@ export default function(handleResizeScreen) {
   // 设备屏幕高宽
   const screen = reactive({
     width: 1920,
-    height: 1080,
+    height: 1080
   });
+
+  // 设备屏幕和设计稿比例
+  const screenRate = reactive({
+    hr: 1,
+    wr: 1,
+    swhr: 1
+  });
+
 
   // 字体可缩放的最小尺寸
   const minScreen = reactive({
@@ -37,18 +45,62 @@ export default function(handleResizeScreen) {
   provide("getScreen", screen);
   provide("getContrastRatio", contrastRatio);
 
-  onMounted(() => {    
-    handleResizeScreen();
-    initResizeEvent(handleResizeScreen);
+  onMounted(() => {
+    handleResizeScreen(document.body.clientWidth, document.body.clientHeight);
   });
 
-  onUnmounted(() => {
-    destroyResizeEvent(handleResizeScreen)
-  });
+  const handleResizeScreen = (width, height) => {
+    screen.width = width;
+    screen.height = height;
+
+    screenRate.hr = screen.height / design.height;
+    screenRate.wr = screen.width / design.width;
+    screenRate.swhr = screen.width / screen.height;
+
+    // 横屏
+    if (screenRate.swhr > 1) {
+      if (screen.width > 1366) {
+        // 超宽屏大于 21：9
+        if (screenRate.swhr >= 21 / 9) {
+          if (screenRate.swhr > design.ratio) {
+            contrastRatio.value = screen.height < minScreen.height ? 0.56 : screenRate.hr * 1.2; // 以高度为基准制定
+          } else {
+            contrastRatio.value = screen.width < minScreen.width ? 0.6 : screenRate.wr * 1.2; // 以宽度为基准制定
+          }
+        } else {
+          // contrastRatio.value = hr; // 以高度为基准制定
+          if (screenRate.swhr > design.ratio) {
+            contrastRatio.value = screen.height < minScreen.height ? 0.56 : screenRate.hr; // 以高度为基准制定
+          } else {
+            contrastRatio.value = screen.width < minScreen.width ? 0.6 : screenRate.wr; // 以宽度为基准制定
+          }
+        }
+      } else {
+        contrastRatio.value = 1;
+      }
+    }
+    // 竖屏
+    else {
+    }
+
+    document.documentElement.style.fontSize = contrastRatio.value * 100 + 'px';
+  };
+
+  watch(
+    [winWidth, winHeight],
+    ([width, height]) => {
+      handleResizeScreen(width, height);
+      // console.log(width, height)
+    },
+    {
+      immediate: true
+    }
+  );
 
   return {
     design,
     screen,
+    screenRate,
     minScreen,
     contrastRatio,
   };
