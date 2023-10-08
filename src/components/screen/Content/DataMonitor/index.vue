@@ -1,5 +1,5 @@
 <template>
-  <BorderFrame>
+  <BorderFrameOne>
     <LineTitle title="数据监控" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
@@ -16,7 +16,7 @@
         </template>
       </DataLoading>
     </div>
-  </BorderFrame>
+  </BorderFrameOne>
 </template>
 
 <script setup>

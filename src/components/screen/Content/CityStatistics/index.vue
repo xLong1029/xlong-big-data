@@ -1,5 +1,5 @@
 <template>
-  <BorderFrame>
+  <BorderFrameOne>
     <LineTitle title="各地市服务数据统计" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
@@ -23,7 +23,7 @@
         </template>
       </DataLoading>
     </div>
-  </BorderFrame>
+  </BorderFrameOne>
 </template>
 
 <script setup>

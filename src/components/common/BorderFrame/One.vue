@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: "BorderFrame",
+  name: "BorderFrameOne",
 };
 </script>
 

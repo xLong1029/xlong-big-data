@@ -1,5 +1,5 @@
 <template>
-  <BorderFrame>
+  <BorderFrameOne>
     <LineTitle title="热门项目" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="tags">
@@ -30,7 +30,7 @@
         </template>
       </DataLoading>
     </div>
-  </BorderFrame>
+  </BorderFrameOne>
 </template>
 
 <script setup>

@@ -1,5 +1,5 @@
 <template>
-  <BorderFrame>
+  <BorderFrameOne>
     <LineTitle title="项目使用情况" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="list">
@@ -38,7 +38,7 @@
         </template>
       </DataLoading>
     </div>
-  </BorderFrame>
+  </BorderFrameOne>
 </template>
 
 <script setup>

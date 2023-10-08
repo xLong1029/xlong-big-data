@@ -1,5 +1,5 @@
 <template>
-  <BorderFrame>
+  <BorderFrameOne>
     <LineTitle title="服务介绍" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="tabs">
@@ -31,7 +31,7 @@
         </template>
       </DataLoading>
     </div>
-  </BorderFrame>
+  </BorderFrameOne>
 </template>
 
 <script setup>

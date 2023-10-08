@@ -1,5 +1,5 @@
 <template>
-  <BorderFrame class="company-project-container">
+  <BorderFrameOne class="company-project-container">
     <LineTitle title="各类企业项目维护情况">
       <template #extra>
         <span class="unit">(单位：项)</span>
@@ -22,7 +22,7 @@
         </template>
       </DataLoading>
     </div>
-  </BorderFrame>
+  </BorderFrameOne>
 </template>
 
 <script setup>

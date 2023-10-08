@@ -1,5 +1,5 @@
 <template>
-  <BorderFrame class="week-statistics-container">
+  <BorderFrameOne class="week-statistics-container">
     <LineTitle title="监控平台周访问量">
       <template #extra>
         <span class="unit">(单位：次)</span>
@@ -24,7 +24,7 @@
         </template>
       </DataLoading>
     </div>
-  </BorderFrame>
+  </BorderFrameOne>
 </template>
 
 <script setup>
