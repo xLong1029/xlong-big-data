@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, watch, ref, provide } from "vue";
+import { onMounted, onUnmounted, watch, ref } from "vue";
 import Header from "@/components/screen/Header/index.vue";
 import AdptNav from "@/components/screen/AdptNav/index.vue";
 import MobileHeader from "@/components/screen/MobileHeader/index.vue";
@@ -30,7 +30,7 @@ import { docElmScrollTo } from "@/utils/scroll-to";
 const { useView, useCommon, useScreen, useScreenNav, useScreenApiData } = hooks;
 
 const { viewLoaded, views, viewActive, initViews, setView } = useView();
-const { setSysLoading, setScreenMode } = useCommon();
+const { setScreenMode } = useCommon();
 const { activeNavIndex, handleChangeNav } = useScreenNav();
 const { apiLoading, apiTimer, getScreenData } = useScreenApiData();
 

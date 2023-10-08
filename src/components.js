@@ -1,8 +1,8 @@
-import BorderFrame from "@/components/common/BorderFrame/index.vue";
+import BorderFrameOne from "@/components/common/BorderFrame/One.vue";
 import DataLoading from "@/components/common/DataLoading/index.vue";
 import LineTitle from "@/components/common/LineTitle/index.vue";
 
-const components = [BorderFrame, DataLoading, LineTitle];
+const components = [BorderFrameOne, DataLoading, LineTitle];
 
 export default (app) => {
   // 注册组件

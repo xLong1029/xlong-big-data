@@ -1,5 +1,5 @@
 <template>
-  <BorderFrame class="city-ranking-container">
+  <BorderFrameOne class="city-ranking-container">
     <LineTitle title="各地市服务用户排行">
       <template #extra>
         <span class="unit">(单位：人)</span>
@@ -23,7 +23,7 @@
         </template>
       </DataLoading>
     </div>
-  </BorderFrame>
+  </BorderFrameOne>
 </template>
 
 <script setup>

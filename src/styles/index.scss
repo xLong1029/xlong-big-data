@@ -5,7 +5,7 @@
   }
 
   @each $name, $value in $screen {
-    --app-screen-#{"" + $name}: #{$value}; // 输出：--app-color-base: #236edd;
+    --app-screen-#{"" + $name}: #{$value}; // 输出：--app-screen-header-height: 55;
   }
 }
 

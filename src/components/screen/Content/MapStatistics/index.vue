@@ -23,7 +23,7 @@
       <!-- </StarContainer> -->
     </div>
     <div class="map-statistics__msg">
-      <BorderFrame>
+      <BorderFrameOne>
         <LineTitle title="当前系统使用情况" />
         <div class="content">
           <DataLoading :loading="apiLoading" :data="msgList">
@@ -54,7 +54,7 @@
             </template>
           </DataLoading>
         </div>
-      </BorderFrame>
+      </BorderFrameOne>
     </div>
   </div>
 </template>

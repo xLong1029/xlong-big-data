@@ -1,5 +1,5 @@
 <template>
-  <BorderFrame class="company-statistics-container">
+  <BorderFrameOne class="company-statistics-container">
     <LineTitle :title="chart.title">
       <template #extra>
         <span class="unit">(单位：项)</span>
@@ -29,7 +29,7 @@
         </template>
       </DataLoading>
     </div>
-  </BorderFrame>
+  </BorderFrameOne>
 </template>
 
 <script setup>

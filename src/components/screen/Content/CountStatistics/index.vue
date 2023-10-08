@@ -1,5 +1,5 @@
 <template>
-  <BorderFrame class="count-statistics">
+  <BorderFrameOne class="count-statistics">
     <div class="count-container">
       <div class="count-item">
         <div class="count-item__icon">
@@ -77,7 +77,7 @@
         </div>
       </div>
     </div>
-  </BorderFrame>
+  </BorderFrameOne>
 </template>
 
 <script setup>

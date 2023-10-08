@@ -1,5 +1,5 @@
 <template>
-  <BorderFrame class="project-percent">
+  <BorderFrameOne class="project-percent">
     <LineTitle :title="`${year}年承接项目类别`" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chartData">
@@ -22,7 +22,7 @@
         </template>
       </DataLoading>
     </div>
-  </BorderFrame>
+  </BorderFrameOne>
 </template>
 
 <script setup>
