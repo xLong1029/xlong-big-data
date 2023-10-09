@@ -7,20 +7,18 @@
     </LineTitle>
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
-        <template #content>
-          <RankingBarChart
-            :title="chart.title"
-            :chart-data="chart.chartData"
-            :axis="chart.axis"
-            :series="chart.series"
-            :scale="contrastRatio"
-            :label-font-size="chart.labelFontSize"
-            :top-num="chart.topNum"
-            :top-colors="chart.topColors"
-            :default-colors="chart.defaultColors"
-            :grid="chart.grid"
-          />
-        </template>
+        <RankingBarChart
+          :title="chart.title"
+          :chart-data="chart.chartData"
+          :axis="chart.axis"
+          :series="chart.series"
+          :scale="contrastRatio"
+          :label-font-size="chart.labelFontSize"
+          :top-num="chart.topNum"
+          :top-colors="chart.topColors"
+          :default-colors="chart.defaultColors"
+          :grid="chart.grid"
+        />
       </DataLoading>
     </div>
   </BorderFrameOne>
@@ -47,7 +45,7 @@ const chart = reactive({
   defaultColors: ["#3368ff", "#50ffef"],
   grid: {
     right: 0,
-    bottom: "-12%"
+    bottom: "-12%",
   },
 });
 

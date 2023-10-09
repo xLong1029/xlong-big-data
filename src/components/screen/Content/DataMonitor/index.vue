@@ -3,17 +3,15 @@
     <LineTitle title="数据监控" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
-        <template #content>
-          <StatisticsDiagram
-            height="95%"
-            :chart-data="chart.chartData"
-            :line-data="chart.lineData"
-            :fly-line-data="chart.flyLineData"
-            :scale="contrastRatio"
-            :tooltip="chart.tooltip"
-            :label-font-size="chart.labelFontSize"
-          />
-        </template>
+        <StatisticsDiagram
+          height="95%"
+          :chart-data="chart.chartData"
+          :line-data="chart.lineData"
+          :fly-line-data="chart.flyLineData"
+          :scale="contrastRatio"
+          :tooltip="chart.tooltip"
+          :label-font-size="chart.labelFontSize"
+        />
       </DataLoading>
     </div>
   </BorderFrameOne>
@@ -253,7 +251,7 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 //   height: calc(100% - size(30)) !important;
 // }
 
-:deep(.data-loading-container){
+:deep(.data-loading-container) {
   align-items: flex-start;
 }
 </style>

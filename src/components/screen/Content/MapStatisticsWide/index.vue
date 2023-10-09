@@ -8,21 +8,19 @@
         <!-- <StarContainer> -->
         <Particles id="starParticles" class="particles-star" />
         <DataLoading :loading="apiLoading" :data="chart.chartData">
-          <template #content>
-            <MsgMap
-              :geo-data="geoJson"
-              :scale="contrastRatio"
-              :chart-data="chart.chartData"
-              :change-data="chart.changeData"
-              :coordinate-data="chart.coordinateData"
-              :center-point="chart.centerPoint"
-              :axis="chart.axis"
-              :series="chart.series"
-              :map-name="chart.mapName"
-              :map-zoom="1.2"
-              :label-font-size="chart.labelFontSize"
-            />
-          </template>
+          <MsgMap
+            :geo-data="geoJson"
+            :scale="contrastRatio"
+            :chart-data="chart.chartData"
+            :change-data="chart.changeData"
+            :coordinate-data="chart.coordinateData"
+            :center-point="chart.centerPoint"
+            :axis="chart.axis"
+            :series="chart.series"
+            :map-name="chart.mapName"
+            :map-zoom="1.2"
+            :label-font-size="chart.labelFontSize"
+          />
         </DataLoading>
         <!-- </StarContainer> -->
       </div>
@@ -32,31 +30,29 @@
         <LineTitle title="当前系统使用情况" />
         <div class="content">
           <DataLoading :loading="apiLoading" :data="msgList">
-            <template #content>
-              <swiper
-                :speed="1000"
-                slidesPerView="auto"
-                :direction="'vertical'"
-                :spaceBetween="15"
-                :autoplay="autoplayOptions"
-                :modules="modules"
-                :rewind="true"
-                loop
-                class="swiper-container"
-              >
-                <swiper-slide v-for="(item, index) in msgList" :key="index">
-                  <div class="msg-item">
-                    <span
-                      v-highlight="highlightConfig"
-                      :data-content="formatContent(item.content)"
-                      class="msg-item__content ellipsis"
-                      >{{ formatContent(item.content) }}</span
-                    >
-                    <span class="msg-item__time">{{ item.createdTime }}</span>
-                  </div>
-                </swiper-slide>
-              </swiper>
-            </template>
+            <swiper
+              :speed="1000"
+              slidesPerView="auto"
+              :direction="'vertical'"
+              :spaceBetween="15"
+              :autoplay="autoplayOptions"
+              :modules="modules"
+              :rewind="true"
+              loop
+              class="swiper-container"
+            >
+              <swiper-slide v-for="(item, index) in msgList" :key="index">
+                <div class="msg-item">
+                  <span
+                    v-highlight="highlightConfig"
+                    :data-content="formatContent(item.content)"
+                    class="msg-item__content ellipsis"
+                    >{{ formatContent(item.content) }}</span
+                  >
+                  <span class="msg-item__time">{{ item.createdTime }}</span>
+                </div>
+              </swiper-slide>
+            </swiper>
           </DataLoading>
         </div>
       </BorderFrameOne>
@@ -126,7 +122,6 @@ const highlightConfig = ref({
     fontStyle: "normal",
   },
 });
-
 
 onMounted(() => {
   isFirst.value = true;
@@ -269,7 +264,7 @@ const formatContent = (val) => {
   }
 }
 
-.particles-star{
+.particles-star {
   width: 100%;
   height: 100%;
   position: absolute;

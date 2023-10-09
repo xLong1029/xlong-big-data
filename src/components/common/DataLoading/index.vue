@@ -4,7 +4,7 @@
     v-loading="loading"
     :element-loading-text="loadingText"
   >
-    <slot v-if="checkData(data)" name="content"></slot>
+    <slot v-if="checkData(data)"></slot>
     <slot v-else name="empty">
       <el-empty :description="emptyDescription" />
     </slot>

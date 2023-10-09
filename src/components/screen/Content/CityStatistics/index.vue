@@ -3,24 +3,22 @@
     <LineTitle title="各地市服务数据统计" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
-        <template #content>
-          <MixedLineBarChart
-            :chart-data="chart.chartData"
-            :axis="chart.axis"
-            :series="chart.series"
-            :scale="contrastRatio"
-            :tooltip="chart.tooltip"
-            :grid="chart.grid"
-            :legend="chart.legend"
-            :color-list="chart.colorList"
-            :label-font-size="chart.labelFontSize"
-            :bar-property="chart.barProperty"
-            :bar-axisName="chart.barAxisName"
-            :line-property="chart.lineProperty"
-            :line-axisName="chart.lineAxisName"
-            :autoplay="chart.autoplay"
-          />
-        </template>
+        <MixedLineBarChart
+          :chart-data="chart.chartData"
+          :axis="chart.axis"
+          :series="chart.series"
+          :scale="contrastRatio"
+          :tooltip="chart.tooltip"
+          :grid="chart.grid"
+          :legend="chart.legend"
+          :color-list="chart.colorList"
+          :label-font-size="chart.labelFontSize"
+          :bar-property="chart.barProperty"
+          :bar-axisName="chart.barAxisName"
+          :line-property="chart.lineProperty"
+          :line-axisName="chart.lineAxisName"
+          :autoplay="chart.autoplay"
+        />
       </DataLoading>
     </div>
   </BorderFrameOne>
@@ -50,7 +48,7 @@ const chart = reactive({
     },
   ],
   tooltip: {
-        trigger: "axis",
+    trigger: "axis",
     formatter: (p) =>
       formatTooltip(p, { unit: ["家", "人"], scale: contrastRatio.value }),
   },
@@ -77,5 +75,4 @@ const handleApiData = (data) => {
 const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

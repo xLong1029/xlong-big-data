@@ -7,21 +7,19 @@
     </LineTitle>
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
-        <template #content>
-          <BarChart
-            :chart-data="chart.chartData"
-            :axis="chart.axis"
-            :series="chart.series"
-            :scale="contrastRatio"
-            :tooltip="chart.tooltip"
-            :grid="chart.grid"
-            :label-font-size="chart.labelFontSize"
-            :value-label-visible="chart.valueLabelVisible"
-            :chart-direction="chart.chartDirection"
-            :autoplay="chart.autoplay"
-            :color-list="chart.colorList"
-          />
-        </template>
+        <BarChart
+          :chart-data="chart.chartData"
+          :axis="chart.axis"
+          :series="chart.series"
+          :scale="contrastRatio"
+          :tooltip="chart.tooltip"
+          :grid="chart.grid"
+          :label-font-size="chart.labelFontSize"
+          :value-label-visible="chart.valueLabelVisible"
+          :chart-direction="chart.chartDirection"
+          :autoplay="chart.autoplay"
+          :color-list="chart.colorList"
+        />
       </DataLoading>
     </div>
   </BorderFrameOne>

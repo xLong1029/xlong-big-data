@@ -2,24 +2,22 @@
   <div class="map-statistics-contaienr">
     <div class="map-statistics__map">
       <!-- <StarContainer> -->
-        <Particles id="starParticles" class="particles-star" />
-        <DataLoading :loading="apiLoading" :data="chart.chartData">
-          <template #content>
-            <MsgMap
-              :geo-data="geoJson"
-              :scale="contrastRatio"
-              :chart-data="chart.chartData"
-              :change-data="chart.changeData"
-              :coordinate-data="chart.coordinateData"
-              :center-point="chart.centerPoint"
-              :axis="chart.axis"
-              :series="chart.series"
-              :map-name="chart.mapName"
-              :map-zoom="1.2"
-              :label-font-size="chart.labelFontSize"
-            />
-          </template>
-        </DataLoading>
+      <Particles id="starParticles" class="particles-star" />
+      <DataLoading :loading="apiLoading" :data="chart.chartData">
+        <MsgMap
+          :geo-data="geoJson"
+          :scale="contrastRatio"
+          :chart-data="chart.chartData"
+          :change-data="chart.changeData"
+          :coordinate-data="chart.coordinateData"
+          :center-point="chart.centerPoint"
+          :axis="chart.axis"
+          :series="chart.series"
+          :map-name="chart.mapName"
+          :map-zoom="1.2"
+          :label-font-size="chart.labelFontSize"
+        />
+      </DataLoading>
       <!-- </StarContainer> -->
     </div>
     <div class="map-statistics__msg">
@@ -27,31 +25,29 @@
         <LineTitle title="当前系统使用情况" />
         <div class="content">
           <DataLoading :loading="apiLoading" :data="msgList">
-            <template #content>
-              <swiper
-                :speed="1000"
-                slidesPerView="auto"
-                :direction="'vertical'"
-                :spaceBetween="15"
-                :autoplay="autoplayOptions"
-                :modules="modules"
-                :rewind="true"
-                loop
-                class="swiper-container"
-              >
-                <swiper-slide v-for="(item, index) in msgList" :key="index">
-                  <div class="msg-item">
-                    <span
-                      v-highlight="highlightConfig"
-                      :data-content="formatContent(item.content)"
-                      class="msg-item__content ellipsis"
-                      >{{ formatContent(item.content) }}</span
-                    >
-                    <span class="msg-item__time">{{ item.createdTime }}</span>
-                  </div>
-                </swiper-slide>
-              </swiper>
-            </template>
+            <swiper
+              :speed="1000"
+              slidesPerView="auto"
+              :direction="'vertical'"
+              :spaceBetween="15"
+              :autoplay="autoplayOptions"
+              :modules="modules"
+              :rewind="true"
+              loop
+              class="swiper-container"
+            >
+              <swiper-slide v-for="(item, index) in msgList" :key="index">
+                <div class="msg-item">
+                  <span
+                    v-highlight="highlightConfig"
+                    :data-content="formatContent(item.content)"
+                    class="msg-item__content ellipsis"
+                    >{{ formatContent(item.content) }}</span
+                  >
+                  <span class="msg-item__time">{{ item.createdTime }}</span>
+                </div>
+              </swiper-slide>
+            </swiper>
           </DataLoading>
         </div>
       </BorderFrameOne>
@@ -224,12 +220,7 @@ const formatContent = (val) => {
 }
 
 .msg-item {
-  background-image: linear-gradient(
-    -90deg,
-    #3dddff00 0%,
-    #32a8ff3d 45%,
-    #2468ff0a 100%
-  );
+  background-image: linear-gradient(-90deg, #3dddff00 0%, #32a8ff3d 45%, #2468ff0a 100%);
   padding: size(6) size(10) size(6) 0;
   display: flex;
   justify-content: space-between;
@@ -258,7 +249,7 @@ const formatContent = (val) => {
   }
 }
 
-.particles-star{
+.particles-star {
   width: 100%;
   height: 100%;
   position: absolute;

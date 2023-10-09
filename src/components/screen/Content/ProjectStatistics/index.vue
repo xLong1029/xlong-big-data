@@ -3,19 +3,17 @@
     <LineTitle title="服务项目类型" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
-        <template #content>
-          <SegmentPieChart
-            :chart-data="chart.chartData"
-            :axis="chart.axis"
-            :series="chart.series"
-            :scale="contrastRatio"
-            :tooltip="chart.tooltip"
-            :label-font-size="chart.labelFontSize"
-            :center="chart.center"
-            :autoplay="chart.autoplay"
-            :color-list="chart.colorList"
-          />
-        </template>
+        <SegmentPieChart
+          :chart-data="chart.chartData"
+          :axis="chart.axis"
+          :series="chart.series"
+          :scale="contrastRatio"
+          :tooltip="chart.tooltip"
+          :label-font-size="chart.labelFontSize"
+          :center="chart.center"
+          :autoplay="chart.autoplay"
+          :color-list="chart.colorList"
+        />
       </DataLoading>
     </div>
   </BorderFrameOne>
@@ -68,8 +66,8 @@ const chart = reactive({
     // "#653fff",
     "#3886fb",
     "#45f3fd",
-    "#97ff84"
-    ],
+    "#97ff84",
+  ],
   autoplay: true,
 });
 
@@ -84,8 +82,7 @@ const handleApiData = (data) => {
   });
 };
 
-const { apiLoading, contrastRatio } =
-  useScreenModuleData(handleApiData);
+const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 </script>
 
 <style lang="scss" scoped></style>

@@ -7,19 +7,17 @@
     </LineTitle>
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
-        <template #content>
-          <GradientLineChart
-            :chart-data="chart.chartData"
-            :axis="chart.axis"
-            :series="chart.series"
-            :scale="contrastRatio"
-            :tooltip="chart.tooltip"
-            :grid="chart.grid"
-            :label-font-size="chart.labelFontSize"
-            :autoplay="chart.autoplay"
-            :color-list="chart.colorList"
-          />
-        </template>
+        <GradientLineChart
+          :chart-data="chart.chartData"
+          :axis="chart.axis"
+          :series="chart.series"
+          :scale="contrastRatio"
+          :tooltip="chart.tooltip"
+          :grid="chart.grid"
+          :label-font-size="chart.labelFontSize"
+          :autoplay="chart.autoplay"
+          :color-list="chart.colorList"
+        />
       </DataLoading>
     </div>
   </BorderFrameOne>

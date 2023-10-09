@@ -3,32 +3,30 @@
     <LineTitle title="服务介绍" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="tabs">
-        <template #content>
-          <div class="tab-wrapper">
-            <div class="tab-title">
+        <div class="tab-wrapper">
+          <div class="tab-title">
+            <div
+              class="tab-title-item"
+              :class="{ 'is-active': index === activeIndex }"
+              v-for="(item, index) in tabs"
+              :key="'tab' + index"
+              @click="setActiveIndex(index)"
+            >
+              <div class="tab-title-item__text">{{ item.title }}</div>
               <div
-                class="tab-title-item"
-                :class="{ 'is-active': index === activeIndex }"
-                v-for="(item, index) in tabs"
-                :key="'tab' + index"
-                @click="setActiveIndex(index)"
-              >
-                <div class="tab-title-item__text">{{ item.title }}</div>
-                <div
-                  v-if="index === activeIndex"
-                  class="tab-title-item__light animate-scale"
-                ></div>
-                <img
-                  class="tab-title-item__img"
-                  :src="index === activeIndex ? descBgActive : descBg"
-                />
-              </div>
+                v-if="index === activeIndex"
+                class="tab-title-item__light animate-scale"
+              ></div>
+              <img
+                class="tab-title-item__img"
+                :src="index === activeIndex ? descBgActive : descBg"
+              />
             </div>
-            <p class="tab-content">
-              {{ tabs[activeIndex].desciption }}
-            </p>
           </div>
-        </template>
+          <p class="tab-content">
+            {{ tabs[activeIndex].desciption }}
+          </p>
+        </div>
       </DataLoading>
     </div>
   </BorderFrameOne>
@@ -63,7 +61,6 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
   src: url("./../../../../assets/font/ShiShangZhongHeiJianTi.ttf");
 }
 
-
 .tab-wrapper {
   width: 100%;
   height: 100%;
@@ -97,11 +94,7 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
       position: absolute;
       top: size(30);
       left: 12%;
-      @include background-setting(
-        "./../../../../assets/images/light.png",
-        75%,
-        size(25)
-      );
+      @include background-setting("./../../../../assets/images/light.png", 75%, size(25));
     }
 
     &__img {

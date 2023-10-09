@@ -7,26 +7,24 @@
     </LineTitle>
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
-        <template #content>
-          <div class="wave-container">
-            <div class="animate-wave wave1">
-              <div class="animate-wave wave2">
-                <div class="animate-wave wave3"></div>
-              </div>
+        <div class="wave-container">
+          <div class="animate-wave wave1">
+            <div class="animate-wave wave2">
+              <div class="animate-wave wave3"></div>
             </div>
           </div>
-          <GradientRadarChart
-            :title="chart.title"
-            :chart-data="chart.chartData"
-            :axis="chart.axis"
-            :series="chart.series"
-            :scale="contrastRatio"
-            :label-font-size="chart.labelFontSize"
-            :radius="chart.radius"
-            :center="chart.center"
-            :color-list="chart.colorList"
-          />
-        </template>
+        </div>
+        <GradientRadarChart
+          :title="chart.title"
+          :chart-data="chart.chartData"
+          :axis="chart.axis"
+          :series="chart.series"
+          :scale="contrastRatio"
+          :label-font-size="chart.labelFontSize"
+          :radius="chart.radius"
+          :center="chart.center"
+          :color-list="chart.colorList"
+        />
       </DataLoading>
     </div>
   </BorderFrameOne>
@@ -64,7 +62,7 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 <style lang="scss" scoped>
 @import "@/styles/screen-mixin.scss";
 
-.company-statistics-container{
+.company-statistics-container {
   @include line-title-set-unit();
 }
 

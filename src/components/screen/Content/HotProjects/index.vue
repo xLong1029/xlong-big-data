@@ -3,31 +3,29 @@
     <LineTitle title="热门项目" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="tags">
-        <template #content>
-          <div ref="contentRef" class="tag-content">
+        <div ref="contentRef" class="tag-content">
+          <div
+            v-if="contentEle && contentEle.length"
+            class="word-cloud__wrapper"
+            :style="{ width: `${width}px`, height: `${height}px` }"
+          >
             <div
-              v-if="contentEle && contentEle.length"
-              class="word-cloud__wrapper"
-              :style="{ width: `${width}px`, height: `${height}px` }"
+              v-for="(item, index) in tags"
+              :key="'tag' + index"
+              class="word-cloud__tag"
+              :style="{
+                backgroundSize: '100% 100%',
+                opacity: contentEle[index].style.opacity,
+                transform: contentEle[index].style.transform,
+                zIndex: contentEle[index].style.zIndex,
+              }"
+              @mousemove="handleMouseMove"
+              @mouseout="handleMouseOut"
             >
-              <div
-                v-for="(item, index) in tags"
-                :key="'tag' + index"
-                class="word-cloud__tag"
-                :style="{
-                  backgroundSize: '100% 100%',
-                  opacity: contentEle[index].style.opacity,
-                  transform: contentEle[index].style.transform,
-                  zIndex: contentEle[index].style.zIndex,
-                }"
-                @mousemove="handleMouseMove"
-                @mouseout="handleMouseOut"
-              >
-                {{ item.name }}
-              </div>
+              {{ item.name }}
             </div>
           </div>
-        </template>
+        </div>
       </DataLoading>
     </div>
   </BorderFrameOne>
