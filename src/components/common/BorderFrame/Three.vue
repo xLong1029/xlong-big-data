@@ -101,5 +101,7 @@ useResizeObserver(el, (entries) => {
 .border-frame-content {
   padding: size(25) size(20) size(20) size(20);
   height: 100%;
+  position: relative;
+  z-index: 1;
 }
 </style>
