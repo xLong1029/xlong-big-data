@@ -99,6 +99,11 @@ const props = defineProps({
     type: Number,
     default: 2,
   },
+  // 是否光滑曲线
+  smooth: {
+    type: Boolean,
+    default: true,
+  }
 });
 
 const { useChartOption } = hooks;
@@ -117,6 +122,7 @@ const setOption = (chartData = []) => {
     grid,
     tooltip,
     lineWidth,
+    smooth,
   } = props;
 
   const fontSize = labelFontSize * scale;
@@ -132,7 +138,7 @@ const setOption = (chartData = []) => {
     customSeries.push({
       name: e.name,
       type: "line",
-      smooth: true,
+      smooth,
       areaStyle: {
         color: new graphic.LinearGradient(
           0,
