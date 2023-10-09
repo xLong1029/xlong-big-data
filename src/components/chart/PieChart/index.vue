@@ -92,7 +92,7 @@ const props = defineProps({
   },
   // 饼图半径
   radius: {
-    type: String,
+    type: [Array, String],
     default: "60%",
   },
   // 饼图中心
@@ -125,7 +125,7 @@ const setOption = (chartData = []) => {
   } = props;
 
   const fontSize = labelFontSize * scale;
-  const fontColor = "#333333";
+  const fontColor = "#ffffff";
 
   // 提示
   let customTooltip = {
@@ -168,7 +168,9 @@ const setOption = (chartData = []) => {
         center,
         radius,
         label: {
-          formatter: `{b}: {c}${unit}`,
+          formatter: `{b}:{c}${unit}`,
+          color: fontColor,
+          fontSize,
         },
         data: chartData.map((e) => ({
           name: e[axis.property],

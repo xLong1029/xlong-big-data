@@ -75,7 +75,14 @@ export default function () {
    */
   const handleResizeScreen = debounce(() => {
     if (chart.value) {
-      chart.value.resize();
+      // chart.value.resize();
+
+      chart.value?.dispose();
+      chart.value = null;
+      if(container.value){
+        chart.value = echarts.init(container.value, { theme: "dark" }, { render: 'svg' });
+        setOption();
+      }
     }
   }, 100);
 
