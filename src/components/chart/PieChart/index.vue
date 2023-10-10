@@ -134,12 +134,22 @@ const setOption = (chartData = []) => {
       color: fontColor,
     },
     trigger: "item",
+    axisPointer: {
+      type: "line",
+    },
+    backgroundColor: "rgba(0,0,0,0.6)",
+    borderColor: "transparent",
+    padding: 5 * scale,
     ...tooltip,
   };
 
   // 图例
   const customLegend = {
+    type: "scroll",
     bottom: "bottom",
+    itemWidth: 16 * scale,
+    itemHeight: 8 * scale,
+    itemGap: 16 * scale,
     textStyle: {
       color: fontColor,
       fontSize,
@@ -168,7 +178,7 @@ const setOption = (chartData = []) => {
         center,
         radius,
         label: {
-          formatter: `{b}:{c}${unit}`,
+          formatter: `{c}${unit}`,
           color: fontColor,
           fontSize,
         },
