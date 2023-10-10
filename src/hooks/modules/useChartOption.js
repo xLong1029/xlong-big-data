@@ -46,6 +46,8 @@ export default function () {
       valueFixed,
       // 高亮数值颜色
       lightHeightValColor,
+      // 高亮数值加粗
+      lightHeightTextWeight,
       // 缩放比例
       scale = 1
     } = opt;
@@ -86,7 +88,7 @@ export default function () {
         res +
         `<div style="font-size:${fontSize}px; transform:scale(${scale}); margin-top:${0.5 * fontSize}px;">
         ${marker} ${seriesName}
-        <span style="color:${lightHeightTextColor};">
+        <span style="color:${lightHeightTextColor};font-weight: ${lightHeightTextWeight || 'bold'};margin-left:${0.5 * fontSize}px;">
         ${valueFixed ? value.toFixed(valueFixed) * 1 : value}
         </span> 
         ${unitList[index % unitList.length]}
