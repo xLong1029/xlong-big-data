@@ -208,7 +208,7 @@ const chart = reactive({
       if (extraData?.users && extraData?.companines) {
         const { users, companines } = extraData;
 
-        return `<div style="font-size:${fontSize}px; transform:scale(${scale});">
+        return `<div style="font-size:${fontSize*scale}px;">
         <div><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:${dotColor};"></span> ${name}</div>
         <div style="margin-top: ${
           10 * scale

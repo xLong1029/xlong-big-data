@@ -1,11 +1,11 @@
 /*
  * 模块 : 图表配置项模块
  * 作者 : 罗永梅（381612175@qq.com）
- * 日期 : 2022-08-19
- * 版本 : version 1.0
+ * 日期 : 2023-10-11
+ * 版本 : version 2.0
  */
-import { isArray, isFunction } from "lodash";
-import { deepClone } from "@/utils";
+import { isArray, isFunction } from 'lodash';
+import { deepClone } from '@/utils';
 
 export default function () {
   /**
@@ -29,7 +29,7 @@ export default function () {
 
     const {
       // 单位
-      unit = "",
+      unit = '',
       // 字体大小
       fontSize = 14,
       // 提示标题名称
@@ -57,47 +57,37 @@ export default function () {
     const unitList = isArray(unit) ? unit : [unit];
 
     let html = p.reduce((res, item, index) => {
-      const name = isFunction(names)
-        ? names(item.name)
-        : names?.[index] ?? item.name;
+      const name = isFunction(names) ? names(item.name) : names?.[index] ?? item.name;
 
-      const marker = isFunction(markers)
-        ? markers(item.marker)
-        : markers?.[index] ?? item.marker;
+      const marker = isFunction(markers) ? markers(item.marker) : markers?.[index] ?? item.marker;
 
-      const lightHeightTextColor = isArray(lightHeightValColor)
-        ? lightHeightValColor?.[index] ?? item.color
-        : lightHeightValColor ?? item.color;
+      const lightHeightTextColor = isArray(lightHeightValColor) ? lightHeightValColor?.[index] ?? item.color : lightHeightValColor ?? item.color;
 
-      const seriesName = isFunction(seriesNames)
-        ? seriesNames(item.seriesName)
-        : seriesNames?.[index] ?? item.seriesName;
+      const seriesName = isFunction(seriesNames) ? seriesNames(item.seriesName) : seriesNames?.[index] ?? item.seriesName;
 
-      const value = isFunction(values)
-        ? values(item.value)
-        : values?.[index] ?? item.value;
+      const value = isFunction(values) ? values(item.value) : values?.[index] ?? item.value;
 
       total += value * 1;
 
       if (!res) {
-        res = `<div style="font-size:${fontSize}px; transform:scale(${scale});">
+        res = `<div style="font-size:${fontSize * scale}px;">
         ${name}
         </div>`;
       }
       return (
         res +
-        `<div style="font-size:${fontSize}px; transform:scale(${scale}); margin-top:${0.5 * fontSize}px;">
-        ${marker} ${seriesName}
-        <span style="color:${lightHeightTextColor};font-weight: ${lightHeightTextWeight || 'bold'};margin-left:${0.5 * fontSize}px;">
+        `<div style="font-size:${fontSize * scale}px;margin-top:${0.5 * fontSize * scale}px; display: flex; align-items: center">
+        ${marker} <span style="margin-left:${5 * scale}px;">${seriesName}</span>
+        <span style="color:${lightHeightTextColor}; font-weight: ${lightHeightTextWeight || 'bold'};margin-left:${0.5 * fontSize * scale}px;">
         ${valueFixed ? value.toFixed(valueFixed) * 1 : value}
         </span> 
         ${unitList[index % unitList.length]}
         </div>`
       );
-    }, "");
+    }, '');
     if (showTotal) {
       html += `
-      <div style="font-size:${fontSize}px; transform:scale(${scale});">
+      <div style="font-size:${fontSize * scale}px;">
         总计：
         <span style="color:${lightHeightTextColor};">
           ${total.toFixed(3)}
@@ -110,15 +100,15 @@ export default function () {
 
   /**
    * 比较数据大小
-   * 
-   * @param {*} propertys 
-   * @returns 
+   *
+   * @param {*} propertys
+   * @returns
    */
   const compareData = (propertys) => {
     return function (a, b) {
       let value1 = 0;
       let value2 = 0;
-      propertys.forEach(e => {
+      propertys.forEach((e) => {
         value1 += a[e];
         value2 += b[e];
       });
@@ -128,22 +118,21 @@ export default function () {
 
   /**
    * 数据排序
-   * 
-   * @param {*} data 
-   * @returns 
+   *
+   * @param {*} data
+   * @returns
    */
   const sortData = (data, series) => {
     // 解决因为排序改变图表数据，切换图表时导致死循环的问题
-    let tempData = deepClone(data);
+    const tempData = deepClone(data);
 
     // 处理属性值
     let propertys = [];
     if (series.constructor == Array) {
-      series.forEach(e => propertys.push(e.property));
-    }
-    else if (series.constructor == Object) {
+      series.forEach((e) => propertys.push(e.property));
+    } else if (series.constructor == Object) {
       propertys = [series.property];
-    };
+    }
 
     // 图表数据排序
     tempData.sort(compareData(propertys));

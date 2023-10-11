@@ -45,7 +45,7 @@ const chart = reactive({
 
       const { name, marker, color, value } = p;
 
-      return `<div style="font-size:${fontSize}px; transform:scale(${scale});">
+      return `<div style="font-size:${fontSize * scale}px;">
         ${marker} ${name}
         <span style="color:${color};" >${value}</span> 个 <span style="color:${color};" >（${(
         (value / total.value) *
@@ -53,7 +53,7 @@ const chart = reactive({
       ).toFixed(2)}%）</span>
         </div>`;
 
-      // return `<div style="font-size:${fontSize}px; transform:scale(${scale});">
+      // return `<div style="font-size:${fontSize}px;">
       //   ${marker} ${name}
       //   <span style="color:${color};" >${value}</span>个
       //   </div>`;
@@ -77,9 +77,12 @@ const handleApiData = (data) => {
   chart.chartData = data?.projectStatisticsData || [];
 
   total.value = 0;
+
   chart.chartData.forEach((e) => {
     total.value += e.value;
   });
+
+  console.log(chart.chartData);
 };
 
 const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
