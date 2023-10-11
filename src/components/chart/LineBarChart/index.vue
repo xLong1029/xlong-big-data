@@ -246,4 +246,11 @@ watch(
     immediate: true,
   }
 );
+
+watch(
+  () => props.scale,
+  () => {
+    setOption(props.chartData);
+  },
+);
 </script>

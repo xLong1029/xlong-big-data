@@ -264,6 +264,13 @@ watch(
   }
 );
 
+watch(
+  () => props.scale,
+  () => {
+    setOption(props.chartData);
+  },
+);
+
 const setAutoplay = (val) => (autoplay.value = val);
 
 watch(

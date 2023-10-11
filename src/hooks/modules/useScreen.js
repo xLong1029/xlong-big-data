@@ -1,8 +1,8 @@
 /*
  * 模块 : 大屏通用设置
  * 作者 : 罗永梅（381612175@qq.com）
- * 日期 : 2022-08-15
- * 版本 : version 1.0
+ * 日期 : 2023-10-08
+ * 版本 : version 2.0
  */
 import { provide, ref, reactive, onMounted, watch } from "vue";
 import { useWindowSize } from '@vueuse/core'

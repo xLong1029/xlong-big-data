@@ -9,13 +9,12 @@ import {
   ref,
   reactive,
   shallowReactive,
-  onMounted,
   onUnmounted,
   watch,
 } from "vue";
 import * as echarts from "echarts";
-import useResize from "./useResize";
 import { debounce } from "@/utils";
+import { useWindowSize } from '@vueuse/core'
 
 export default function () {
   // 默认配置项
@@ -41,15 +40,9 @@ export default function () {
   // 自定义配置项
   const option = ref(null);
 
-  const { initResizeEvent, destroyResizeEvent } = useResize();
-
-  onMounted(() => {
-    initResizeEvent(handleResizeScreen);
-  });
+  const { width: winWidth, height: winHeight } = useWindowSize();
 
   onUnmounted(() => {
-    destroyResizeEvent(handleResizeScreen);
-
     chart.value?.dispose();
     chart.value = null;
   });
@@ -85,6 +78,16 @@ export default function () {
       }
     }
   }, 100);
+
+  watch(
+    [winWidth, winHeight],
+    ([width, height]) => {
+      handleResizeScreen();
+    },
+    {
+      immediate: true
+    }
+  );
 
   return {
     chart,
