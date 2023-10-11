@@ -1,9 +1,5 @@
 <template>
-  <Chart
-    :option="option"
-    :width="width"
-    :height="height"
-  />
+  <Chart :option="option" :width="width" :height="height" />
 </template>
 
 <script setup>
@@ -72,21 +68,20 @@ const props = defineProps({
     type: Array,
     default: () => ["50%", "50%"],
   },
+  // 名称格式化
+  axisNameFormatter: {
+    type: Function,
+    default: (val, indicator) => {
+      const { value, name } = indicator;
+      return `{a|${name}}\n{b|【${value}】}`;
+    },
+  },
 });
 
 const option = ref(null);
 
 const setOption = (chartData = []) => {
-  const {
-    title,
-    axis,
-    series,
-    colorList,
-    scale,
-    labelFontSize,
-    center,
-    radius,
-  } = props;
+  const { title, axis, series, colorList, scale, labelFontSize, center, radius, axisNameFormatter } = props;
 
   const fontSize = labelFontSize * scale;
   const fontColor = "#FFFFFF";
@@ -114,10 +109,7 @@ const setOption = (chartData = []) => {
         },
       },
       axisName: {
-        formatter: function (val, indicator) {
-          const { value, name } = indicator;
-          return `{a|${name}}\n{b|【${value}】}`;
-        },
+        formatter: axisNameFormatter,
         rich: {
           a: {
             color: fontColor,
@@ -193,6 +185,6 @@ watch(
   () => props.scale,
   () => {
     setOption(props.chartData);
-  },
+  }
 );
 </script>

@@ -81,8 +81,6 @@ const handleApiData = (data) => {
   chart.chartData.forEach((e) => {
     total.value += e.value;
   });
-
-  console.log(chart.chartData);
 };
 
 const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
