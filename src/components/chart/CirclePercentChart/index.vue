@@ -208,7 +208,7 @@ watch(
 watch(
   () => props.scale,
   () => {
-    setOption(props.chartData);
+    setOption(props.chartValue);
   },
 );
 </script>

@@ -29,7 +29,6 @@ import CirclePercentChart from "@/components/chart/CirclePercentChart/index.vue"
 import hooks from "@/hooks";
 
 const { useChartOption, useScreenModuleData } = hooks;
-const { customTooltip } = useChartOption();
 
 const chartData = ref([]);
 
