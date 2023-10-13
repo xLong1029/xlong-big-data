@@ -1,5 +1,5 @@
 <template>
-  <div class="border-frame-container border-frame-4">
+  <div class="border-frame-container border-frame-4" :class="{ raidus: raidus }">
     <div class="border-frame-gradient-background top"></div>
     <div class="border-frame-gradient-background bottom"></div>
     <div class="border-frame-content">
@@ -8,7 +8,19 @@
   </div>
 </template>
 
-<script setup name="BorderFrameFour">
+<script>
+export default {
+  name: "BorderFrameFour",
+};
+</script>
+
+<script setup>
+const props = defineProps({
+  raidus: {
+    type: Boolean,
+    default: false,
+  },
+});
 </script>
 
 <style lang="scss" scoped>
@@ -22,7 +34,9 @@
   box-shadow: rgba(78, 100, 185, 0.3) 0px 0px calc(34 * var(--app-screen-base-unit)) inset;
   background-color: #14195982;
   border: size(1) solid #273285;
-  border-radius: size(8);
+  &.raidus {
+    border-radius: size(8);
+  }
 
   &::before {
     display: block;
