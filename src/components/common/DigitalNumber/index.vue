@@ -1,11 +1,19 @@
 <template>
   <div v-if="numbers && numbers.length" class="digital-number">
+    {{ oldNumbers }} {{ numbers }}
     <div
       v-for="(item, index) in numbers"
       :key="'number' + index"
       class="digital-number-item"
     >
-      <CountUp :delay="countUpOption.delay" :endVal="item" :options="countUpOption" />
+      <CountUp
+        :delay="countUpOption.delay"
+        :startVal="
+          oldNumbers[index] ? (item > oldNumbers[index] ? oldNumbers[index] : 0) : 0
+        "
+        :endVal="item"
+        :options="countUpOption"
+      />
     </div>
   </div>
 </template>
@@ -22,14 +30,29 @@ const props = defineProps({
     type: [String, Number],
     default: "0",
   },
+  oldData: {
+    type: [String, Number],
+    default: "0",
+  },
 });
 
 const numbers = ref([]);
+const oldNumbers = ref([]);
 
 watch(
   () => props.data,
   (val) => {
     numbers.value = val?.toString().split("") || [];
+  },
+  {
+    immediate: true,
+  }
+);
+
+watch(
+  () => props.oldData,
+  (val) => {
+    oldNumbers.value = val?.toString().split("") || [];
   },
   {
     immediate: true,

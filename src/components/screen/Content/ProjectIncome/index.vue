@@ -5,7 +5,7 @@
       <DataLoading :loading="apiLoading" :data="list">
         <div class="number">
           <div class="number__text">总收益</div>
-          <DigitalNumber :data="money" />
+          <DigitalNumber :data="money" :oldData="oldMoney" />
           <div class="number__text">万元</div>
         </div>
         <div class="spinning-ball mt-20">
@@ -32,6 +32,7 @@
 <script setup>
 import { ref } from "vue";
 import DigitalNumber from "@/components/common/DigitalNumber/index.vue";
+import { deepClone } from "@/utils";
 import hooks from "@/hooks";
 
 const { useScreenModuleData } = hooks;
@@ -60,8 +61,11 @@ const list = ref([
 const isHover = ref(false);
 
 const money = ref(0);
+const oldMoney = ref(0);
 
 const handleApiData = (data) => {
+  oldMoney.value= deepClone(money.value);
+
   list.value = data?.hotProjectData.filter((e, i) => i < 6) || [];
   money.value = data?.money || 0;
 };
