@@ -63,6 +63,10 @@ export default function () {
 
       const lightHeightTextColor = isArray(lightHeightValColor) ? lightHeightValColor?.[index] ?? item.color : lightHeightValColor ?? item.color;
 
+      if(lightHeightTextColor.colorStops){
+        lightHeightTextColor = lightHeightTextColor.colorStops[0].color;
+      }
+
       const seriesName = isFunction(seriesNames) ? seriesNames(item.seriesName) : seriesNames?.[index] ?? item.seriesName;
 
       const value = isFunction(values) ? values(item.value) : values?.[index] ?? item.value;
