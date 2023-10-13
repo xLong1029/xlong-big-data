@@ -1,6 +1,5 @@
 <template>
   <div v-if="numbers && numbers.length" class="digital-number">
-    {{ oldNumbers }} {{ numbers }}
     <div
       v-for="(item, index) in numbers"
       :key="'number' + index"
