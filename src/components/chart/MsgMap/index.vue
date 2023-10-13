@@ -234,6 +234,9 @@ const setOption = (chartData = []) => {
         // universalTransition: true,
         // 地图变形，1为不变形
         aspectScale: 1,
+        select: {
+          disabled: true,
+        },
         data: thisChartData,
       },
       // 涟漪坐标点
