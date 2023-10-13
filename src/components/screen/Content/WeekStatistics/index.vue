@@ -1,10 +1,10 @@
 <template>
   <BorderFrameOne class="week-statistics-container">
-    <LineTitle title="监控平台周访问量">
+    <BorderFrameTitleOne title="监控平台周访问量">
       <template #extra>
         <span class="unit">(单位：次)</span>
       </template>
-    </LineTitle>
+    </BorderFrameTitleOne>
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <BarChart

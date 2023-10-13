@@ -1,6 +1,6 @@
 <template>
   <BorderFrameOne>
-    <LineTitle title="服务介绍" />
+    <BorderFrameTitleOne title="服务介绍" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="tabs">
         <div class="tab-wrapper">

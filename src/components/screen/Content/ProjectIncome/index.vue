@@ -1,6 +1,6 @@
 <template>
   <BorderFrameOne>
-    <LineTitle title="项目收益" />
+    <BorderFrameTitleOne title="项目收益" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="list">
         <div class="number">

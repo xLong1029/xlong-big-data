@@ -1,10 +1,10 @@
 <template>
   <BorderFrameOne class="company-statistics-container">
-    <LineTitle :title="chart.title">
+    <BorderFrameTitleOne :title="chart.title">
       <template #extra>
         <span class="unit">(单位：项)</span>
       </template>
-    </LineTitle>
+    </BorderFrameTitleOne>
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <div class="wave-container">
