@@ -41,8 +41,7 @@ const props = defineProps({
   &::before {
     display: block;
     content: '';
-    background: url('./../../../assets/images/line-vertical.png') no-repeat center left;
-    background-size: 100% 100%;
+    background: -webkit-linear-gradient(bottom, #312b6700, #12a2de, #312b6700);
     height: 100%;
     width: 1px;
     position: absolute;
@@ -54,8 +53,7 @@ const props = defineProps({
   &::after {
     display: block;
     content: '';
-    background: url('./../../../assets/images/line-vertical.png') no-repeat center right;
-    background-size: 100% 100%;
+    background: -webkit-linear-gradient(bottom, #312b6700, #12a2de, #312b6700);
     height: 100%;
     width: 1px;
     position: absolute;

@@ -174,8 +174,7 @@ const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
 .line {
   width: 100%;
   height: size(1);
-  background: url("./../../../../assets/images/line-horizontal.png") no-repeat;
-  background-size: 100% 100%;
+  background: -webkit-linear-gradient(left, #312b6700, #12a2de, #312b6700);
 }
 
 .count-item {

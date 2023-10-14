@@ -41,25 +41,23 @@ const props = defineProps({
   &::before {
     display: block;
     content: "";
-    background: url("./../../../assets/images/line-horizontal.png") no-repeat center top;
-    background-size: 70% auto;
+    background: -webkit-linear-gradient(left, #312b6700, #12a2de, #312b6700);
     height: 1px;
-    width: 100%;
+    width: 70%;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 15%;
   }
 
   &::after {
     display: block;
     content: "";
-    background: url("./../../../assets/images/line-horizontal.png") no-repeat center top;
-    background-size: 70% auto;
+    background: -webkit-linear-gradient(left, #312b6700, #12a2de, #312b6700);
     height: 1px;
-    width: 100%;
+    width: 70%;
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 15%;
   }
 
   .title {
