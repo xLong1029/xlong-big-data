@@ -24,7 +24,7 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/screen-styles.scss";
+@import "@/styles/screen-mixin.scss";
 
 .border-frame-container {
   position: relative;

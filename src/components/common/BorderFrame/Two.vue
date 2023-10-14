@@ -92,7 +92,6 @@ export default {
 }
 
 .border-frame-content {
-  padding: size(15);
   height: 100%;
   position: relative;
   z-index: 1;

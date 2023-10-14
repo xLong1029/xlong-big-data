@@ -1,6 +1,6 @@
 <template>
   <BorderFrameOne>
-    <BorderFrameTitleOne title="项目使用情况" />
+    <BorderFrameTitleFour title="项目使用情况" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="list">
         <div class="project-list">

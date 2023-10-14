@@ -1,10 +1,10 @@
 <template>
   <BorderFrameOne class="company-project-container">
-    <BorderFrameTitleOne title="各类企业项目维护情况">
+    <BorderFrameTitleFour title="各类企业项目维护情况">
       <template #extra>
         <span class="unit">(单位：项)</span>
       </template>
-    </BorderFrameTitleOne>
+    </BorderFrameTitleFour>
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <GradientLineChart

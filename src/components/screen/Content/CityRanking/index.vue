@@ -1,10 +1,10 @@
 <template>
   <BorderFrameOne class="city-ranking-container">
-    <BorderFrameTitleOne title="各地市服务用户排行">
+    <BorderFrameTitleFour title="各地市服务用户排行">
       <template #extra>
         <span class="unit">(单位：人)</span>
       </template>
-    </BorderFrameTitleOne>
+    </BorderFrameTitleFour>
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <RankingBarChart

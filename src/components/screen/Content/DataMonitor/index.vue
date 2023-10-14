@@ -1,6 +1,6 @@
 <template>
   <BorderFrameOne>
-    <BorderFrameTitleOne title="数据监控" />
+    <BorderFrameTitleFour title="数据监控" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <StatisticsDiagram

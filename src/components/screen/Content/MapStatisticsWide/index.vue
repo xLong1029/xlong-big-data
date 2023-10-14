@@ -27,7 +27,7 @@
     </div>
     <div class="map-statistics__msg pt-15">
       <BorderFrameOne>
-        <BorderFrameTitleOne title="当前系统使用情况" />
+        <BorderFrameTitleFour title="当前系统使用情况" />
         <div class="content">
           <DataLoading :loading="apiLoading" :data="msgList">
             <swiper

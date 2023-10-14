@@ -23,48 +23,70 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-@font-face {
-  font-family: ShiShangZhongHeiJianTi;
-  src: url("./../../../assets/font/ShiShangZhongHeiJianTi.ttf");
-}
+@import "@/styles/screen-mixin.scss";
 
 .border-frame-title-container {
   width: 100%;
   height: size(var(--app-screen-title-height));
-  line-height: size(var(--app-screen-title-height));
   display: flex;
+  position: relative;
 
   &::before {
     content: "";
+    position: absolute;
+
+    z-index: 1;
+    top: 50%;
+    left: size(10);
+    margin-top: size(-11);
     display: block;
-    width: size(3);
+    width: size(22);
+    height: size(22);
+    background: url("./../../../assets/images/line-title-bg-1.png") no-repeat;
+    // background: url("./../../../assets/screen_images/line-title-bg-2.png") no-repeat;
+    background-position: left center;
+    background-size: auto 100%;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
     height: 100%;
-    background: color(blue);
+    background-image: linear-gradient(
+      270deg,
+      rgba(31, 76, 162, 0) 0%,
+      rgba(44,59,173,0.7) 100%
+    );
+
+    // background-image: linear-gradient(
+    //   270deg,
+    //   rgba(31, 76, 162, 0) 0%,
+    //   rgba(26 ,6,117,0.7) 100%
+    // );
   }
 
   .title {
+    z-index: 1;
     flex: 1;
     display: flex;
     align-items: center;
-    margin-left: size(3);
     justify-content: space-between;
+    margin-left: size(10);
+    padding-top: size(2);
 
     h2 {
-      color: #45f3fd;
-      font-family: "ShiShangZhongHeiJianTi";
-      font-weight: 500;
-      font-size: size(22);
-      margin-left: size(5);
+      @include gradient-font(bottom, color(blue), #ffffff);
+      // @include gradient-font(bottom, #ee8ea0, #fffbbd);
+      font-weight: bold;
+      font-size: size(18);
+      margin-left: size(20);
       letter-spacing: size(1);
       margin-bottom: 0;
       margin-top: 0;
     }
-
-    background-image: linear-gradient(
-      270deg,
-      rgba(31, 76, 162, 0) 0%,
-      rgba(31, 76, 162, 0.6) 100%
-    );
   }
 }
 

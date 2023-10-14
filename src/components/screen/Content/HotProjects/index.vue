@@ -1,6 +1,6 @@
 <template>
   <BorderFrameOne>
-    <BorderFrameTitleOne title="热门项目" />
+    <BorderFrameTitleFour title="热门项目" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="tags">
         <div ref="contentRef" class="tag-content">
