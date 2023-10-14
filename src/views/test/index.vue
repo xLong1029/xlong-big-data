@@ -15,7 +15,7 @@ export default {
     let state = reactive({
       myCharts: null,
       options: {},
-      data: { name: "1111", value: 0.5 },
+      data: { name: "1111", value: 1 },
       list: [],
       color: "#2bf9ed",
     });
@@ -23,7 +23,7 @@ export default {
     let value = data.value;
     state.list.push({ name: data.name, value: data.value });
 
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 1; i++) {
       if (value - 0.1 > 0) {
         value -= 0.1;
         state.list.push({ name: data.name, value: value });
@@ -33,13 +33,6 @@ export default {
       // 提示框组件
       tooltip: {
         show: false,
-        trigger: "item", // 触发类型, 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
-        textStyle: {
-          color: "#000", // 文字颜色
-        },
-        formatter: function (value) {
-          return value.seriesName + ": " + parseInt(value.value * 100) + "%";
-        },
       },
       series: [
         {
@@ -63,7 +56,7 @@ export default {
           itemStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
               { offset: 0, color: "#c5e87e" }, //柱图渐变色
-              { offset: 0.5, color: state.color }, //柱图渐变色                 //柱图渐变色
+              { offset: 0.5, color: state.color }, //柱图渐变色
             ]),
             opacity: 0.5,
             shadowBlur: 10,
@@ -71,7 +64,7 @@ export default {
           backgroundStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
               { offset: 0, color: state.color }, //柱图渐变色
-              { offset: 0.4, color: "#44C0C1" }, //柱图渐变色                 //柱图渐变色
+              { offset: 0.4, color: "#44C0C1" }, //柱图渐变色
             ]),
             opacity: 0.5,
           },
@@ -103,13 +96,6 @@ export default {
             show: false,
             position: "center",
           },
-          emphasis: {
-            label: {
-              show: true,
-              fontSize: "40",
-              fontWeight: "bold",
-            },
-          },
           labelLine: {
             show: false,
           },
@@ -131,9 +117,6 @@ export default {
           ],
           emphasis: {
             disabled: true,
-          },
-          tooltip: {
-            show: false,
           },
         },
       ],
