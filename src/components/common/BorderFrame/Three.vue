@@ -48,8 +48,6 @@ useResizeObserver(el, (entries) => {
   const entry = entries[0];
   const { width, height } = entry.contentRect;
 
-  console.log(width)
-
   elWidth.value = width;
   elHeight.value = height;
 });

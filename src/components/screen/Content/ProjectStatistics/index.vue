@@ -1,6 +1,6 @@
 <template>
   <BorderFrameOne>
-    <BorderFrameTitleOne title="服务项目类型" />
+    <BorderFrameTitleFour title="服务项目类型" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <SegmentPieChart
