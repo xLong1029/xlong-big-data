@@ -1,6 +1,6 @@
 <template>
   <BorderFrameOne>
-    <LineTitle title="各地市服务数据统计" />
+    <BorderFrameTitleOne title="各地市服务数据统计" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="chart.chartData">
         <MixedLineBarChart

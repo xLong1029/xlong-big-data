@@ -1,34 +1,9 @@
 // global transition css
-.animate-move {
-  animation: animate-move 2.2s cubic-bezier(0.6, 2.4, 0.55, 2.5) 1s infinite;
-}
-
-
-@keyframes animate-move {
-
-  from,
-  to {
-    transform: translateY(-1px);
-    -ms-transform: translateY(-1px);
-    -webkit-transform: translateY(-1px);
-    opacity: 1;
-  }
-
-  50% {
-    transform: translateY(-1px);
-    -ms-transform: translateY(-1px);
-    -webkit-transform: translateY(-1px);
-    opacity: 0.95;
-  }
-}
-
 .animate-bounce {
   animation: animate-bounce 2s cubic-bezier(0.6, 2.4, 0.55, 2.5) 1s infinite;
 }
 
-
 @keyframes animate-bounce {
-
   from,
   to {
     transform: translateY(-1px);
@@ -48,7 +23,6 @@
 }
 
 @keyframes animate-twinkle {
-
   from,
   to {
     opacity: 1;
@@ -64,7 +38,6 @@
 }
 
 @keyframes animate-scale {
-
   from,
   to {
     transform: scale(1.03);
@@ -129,5 +102,26 @@
     transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
+  }
+}
+
+.animate-move-up {
+  animation: animate-move-up 2s cubic-bezier(0.6, 2.4, 0.55, 2.5) 1s infinite;
+}
+
+@keyframes animate-move-up {
+  from,
+  to {
+    transform: translateY(-1px);
+    -ms-transform: translateY(-1px);
+    -webkit-transform: translateY(-1px);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(1px);
+    -ms-transform: translateY(1px);
+    -webkit-transform: translateY(1px);
+    opacity: 0.9;
   }
 }
