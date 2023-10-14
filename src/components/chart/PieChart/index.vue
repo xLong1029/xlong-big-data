@@ -1,16 +1,10 @@
 <template>
-  <Chart
-    :option="option"
-    :width="width"
-    :height="height"
-    :duration="duration"
-    :autoplay="autoplay"
-  />
+  <div ref="container" :style="{ height, width }" />
 </template>
 
 <script setup>
-import Chart from "@/components/chart/Default/index.vue";
-import { ref, watch } from "vue";
+import { ref, watch, onUnmounted } from "vue";
+import hooks from "@/hooks";
 
 const props = defineProps({
   title: {
@@ -107,7 +101,15 @@ const props = defineProps({
   },
 });
 
-const option = ref(null);
+
+const { useChart } = hooks;
+
+const { chart, option, container } = useChart();
+
+const activeIndex = ref(0);
+const autoplay = ref(false);
+
+const timer = ref(null);
 
 const setOption = (chartData = []) => {
   const {
@@ -125,7 +127,7 @@ const setOption = (chartData = []) => {
   } = props;
 
   const fontSize = labelFontSize * scale;
-  const fontColor = "#ffffff";
+  const fontColor = "#FFFFFF";
 
   // 提示
   let customTooltip = {
@@ -182,13 +184,63 @@ const setOption = (chartData = []) => {
           color: fontColor,
           fontSize,
         },
-        data: chartData.map((e) => ({
-          name: e[axis.property],
-          value: e[series.property],
-        })),
+        selectedMode: "single",
+        select: {
+          itemStyle: {
+            opacity: 1,
+          },
+        },
+        labelLine: {
+            // lineStyle: {
+            //   color: "rgba(255, 255, 255, 0.3)"
+            // },
+            // smooth: 0.2 * this.scale,
+            length: 15 * scale,
+            length2: 10 * scale,
+          },
+        data: handleData(chartData, 1),
       },
     ],
   };
+};
+
+const handleData = (chartData, opacity) => {
+  const { axis, series, colorList } = props;
+
+  return chartData.map((e, i) => ({
+    name: e[axis.property],
+    value: e[series.property],
+    itemStyle: {
+      color: colorList[i],
+      opacity,
+    },
+  }));
+};
+
+const startTimer = () => {
+  stopTimer();
+  timer.value = setInterval(startLoopMove, props.duration);
+};
+
+const stopTimer = () => {
+  if (timer.value) {
+    clearInterval(timer.value);
+    timer.value = null;
+  }
+};
+
+const startLoopMove = () => {
+  const { autoplay, chartData } = props;
+
+  if (!autoplay) {
+    stopTimer();
+    return;
+  }
+
+  activeIndex.value++;
+  if (activeIndex.value >= chartData.length) {
+    activeIndex.value = 0;
+  }
 };
 
 watch(
@@ -207,4 +259,76 @@ watch(
     setOption(props.chartData);
   },
 );
+
+const setAutoplay = (val) => (autoplay.value = val);
+
+watch(
+  () => props.autoplay,
+  (val) => {
+    setAutoplay(val);
+  },
+  {
+    immediate: true,
+  }
+);
+
+watch(
+  autoplay,
+  (val) => {
+    if (val) {
+      startTimer();
+    } else {
+      stopTimer();
+    }
+  },
+  {
+    immediate: true,
+  }
+);
+
+watch(activeIndex, (val, preval) => {
+  chart.value?.dispatchAction({
+    type: "select",
+    seriesIndex: [0, 1],
+    itemStyle: {
+      opacity: 1,
+    },
+    dataIndex: val,
+  });
+
+  chart.value?.dispatchAction({
+    type: "showTip",
+    seriesIndex: [0],
+    dataIndex: val,
+  });
+});
+
+watch(
+  () => chart.value,
+  (newChart) => {
+    const { autoplay } = props;
+    if (newChart && autoplay) {
+      newChart.getZr().on("mousemove", (e) => {
+        if (e.topTarget) {
+          setAutoplay(false);
+
+          newChart.dispatchAction({
+            type: "unselect",
+            seriesIndex: [0, 1],
+            dataIndex: activeIndex.value,
+          });
+        } else {
+          setAutoplay(true);
+        }
+      });
+      newChart.getDom().addEventListener("mouseout", (e) => {
+        setAutoplay(true);
+      });
+    }
+  }
+);
+
+onUnmounted(() => {
+  stopTimer();
+});
 </script>
