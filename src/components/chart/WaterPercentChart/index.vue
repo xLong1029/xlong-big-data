@@ -66,6 +66,16 @@ const props = defineProps({
     type: Number,
     default: 14,
   },
+   // 圆圈大小
+  radius: {
+    type: String,
+    default: "65%"
+  },
+  // 中心点
+  center: {
+    type: Array,
+    default: () => ["50%", "45%"]
+  }
 });
 
 const option = ref(null);
@@ -80,6 +90,8 @@ const setOption = (chartValue = 0) => {
     tooltip,
     titleFontSize,
     title,
+    radius,
+    center
   } = props;
 
   const fontSize = labelFontSize * scale;
@@ -148,8 +160,8 @@ const setOption = (chartValue = 0) => {
     series: [
       {
         type: "liquidFill",
-        radius: "65%",
-        center: ["50%", "45%"],
+        radius,
+        center,
         shape: "circle",
         phase: 0,
         direction: "right",
