@@ -119,17 +119,16 @@ const setOption = (chartValue = 0) => {
     ...grid,
   };
 
-  let state = reactive({
-    list: [],
-  });
-
-  const chartData = [{ name: title, value: chartValue / 100 }];
+  const chartData = [];
+  let templateChartValue = chartValue;
   for (let i = 0; i < 1; i++) {
-    if (chartValue - 10 > 0) {
-      chartValue -= 10;
-      chartData.push({ name: title, value: chartValue / 100 });
+    if (templateChartValue - 10 > 0) {
+      templateChartValue -= 10;
+      chartData.push({ name: title, value: templateChartValue / 100 });
     }
   }
+
+  chartData.push({ name: title, value: chartValue / 100 })
 
   option.value = {
     tooltip: customTooltip,
