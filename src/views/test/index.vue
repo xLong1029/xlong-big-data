@@ -1,13 +1,15 @@
 <template>
   <div class="wrapper">
     <div class="box">
-        <Fire/>
+        <BorderFrameFlyLight>
+    ddd
+    </BorderFrameFlyLight>
     </div>
   </div>
 </template>
 
 <script setup>
-import Fire from "@/components/common/Fire/index.vue"
+import BorderFrameFlyLight from "@/components/common/BorderFrame/FlyLight.vue"
 </script>
 
 <style lang="scss" scoped>
@@ -22,5 +24,6 @@ import Fire from "@/components/common/Fire/index.vue"
 .box {
   width: 100px;
   height: 100px;
+  display: flex;
 }
 </style>
