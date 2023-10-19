@@ -82,6 +82,16 @@ const props = defineProps({
     type: Array,
     default: () => ['rgba(21, 4, 87, 0.7)', 'rgba(47, 148, 255, 0.7)']
   },
+  // 边框颜色
+  borderColor: {
+    type: String,
+    default: '#47a5fc'
+  },
+  // 面积颜色
+  areaColor: {
+    type: String,
+    default: '#04235b'
+  },
   // 缩放基数
   scale: {
     type: Number,
@@ -123,7 +133,17 @@ const props = defineProps({
   bubbleSize: {
     type: Number,
     default: 60
-  }
+  },
+  // 气泡颜色
+  bubbleColor: {
+    type: String,
+    default: '#ec2c68'
+  },
+  // 气泡激活颜色
+  bubbleActiveColor: {
+    type: String,
+    default: '#fba320'
+  },  
 });
 
 const { useChartOption } = hooks;
@@ -167,7 +187,11 @@ const setOption = (chartData = []) => {
     unit,
     layoutCenter,
     layoutSize,
-    bubbleSize
+    bubbleSize,
+    borderColor,
+    areaColor,
+    bubbleColor,
+    bubbleActiveColor
   } = props;
 
   echarts.registerMap(mapName, geoData);
@@ -234,15 +258,15 @@ const setOption = (chartData = []) => {
       roam: true,
       // 地图样式
       itemStyle: {
-        areaColor: '#04235b',
-        borderColor: '#47a5fc'
+        areaColor,
+        borderColor,
       },
       emphasis: {
         label: {
           show: false
         },
         itemStyle: {
-          areaColor: 'rgba(0,0,0, 0.35)'
+          areaColor: 'rgba(0,0,0, 0.15)'
         }
       },
       layoutCenter,
@@ -342,11 +366,11 @@ const setOption = (chartData = []) => {
         itemStyle: {
           //标志颜色
           color: (params) => {
-            let color = '#ec2c68';
+            let color = bubbleColor;
 
             if (changeData) {
               if (params.data.value[0] === changeData.coordinate[0] && params.data.value[1] === changeData.coordinate[1]) {
-                color = '#fba320';
+                color = bubbleActiveColor;
               }
             }
             return color;

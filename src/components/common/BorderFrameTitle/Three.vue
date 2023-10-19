@@ -3,7 +3,9 @@
     <div class="border-frame-title-bg"></div>
     <div class="title">
       <img v-if="icon" :src="icon" class="icon" :class="animateClassNme"/>
-      <h2 class="text">{{ title }}</h2>
+      <slot name="title">
+        <h2 class="text">{{ title }}</h2>
+      </slot>
       <slot name="extra"> </slot>
     </div>
   </div>
