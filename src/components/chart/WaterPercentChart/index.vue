@@ -66,16 +66,21 @@ const props = defineProps({
     type: Number,
     default: 14,
   },
-   // 圆圈大小
+  // 圆圈大小
   radius: {
     type: String,
-    default: "65%"
+    default: "65%",
   },
   // 中心点
   center: {
     type: Array,
-    default: () => ["50%", "45%"]
-  }
+    default: () => ["50%", "45%"],
+  },
+  // 文本中心点
+  labelCenter: {
+    type: String,
+    default: "38%",
+  },
 });
 
 const option = ref(null);
@@ -91,7 +96,8 @@ const setOption = (chartValue = 0) => {
     titleFontSize,
     title,
     radius,
-    center
+    center,
+    labelCenter
   } = props;
 
   const fontSize = labelFontSize * scale;
@@ -128,7 +134,7 @@ const setOption = (chartValue = 0) => {
     }
   }
 
-  chartData.push({ name: title, value: chartValue / 100 })
+  chartData.push({ name: title, value: chartValue / 100 });
 
   option.value = {
     tooltip: customTooltip,
@@ -138,7 +144,7 @@ const setOption = (chartValue = 0) => {
       {
         text: `${chartValue}%`,
         x: "center",
-        top: "40%",
+        top: labelCenter,
         textStyle: {
           fontSize,
           color: "#ffffff",

@@ -3,117 +3,134 @@
 </template>
 
 <script setup>
-import Chart from '@/components/chart/Default/index.vue';
-import { ref, watch } from 'vue';
-import { graphic } from 'echarts';
+import Chart from "@/components/chart/Default/index.vue";
+import { ref, watch } from "vue";
+import { graphic } from "echarts";
 
 const props = defineProps({
   // 图表名称
   title: {
     type: String,
-    default: ''
+    default: "",
   },
   // 宽度
   width: {
     type: [Number, String],
-    default: '100%'
+    default: "100%",
   },
   // 高度
   height: {
     type: [Number, String],
-    default: '100%'
+    default: "100%",
   },
   // 图表数值
   chartValue: {
     type: [Number, String],
-    default: 100
+    default: 100,
   },
   // 颜色列表
   colorList: {
     type: Array,
-    default: () => ['#d55800', '#f7b500']
+    default: () => ["#d55800", "#f7b500"],
   },
   // 缩放基数
   scale: {
     type: Number,
-    default: 1
+    default: 1,
   },
   // 图例
   legend: {
     type: Object,
-    default: () => ({})
+    default: () => ({}),
   },
   // 网格
   grid: {
     type: Object,
     default: () => ({
-      containLabel: true
-    })
+      containLabel: true,
+    }),
   },
   // 提示
   tooltip: {
     type: Object,
-    default: () => ({})
+    default: () => ({}),
   },
   // 文本大小
   labelFontSize: {
     type: Number,
-    default: 18
+    default: 18,
   },
   // 标题大小
   titleFontSize: {
     type: Number,
-    default: 14
+    default: 14,
   },
   // 圆圈大小
   radius: {
     type: Array,
-    default: () => ['50%', '70%']
+    default: () => ["50%", "70%"],
   },
   // 中心点
   center: {
     type: Array,
-    default: () => ['50%', '40%']
-  }
+    default: () => ["50%", "40%"],
+  },
+  // 文本中心点
+  labelCenter: {
+    type: String,
+    default: "34%",
+  },
 });
 
 const option = ref(null);
 
 const setOption = (chartValue = 0) => {
-  const { colorList, scale, labelFontSize, legend, grid, tooltip, titleFontSize, title, radius, center } = props;
+  const {
+    colorList,
+    scale,
+    labelFontSize,
+    legend,
+    grid,
+    tooltip,
+    titleFontSize,
+    title,
+    radius,
+    center,
+    labelCenter
+  } = props;
 
   const fontSize = labelFontSize * scale;
-  const fontColor = '#FFFFFF';
+  const fontColor = "#FFFFFF";
 
   // 提示
   let customTooltip = {
     textStyle: {
       fontSize,
-      color: fontColor
+      color: fontColor,
     },
-    trigger: 'item',
+    trigger: "item",
     axisPointer: {
-      type: 'shadow'
+      type: "shadow",
     },
-    backgroundColor: 'rgba(0,0,0,0.6)',
-    borderColor: 'transparent',
+    backgroundColor: "rgba(0,0,0,0.6)",
+    borderColor: "transparent",
     padding: 5 * scale,
-    ...tooltip
+    ...tooltip,
   };
 
   // 图例
   const customLegend = {
-    ...legend
+    ...legend,
   };
 
   // 网格
   const customGrid = {
-    top: '1%',
-    bottom: '1%',
-    left: '1%',
-    right: '1%',
+    top: "1%",
+    bottom: "1%",
+    left: "1%",
+    right: "1%",
     containLabel: true,
-    ...grid
+    ...grid,
   };
 
   option.value = {
@@ -123,70 +140,72 @@ const setOption = (chartValue = 0) => {
     title: [
       {
         text: `${chartValue}%`,
-        x: 'center',
-        top: '34%',
+        x: "center",
+        top: labelCenter,
         textStyle: {
           fontSize: fontSize,
           color: colorList[1],
-          fontWeight: '600'
-        }
+          fontWeight: "600",
+        },
       },
       {
         text: title,
-        x: 'center',
+        x: "center",
         bottom: 0,
         textStyle: {
           color: fontColor,
           fontSize: titleFontSize * scale,
-          fontWeight: '100'
-        }
-      }
+          fontWeight: "100",
+        },
+      },
     ],
-    polar: [{
-      radius,
-      center
-    }],
+    polar: [
+      {
+        radius,
+        center,
+      },
+    ],
     angleAxis: {
       max: 100,
-      show: false
+      show: false,
     },
     radiusAxis: {
-      type: 'category',
+      type: "category",
       show: true,
       axisLabel: false,
       axisLine: false,
-      axisTick: false
+      axisTick: false,
     },
     series: [
       {
-        type: 'bar',
+        type: "bar",
         roundCap: true,
         showBackground: true,
         backgroundStyle: {
-          color: 'rgba(66, 66, 66, .3)'
+          color: "rgba(66, 66, 66, .3)",
         },
         data: [chartValue],
-        coordinateSystem: 'polar',
+        coordinateSystem: "polar",
         itemStyle: {
           color: new graphic.LinearGradient(0, 1, 0, 0, [
             {
               offset: 0,
-              color: colorList[0]
+              color: colorList[0],
             },
             {
               offset: 1,
-              color: colorList[1]
-            }
-          ])
+              color: colorList[1],
+            },
+          ]),
         },
         emphasis: {
           itemStyle: {
             borderWidth: 2 * scale,
-            borderColor: colorList[1]
-          }
-        }
-      }
-    ]
+            borderColor: colorList[1],
+          },
+        },
+      },
+    ],
   };
 };
 
@@ -196,7 +215,7 @@ watch(
     setOption(data);
   },
   {
-    immediate: true
+    immediate: true,
   }
 );
 
