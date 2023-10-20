@@ -1,31 +1,35 @@
 <template>
   <BorderFrameOne>
-    <BorderFrameTitleFour title="项目收益" />
-    <div class="content">
-      <DataLoading :loading="apiLoading" :data="list">
-        <div class="number">
-          <div class="number__text">总收益</div>
-          <DigitalNumber :data="money" :oldData="oldMoney" />
-          <div class="number__text">万元</div>
-        </div>
-        <div class="spinning-ball mt-20">
-          <div class="spinning-ball__bottom"></div>
-          <div class="spinning-ball__wrapper">
-            <div class="spinning-ball__content">
-              <div
-                v-for="(item, index) in list"
-                :key="'' + index"
-                :class="[`ball ball${index + 1}`, isHover && 'stop-move']"
-                @mouseenter="isHover = true"
-                @mouseleave="isHover = false"
-              >
-                <div class="spinning-ball__title">{{ item.name }}</div>
+    <BorderFrameFlyLight>
+      <FlexContent>
+        <BorderFrameTitleFour title="项目收益" />
+        <div class="content">
+          <DataLoading :loading="apiLoading" :data="list">
+            <div class="number">
+              <div class="number__text">总收益</div>
+              <DigitalNumber :data="money" :oldData="oldMoney" />
+              <div class="number__text">万元</div>
+            </div>
+            <div class="spinning-ball mt-20">
+              <div class="spinning-ball__bottom"></div>
+              <div class="spinning-ball__wrapper">
+                <div class="spinning-ball__content">
+                  <div
+                    v-for="(item, index) in list"
+                    :key="'' + index"
+                    :class="[`ball ball${index + 1}`, isHover && 'stop-move']"
+                    @mouseenter="isHover = true"
+                    @mouseleave="isHover = false"
+                  >
+                    <div class="spinning-ball__title">{{ item.name }}</div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </DataLoading>
         </div>
-      </DataLoading>
-    </div>
+      </FlexContent>
+    </BorderFrameFlyLight>
   </BorderFrameOne>
 </template>
 
@@ -64,7 +68,7 @@ const money = ref(0);
 const oldMoney = ref(0);
 
 const handleApiData = (data) => {
-  oldMoney.value= deepClone(money.value);
+  oldMoney.value = deepClone(money.value);
 
   list.value = data?.hotProjectData.filter((e, i) => i < 6) || [];
   money.value = data?.money || 0;

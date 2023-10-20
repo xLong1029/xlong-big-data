@@ -1,32 +1,36 @@
 <template>
   <BorderFrameOne class="company-statistics-container">
-    <BorderFrameTitleFour :title="chart.title">
-      <template #extra>
-        <span class="unit">(单位：项)</span>
-      </template>
-    </BorderFrameTitleFour>
-    <div class="content">
-      <DataLoading :loading="apiLoading" :data="chart.chartData">
-        <div class="wave-container">
-          <div class="animate-wave wave1">
-            <div class="animate-wave wave2">
-              <div class="animate-wave wave3"></div>
+    <BorderFrameFlyLight>
+      <FlexContent>
+        <BorderFrameTitleFour :title="chart.title">
+          <template #extra>
+            <span class="unit">(单位：项)</span>
+          </template>
+        </BorderFrameTitleFour>
+        <div class="content">
+          <DataLoading :loading="apiLoading" :data="chart.chartData">
+            <div class="wave-container">
+              <div class="animate-wave wave1">
+                <div class="animate-wave wave2">
+                  <div class="animate-wave wave3"></div>
+                </div>
+              </div>
             </div>
-          </div>
+            <GradientRadarChart
+              :title="chart.title"
+              :chart-data="chart.chartData"
+              :axis="chart.axis"
+              :series="chart.series"
+              :scale="contrastRatio"
+              :label-font-size="chart.labelFontSize"
+              :radius="chart.radius"
+              :center="chart.center"
+              :color-list="chart.colorList"
+            />
+          </DataLoading>
         </div>
-        <GradientRadarChart
-          :title="chart.title"
-          :chart-data="chart.chartData"
-          :axis="chart.axis"
-          :series="chart.series"
-          :scale="contrastRatio"
-          :label-font-size="chart.labelFontSize"
-          :radius="chart.radius"
-          :center="chart.center"
-          :color-list="chart.colorList"
-        />
-      </DataLoading>
-    </div>
+      </FlexContent>
+    </BorderFrameFlyLight>
   </BorderFrameOne>
 </template>
 

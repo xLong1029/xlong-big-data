@@ -1,26 +1,30 @@
 <template>
   <BorderFrameOne class="city-ranking-container">
-    <BorderFrameTitleFour title="各地市服务用户排行">
-      <template #extra>
-        <span class="unit">(单位：人)</span>
-      </template>
-    </BorderFrameTitleFour>
-    <div class="content">
-      <DataLoading :loading="apiLoading" :data="chart.chartData">
-        <RankingBarChart
-          :title="chart.title"
-          :chart-data="chart.chartData"
-          :axis="chart.axis"
-          :series="chart.series"
-          :scale="contrastRatio"
-          :label-font-size="chart.labelFontSize"
-          :top-num="chart.topNum"
-          :top-colors="chart.topColors"
-          :default-colors="chart.defaultColors"
-          :grid="chart.grid"
-        />
-      </DataLoading>
-    </div>
+    <BorderFrameFlyLight>
+      <FlexContent>
+        <BorderFrameTitleFour title="各地市服务用户排行">
+          <template #extra>
+            <span class="unit">(单位：人)</span>
+          </template>
+        </BorderFrameTitleFour>
+        <div class="content">
+          <DataLoading :loading="apiLoading" :data="chart.chartData">
+            <RankingBarChart
+              :title="chart.title"
+              :chart-data="chart.chartData"
+              :axis="chart.axis"
+              :series="chart.series"
+              :scale="contrastRatio"
+              :label-font-size="chart.labelFontSize"
+              :top-num="chart.topNum"
+              :top-colors="chart.topColors"
+              :default-colors="chart.defaultColors"
+              :grid="chart.grid"
+            />
+          </DataLoading>
+        </div>
+      </FlexContent>
+    </BorderFrameFlyLight>
   </BorderFrameOne>
 </template>
 

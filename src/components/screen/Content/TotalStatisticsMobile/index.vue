@@ -2,7 +2,7 @@
   <div class="total-statistics-mobile-container">
     <div class="statistics-card-list">
       <div class="statistics-card-item">
-        <StatisticsCard :name="serviceCompanines.name">
+        <StatisticsCardOne :name="serviceCompanines.name">
           <template #value>
             <span :style="`color: ${serviceCompanines.valueColor}`">
               <FadeNum v-model:value="serviceCompanines.changeNum">
@@ -14,10 +14,10 @@
               </FadeNum>
             </span>
           </template>
-        </StatisticsCard>
+        </StatisticsCardOne>
       </div>
       <div class="statistics-card-item">
-        <StatisticsCard :name="serviceUsers.name" direction="right">
+        <StatisticsCardOne :name="serviceUsers.name" direction="right">
           <template #value>
             <span :style="`color: ${serviceUsers.valueColor}`">
               <FadeNum v-model:value="serviceUsers.changeNum">
@@ -29,10 +29,10 @@
               </FadeNum>
             </span>
           </template>
-        </StatisticsCard>
+        </StatisticsCardOne>
       </div>
       <div class="statistics-card-item">
-        <StatisticsCard :name="developApps.name">
+        <StatisticsCardOne :name="developApps.name">
           <template #value>
             <span :style="`color: ${developApps.valueColor}`">
               <CountUp
@@ -42,10 +42,10 @@
               />
             </span>
           </template>
-        </StatisticsCard>
+        </StatisticsCardOne>
       </div>
       <div class="statistics-card-item">
-        <StatisticsCard :name="monitorServers.name" direction="right">
+        <StatisticsCardOne :name="monitorServers.name" direction="right">
           <template #value>
             <span :style="`color: ${monitorServers.valueColor}`">
               <CountUp
@@ -55,7 +55,7 @@
               />
             </span>
           </template>
-        </StatisticsCard>
+        </StatisticsCardOne>
       </div>
     </div>
   </div>
@@ -63,7 +63,7 @@
 
 <script setup>
 import { reactive, ref } from "vue";
-import StatisticsCard from "@/components/common/StatisticsCard/index.vue";
+import StatisticsCardOne from "@/components/common/StatisticsCard/One.vue";
 import FadeNum from "@/components/common/FadeNum/index.vue";
 import hooks from "@/hooks";
 

@@ -1,25 +1,29 @@
 <template>
   <BorderFrameOne class="project-percent">
-    <BorderFrameTitleFour :title="`${year}年承接项目类别`" />
-    <div class="content">
-      <DataLoading :loading="apiLoading" :data="chartData">
-        <div
-          v-for="(item, index) in chartData"
-          :key="'chart' + index"
-          class="chart-module"
-        >
-          <CirclePercentChart
-            width="100%"
-            height="100%"
-            :title="item.name"
-            :chart-value="item.percent"
-            :color-list="colorList[index]"
-            :tooltip="{ show: false }"
-            :scale="contrastRatio"
-          />
+    <BorderFrameFlyLight>
+      <FlexContent>
+        <BorderFrameTitleFour :title="`${year}年承接项目类别`" />
+        <div class="content">
+          <DataLoading :loading="apiLoading" :data="chartData">
+            <div
+              v-for="(item, index) in chartData"
+              :key="'chart' + index"
+              class="chart-module"
+            >
+              <CirclePercentChart
+                width="100%"
+                height="100%"
+                :title="item.name"
+                :chart-value="item.percent"
+                :color-list="colorList[index]"
+                :tooltip="{ show: false }"
+                :scale="contrastRatio"
+              />
+            </div>
+          </DataLoading>
         </div>
-      </DataLoading>
-    </div>
+      </FlexContent>
+    </BorderFrameFlyLight>
   </BorderFrameOne>
 </template>
 

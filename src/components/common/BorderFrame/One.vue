@@ -3,7 +3,9 @@
     class="border-frame-container"
     :class="{ left: direction === 'left', right: direction === 'right' }"
   >
-    <slot />
+    <div class="border-frame-content">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -12,7 +14,6 @@ export default {
   name: "BorderFrameOne",
 };
 </script>
-
 
 <script setup>
 const props = defineProps({
@@ -32,7 +33,6 @@ const props = defineProps({
   width: 100%;
   border: size(1) solid transparent;
   border-image: linear-gradient(#0b64ad, #0a345c) 20 20;
-  padding: size(15) size(15);
   height: 100%;
   background: rgb(2 15 34 / 60%);
 
@@ -84,5 +84,12 @@ const props = defineProps({
       transform: rotate(-90deg);
     }
   }
+}
+
+.border-frame-content{
+  // padding: size(15);
+  position: relative;
+  z-index: 1;
+  height: 100%;
 }
 </style>

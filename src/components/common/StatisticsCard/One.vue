@@ -1,5 +1,5 @@
 <template>
-  <div class="statistics-card-container">
+  <div class="statistics-card-container statistics-card-1">
     <div class="statistics-card-content statistics-card">
       <div class="statistics-card__value">
         <slot name="value">

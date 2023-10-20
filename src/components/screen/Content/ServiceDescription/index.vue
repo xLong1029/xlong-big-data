@@ -1,34 +1,38 @@
 <template>
   <BorderFrameOne>
-    <BorderFrameTitleFour title="服务介绍" />
-    <div class="content">
-      <DataLoading :loading="apiLoading" :data="tabs">
-        <div class="tab-wrapper">
-          <div class="tab-title">
-            <div
-              class="tab-title-item"
-              :class="{ 'is-active': index === activeIndex }"
-              v-for="(item, index) in tabs"
-              :key="'tab' + index"
-              @click="setActiveIndex(index)"
-            >
-              <div class="tab-title-item__text">{{ item.title }}</div>
-              <div
-                v-if="index === activeIndex"
-                class="tab-title-item__light animate-scale"
-              ></div>
-              <img
-                class="tab-title-item__img"
-                :src="index === activeIndex ? descBgActive : descBg"
-              />
+    <BorderFrameFlyLight>
+      <FlexContent>
+        <BorderFrameTitleFour title="服务介绍" />
+        <div class="content">
+          <DataLoading :loading="apiLoading" :data="tabs">
+            <div class="tab-wrapper">
+              <div class="tab-title">
+                <div
+                  class="tab-title-item"
+                  :class="{ 'is-active': index === activeIndex }"
+                  v-for="(item, index) in tabs"
+                  :key="'tab' + index"
+                  @click="setActiveIndex(index)"
+                >
+                  <div class="tab-title-item__text">{{ item.title }}</div>
+                  <div
+                    v-if="index === activeIndex"
+                    class="tab-title-item__light animate-scale"
+                  ></div>
+                  <img
+                    class="tab-title-item__img"
+                    :src="index === activeIndex ? descBgActive : descBg"
+                  />
+                </div>
+              </div>
+              <p class="tab-content">
+                {{ tabs[activeIndex].desciption }}
+              </p>
             </div>
-          </div>
-          <p class="tab-content">
-            {{ tabs[activeIndex].desciption }}
-          </p>
+          </DataLoading>
         </div>
-      </DataLoading>
-    </div>
+      </FlexContent>
+    </BorderFrameFlyLight>
   </BorderFrameOne>
 </template>
 

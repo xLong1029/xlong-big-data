@@ -27,34 +27,38 @@
     </div>
     <div class="map-statistics__msg pt-15">
       <BorderFrameOne>
-        <BorderFrameTitleFour title="当前系统使用情况" />
-        <div class="content">
-          <DataLoading :loading="apiLoading" :data="msgList">
-            <swiper
-              :speed="1000"
-              slidesPerView="auto"
-              :direction="'vertical'"
-              :spaceBetween="15"
-              :autoplay="autoplayOptions"
-              :modules="modules"
-              :rewind="true"
-              loop
-              class="swiper-container"
-            >
-              <swiper-slide v-for="(item, index) in msgList" :key="index">
-                <div class="msg-item">
-                  <span
-                    v-highlight="highlightConfig"
-                    :data-content="formatContent(item.content)"
-                    class="msg-item__content ellipsis"
-                    >{{ formatContent(item.content) }}</span
-                  >
-                  <span class="msg-item__time">{{ item.createdTime }}</span>
-                </div>
-              </swiper-slide>
-            </swiper>
-          </DataLoading>
-        </div>
+        <BorderFrameFlyLight>
+          <FlexContent>
+            <BorderFrameTitleFour title="当前系统使用情况" />
+            <div class="content">
+              <DataLoading :loading="apiLoading" :data="msgList">
+                <swiper
+                  :speed="1000"
+                  slidesPerView="auto"
+                  :direction="'vertical'"
+                  :spaceBetween="15"
+                  :autoplay="autoplayOptions"
+                  :modules="modules"
+                  :rewind="true"
+                  loop
+                  class="swiper-container"
+                >
+                  <swiper-slide v-for="(item, index) in msgList" :key="index">
+                    <div class="msg-item">
+                      <span
+                        v-highlight="highlightConfig"
+                        :data-content="formatContent(item.content)"
+                        class="msg-item__content ellipsis"
+                        >{{ formatContent(item.content) }}</span
+                      >
+                      <span class="msg-item__time">{{ item.createdTime }}</span>
+                    </div>
+                  </swiper-slide>
+                </swiper>
+              </DataLoading>
+            </div>
+          </FlexContent>
+        </BorderFrameFlyLight>
       </BorderFrameOne>
     </div>
   </div>

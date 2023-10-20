@@ -1,27 +1,31 @@
 <template>
   <BorderFrameOne class="week-statistics-container">
-    <BorderFrameTitleFour title="监控平台周访问量">
-      <template #extra>
-        <span class="unit">(单位：次)</span>
-      </template>
-    </BorderFrameTitleFour>
-    <div class="content">
-      <DataLoading :loading="apiLoading" :data="chart.chartData">
-        <BarChart
-          :chart-data="chart.chartData"
-          :axis="chart.axis"
-          :series="chart.series"
-          :scale="contrastRatio"
-          :tooltip="chart.tooltip"
-          :grid="chart.grid"
-          :label-font-size="chart.labelFontSize"
-          :value-label-visible="chart.valueLabelVisible"
-          :chart-direction="chart.chartDirection"
-          :autoplay="chart.autoplay"
-          :color-list="chart.colorList"
-        />
-      </DataLoading>
-    </div>
+    <BorderFrameFlyLight>
+      <FlexContent>
+        <BorderFrameTitleFour title="监控平台周访问量">
+          <template #extra>
+            <span class="unit">(单位：次)</span>
+          </template>
+        </BorderFrameTitleFour>
+        <div class="content">
+          <DataLoading :loading="apiLoading" :data="chart.chartData">
+            <BarChart
+              :chart-data="chart.chartData"
+              :axis="chart.axis"
+              :series="chart.series"
+              :scale="contrastRatio"
+              :tooltip="chart.tooltip"
+              :grid="chart.grid"
+              :label-font-size="chart.labelFontSize"
+              :value-label-visible="chart.valueLabelVisible"
+              :chart-direction="chart.chartDirection"
+              :autoplay="chart.autoplay"
+              :color-list="chart.colorList"
+            />
+          </DataLoading>
+        </div>
+      </FlexContent>
+    </BorderFrameFlyLight>
   </BorderFrameOne>
 </template>
 

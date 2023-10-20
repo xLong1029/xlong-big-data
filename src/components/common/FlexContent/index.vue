@@ -19,5 +19,6 @@ const props = defineProps({
   flex-direction: column;
   width: 100%;
   height: 100%;
+  padding: size(15);
 }
 </style>

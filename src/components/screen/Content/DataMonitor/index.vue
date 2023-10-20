@@ -1,19 +1,23 @@
 <template>
   <BorderFrameOne>
-    <BorderFrameTitleFour title="数据监控" />
-    <div class="content">
-      <DataLoading :loading="apiLoading" :data="chart.chartData">
-        <StatisticsDiagram
-          height="95%"
-          :chart-data="chart.chartData"
-          :line-data="chart.lineData"
-          :fly-line-data="chart.flyLineData"
-          :scale="contrastRatio"
-          :tooltip="chart.tooltip"
-          :label-font-size="chart.labelFontSize"
-        />
-      </DataLoading>
-    </div>
+    <BorderFrameFlyLight>
+      <FlexContent>
+        <BorderFrameTitleFour title="数据监控" />
+        <div class="content">
+          <DataLoading :loading="apiLoading" :data="chart.chartData">
+            <StatisticsDiagram
+              height="95%"
+              :chart-data="chart.chartData"
+              :line-data="chart.lineData"
+              :fly-line-data="chart.flyLineData"
+              :scale="contrastRatio"
+              :tooltip="chart.tooltip"
+              :label-font-size="chart.labelFontSize"
+            />
+          </DataLoading>
+        </div>
+      </FlexContent>
+    </BorderFrameFlyLight>
   </BorderFrameOne>
 </template>
 
@@ -208,7 +212,7 @@ const chart = reactive({
       if (extraData?.users && extraData?.companines) {
         const { users, companines } = extraData;
 
-        return `<div style="font-size:${fontSize*scale}px;">
+        return `<div style="font-size:${fontSize * scale}px;">
         <div><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:${dotColor};"></span> ${name}</div>
         <div style="margin-top: ${
           10 * scale

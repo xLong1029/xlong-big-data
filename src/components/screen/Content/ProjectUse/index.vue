@@ -1,41 +1,47 @@
 <template>
   <BorderFrameOne>
-    <BorderFrameTitleFour title="项目使用情况" />
-    <div class="content">
-      <DataLoading :loading="apiLoading" :data="list">
-        <div class="project-list">
-          <Vue3SeamlessScroll :list="list" :step="0.3" :hover="true">
-            <div
-              class="project-list-item"
-              v-for="(item, index) in list"
-              :key="'project-item' + index"
-            >
-              <div :class="getBackgroundClassName(item)">
-                <i :class="getIconClassName(item)"></i>
-              </div>
-              <div class="project-list-item__name ellipsis">
-                {{ item.name }}
-              </div>
-              <div class="statistics-card">
-                <span class="statistics-card__num font-16">{{
-                  toThousands(item.users)
-                }}</span>
-                <span class="statistics-card__text mt-5">累计使用人数</span>
-              </div>
-              <div class="statistics-card ml-10">
-                <span>
-                  <el-tag v-if="item.status === 1" effect="dark" type="success"
-                    >正常</el-tag
-                  >
-                  <el-tag v-if="item.status === -1" effect="dark" type="">维护</el-tag>
-                </span>
-                <span class="statistics-card__text mt-5">当前状态</span>
-              </div>
+    <BorderFrameFlyLight>
+      <FlexContent>
+        <BorderFrameTitleFour title="项目使用情况" />
+        <div class="content">
+          <DataLoading :loading="apiLoading" :data="list">
+            <div class="project-list">
+              <Vue3SeamlessScroll :list="list" :step="0.3" :hover="true">
+                <div
+                  class="project-list-item"
+                  v-for="(item, index) in list"
+                  :key="'project-item' + index"
+                >
+                  <div :class="getBackgroundClassName(item)">
+                    <i :class="getIconClassName(item)"></i>
+                  </div>
+                  <div class="project-list-item__name ellipsis">
+                    {{ item.name }}
+                  </div>
+                  <div class="statistics-card">
+                    <span class="statistics-card__num font-16">{{
+                      toThousands(item.users)
+                    }}</span>
+                    <span class="statistics-card__text mt-5">累计使用人数</span>
+                  </div>
+                  <div class="statistics-card ml-10">
+                    <span>
+                      <el-tag v-if="item.status === 1" effect="dark" type="success"
+                        >正常</el-tag
+                      >
+                      <el-tag v-if="item.status === -1" effect="dark" type=""
+                        >维护</el-tag
+                      >
+                    </span>
+                    <span class="statistics-card__text mt-5">当前状态</span>
+                  </div>
+                </div>
+              </Vue3SeamlessScroll>
             </div>
-          </Vue3SeamlessScroll>
+          </DataLoading>
         </div>
-      </DataLoading>
-    </div>
+      </FlexContent>
+    </BorderFrameFlyLight>
   </BorderFrameOne>
 </template>
 

@@ -30,43 +30,43 @@ const props = defineProps({
   z-index: 10;
   width: 100%;
   height: 100%;
-  border: 1px solid rgba(32, 254, 255, 0.3);
+  // border: 1px solid rgba(32, 254, 255, 0.3);
   overflow: hidden;
 }
 
 .border-frame-fly-light {
   &.left {
     &::before {
-      animation: oneLeft 4s linear infinite;
+      animation: oneLeft 8s linear infinite;
     }
 
     .bottom {
-      animation: twoLeft 4s linear 1s infinite;
+      animation: twoLeft 8s linear 2s infinite;
     }
 
     &::after {
-      animation: threeLeft 4s linear 2s infinite;
+      animation: threeLeft 8s linear 4s infinite;
     }
 
     .top {
-      animation: fourLeft 4s linear 3s infinite;
+      animation: fourLeft 8s linear 6s infinite;
     }
   }
 
   &.right {
     &::before {
-      animation: oneRight 4s linear infinite;
+      animation: oneRight 8s linear infinite;
     }
     .top {
-      animation: fourRight 4s linear 1s infinite;
+      animation: fourRight 8s linear 2s infinite;
     }
 
     &::after {
-      animation: threeRight 4s linear 2s infinite;
+      animation: threeRight 8s linear 4s infinite;
     }
 
     .bottom {
-      animation: twoRight 4s linear 3s infinite;
+      animation: twoRight 8s linear 6s infinite;
     }
   }
 
@@ -111,9 +111,11 @@ const props = defineProps({
   }
 }
 
-body {
+.border-frame-content{
+  // padding: size(15);
+  position: relative;
+  z-index: 1;
   height: 100%;
-  background-color: #0f222b;
 }
 
 @keyframes oneLeft {

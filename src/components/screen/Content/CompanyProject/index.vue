@@ -1,25 +1,29 @@
 <template>
   <BorderFrameOne class="company-project-container">
-    <BorderFrameTitleFour title="各类企业项目维护情况">
-      <template #extra>
-        <span class="unit">(单位：项)</span>
-      </template>
-    </BorderFrameTitleFour>
-    <div class="content">
-      <DataLoading :loading="apiLoading" :data="chart.chartData">
-        <GradientLineChart
-          :chart-data="chart.chartData"
-          :axis="chart.axis"
-          :series="chart.series"
-          :scale="contrastRatio"
-          :tooltip="chart.tooltip"
-          :grid="chart.grid"
-          :label-font-size="chart.labelFontSize"
-          :autoplay="chart.autoplay"
-          :color-list="chart.colorList"
-        />
-      </DataLoading>
-    </div>
+    <BorderFrameFlyLight>
+      <FlexContent>
+        <BorderFrameTitleFour title="各类企业项目维护情况">
+          <template #extra>
+            <span class="unit">(单位：项)</span>
+          </template>
+        </BorderFrameTitleFour>
+        <div class="content">
+          <DataLoading :loading="apiLoading" :data="chart.chartData">
+            <GradientLineChart
+              :chart-data="chart.chartData"
+              :axis="chart.axis"
+              :series="chart.series"
+              :scale="contrastRatio"
+              :tooltip="chart.tooltip"
+              :grid="chart.grid"
+              :label-font-size="chart.labelFontSize"
+              :autoplay="chart.autoplay"
+              :color-list="chart.colorList"
+            />
+          </DataLoading>
+        </div>
+      </FlexContent>
+    </BorderFrameFlyLight>
   </BorderFrameOne>
 </template>
 

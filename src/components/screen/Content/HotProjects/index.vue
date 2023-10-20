@@ -1,5 +1,7 @@
 <template>
   <BorderFrameOne>
+    <BorderFrameFlyLight>
+      <FlexContent>
     <BorderFrameTitleFour title="热门项目" />
     <div class="content">
       <DataLoading :loading="apiLoading" :data="tags">
@@ -28,6 +30,8 @@
         </div>
       </DataLoading>
     </div>
+  </FlexContent>
+    </BorderFrameFlyLight>
   </BorderFrameOne>
 </template>
 

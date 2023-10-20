@@ -1,21 +1,25 @@
 <template>
   <BorderFrameOne>
-    <BorderFrameTitleFour title="服务项目类型" />
-    <div class="content">
-      <DataLoading :loading="apiLoading" :data="chart.chartData">
-        <SegmentPieChart
-          :chart-data="chart.chartData"
-          :axis="chart.axis"
-          :series="chart.series"
-          :scale="contrastRatio"
-          :tooltip="chart.tooltip"
-          :label-font-size="chart.labelFontSize"
-          :center="chart.center"
-          :autoplay="chart.autoplay"
-          :color-list="chart.colorList"
-        />
-      </DataLoading>
-    </div>
+    <BorderFrameFlyLight>
+      <FlexContent>
+        <BorderFrameTitleFour title="服务项目类型" />
+        <div class="content">
+          <DataLoading :loading="apiLoading" :data="chart.chartData">
+            <SegmentPieChart
+              :chart-data="chart.chartData"
+              :axis="chart.axis"
+              :series="chart.series"
+              :scale="contrastRatio"
+              :tooltip="chart.tooltip"
+              :label-font-size="chart.labelFontSize"
+              :center="chart.center"
+              :autoplay="chart.autoplay"
+              :color-list="chart.colorList"
+            />
+          </DataLoading>
+        </div>
+      </FlexContent>
+    </BorderFrameFlyLight>
   </BorderFrameOne>
 </template>
 

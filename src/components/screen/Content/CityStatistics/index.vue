@@ -1,26 +1,30 @@
 <template>
   <BorderFrameOne>
-    <BorderFrameTitleFour title="各地市服务数据统计" />
-    <div class="content">
-      <DataLoading :loading="apiLoading" :data="chart.chartData">
-        <MixedLineBarChart
-          :chart-data="chart.chartData"
-          :axis="chart.axis"
-          :series="chart.series"
-          :scale="contrastRatio"
-          :tooltip="chart.tooltip"
-          :grid="chart.grid"
-          :legend="chart.legend"
-          :color-list="chart.colorList"
-          :label-font-size="chart.labelFontSize"
-          :bar-property="chart.barProperty"
-          :bar-axisName="chart.barAxisName"
-          :line-property="chart.lineProperty"
-          :line-axisName="chart.lineAxisName"
-          :autoplay="chart.autoplay"
-        />
-      </DataLoading>
-    </div>
+    <BorderFrameFlyLight>
+      <FlexContent>
+        <BorderFrameTitleFour title="各地市服务数据统计" />
+        <div class="content">
+          <DataLoading :loading="apiLoading" :data="chart.chartData">
+            <MixedLineBarChart
+              :chart-data="chart.chartData"
+              :axis="chart.axis"
+              :series="chart.series"
+              :scale="contrastRatio"
+              :tooltip="chart.tooltip"
+              :grid="chart.grid"
+              :legend="chart.legend"
+              :color-list="chart.colorList"
+              :label-font-size="chart.labelFontSize"
+              :bar-property="chart.barProperty"
+              :bar-axisName="chart.barAxisName"
+              :line-property="chart.lineProperty"
+              :line-axisName="chart.lineAxisName"
+              :autoplay="chart.autoplay"
+            />
+          </DataLoading>
+        </div>
+      </FlexContent>
+    </BorderFrameFlyLight>
   </BorderFrameOne>
 </template>
 
