@@ -4,11 +4,34 @@
  * 日期 : 2023-10-08
  * 版本 : version 2.0
  */
-import { provide, ref, reactive, onMounted, watch } from "vue";
-import { useWindowSize } from '@vueuse/core'
+import {
+  provide,
+  ref,
+  reactive,
+  onMounted,
+  watch
+} from "vue";
+import {
+  useWindowSize
+} from '@vueuse/core';
+import {
+  checkMobile
+} from " @/utils";
 
-export default function() {
-  const { width: winWidth, height: winHeight } = useWindowSize();
+export default function () {
+  const {
+    width: winWidth,
+    height: winHeight
+  } = useWindowSize();
+
+
+  // 设备
+  const device = reactive({
+    // pc || mobile
+    mode: 'pc',
+    // horizontal || vertical
+    direction: 'horizontal'
+  });
 
   // 设计稿高宽
   const design = reactive({
@@ -38,7 +61,7 @@ export default function() {
   });
 
   // 响应式比率
-  const contrastRatio = ref(1);  
+  const contrastRatio = ref(1);
 
   // 顶级组件通过provide传递给子孙组件
   provide("getDesign", design);
@@ -57,8 +80,13 @@ export default function() {
     screenRate.wr = screen.width / design.width;
     screenRate.swhr = screen.width / screen.height;
 
+    // pad暂时也算pc端
+    device.mode = checkMobile(window.navigator.userAgent) && screen.width < 1024 ? 'mobile' : 'pc'
+
     // 横屏
     if (screenRate.swhr > 1) {
+      device.direction = 'horizontal';
+
       if (screen.width > 1366) {
         // 超宽屏大于 21：9
         if (screenRate.swhr >= 21 / 9) {
@@ -81,6 +109,7 @@ export default function() {
     }
     // 竖屏
     else {
+      device.direction = 'vertical';
     }
 
     document.documentElement.style.fontSize = contrastRatio.value * 100 + 'px';
@@ -91,8 +120,7 @@ export default function() {
     ([width, height]) => {
       handleResizeScreen(width, height);
       // console.log(width, height)
-    },
-    {
+    }, {
       immediate: true
     }
   );
