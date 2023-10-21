@@ -42,15 +42,15 @@ const screen = inject("getScreen");
 
 <style lang="scss" scoped>
 .screen-content {
-  padding: size(15);
+  padding: size(var(--app-screen-spacing));
 
   :deep(.border-frame-container) {
     height: 100%;
     display: flex;
     flex-direction: column;
     .content {
-      padding-top: size(15);
-      height: calc(100% - size(15));
+      padding-top: size(var(--app-screen-spacing));
+      height: calc(100% - size(var(--app-screen-spacing)));
     }
   }
 }

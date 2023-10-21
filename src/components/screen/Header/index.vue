@@ -131,13 +131,13 @@ const setTime = () => {
   }
 
   &__left {
-    padding-left: size(15);
+    padding-left: size(var(--app-screen-spacing));
     border-image: linear-gradient(to right, #0fadf9, transparent) 1;
   }
 
   &__right {
     justify-content: flex-end;
-    padding-right: size(15);
+    padding-right: size(var(--app-screen-spacing));
     border-image: linear-gradient(to left, #0fadf9, transparent) 1;
   }
 

@@ -42,7 +42,7 @@ import CityRanking from "@/components/screen/Content/CityRanking/index.vue";
 
 <style lang="scss" scoped>
 .screen-content {
-  padding: size(15);
+  padding: size(var(--app-screen-spacing));
   height: 100%;
   width: 100%;
   display: flex;
@@ -52,8 +52,8 @@ import CityRanking from "@/components/screen/Content/CityRanking/index.vue";
     display: flex;
     flex-direction: column;
     .content {
-      padding-top: size(15);
-      height: calc(100% - size(15));
+      padding-top: size(var(--app-screen-spacing));
+      height: calc(100% - size(var(--app-screen-spacing)));
     }
   }
 
@@ -80,7 +80,7 @@ import CityRanking from "@/components/screen/Content/CityRanking/index.vue";
   &__center {
     flex: 1;
     height: calc(100% - size(var(--app-screen-nav-height)));
-    padding: 0 size(15);
+    padding: 0 size(var(--app-screen-spacing));
     display: flex;
     flex-direction: column;
 

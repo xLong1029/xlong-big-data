@@ -18,7 +18,12 @@ import {
   checkMobile
 } from "@/utils";
 
-export default function () {
+/**
+ * 
+ * @param {*} useResponse 是否使用响应式配置
+ * @returns 
+ */
+export default function (useResponse = false) {
   const {
     width: winWidth,
     height: winHeight
@@ -83,36 +88,40 @@ export default function () {
     // pad暂时也算pc端
     device.mode = checkMobile(window.navigator.userAgent) && screen.width < 1024 ? 'mobile' : 'pc'
 
-    // 横屏
-    if (screenRate.swhr > 1) {
-      device.direction = 'horizontal';
+    if (useResponse) {
+      // 横屏
+      if (screenRate.swhr > 1) {
+        device.direction = 'horizontal';
 
-      if (screen.width > 1366) {
-        // 超宽屏大于 21：9
-        if (screenRate.swhr >= 21 / 9) {
-          if (screenRate.swhr > design.ratio) {
-            contrastRatio.value = screen.height < minScreen.height ? 0.56 : screenRate.hr * 1.2; // 以高度为基准制定
+        if (screen.width > 1366) {
+          // 超宽屏大于 21：9
+          if (screenRate.swhr >= 21 / 9) {
+            if (screenRate.swhr > design.ratio) {
+              contrastRatio.value = screen.height < minScreen.height ? 0.56 : screenRate.hr * 1.2; // 以高度为基准制定
+            } else {
+              contrastRatio.value = screen.width < minScreen.width ? 0.6 : screenRate.wr * 1.2; // 以宽度为基准制定
+            }
           } else {
-            contrastRatio.value = screen.width < minScreen.width ? 0.6 : screenRate.wr * 1.2; // 以宽度为基准制定
+            // contrastRatio.value = hr; // 以高度为基准制定
+            if (screenRate.swhr > design.ratio) {
+              contrastRatio.value = screen.height < minScreen.height ? 0.56 : screenRate.hr; // 以高度为基准制定
+            } else {
+              contrastRatio.value = screen.width < minScreen.width ? 0.6 : screenRate.wr; // 以宽度为基准制定
+            }
           }
         } else {
-          // contrastRatio.value = hr; // 以高度为基准制定
-          if (screenRate.swhr > design.ratio) {
-            contrastRatio.value = screen.height < minScreen.height ? 0.56 : screenRate.hr; // 以高度为基准制定
-          } else {
-            contrastRatio.value = screen.width < minScreen.width ? 0.6 : screenRate.wr; // 以宽度为基准制定
-          }
+          contrastRatio.value = 1;
         }
-      } else {
-        contrastRatio.value = 1;
       }
-    }
-    // 竖屏
-    else {
-      device.direction = 'vertical';
+      // 竖屏
+      else {
+        device.direction = 'vertical';
+      }
+
+      document.documentElement.style.fontSize = contrastRatio.value * 100 + 'px';
     }
 
-    document.documentElement.style.fontSize = contrastRatio.value * 100 + 'px';
+
   };
 
   watch(
