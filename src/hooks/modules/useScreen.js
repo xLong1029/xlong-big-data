@@ -16,7 +16,7 @@ import {
 } from '@vueuse/core';
 import {
   checkMobile
-} from " @/utils";
+} from "@/utils";
 
 export default function () {
   const {
