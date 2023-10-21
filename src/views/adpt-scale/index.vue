@@ -1,10 +1,10 @@
 <template>
   <ScaleContainer>
+  <!-- 计算性高度适配在此屏内容不适用，但其他屏使用正常 -->
+  <!-- <ScaleContainer :width="1920" :height="1920 / screen.width * screen.height"> -->
     <div class="screen-container">
       <Header />
-
       <div class="screen-content-container"><PCScreen /></div>
-
       <Nav :active="activeNavIndex" @change-nav="handleChangeNav" />
     </div>
   </ScaleContainer>
@@ -19,9 +19,14 @@ import Header from "@/components/screen/Header/index.vue";
 import Nav from "@/components/screen/Nav/index.vue";
 import PCScreen from "@/views/adpt-multi-device/pc/index.vue";
 
-const { useScreenNav, useScreenApiData } = hooks;
+const { 
+  useScreenNav,
+  useScreenApiData,
+  // useScreen
+} = hooks;
 const { activeNavIndex, handleChangeNav } = useScreenNav();
 const { apiLoading, apiTimer, getScreenData } = useScreenApiData();
+// const { screen } = useScreen(false);
 
 watch(
   () => activeNavIndex.value,
@@ -47,7 +52,6 @@ const init = () => {
     getScreenData(activeNavIndex.value);
   }, 5000);
 };
-
 </script>
 
 <style lang="scss" scoped>

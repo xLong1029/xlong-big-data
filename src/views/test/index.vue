@@ -1,15 +1,11 @@
 <template>
   <div class="wrapper">
     <div class="box">
-        <BorderFrameFlyLight>
-    ddd
-    </BorderFrameFlyLight>
     </div>
   </div>
 </template>
 
 <script setup>
-import BorderFrameFlyLight from "@/components/common/BorderFrame/FlyLight.vue"
 </script>
 
 <style lang="scss" scoped>

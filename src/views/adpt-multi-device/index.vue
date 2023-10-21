@@ -39,7 +39,7 @@ viewLoaded.value = initViews({ PCScreen, WideScreen, MobileScreen });
 const screenContentContainer = ref(null);
 
 // 处理屏幕尺寸变化
-const { design, screen, screenRate, minScreen, contrastRatio } = useScreen();
+const { design, screen, screenRate, minScreen, contrastRatio } = useScreen(true);
 
 watch(
   () => activeNavIndex.value,
