@@ -15,6 +15,7 @@
               <FadeNum v-model:value="coverCities.changeNum">
                 <CountUp
                   :delay="countUpOption.delay"
+                  :startVal="coverCities.oldValue"
                   :endVal="coverCities.value"
                   :options="countUpOption"
                 />
@@ -44,6 +45,7 @@
               <FadeNum v-model:value="normalApps.changeNum">
                 <CountUp
                   :delay="countUpOption.delay"
+                  :startVal="normalApps.oldValue"
                   :endVal="normalApps.value"
                   :options="countUpOption"
                 />
@@ -73,6 +75,7 @@
               <FadeNum v-model:value="vipUsers.changeNum">
                 <CountUp
                   :delay="countUpOption.delay"
+                  :startVal="vipUsers.oldValue"
                   :endVal="vipUsers.value"
                   :options="countUpOption"
                 />
@@ -106,6 +109,7 @@ const coverCities = reactive({
   name: "累计覆盖城市",
   img: iconCover,
   unit: "个",
+  oldValue: 0,
   value: 0,
   valueColor: "#45f3fd",
   changeNum: 0,
@@ -115,6 +119,7 @@ const normalApps = reactive({
   name: "正常运行应用",
   img: iconApp,
   unit: "个",
+  oldValue: 0,
   value: 0,
   valueColor: "#71ffaa",
   changeNum: 0,
@@ -124,6 +129,7 @@ const vipUsers = reactive({
   name: "Vip注册用户",
   img: iconVip,
   unit: "个",
+  oldValue: 0,
   value: 0,
   valueColor: "#ffe66d",
   changeNum: 0,
@@ -139,6 +145,10 @@ const handleApiData = (data) => {
   } = data.countData;
 
   if (!isFrist.value) {
+    coverCities.oldValue = coverCities.value;
+    normalApps.oldValue = normalApps.value;
+    vipUsers.oldValue = vipUsers.value;
+
     coverCities.changeNum = cities - coverCities.value;
     normalApps.changeNum = apps - normalApps.value;
     vipUsers.changeNum = vips - vipUsers.value;

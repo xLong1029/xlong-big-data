@@ -15,6 +15,7 @@
               <FadeNum v-model:value="serviceCompanines.changeNum">
                 <CountUp
                   :delay="countUpOption.delay"
+                  :startVal="serviceCompanines.oldValue"
                   :endVal="serviceCompanines.value"
                   :options="countUpOption"
                 />
@@ -31,6 +32,7 @@
               <FadeNum v-model:value="serviceUsers.changeNum">
                 <CountUp
                   :delay="countUpOption.delay"
+                  :startVal="serviceUsers.oldValue"
                   :endVal="serviceUsers.value"
                   :options="countUpOption"
                 />
@@ -46,6 +48,7 @@
             <span :style="`color: ${developApps.valueColor}`">
               <CountUp
                 :delay="countUpOption.delay"
+                :startVal="developApps.oldValue"
                 :endVal="developApps.value"
                 :options="countUpOption"
               />
@@ -60,6 +63,7 @@
             <span :style="`color: ${monitorServers.valueColor}`">
               <CountUp
                 :delay="countUpOption.delay"
+                :startVal="monitorServers.oldValue"
                 :endVal="monitorServers.value"
                 :options="countUpOption"
               />
@@ -89,6 +93,7 @@ const isFrist = ref(true);
 
 const serviceCompanines = reactive({
   name: "服务企业数量",
+  oldValue: 0,
   value: 0,
   valueColor: "#ffe66d",
   changeNum: 0,
@@ -96,6 +101,7 @@ const serviceCompanines = reactive({
 
 const serviceUsers = reactive({
   name: "服务用户数量",
+  oldValue: 0,
   value: 0,
   valueColor: "#45f3fd",
   changeNum: 0,
@@ -103,6 +109,7 @@ const serviceUsers = reactive({
 
 const developApps = reactive({
   name: "开发应用总数",
+  oldValue: 0,
   value: 0,
   valueColor: "#71ffaa",
   changeNum: 0,
@@ -110,6 +117,7 @@ const developApps = reactive({
 
 const monitorServers = reactive({
   name: "监控服务器数量",
+  oldValue: 0,
   value: 0,
   valueColor: "#fd65b9",
   changeNum: 0,
@@ -126,6 +134,9 @@ const handleApiData = (data) => {
   } = data.statisticsData;
 
   if (!isFrist.value) {
+    serviceCompanines.oldValue = serviceCompanines.value;
+    serviceUsers.oldValue = serviceUsers.value;
+
     serviceCompanines.changeNum = companines - serviceCompanines.value;
     serviceUsers.changeNum = users - serviceUsers.value;
   }
