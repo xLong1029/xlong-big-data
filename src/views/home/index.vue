@@ -22,6 +22,15 @@
           <el-button type="primary" @click="toPage('/adpt-scale')">预览</el-button>
         </div>
       </div>
+      <div class="list-item">
+        <div class="list-item__desc">
+          <h3>组件示例</h3>
+          <p>列出项目中部分常用的自定义组件，有空会更新...</p>          
+        </div>
+        <div class="list-item__btn">
+          <el-button type="primary" @click="toPage('/components')">预览</el-button>
+        </div>
+      </div>
     </div>
     <div class="copyright">
         Copyright © {{ year }}

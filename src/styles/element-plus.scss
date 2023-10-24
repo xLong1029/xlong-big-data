@@ -2,7 +2,7 @@
 :root {
   // 覆盖element-plus
   --el-color-primary: var(--app-color-base); // 无法使用color(base)
-
+  --el-text-color-primary: var(--app-color-white);
   --el-svg-monochrome-grey: #8cfaf9;
   --el-mask-color: rgb(1 12 47 / 70%);
 }
@@ -91,4 +91,33 @@
 
 .el-tag {
   height: size(24) !important;
+}
+
+.custom-tabs-style {
+  .el-tabs__nav {
+    float: inherit !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #18265b;
+  }
+
+  .el-tabs__item {
+    color: var(--app-color-white) !important;
+  }
+
+  .el-tabs__item:hover {
+    color: var(--app-color-blue) !important;
+  }
+
+  .el-tabs__active-bar {
+    background-color: var(--app-color-blue) !important;
+  }
+
+  .el-tabs__item.is-active {
+    color: var(--app-color-blue) !important;
+  }
+  .el-tabs__header{
+    margin: 0;
+  }
 }

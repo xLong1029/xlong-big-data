@@ -74,6 +74,9 @@ export default function (props) {
     } else {
       stopTimer();
     }
+  },
+  {
+    immediate: true,
   });
 
   onMounted(() => {

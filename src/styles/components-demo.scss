@@ -1,0 +1,24 @@
+.component-list{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  
+  &-item{
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+
+    &__title{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 14px;
+      margin-top: 10px;
+      height: 40px;
+    }
+  }
+}

@@ -26,8 +26,19 @@ const constantRoutes = [
     component: () => import("@/views/adpt-scale/index.vue"),
   },
   {
+    path: "/components",
+    name: "Components",
+    meta: {
+      title: "组件示例",
+    },
+    component: () => import("@/views/components/index.vue"),
+  },
+  {
     path: "/test",
     name: "Test",
+    meta: {
+      title: "测试页面",
+    },
     component: () => import("@/views/test/index.vue"),
   },
 ];

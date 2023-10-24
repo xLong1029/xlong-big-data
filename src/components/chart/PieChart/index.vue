@@ -101,7 +101,6 @@ const props = defineProps({
   },
 });
 
-
 const { useChart } = hooks;
 
 const { chart, option, container } = useChart();
@@ -113,8 +112,6 @@ const timer = ref(null);
 
 const setOption = (chartData = []) => {
   const {
-    axis,
-    series,
     colorList,
     scale,
     labelFontSize,

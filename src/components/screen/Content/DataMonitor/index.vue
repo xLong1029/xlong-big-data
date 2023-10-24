@@ -6,7 +6,6 @@
         <div class="content">
           <DataLoading :loading="apiLoading" :data="chart.chartData">
             <StatisticsDiagram
-              height="95%"
               :chart-data="chart.chartData"
               :line-data="chart.lineData"
               :fly-line-data="chart.flyLineData"
