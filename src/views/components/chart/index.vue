@@ -197,8 +197,23 @@ const pieChart = reactive({
     center: ["58%", "50%"],
     colorList: ["#009dff", "#22e4ff", "#3bffd0", "#04e38a", "#9dff86", "#fee588"],
     tooltip: {
-      show: false,
+    // show: false,
+    formatter: (p) => {
+      const scale = 1;
+      const fontSize = 14;
+
+      const { name, marker, color, value, dataIndex } = p;
+
+      return `<div style="font-size:${fontSize*scale}px;">
+        ${marker} ${name}
+       <span style="margin-left:${
+         0.5 * fontSize
+       }px; color:${color}; font-weight: bold;">${
+        pieChart.chartData[dataIndex].number
+      }</span><span>人(${value}%)</span>
+        </div>`;
     },
+  },
     legend: {
       type: "scroll",
       orient: "vartical",

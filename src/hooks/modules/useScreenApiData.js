@@ -9,7 +9,7 @@ import Api from "@/api/screen";
 import { ElMessage } from "element-plus";
 import { clearTimer } from "@/utils";
 
-export default function (handleResizeScreen) {
+export default function () {
   const apiLoading = ref(false);
   provide("getApiLoading", apiLoading);
 

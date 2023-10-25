@@ -107,6 +107,21 @@ const props = defineProps({
     type: Array,
     default: () => [20, 20, 0, 0],
   },
+  // 柱状图背景颜色
+  barColor: {
+    type: [Object, String],
+    default: null,
+  },
+  // 坐标字体倾斜角度
+  textFontRotate: {
+    type: Number,
+    default: 0,
+  },
+  // 字间距
+  textLableInterval: {
+    type: [Number, String],
+    default: 'auto',
+  }
 });
 
 const { useChartOption } = hooks;
@@ -127,6 +142,9 @@ const setOption = (chartData = []) => {
     grid,
     tooltip,
     barBorderRadius,
+    barColor,
+    textFontRotate,
+    textLableInterval
   } = props;
 
   const fontSize = labelFontSize * scale;
@@ -140,21 +158,23 @@ const setOption = (chartData = []) => {
   customSeries.push({
     name: series.name,
     type: "bar",
-    barWidth: "30%",
+    barWidth: "40%",
     silent: true,
     itemStyle: {
       normal: {
         borderRadius: barBorderRadius,
-        color: new graphic.LinearGradient(0, 0, 0, 1, [
-          {
-            offset: 0,
-            color: colorList[0],
-          },
-          {
-            offset: 1,
-            color: colorList[1], // 100% 处的颜色
-          },
-        ]),
+        color: barColor
+          ? barColor
+          : new graphic.LinearGradient(0, 0, 0, 1, [
+              {
+                offset: 0,
+                color: colorList[0],
+              },
+              {
+                offset: 1,
+                color: colorList[1], // 100% 处的颜色
+              },
+            ]),
       },
     },
     label: {
@@ -188,7 +208,8 @@ const setOption = (chartData = []) => {
         },
       },
       axisLabel: {
-        // interval: 0,
+        interval: textLableInterval,
+        rotate: chartDirection === "horizontal" && textFontRotate !== 0 ? textFontRotate : 0,
         color: fontColor,
         fontSize,
       },
@@ -216,7 +237,8 @@ const setOption = (chartData = []) => {
         },
       },
       axisLabel: {
-        // interval: 0,
+        interval: textLableInterval,
+        rotate: chartDirection === "vertical" && textFontRotate !== 0 ? textFontRotate : 0,
         color: fontColor,
         fontSize,
       },
@@ -267,6 +289,10 @@ const setOption = (chartData = []) => {
     containLabel: true,
     ...grid,
   };
+
+  if(!chartData.length){
+    return;
+  }
 
   const max = chartData.reduce((prev, current) =>
     prev[series.property] > current[series.property] ? prev : current

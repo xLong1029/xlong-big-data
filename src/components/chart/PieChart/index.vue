@@ -101,6 +101,7 @@ const props = defineProps({
   },
 });
 
+
 const { useChart } = hooks;
 
 const { chart, option, container } = useChart();
@@ -293,11 +294,12 @@ watch(activeIndex, (val, preval) => {
     dataIndex: val,
   });
 
-  chart.value?.dispatchAction({
-    type: "showTip",
-    seriesIndex: [0],
-    dataIndex: val,
-  });
+  // 不显示tooltip
+  // chart.value?.dispatchAction({
+  //   type: "showTip",
+  //   seriesIndex: [0],
+  //   dataIndex: val,
+  // });
 });
 
 watch(
