@@ -1,5 +1,5 @@
 <template>
-  <div class="rate-change-container" :class="up ? 'up' : 'down'">
+    <div class="rate-change-container" :class="{'up': up && num !== 0, 'down': !up && num !== 0}">
     <span class="rate-change__symbol">
       <svg class="icon" viewBox="0 0 1024 1024">
         <path
@@ -35,6 +35,7 @@ const props = defineProps({
     font-weight: bold;
     display: flex;
     align-items: center;
+    color: #23f2f0;
 
     &.down {
       color: color(red);
@@ -46,10 +47,10 @@ const props = defineProps({
     }
 
     &.up {
-      color: color(green-2);
+      color: #1fff83;
 
       .icon {
-        fill: color(green-2);
+        fill: #1fff83;
       }
     }
   }
@@ -61,7 +62,6 @@ const props = defineProps({
   }
 
   &__num {
-    margin-right: size(5);
   }
 }
 

@@ -49,5 +49,6 @@ const handleTabClick = (val) => {
 :deep(.el-tabs__content){
   padding: 10px;
   overflow-y: auto;
+  height: calc(100vh - 40px);
 }
 </style>

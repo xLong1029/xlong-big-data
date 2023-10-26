@@ -21,6 +21,104 @@
 
     <div class="component-list-item">
       <FlexContent>
+        <LineChart
+          :chart-data="lineChart.chartData"
+          :axis="lineChart.chartSetting.axis"
+          :series="lineChart.chartSetting.series"
+          :tooltip="lineChart.chartSetting.tooltip"
+          :grid="lineChart.chartSetting.grid"
+          :legend="lineChart.chartSetting.legend"
+          :color-list="lineChart.chartSetting.colorList"
+          :label-font-size="lineChart.chartSetting.labelFontSize"
+          :autoplay="true"
+        />
+      </FlexContent>
+      <div class="component-list-item__title">{{ lineChart.label }}</div>
+    </div>
+
+    <div class="component-list-item">
+      <FlexContent>
+        <MixedLineBarChart
+          :chart-data="mixedLineBarChart.chartData"
+          :axis="mixedLineBarChart.chartSetting.axis"
+          :series="mixedLineBarChart.chartSetting.series"
+          :tooltip="mixedLineBarChart.chartSetting.tooltip"
+          :grid="mixedLineBarChart.chartSetting.grid"
+          :legend="mixedLineBarChart.chartSetting.legend"
+          :color-list="mixedLineBarChart.chartSetting.colorList"
+          :label-font-size="mixedLineBarChart.chartSetting.labelFontSize"
+          :bar-property="mixedLineBarChart.chartSetting.barProperty"
+          :bar-axisName="mixedLineBarChart.chartSetting.barAxisName"
+          :line-property="mixedLineBarChart.chartSetting.lineProperty"
+          :line-axisName="mixedLineBarChart.chartSetting.lineAxisName"
+          :autoplay="true"
+        />
+      </FlexContent>
+      <div class="component-list-item__title">{{ mixedLineBarChart.label }}</div>
+    </div>
+
+    <div class="component-list-item">
+      <FlexContent>
+        <GradientBarChart
+          :chart-data="gradientBarChart.chartData"
+          :axis="gradientBarChart.chartSetting.axis"
+          :series="gradientBarChart.chartSetting.series"
+          :tooltip="gradientBarChart.chartSetting.tooltip"
+          :legend="gradientBarChart.chartSetting.legend"
+          :grid="gradientBarChart.chartSetting.grid"
+          :label-font-size="gradientBarChart.chartSetting.labelFontSize"
+          :value-label-visible="gradientBarChart.chartSetting.valueLabelVisible"
+          :chart-direction="gradientBarChart.chartSetting.chartDirection"
+          :color-list="gradientBarChart.chartSetting.colorList"
+          :autoplay="true"
+        />
+      </FlexContent>
+      <div class="component-list-item__title">{{ gradientBarChart.label }}</div>
+    </div>
+
+    <div class="component-list-item">
+      <FlexContent>
+        <GradientLineChart
+          :chart-data="gradientLineChart.chartData"
+          :axis="gradientLineChart.chartSetting.axis"
+          :series="gradientLineChart.chartSetting.series"
+          :tooltip="gradientLineChart.chartSetting.tooltip"
+          :grid="gradientLineChart.chartSetting.grid"
+          :legend="gradientLineChart.chartSetting.legend"
+          :color-list="gradientLineChart.chartSetting.colorList"
+          :label-font-size="gradientLineChart.chartSetting.labelFontSize"
+          :smooth="gradientLineChart.chartSetting.smooth"
+          :autoplay="true"
+        />
+      </FlexContent>
+      <div class="component-list-item__title">{{ gradientLineChart.label }}</div>
+    </div>
+
+    <div class="component-list-item">
+      <FlexContent>
+        <GradientMixedLineBarChart
+          :chart-data="gradientMixedLineBar.chartData"
+          :axis="gradientMixedLineBar.chartSetting.axis"
+          :series="gradientMixedLineBar.chartSetting.series"
+          :tooltip="gradientMixedLineBar.chartSetting.tooltip"
+          :grid="gradientMixedLineBar.chartSetting.grid"
+          :legend="gradientMixedLineBar.chartSetting.legend"
+          :color-list="gradientMixedLineBar.chartSetting.colorList"
+          :label-font-size="gradientMixedLineBar.chartSetting.labelFontSize"
+          :bar-property="gradientMixedLineBar.chartSetting.barProperty"
+          :bar-axisName="gradientMixedLineBar.chartSetting.barAxisName"
+          :line-property="gradientMixedLineBar.chartSetting.lineProperty"
+          :line-axisName="gradientMixedLineBar.chartSetting.lineAxisName"
+          :autoplay="true"
+        />
+      </FlexContent>
+      <div class="component-list-item__title">
+        {{ gradientMixedLineBar.label }}
+      </div>
+    </div>
+
+    <div class="component-list-item">
+      <FlexContent>
         <PieChart
           :chart-data="pieChart.chartData"
           :axis="pieChart.chartSetting.axis"
@@ -36,23 +134,7 @@
       </FlexContent>
       <div class="component-list-item__title">{{ pieChart.label }}</div>
     </div>
-    <div class="component-list-item">
-      <FlexContent>
-        <CirclePercentChart
-          :title="circlePercentChart.chartData.name"
-          :chart-value="circlePercentChart.chartData.percent"
-          :color-list="circlePercentChart.chartSetting.colorList"
-          :radius="circlePercentChart.chartSetting.radius"
-          :center="circlePercentChart.chartSetting.center"
-          :legend="circlePercentChart.chartSetting.legend"
-          :tooltip="circlePercentChart.chartSetting.tooltip"
-          :grid="circlePercentChart.chartSetting.grid"
-          :label-font-size="circlePercentChart.chartSetting.labelFontSize"
-          :title-font-size="circlePercentChart.chartSetting.titleFontSize"
-        />
-      </FlexContent>
-      <div class="component-list-item__title">{{ circlePercentChart.label }}</div>
-    </div>
+
     <div class="component-list-item">
       <FlexContent>
         <DoughnutChart
@@ -70,16 +152,131 @@
       </FlexContent>
       <div class="component-list-item__title">{{ doughnutChart.label }}</div>
     </div>
+
+    <div class="component-list-item">
+      <FlexContent>
+        <GradientRadarChart
+          :chart-data="radarChart.chartData"
+          :axis="radarChart.chartSetting.axis"
+          :series="radarChart.chartSetting.series"
+          :label-font-size="radarChart.chartSetting.labelFontSize"
+          :radius="radarChart.chartSetting.radius"
+          :center="radarChart.chartSetting.center"
+          :color-list="radarChart.chartSetting.colorList"
+          :axisNameFormatter="radarChart.chartSetting.axisNameFormatter"
+        />
+      </FlexContent>
+      <div class="component-list-item__title">{{ radarChart.label }}</div>
+    </div>
+
+    <div class="component-list-item">
+      <FlexContent>
+        <SegmentPieChart
+          :chart-data="segmentPieChart.chartData"
+          :axis="segmentPieChart.chartSetting.axis"
+          :series="segmentPieChart.chartSetting.series"
+          :color-list="segmentPieChart.chartSetting.colorList"
+          :radius="segmentPieChart.chartSetting.radius"
+          :center="segmentPieChart.chartSetting.center"
+          :legend="segmentPieChart.chartSetting.legend"
+          :tooltip="segmentPieChart.chartSetting.tooltip"
+          :grid="segmentPieChart.chartSetting.grid"
+          :autoplay="true"
+        />
+      </FlexContent>
+      <div class="component-list-item__title">{{ segmentPieChart.label }}</div>
+    </div>
+
+    <div class="component-list-item">
+      <FlexContent>
+        <CirclePercentChart
+          :title="circlePercentChart.chartData.name"
+          :chart-value="circlePercentChart.chartData.percent"
+          :color-list="circlePercentChart.chartSetting.colorList"
+          :radius="circlePercentChart.chartSetting.radius"
+          :center="circlePercentChart.chartSetting.center"
+          :label-center="circlePercentChart.chartSetting.labelCenter"
+          :label-font-size="circlePercentChart.chartSetting.labelFontSize"
+          :title-font-size="circlePercentChart.chartSetting.titleFontSize"
+        />
+      </FlexContent>
+      <div class="component-list-item__title">{{ circlePercentChart.label }}</div>
+    </div>
+
+    <div class="component-list-item">
+      <FlexContent>
+        <WaterPercentChart
+          :title="waterPercentChart.chartData.name"
+          :chart-value="waterPercentChart.chartData.rate"
+          :color-list="waterPercentChart.chartSetting.colorList"
+          :tooltip="{ show: false }"
+          :label-font-size="waterPercentChart.chartSetting.labelFontSize"
+          :title-font-size="waterPercentChart.chartSetting.titleFontSize"
+        />
+      </FlexContent>
+      <div class="component-list-item__title">{{ waterPercentChart.label }}</div>
+    </div>
+
+    <div class="component-list-item">
+      <FlexContent>
+        <RankingBarChart
+          :chart-data="rankingBarChart.chartData"
+          :axis="rankingBarChart.chartSetting.axis"
+          :series="rankingBarChart.chartSetting.series"
+          :label-font-size="rankingBarChart.chartSetting.labelFontSize"
+          :top-num="rankingBarChart.chartSetting.topNum"
+          :top-colors="rankingBarChart.chartSetting.topColors"
+          :default-colors="rankingBarChart.chartSetting.defaultColors"
+          :grid="rankingBarChart.chartSetting.grid"
+        />
+      </FlexContent>
+      <div class="component-list-item__title">{{ rankingBarChart.label }}</div>
+    </div>
+
+    <div class="component-list-item">
+      <FlexContent>
+        <MsgMap
+          :geo-data="geoJson"
+          :chart-data="msgMapChart.chartData"
+          :change-data="msgMapChart.changeData"
+          :coordinate-data="msgMapChart.chartSetting.coordinateData"
+          :center-point="msgMapChart.chartSetting.centerPoint"
+          :axis="msgMapChart.chartSetting.axis"
+          :series="msgMapChart.chartSetting.series"
+          :map-name="msgMapChart.chartSetting.mapName"
+          :map-zoom="msgMapChart.chartSetting.mapZoom"
+          :unit="msgMapChart.chartSetting.unit"
+          :label-font-size="msgMapChart.chartSetting.labelFontSize"
+          :layout-center="msgMapChart.chartSetting.layoutCenter"
+          :layout-size="msgMapChart.chartSetting.layoutSize"
+          :bubble-size="msgMapChart.chartSetting.bubbleSize"
+          :bubble-color="msgMapChart.chartSetting.bubbleColor"
+        />
+      </FlexContent>
+      <div class="component-list-item__title">{{ msgMapChart.label }}</div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { reactive } from "vue";
 import BarChart from "@/components/chart/BarChart/index.vue";
+import GradientBarChart from "@/components/chart/GradientBarChart/index.vue";
+import LineChart from "@/components/chart/LineChart/index.vue";
+import GradientLineChart from "@/components/chart/GradientLineChart/index.vue";
+import MixedLineBarChart from "@/components/chart/MixedLineBarChart/index.vue";
+import GradientMixedLineBarChart from "@/components/chart/GradientMixedLineBarChart/index.vue";
 import CirclePercentChart from "@/components/chart/CirclePercentChart/index.vue";
 import PieChart from "@/components/chart/PieChart/index.vue";
 import DoughnutChart from "@/components/chart/DoughnutChart/index.vue";
+import GradientRadarChart from "@/components/chart/GradientRadarChart/index.vue";
+import SegmentPieChart from "@/components/chart/SegmentPieChart/index.vue";
+import WaterPercentChart from "@/components/chart/WaterPercentChart/index.vue";
+import RankingBarChart from "@/components/chart/RankingBarChart/index.vue";
+import MsgMap from "@/components/chart/MsgMap/index.vue";
 import hooks from "@/hooks";
+import geoJson from "@/assets/json/guangxi.json";
+import guangxiCoordinateJson from "@/assets/json/guangxi-coordinate.json";
 
 const { useChartOption } = hooks;
 const { formatTooltip } = useChartOption();
@@ -136,6 +333,59 @@ const barChart = reactive({
   },
 });
 
+const gradientBarChart = reactive({
+  label: "单柱状（渐变）",
+  chartData: [
+    { name: "2017", value: 50 },
+    { name: "2018", value: 436 },
+    { name: "2019", value: 1052 },
+    { name: "2020", value: 479 },
+    { name: "2021", value: 527 },
+    { name: "2022", value: 475 },
+    { name: "2023", value: 21 },
+  ],
+  chartSetting: {
+    axis: {
+      property: "name",
+    },
+    series: {
+      name: "门",
+      property: "value",
+    },
+    tooltip: {
+      trigger: "axis",
+      formatter: (p) => {
+        const scale = 1;
+        const fontSize = 14;
+
+        const { name, marker, color, value, dataIndex } = p[0];
+
+        return `<div style="font-size:${
+          fontSize * scale
+        }px;display:flex;align-items:center;">
+        ${marker}<span style="margin-left:${5 * scale}px;">${name}年创建课程</span>
+       <span style="margin-left:${0.5 * fontSize}px; color:${
+          color.colorStops[0].color
+        }; font-weight: bold;">${value}</span>门
+        </div>`;
+      },
+    },
+    grid: {
+      top: "5%",
+      bottom: 0,
+      left: "1%",
+      right: "2%",
+    },
+    valueLabelVisible: false,
+    labelFontSize: 14,
+    legend: {
+      show: false,
+    },
+    chartDirection: "horizontal",
+    colorList: ["#00feff", "#027eff"],
+  },
+});
+
 const circlePercentChart = reactive({
   label: "圆形进度图",
   chartData: {
@@ -146,7 +396,10 @@ const circlePercentChart = reactive({
     tooltip: {
       show: false,
     },
-    labelFontSize: 24,
+    radius: ["50%", "65%"],
+    center: ["50%", "45%"],
+    labelCenter: "40%",
+    labelFontSize: 28,
     titleFontSize: 16,
     colorList: ["#3cc9df", "#76ffb9"],
   },
@@ -197,23 +450,23 @@ const pieChart = reactive({
     center: ["58%", "50%"],
     colorList: ["#009dff", "#22e4ff", "#3bffd0", "#04e38a", "#9dff86", "#fee588"],
     tooltip: {
-    // show: false,
-    formatter: (p) => {
-      const scale = 1;
-      const fontSize = 14;
+      // show: false,
+      formatter: (p) => {
+        const scale = 1;
+        const fontSize = 14;
 
-      const { name, marker, color, value, dataIndex } = p;
+        const { name, marker, color, value, dataIndex } = p;
 
-      return `<div style="font-size:${fontSize*scale}px;">
+        return `<div style="font-size:${fontSize * scale}px;">
         ${marker} ${name}
        <span style="margin-left:${
          0.5 * fontSize
        }px; color:${color}; font-weight: bold;">${
-        pieChart.chartData[dataIndex].number
-      }</span><span>人(${value}%)</span>
+          pieChart.chartData[dataIndex].number
+        }</span><span>人(${value}%)</span>
         </div>`;
+      },
     },
-  },
     legend: {
       type: "scroll",
       orient: "vartical",
@@ -269,7 +522,7 @@ const doughnutChart = reactive({
     center: ["50%", "50%"],
     colorList: ["#009dff", "#22e4ff", "#3bffd0", "#04e38a", "#9dff86", "#fee588"],
     tooltip: {
-      show: false
+      show: false,
     },
     gird: {
       top: "2%",
@@ -277,6 +530,496 @@ const doughnutChart = reactive({
       left: "1%",
       right: "1%",
     },
+  },
+});
+
+const segmentPieChart = reactive({
+  label: "隔断饼图",
+  chartData: [
+    {
+      client: "PC端",
+      number: 10000,
+      percent: 50,
+    },
+    {
+      client: "App",
+      number: 8000,
+      percent: 40,
+    },
+    {
+      client: "微信公众号",
+      number: 2000,
+      percent: 10,
+    },
+  ],
+  chartSetting: {
+    axis: {
+      property: "client",
+    },
+    series: {
+      property: "percent",
+    },
+    radius: ["0", "47%"],
+    center: ["60%", "50%"],
+    colorList: ["#009dff", "#22e4ff", "#3bffd0", "#04e38a", "#9dff86", "#fee588"],
+    tooltip: {
+      show: true,
+      formatter: (p) => {
+        const scale = 1;
+        const fontSize = 14;
+
+        const { name, marker, color, value, dataIndex } = p;
+
+        return `<div style="font-size:${fontSize * scale}px;">
+        ${marker} ${name}
+       <span style="margin-left:${
+         0.5 * fontSize
+       }px; color:${color}; font-weight: bold;">${
+          segmentPieChart.chartData[dataIndex].number
+        }</span><span>人(${value}%)</span>
+        </div>`;
+      },
+    },
+    legend: {
+      top: "center",
+      left: 0,
+    },
+    gird: {
+      top: "1%",
+      bottom: "1%",
+      left: "1%",
+      right: "1%",
+    },
+  },
+});
+
+const gradientLineChart = reactive({
+  label: "多折线图（渐变）",
+  chartData: [
+    {
+      time: "202301",
+      applet: 478,
+      pc: 454,
+      h5: 534,
+    },
+    {
+      time: "202302",
+      applet: 678,
+      pc: 578,
+      h5: 424,
+    },
+    {
+      time: "202303",
+      applet: 537,
+      pc: 266,
+      h5: 234,
+    },
+    {
+      time: "202304",
+      applet: 645,
+      pc: 500,
+      h5: 678,
+    },
+    {
+      time: "202305",
+      applet: 467,
+      pc: 563,
+      h5: 467,
+    },
+  ],
+  chartSetting: {
+    axis: {
+      property: "time",
+    },
+    series: [
+      {
+        name: "微信小程序",
+        property: "applet",
+      },
+      {
+        name: "PC端",
+        property: "pc",
+      },
+      {
+        name: "H5端",
+        property: "h5",
+      },
+    ],
+    tooltip: {
+      show: true,
+      formatter: (p) =>
+        formatTooltip(p, {
+          unit: "人",
+          scale: 1,
+        }),
+    },
+    grid: {
+      top: "15%",
+      bottom: "1%",
+      left: "2%",
+      right: "5%",
+    },
+    smooth: true,
+    colorList: ["#42cdff", "#21afff", "#1fff83", "#46ffea", "#ff62b5", "#ff46fd"],
+    labelFontSize: 14,
+  },
+});
+
+const radarChart = reactive({
+  label: "雷达图",
+  chartData: [
+    { name: "国有企业", num: 568 },
+    { name: "外商投资企业", num: 736 },
+    { name: "集体企业", num: 632 },
+    { name: "股份制企业", num: 704 },
+    { name: "私营企业", num: 503 },
+  ],
+  chartSetting: {
+    axis: {
+      property: "name",
+    },
+    series: {
+      property: "num",
+    },
+    labelFontSize: 15,
+    center: ["50%", "58%"],
+    radius: 55,
+    colorList: ["#42cdff", "#1fff83"],
+    axisNameFormatter: (val, indicator) => {
+      const { value, name } = indicator;
+      return `{a|${name}}\n{b|${value}人}`;
+    },
+  },
+});
+
+const lineChart = reactive({
+  label: "多折线图",
+  chartData: [
+    {
+      time: "202301",
+      applet: 478,
+      pc: 454,
+      h5: 534,
+    },
+    {
+      time: "202302",
+      applet: 678,
+      pc: 578,
+      h5: 424,
+    },
+    {
+      time: "202303",
+      applet: 537,
+      pc: 266,
+      h5: 234,
+    },
+    {
+      time: "202304",
+      applet: 645,
+      pc: 500,
+      h5: 678,
+    },
+    {
+      time: "202305",
+      applet: 467,
+      pc: 563,
+      h5: 467,
+    },
+  ],
+  chartSetting: {
+    axis: {
+      property: "time",
+    },
+    series: [
+      {
+        name: "PC端访问量",
+        property: "pc",
+      },
+      {
+        name: "H5端访问量",
+        property: "h5",
+      },
+    ],
+    tooltip: {
+      show: true,
+      formatter: (p) =>
+        formatTooltip(p, {
+          unit: "次",
+          scale: 1,
+        }),
+    },
+    grid: {
+      top: "15%",
+      bottom: "1%",
+      left: "2%",
+      right: "5%",
+    },
+    legend: {
+      show: false,
+    },
+    colorList: ["#3886fb", "#6bffdd"],
+    labelFontSize: 14,
+  },
+});
+
+const mixedLineBarChart = reactive({
+  label: "折线柱状混合图",
+  chartData: [
+    { name: "南宁市", companines: 157, users: 2617, visit: 77 },
+    { name: "柳州市", companines: 178, users: 3143, visit: 75 },
+    { name: "桂林市", companines: 167, users: 4894, visit: 98 },
+    { name: "来宾市", companines: 163, users: 2522, visit: 81 },
+    { name: "河池市", companines: 130, users: 2898, visit: 84 },
+    { name: "北海市", companines: 143, users: 3887, visit: 82 },
+  ],
+  chartSetting: {
+    axis: {
+      property: "name",
+    },
+    series: [
+      {
+        name: "服务企业",
+        property: "companines",
+      },
+      {
+        name: "服务用户",
+        property: "users",
+      },
+    ],
+    tooltip: {
+      trigger: "axis",
+      formatter: (p) => formatTooltip(p, { unit: ["家", "人"], scale: 1 }),
+    },
+    grid: {
+      top: "18%",
+      bottom: "1%",
+      left: "1%",
+      right: "1%",
+    },
+    legend: {},
+    colorList: ["#3886fb", "#6bffdd"],
+    labelFontSize: 14,
+    autoplay: true,
+    barProperty: ["companines"],
+    lineProperty: ["users"],
+    barAxisName: "企业（家）",
+    lineAxisName: "用户（人）",
+  },
+});
+
+const gradientMixedLineBar = reactive({
+  label: "折线柱状混合图（渐变）",
+  chartData: [
+    { name: "2019", user: 271670, rate: 96.8 },
+    { name: "2020", user: 254223, rate: 92.5 },
+    { name: "2021", user: 273968, rate: 98 },
+    { name: "2022", user: 271501, rate: 98.4 },
+  ],
+  chartSetting: {
+    axis: {
+      property: "name",
+    },
+    series: [
+      {
+        name: "完成人数",
+        property: "user",
+      },
+      {
+        name: "完成率",
+        property: "rate",
+      },
+    ],
+    tooltip: {
+      trigger: "axis",
+      formatter: (p) => formatTooltip(p, { unit: ["人", "%"], scale: 1 }),
+    },
+    grid: {
+      top: "18%",
+      bottom: "1%",
+      left: "1%",
+      right: "1%",
+    },
+    legend: {},
+    colorList: ["#53eefe", "#2a76ff", "#f7b500"],
+    barProperty: ["user"],
+    lineProperty: ["rate"],
+    barAxisName: "",
+    lineAxisName: "",
+  },
+});
+
+const waterPercentChart = reactive({
+  label: "水波图",
+  chartData: { name: "参加率", rate: 76.56 },
+  chartSetting: {
+    labelFontSize: 30,
+    titleFontSize: 14,
+    colorList: ["#2a76ff", "#3de6ff"],
+  },
+});
+
+const rankingBarChart = reactive({
+  label: "排行榜柱状图",
+  chartData: [
+    {
+      name: "来宾市",
+      coordinate: [109.417387, 23.852127],
+      companines: 177,
+      users: 3845,
+      visit: 81,
+    },
+    {
+      name: "南宁市",
+      coordinate: [108.467414, 23.055856],
+      companines: 207,
+      users: 2920,
+      visit: 76,
+    },
+    {
+      name: "河池市",
+      coordinate: [107.845944, 24.642313],
+      companines: 137,
+      users: 3079,
+      visit: 84,
+    },
+    {
+      name: "防城港市",
+      coordinate: [108.014761, 21.869759],
+      companines: 197,
+      users: 3790,
+      visit: 25,
+    },
+    {
+      name: "梧州市",
+      coordinate: [110.994766, 23.480033],
+      companines: 213,
+      users: 3582,
+      visit: 81,
+    },
+    {
+      name: "柳州市",
+      coordinate: [109.375468, 24.948002],
+      companines: 212,
+      users: 3475,
+      visit: 46,
+    },
+  ],
+  chartSetting: {
+    axis: {
+      property: "name",
+    },
+    series: {
+      property: "users",
+    },
+    labelFontSize: 14,
+    topNum: 3,
+    topColors: ["#ff65e5", "#fd6581"],
+    defaultColors: ["#3368ff", "#50ffef"],
+    grid: {
+      right: 0,
+      bottom: "-12%",
+    },
+  },
+});
+
+const msgMapChart = reactive({
+  label: "地图",
+  chartData: [
+    {
+      name: "崇左市",
+      coordinate: [107.277482, 22.501959],
+      value: 71,
+    },
+    {
+      name: "贺州市",
+      coordinate: [111.366656, 24.357028],
+      value: 98,
+    },
+    {
+      name: "玉林市",
+      coordinate: [110.186377, 22.440029],
+      value: 67,
+    },
+    {
+      name: "来宾市",
+      coordinate: [109.417387, 23.852127],
+      value: 24,
+    },
+    {
+      name: "贵港市",
+      coordinate: [110.003191, 23.306537],
+      value: 83,
+    },
+    {
+      name: "南宁市",
+      coordinate: [108.467414, 23.055856],
+      value: 45,
+    },
+    {
+      name: "河池市",
+      coordinate: [107.845944, 24.642313],
+      value: 46,
+    },
+    {
+      name: "防城港市",
+      coordinate: [108.014761, 21.869759],
+      value: 37,
+    },
+    {
+      name: "梧州市",
+      coordinate: [110.994766, 23.480033],
+      value: 38,
+    },
+    {
+      name: "柳州市",
+      coordinate: [109.375468, 24.948002],
+      value: 40,
+    },
+    {
+      name: "百色市",
+      coordinate: [106.289292, 23.985913],
+      value: 77,
+    },
+    {
+      name: "桂林市",
+      coordinate: [110.519005, 25.354947],
+      value: 63,
+    },
+    {
+      name: "北海市",
+      coordinate: [109.341064, 21.666854],
+      value: 93,
+    },
+    {
+      name: "钦州市",
+      coordinate: [109.019375, 22.171606],
+      value: 53,
+    },
+  ],
+  changeData: null,
+  chartSetting: {
+    mapName: '地市业务办理数',
+    axis: {
+      property: "name",
+    },
+    series: {
+      property: "value",
+    },
+    centerPoint: {
+      name: "南宁市",
+      value: [108.467414, 23.055856],
+    },
+    changeData: null,
+    coordinateData: guangxiCoordinateJson,
+    labelFontSize: 12,
+    layoutCenter: ["50%", "50%"],
+    layoutSize: "100%",
+    bubbleSize: 50,
+    colorList: ["#40cfffbd", "#1f4299d6"],
+    borderColor: "#172c72",
+    bubbleColor: "#ff940f",
+    unit: "",
+    mapZoom: 1.2,
   },
 });
 </script>

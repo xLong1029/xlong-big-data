@@ -61,7 +61,7 @@ export default function () {
 
       const marker = isFunction(markers) ? markers(item.marker) : markers?.[index] ?? item.marker;
 
-      const lightHeightTextColor = isArray(lightHeightValColor) ? lightHeightValColor?.[index] ?? item.color : lightHeightValColor ?? item.color;
+      let lightHeightTextColor = isArray(lightHeightValColor) ? lightHeightValColor?.[index] ?? item.color : lightHeightValColor ?? item.color;
 
       if(lightHeightTextColor.colorStops){
         lightHeightTextColor = lightHeightTextColor.colorStops[0].color;

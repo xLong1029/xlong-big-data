@@ -34,6 +34,26 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  // 柱状图对应属性
+  barProperty: {
+    type: Array,
+    default: () => ["name1"],
+  },
+  // 柱状图坐标轴名称
+  barAxisName: {
+    type: String,
+    default: "名称1",
+  },
+  // 折线图对应属性
+  lineProperty: {
+    type: Array,
+    default: () => ["name2"],
+  },
+  // 折线图坐标轴名称
+  lineAxisName: {
+    type: String,
+    default: "名称2",
+  },
   // 坐标轴数值配置
   axis: {
     type: Object,
@@ -42,7 +62,7 @@ const props = defineProps({
       property: "name",
     }),
   },
-  // 数值配置
+  // 条形数值配置
   series: {
     type: Array,
     default: () => [
@@ -55,7 +75,7 @@ const props = defineProps({
   // 颜色列表
   colorList: {
     type: Array,
-    default: () => ["#71ffaa", "#09ddff"],
+    default: () => ["#71ffaa", "#09ddff", "#00e8ff", "#71ffaa"],
   },
   // 缩放基数
   scale: {
@@ -94,10 +114,10 @@ const props = defineProps({
     type: Object,
     default: () => ({}),
   },
-  // 线条粗细
-  lineWidth: {
-    type: Number,
-    default: 2,
+  // 柱状图背景颜色
+  barColor: {
+    type: [Object, String],
+    default: null,
   },
 });
 
@@ -108,6 +128,8 @@ const option = ref(null);
 
 const setOption = (chartData = []) => {
   const {
+    barAxisName,
+    lineAxisName,
     axis,
     series,
     colorList,
@@ -116,7 +138,7 @@ const setOption = (chartData = []) => {
     legend,
     grid,
     tooltip,
-    lineWidth,
+    barColor,
   } = props;
 
   const fontSize = labelFontSize * scale;
@@ -125,18 +147,56 @@ const setOption = (chartData = []) => {
   // 处理坐标轴数据
   const axisData = getAxisData(chartData, axis.property);
 
-    // 处理显示数据
-    let customSeries = [];
+  // 处理显示数据
+  let customSeries = [];
   series.forEach((e, index) => {
     const { name, property } = e;
+
     const data = props.chartData.map((i) => i[property]);
-    customSeries.push({
+
+    // 柱状图
+    if (props.barProperty.indexOf(property) >= 0) {
+      customSeries.push({
         name,
-        type: "line",
+        type: "bar",
+        yAxisIndex: 0,
+        barMaxWidth: "40%",
+        itemStyle: {
+          normal: {
+            color: barColor
+              ? barColor
+              : new graphic.LinearGradient(0, 0, 0, 1, [
+                  {
+                    offset: 0,
+                    color: colorList[0],
+                  },
+                  {
+                    offset: 1,
+                    color: colorList[1], // 100% 处的颜色
+                  },
+                ]),
+          },
+        },
         data,
       });
-  });
+    }
 
+    // 折线图
+    if (props.lineProperty.indexOf(property) >= 0) {
+      customSeries.push({
+        name,
+        type: "line",
+        yAxisIndex: 1,
+        lineStyle: {
+          color: colorList[2]
+        },
+        itemStyle: {
+          color: colorList[2]
+        },
+        data,
+      });
+    }
+  });
 
   // 提示
   let customTooltip = {
@@ -146,7 +206,8 @@ const setOption = (chartData = []) => {
     },
     trigger: "axis",
     axisPointer: {
-      type: "line",
+      type: "shadow",
+      shadowStyle: "rgba(0, 0, 0, 0.5)",
     },
     backgroundColor: "rgba(0,0,0,0.6)",
     borderColor: "transparent",
@@ -156,9 +217,7 @@ const setOption = (chartData = []) => {
 
   // 图例
   const customLegend = {
-    itemWidth: 30 * scale,
     itemHeight: 10 * scale,
-    itemGap: 10 * scale,
     textStyle: {
       color: fontColor,
       fontSize,
@@ -182,34 +241,15 @@ const setOption = (chartData = []) => {
     legend: customLegend,
     grid: customGrid,
     color: colorList,
-    xAxis: [
-      {
-        type: "category",
-        // boundaryGap: false,
-        splitLine: {
-          show: false,
-        },
-        splitArea: {
-          show: false,
-        },
-        axisLine: {
-          show: false,
-        },
-        axisTick: {
-          show: false,
-        },
-        axisLabel: {
-          // interval: 0,
-          color: fontColor,
-          fontSize,
-        },
-        boundaryGap: false, // 去掉两边留白
-        data: axisData,
-      },
-    ],
     yAxis: [
       {
+        stack: "all",
         type: "value",
+        name: barAxisName,
+        nameTextStyle: {
+          fontSize,
+          padding: 10 * scale,
+        },
         splitLine: {
           show: true,
           lineStyle: {
@@ -217,20 +257,65 @@ const setOption = (chartData = []) => {
             width: 0.8 * scale,
           },
         },
-        splitArea: {
+        axisLabel: {
+          // interval: 0,
+          color: fontColor,
+          fontSize,
+        },
+        axisTick: {
           show: false,
         },
         axisLine: {
           show: false,
         },
+        position: "left",
+      },
+      {
+        type: "value",
+        name: lineAxisName,
+        nameTextStyle: {
+          fontSize,
+          padding: 10 * scale,
+        },
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: "#4b647f",
+            width: 0.8 * scale,
+          },
+        },
+        axisLabel: {
+          interval: 0,
+          color: fontColor,
+          fontSize,
+        },
         axisTick: {
           show: false,
+        },
+        axisLine: {
+          show: false,
+        },
+        position: "right",
+      },
+    ],
+    xAxis: [
+      {
+        type: "category",
+        axisTick: {
+          show: false,
+        },
+        axisLine: {
+          show: true,
+          lineStyle: {
+            color: "#4b647f",
+          },
         },
         axisLabel: {
           // interval: 0,
           color: fontColor,
           fontSize,
         },
+        data: axisData,
       },
     ],
     series: customSeries,
@@ -251,6 +336,6 @@ watch(
   () => props.scale,
   () => {
     setOption(props.chartData);
-  },
+  }
 );
 </script>
