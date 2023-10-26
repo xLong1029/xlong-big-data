@@ -109,6 +109,8 @@ $border: 2px solid #279cd1;
   display: flex;
   flex-direction: column;
   padding: size(10);
+  align-items: center;
+  justify-content: center;
 
   &__value {
     display: flex;

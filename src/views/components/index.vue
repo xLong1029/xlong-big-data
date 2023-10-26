@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { reactive, ref, markRaw  } from "vue";
+import { reactive, ref, markRaw, provide } from "vue";
 import BorderFrameView from "./border-frame/index.vue";
 import BorderFrameTitleView from "./border-frame-title/index.vue";
 import ChartView from "./chart/index.vue";
@@ -29,14 +29,15 @@ const views = reactive([
     label: "标题组件",
     component: markRaw(BorderFrameTitleView),
   },
-  // {
-  //   name: "common",
-  //   label: "其他通用组件",
-  //   component: markRaw(CommonView),
-  // },
+  {
+    name: "common",
+    label: "其他通用组件",
+    component: markRaw(CommonView),
+  },
 ]);
 
 const activeTabName = ref('chart');
+provide("getActiveTabName", activeTabName);
 
 const handleTabClick = (val) => {
   activeTabName.value = views[val.index].name;

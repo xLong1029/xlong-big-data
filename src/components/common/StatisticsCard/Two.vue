@@ -67,7 +67,7 @@ const props = defineProps({
     font-weight: bold;
     z-index: 10;
 
-    @include gradient-font(bottom, color(blue-1), color(blue-2));
+    @include gradient-font(bottom, #0b90f5, #23f2f0);
   }
 
   &__name {

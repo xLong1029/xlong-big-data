@@ -41,26 +41,7 @@ import hooks from "@/hooks";
 
 const { useScreenModuleData } = hooks;
 
-const list = ref([
-  {
-    name: "以地控税",
-  },
-  {
-    name: "地灾监测",
-  },
-  {
-    name: "审计系统",
-  },
-  {
-    name: "工业园区",
-  },
-  {
-    name: "智慧林业",
-  },
-  {
-    name: "上林城管",
-  },
-]);
+const list = ref([]);
 
 const isHover = ref(false);
 

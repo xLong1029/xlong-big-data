@@ -1,5 +1,5 @@
 <template>
-  <div class="component-list">
+  <div v-if="isLoaded" class="component-list">
     <div class="component-list-item">
       <FlexContent>
         <BarChart
@@ -195,6 +195,7 @@
           :color-list="circlePercentChart.chartSetting.colorList"
           :radius="circlePercentChart.chartSetting.radius"
           :center="circlePercentChart.chartSetting.center"
+          :tooltip="circlePercentChart.chartSetting.tooltip"
           :label-center="circlePercentChart.chartSetting.labelCenter"
           :label-font-size="circlePercentChart.chartSetting.labelFontSize"
           :title-font-size="circlePercentChart.chartSetting.titleFontSize"
@@ -255,11 +256,24 @@
       </FlexContent>
       <div class="component-list-item__title">{{ msgMapChart.label }}</div>
     </div>
+
+    <div class="component-list-item">
+      <FlexContent>
+        <StatisticsDiagram
+          :chart-data="statisticsDiagramChart.chartData"
+          :line-data="statisticsDiagramChart.lineData"
+          :fly-line-data="statisticsDiagramChart.flyLineData"
+          :tooltip="statisticsDiagramChart.tooltip"
+          :label-font-size="statisticsDiagramChart.labelFontSize"
+        />
+      </FlexContent>
+      <div class="component-list-item__title">{{ statisticsDiagramChart.label }}</div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import { reactive, ref, watch, inject } from "vue";
 import BarChart from "@/components/chart/BarChart/index.vue";
 import GradientBarChart from "@/components/chart/GradientBarChart/index.vue";
 import LineChart from "@/components/chart/LineChart/index.vue";
@@ -274,12 +288,27 @@ import SegmentPieChart from "@/components/chart/SegmentPieChart/index.vue";
 import WaterPercentChart from "@/components/chart/WaterPercentChart/index.vue";
 import RankingBarChart from "@/components/chart/RankingBarChart/index.vue";
 import MsgMap from "@/components/chart/MsgMap/index.vue";
+import StatisticsDiagram from "@/components/chart/StatisticsDiagram/index.vue";
 import hooks from "@/hooks";
 import geoJson from "@/assets/json/guangxi.json";
 import guangxiCoordinateJson from "@/assets/json/guangxi-coordinate.json";
 
 const { useChartOption } = hooks;
 const { formatTooltip } = useChartOption();
+
+const activeTabName = inject("getActiveTabName", "common");
+const isLoaded = ref(false);
+
+watch(
+  () => activeTabName.value,
+  (val) => {
+    console.log(val);
+    isLoaded.value = val === "chart";
+  },
+  {
+    immediate: true,
+  }
+);
 
 const barChart = reactive({
   label: "多柱状图",
@@ -998,7 +1027,7 @@ const msgMapChart = reactive({
   ],
   changeData: null,
   chartSetting: {
-    mapName: '地市业务办理数',
+    mapName: "地市业务办理数",
     axis: {
       property: "name",
     },
@@ -1021,6 +1050,207 @@ const msgMapChart = reactive({
     unit: "",
     mapZoom: 1.2,
   },
+});
+
+const statisticsDiagramChart = reactive({
+  label: "拓扑图",
+  lineData: [
+    {
+      source: "监控平台",
+      target: "企业网站",
+    },
+    {
+      source: "企业网站",
+      target: "监控平台",
+    },
+    {
+      source: "监控平台",
+      target: "智慧城市项目",
+    },
+    {
+      source: "智慧城市项目",
+      target: "监控平台",
+    },
+    {
+      source: "监控平台",
+      target: "小程序应用",
+    },
+    {
+      source: "小程序应用",
+      target: "监控平台",
+    },
+    {
+      source: "监控平台",
+      target: "电商项目",
+    },
+    {
+      source: "电商项目",
+      target: "监控平台",
+    },
+    {
+      source: "App应用",
+      target: "监控平台",
+    },
+    {
+      source: "监控平台",
+      target: "App应用",
+    },
+    {
+      source: "H5场景应用",
+      target: "监控平台",
+    },
+    {
+      source: "监控平台",
+      target: "H5场景应用",
+    },
+  ],
+  // 飞线数据
+  flyLineData: [
+    // 企业网站
+    {
+      coords: [
+        [275, 30],
+        [275, 180],
+      ],
+    },
+    {
+      coords: [
+        [275, 180],
+        [275, 30],
+      ],
+    },
+    // 智慧城市项目
+    {
+      coords: [
+        [275, 180],
+        [500, 250],
+      ],
+    },
+    {
+      coords: [
+        [500, 250],
+        [275, 180],
+      ],
+    },
+    // 小程序应用
+    {
+      coords: [
+        [275, 180],
+        [500, 120],
+      ],
+    },
+    {
+      coords: [
+        [500, 120],
+        [275, 180],
+      ],
+    },
+    // 电商项目
+    {
+      coords: [
+        [275, 180],
+        [275, 320],
+      ],
+    },
+    {
+      coords: [
+        [275, 320],
+        [275, 180],
+      ],
+    },
+    // App应用
+    {
+      coords: [
+        [50, 100],
+        [275, 180],
+      ],
+    },
+    {
+      coords: [
+        [275, 180],
+        [50, 100],
+      ],
+    },
+    // H5场景应用
+    {
+      coords: [
+        [50, 250],
+        [275, 180],
+      ],
+    },
+    {
+      coords: [
+        [275, 180],
+        [50, 250],
+      ],
+    },
+  ],
+  // 图表数据
+  chartData: [
+    {
+      name: "监控平台",
+      category: 1,
+      value: [275, 180],
+    },
+    {
+      name: "智慧城市项目",
+      category: 2,
+      value: [500, 250],
+    },
+    {
+      name: "小程序应用",
+      category: 2,
+      value: [500, 120],
+    },
+    {
+      name: "企业网站",
+      category: 2,
+      value: [275, 30],
+    },
+    {
+      name: "App应用",
+      category: 2,
+      value: [50, 100],
+    },
+    {
+      name: "电商项目",
+      category: 2,
+      value: [275, 320],
+    },
+    {
+      name: "H5场景应用",
+      category: 2,
+      value: [50, 250],
+    },
+  ],
+  // 提示
+  tooltip: {
+    formatter: (params) => {
+      console.log(params)
+      const scale = 1;
+      const fontSize = 14;
+      const lightHeightColor = "#ffe66d";
+      const dotColor = "#00e6ff";
+
+      const { marker } = params;
+      const { extraData, name } = params.data;
+
+      if (extraData?.users && extraData?.companines) {
+        const { users, companines } = extraData;
+
+        return `<div style="font-size:${fontSize * scale}px;">
+        <div><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:${dotColor};"></span> ${name}</div>
+        <div style="margin-top: ${
+          10 * scale
+        }px">服务用户：<span style="color:${lightHeightColor};" >${users}</span> 人</div>
+        <div style="margin-top: 10px">服务企业：<span style="color:${lightHeightColor}; margin: 10px 0" >${companines}</span> 家</div>
+        </div>`;
+      }
+
+      return "";
+    },
+  },
+  labelFontSize: 14,
 });
 </script>
 

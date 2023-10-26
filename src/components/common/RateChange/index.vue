@@ -1,5 +1,5 @@
 <template>
-    <div class="rate-change-container" :class="{'up': up && num !== 0, 'down': !up && num !== 0}">
+    <div class="rate-change-container" :class="{'up': num > 0, 'down': num < 0}">
     <span class="rate-change__symbol">
       <svg class="icon" viewBox="0 0 1024 1024">
         <path
@@ -8,23 +8,16 @@
         ></path>
       </svg>
     </span>
-    <span class="rate-change__num"> {{ num }}% </span>
+    <span class="rate-change__num"> {{ Math.abs(num) }}% </span>
   </div>
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
-import { clearTimer } from "@/utils";
-
 const props = defineProps({
   // 数值
   num: {
     type: Number,
     default: 0,
-  },
-  up: {
-    type: Boolean,
-    default: true,
   },
 });
 </script>
