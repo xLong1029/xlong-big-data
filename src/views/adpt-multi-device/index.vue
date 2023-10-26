@@ -24,27 +24,32 @@ import PCScreen from "./pc/index.vue";
 import WideScreen from "./wide-screen/index.vue";
 import MobileScreen from "./mobile/index.vue";
 import hooks from "@/hooks";
-import { clearTimer, logInfo } from "@/utils";
 import { docElmScrollTo } from "@/utils/scroll-to";
+import Api from "@/api/screen";
 
 const { useView, useCommon, useScreen, useScreenNav, useScreenApiData } = hooks;
 
 const { viewLoaded, views, viewActive, initViews, setView } = useView();
 const { setScreenMode } = useCommon();
 const { activeNavIndex, handleChangeNav } = useScreenNav();
-const { apiLoading, apiTimer, getScreenData } = useScreenApiData();
+const {
+  apiLoading,
+  getScreenData,
+  startLoopGetData,
+  stopLoopGetData,
+} = useScreenApiData();
 
 viewLoaded.value = initViews({ PCScreen, WideScreen, MobileScreen });
 
 const screenContentContainer = ref(null);
 
 // 处理屏幕尺寸变化
-const { design, screen, screenRate, minScreen, contrastRatio } = useScreen(true);
+const { screen, screenRate } = useScreen(true);
 
 watch(
   () => activeNavIndex.value,
   () => {
-    if(screenContentContainer.value){
+    if (screenContentContainer.value) {
       docElmScrollTo(screenContentContainer.value, 0);
     }
     init();
@@ -85,17 +90,14 @@ onMounted(() => {
 
 onUnmounted(() => {
   setScreenMode("Normal");
-
-  clearTimer([apiTimer.value]);
 });
 
 const init = () => {
-  clearTimer([apiTimer.value]);
+  stopLoopGetData();
 
   apiLoading.value = true;
-  getScreenData(activeNavIndex.value);
-  apiTimer.value = setInterval(() => {
-    getScreenData(activeNavIndex.value);
+  startLoopGetData(() => {
+    getScreenData(Api.GetScreenData, activeNavIndex.value);
   }, 5000);
 };
 </script>

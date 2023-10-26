@@ -1,11 +1,10 @@
 /*
  * 模块 : 监控平台请求数据配置
  * 作者 : 罗永梅（381612175@qq.com）
- * 日期 : 2022-09-03
- * 版本 : version 1.0
+ * 日期 : 2023-10-26
+ * 版本 : version 2.0
  */
-import { provide, ref } from "vue";
-import Api from "@/api/screen";
+import { provide, ref, onUnmounted } from "vue";
 import { ElMessage } from "element-plus";
 import { clearTimer } from "@/utils";
 
@@ -16,25 +15,26 @@ export default function () {
   const apiData = ref(null);
   provide("getApiData", apiData);
 
-  const apiTimer = ref(null);
-
   const getApiDataTimer = ref(null);
 
   /**
-   * 通过导航获取大屏数据
-   * @param {*} nav 
+   * 获取大屏数据
+   * @param apiFuntion 大屏Api
+   * @param params 大屏Api参数
+   * @returns
    */
-  const getScreenData = (nav) => {
-    Api.GetScreenData(nav)
+  const getScreenData = (apiFuntion, params = null) => {
+    if (!apiFuntion) {
+      console.log("apiFuntion is undefined");
+      return false;
+    }
+
+    apiFuntion(params)
       .then((res) => {
         const { code, message, data } = res;
         if (code === 200) {
           apiData.value = data;
-
-          clearTimer([getApiDataTimer.value]);
-          getApiDataTimer.value = setTimeout(() => {
-            apiLoading.value = false;
-          }, 500);
+          apiLoading.value = false;
         } else {
           ElMessage.error(message);
         }
@@ -45,10 +45,38 @@ export default function () {
       });
   };
 
+  /**
+   * 开始轮询获取数据
+   * @param getData
+   * @param duration 延迟时间
+   */
+  const startLoopGetData = (getData = null, duration = 60000) => {
+    stopLoopGetData();
+    if (typeof getData === "function") {
+      getData();
+      getApiDataTimer.value = setInterval(getData, duration);
+    } else {
+      console.log("getData is not a fuction");
+    }
+  };
+
+  /**
+   * 轮询获取数据
+   */
+  const stopLoopGetData = () => {
+    clearTimer([getApiDataTimer.value]);
+  };
+
+  onUnmounted(() => {
+    stopLoopGetData();
+  });
+
   return {
     apiLoading,
     apiData,
-    apiTimer,
+    getApiDataTimer,
     getScreenData,
+    startLoopGetData,
+    stopLoopGetData,
   };
 }

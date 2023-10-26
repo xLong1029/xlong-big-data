@@ -55,7 +55,6 @@ const chart = reactive({
 
 const handleApiData = (data) => {
   chart.chartData = data?.cityData || [];
-  console.log(JSON.stringify(chart.chartData))
 };
 
 const { apiLoading, contrastRatio } = useScreenModuleData(handleApiData);
