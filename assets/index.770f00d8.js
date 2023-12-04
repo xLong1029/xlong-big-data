@@ -1,1 +1,0 @@
-import{H as e,o as t,p as c}from"./index.25f72f1f.js";const n={},o={class:"test-container"};function s(r,a){return t(),c("div",o," \u6D4B\u8BD5\u5185\u5BB9 ")}const i=e(n,[["render",s]]);export{i as default};
