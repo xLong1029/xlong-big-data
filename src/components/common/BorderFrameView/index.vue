@@ -4,14 +4,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "BorderFrameView",
-};
-</script>
-
-
-<script setup>
+<script setup name="BorderFrameView">
 const props = defineProps({
   className: {
     type: String,

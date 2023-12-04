@@ -8,7 +8,7 @@
   />
 </template>
 
-<script setup>
+<script setup name="GradientMixedLineBarChart">
 import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch } from "vue";
 import { graphic } from "echarts";
@@ -162,8 +162,7 @@ const setOption = (chartData = []) => {
         yAxisIndex: 0,
         barMaxWidth: "40%",
         itemStyle: {
-          normal: {
-            color: barColor
+          color: barColor
               ? barColor
               : new graphic.LinearGradient(0, 0, 0, 1, [
                   {
@@ -175,7 +174,6 @@ const setOption = (chartData = []) => {
                     color: colorList[1], // 100% 处的颜色
                   },
                 ]),
-          },
         },
         data,
       });

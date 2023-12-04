@@ -9,13 +9,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "BorderFrameOne",
-};
-</script>
-
-<script setup>
+<script setup name="BorderFrameOne">
 const props = defineProps({
   direction: {
     type: String,

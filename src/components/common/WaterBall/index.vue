@@ -20,7 +20,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup name="WaterBall">
 import { ref, watch } from "vue";
 import { useResizeObserver } from "@vueuse/core";
 

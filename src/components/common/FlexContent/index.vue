@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup name="FlexContent">
 const props = defineProps({
   className: {
     type: String,

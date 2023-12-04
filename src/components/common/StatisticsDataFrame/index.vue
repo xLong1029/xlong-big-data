@@ -13,7 +13,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup name="StatisticsDataFrame">
 const props = defineProps({
   direction: {
     type: String,

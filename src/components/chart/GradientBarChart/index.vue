@@ -8,7 +8,7 @@
   />
 </template>
 
-<script setup>
+<script setup name="GradientBarChart">
 import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch } from "vue";
 import { graphic } from "echarts";
@@ -161,8 +161,7 @@ const setOption = (chartData = []) => {
     barWidth: "40%",
     silent: true,
     itemStyle: {
-      normal: {
-        borderRadius: barBorderRadius,
+      borderRadius: barBorderRadius,
         color: barColor
           ? barColor
           : new graphic.LinearGradient(0, 0, 0, 1, [
@@ -175,7 +174,6 @@ const setOption = (chartData = []) => {
                 color: colorList[1], // 100% 处的颜色
               },
             ]),
-      },
     },
     label: {
       show: valueLabelVisible,
@@ -314,9 +312,7 @@ const setOption = (chartData = []) => {
       //   barGap: "-100%",
       //   data: chartData.map((i) => max[series.property]),
       //   itemStyle: {
-      //     normal: {
-      //       color: "rgba(255,255,255,0.1)",
-      //     },
+      //     color: "rgba(255,255,255,0.1)",
       //   },
       //   zlevel: 9,
       // },

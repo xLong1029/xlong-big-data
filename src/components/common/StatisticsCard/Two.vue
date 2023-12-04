@@ -15,7 +15,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup name="StatisticsCardTwo">
 const props = defineProps({
   value: {
     type: [String, Number],

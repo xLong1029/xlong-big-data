@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup name="FadeNum">
 import { ref, watch } from "vue";
 import { clearTimer } from "@/utils";
 

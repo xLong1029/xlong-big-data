@@ -17,7 +17,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup name="DigitalNumber">
 import { ref, watch } from "vue";
 import hooks from "@/hooks";
 

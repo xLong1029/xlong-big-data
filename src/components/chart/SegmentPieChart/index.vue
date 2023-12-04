@@ -2,7 +2,7 @@
   <div ref="container" :style="{ height, width }" />
 </template>
 
-<script setup>
+<script setup name="SegmentPieChart">
 import { ref, watch, onUnmounted } from "vue";
 import hooks from "@/hooks";
 
@@ -94,7 +94,7 @@ const props = defineProps({
   // 饼图半径
   radius: {
     type: Array,
-    default: [0, "60%"],
+    default: [0, "70%"],
   },
   // 饼图中心
   center: {

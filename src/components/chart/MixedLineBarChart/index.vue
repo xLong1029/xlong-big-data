@@ -8,7 +8,7 @@
   />
 </template>
 
-<script setup>
+<script setup name="MixedLineBarChart">
 import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch } from "vue";
 import hooks from "@/hooks";

@@ -2,7 +2,7 @@
   <div ref="container" :style="{ height, width }" />
 </template>
 
-<script setup>
+<script setup name="Chart">
 import { watch, computed } from "vue";
 import hooks from "@/hooks";
 

@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script  setup>
+<script setup name="StarContainer">
 </script>
 <style lang="scss" scoped>
 @import "@/styles/star.scss";

@@ -8,9 +8,10 @@
   />
 </template>
 
-<script setup>
+<script setup name="LineChart">
 import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch } from "vue";
+import { graphic } from "echarts";
 import hooks from "@/hooks";
 
 const props = defineProps({
@@ -114,7 +115,8 @@ const setOption = (chartData = []) => {
     labelFontSize,
     legend,
     grid,
-    tooltip
+    tooltip,
+    lineWidth,
   } = props;
 
   const fontSize = labelFontSize * scale;

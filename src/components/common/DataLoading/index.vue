@@ -13,13 +13,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "DataLoading",
-};
-</script>
-
-<script setup>
+<script setup name="DataLoading">
 const props = defineProps({
   loading: {
     type: Boolean,

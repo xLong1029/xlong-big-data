@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup name="Fire">
 import { ref } from "vue";
 
 const props = defineProps({

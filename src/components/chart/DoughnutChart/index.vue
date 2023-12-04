@@ -2,7 +2,7 @@
   <div ref="container" :style="{ height, width }" />
 </template>
 
-<script setup>
+<script setup name="DoughnutChart">
 import { ref, watch, onUnmounted } from "vue";
 import hooks from "@/hooks";
 

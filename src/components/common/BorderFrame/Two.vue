@@ -26,13 +26,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "BorderFrameTwo",
-};
-</script>
-
-<script setup>
+<script setup name="BorderFrameTwo">
 </script>
 
 <style lang="scss" scoped>

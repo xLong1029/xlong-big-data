@@ -2,7 +2,7 @@
   <div ref="container" :style="{ height, width }" />
 </template>
 
-<script setup>
+<script setup name="PieChart">
 import { ref, watch, onUnmounted } from "vue";
 import hooks from "@/hooks";
 
@@ -294,7 +294,6 @@ watch(activeIndex, (val, preval) => {
     dataIndex: val,
   });
 
-  // 不显示tooltip
   // chart.value?.dispatchAction({
   //   type: "showTip",
   //   seriesIndex: [0],

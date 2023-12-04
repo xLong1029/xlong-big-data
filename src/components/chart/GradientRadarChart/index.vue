@@ -2,7 +2,7 @@
   <Chart :option="option" :width="width" :height="height" />
 </template>
 
-<script setup>
+<script setup name="GradientRadarChart">
 import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch } from "vue";
 import { graphic } from "echarts";
@@ -109,17 +109,18 @@ const setOption = (chartData = []) => {
         },
       },
       axisName: {
+        fontSize,
         formatter: axisNameFormatter,
         rich: {
           a: {
             color: fontColor,
             align: "center",
             fontSize,
-            width: 60,
+            // width: 60,
             height: 30,
           },
           b: {
-            color: "#FFA500",
+            color: "#f7b500",
             align: "center",
             fontSize,
           },

@@ -2,7 +2,7 @@
   <Chart :option="option" :width="width" :height="height" />
 </template>
 
-<script setup>
+<script setup name="WaterPercentChart">
 import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch } from "vue";
 import { graphic } from "echarts";

@@ -2,13 +2,7 @@
   <div :id="id"></div>
 </template>
 
-<script>
-export default {
-  name: "Particles",
-};
-</script>
-
-<script setup>
+<script setup name="Particles">
 import { watch, onMounted } from "vue";
 import particles from "./particles.js";
 import defaultParticlesConfig from "./particlesConfig.js";

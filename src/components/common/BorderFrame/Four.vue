@@ -8,13 +8,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "BorderFrameFour",
-};
-</script>
-
-<script setup>
+<script setup name="BorderFrameFour">
 const props = defineProps({
   raidus: {
     type: Boolean,

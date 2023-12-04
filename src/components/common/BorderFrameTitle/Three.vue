@@ -11,13 +11,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "BorderFrameTitleThree",
-};
-</script>
-
-<script setup>
+<script setup name="BorderFrameTitleThree">
 const props = defineProps({
   title: {
     type: String,

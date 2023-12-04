@@ -2,7 +2,7 @@
   <Chart :option="option" :width="width" :height="height" />
 </template>
 
-<script setup>
+<script setup name="MsgMap">
 import Chart from '@/components/chart/Default/index.vue';
 import { ref, watch } from 'vue';
 import * as echarts from 'echarts';
@@ -202,6 +202,10 @@ const setOption = (chartData = []) => {
   }
 
   let sortChartData = sortData(chartData, series);
+  if(!sortChartData.length){
+    return false;
+  }
+
   let thisChartData = sortChartData.map((e) => ({
     name: e[axis.property],
     value: e[series.property]

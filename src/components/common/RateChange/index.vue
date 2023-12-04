@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup name="RateChange">
 const props = defineProps({
   // 数值
   num: {

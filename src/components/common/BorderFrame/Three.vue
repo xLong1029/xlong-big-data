@@ -30,13 +30,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "BorderFrameThree",
-};
-</script>
-
-<script setup>
+<script setup name="BorderFrameThree">
 import { ref } from "vue";
 import { useResizeObserver } from '@vueuse/core'
 

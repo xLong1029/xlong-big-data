@@ -26,7 +26,7 @@
   </transition>
 </template>
 
-<script setup>
+<script setup name="ScaleContainer">
 import { ref, onMounted, onUnmounted, provide, nextTick, watch } from "vue";
 import { debounce, clearTimer } from "@/utils";
 
