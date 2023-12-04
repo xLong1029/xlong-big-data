@@ -17,6 +17,11 @@ xlong-big-data是一个基于 Vite + Vue3 + Element Plus + Pinia + ECharts 开�
 
 > DEMO地址：https://xlong1029.github.io/xlong-big-data/
 
+## 更新说明
+
+#### 1. 2023-12-04
+    新增图表、标题、边框等组件示例
+
 ## 项目说明
 
 #### 1. 前后端分离开发模式
@@ -39,6 +44,8 @@ xlong-big-data是一个基于 Vite + Vue3 + Element Plus + Pinia + ECharts 开�
 
 gif文件稍微有点大，被压缩了，丢失了部分色彩：<br/>
 
+![Image text](static/images/screen-1.png)
+
 * PC界面
 
 ![Image text](static/images/screen-2.gif)
@@ -60,6 +67,20 @@ gif文件稍微有点大，被压缩了，丢失了部分色彩：<br/>
 * 自适应展示
 
 ![Image text](static/images/adpt.gif)
+
+* 组件示例
+
+![Image text](static/images/1.png)
+
+![Image text](static/images/2.png)
+
+![Image text](static/images/3.png)
+
+![Image text](static/images/4.png)
+
+![Image text](static/images/5.png)
+
+![Image text](static/images/6.png)
 
 ## 目录结构
 
