@@ -2,11 +2,17 @@
   <Chart :option="option" :width="width" :height="height" />
 </template>
 
-<script setup name="MsgMap">
+<script setup>
 import Chart from '@/components/chart/Default/index.vue';
 import { ref, watch } from 'vue';
 import * as echarts from 'echarts';
 import hooks from '@/hooks';
+
+defineOptions(
+  {
+    name: "MsgMap"
+  }
+);
 
 const props = defineProps({
   title: {

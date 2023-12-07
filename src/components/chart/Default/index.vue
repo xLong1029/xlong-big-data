@@ -2,9 +2,15 @@
   <div ref="container" :style="{ height, width }" />
 </template>
 
-<script setup name="Chart">
+<script setup>
 import { watch, computed } from "vue";
 import hooks from "@/hooks";
+
+defineOptions(
+  {
+    name: "Chart"
+  }
+);
 
 const props = defineProps({
   // 配置项

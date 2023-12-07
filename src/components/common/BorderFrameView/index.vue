@@ -4,7 +4,13 @@
   </div>
 </template>
 
-<script setup name="BorderFrameView">
+<script setup>
+defineOptions(
+  {
+    name: "BorderFrameView"
+  }
+);
+
 const props = defineProps({
   className: {
     type: String,

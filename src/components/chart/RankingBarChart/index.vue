@@ -2,10 +2,16 @@
   <Chart :option="option" :width="width" :height="height" />
 </template>
 
-<script setup name="RankingBarChart">
+<script setup>
 import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch } from "vue";
 import hooks from "@/hooks";
+
+defineOptions(
+  {
+    name: "RankingBarChart"
+  }
+);
 
 const props = defineProps({
   title: {

@@ -7,7 +7,12 @@
   </div>
 </template>
 
-<script setup name="StarContainer">
+<script setup>
+defineOptions(
+  {
+    name: "StarContainer"
+  }
+);
 </script>
 <style lang="scss" scoped>
 @import "@/styles/star.scss";

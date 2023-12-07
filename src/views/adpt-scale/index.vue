@@ -18,6 +18,7 @@ import ScaleContainer from "@/components/common/ScaleContainer/index.vue";
 import Header from "@/components/screen/Header/index.vue";
 import Nav from "@/components/screen/Nav/index.vue";
 import PCScreen from "@/views/adpt-multi-device/pc/index.vue";
+import Api from "@/api/screen";
 
 const { 
   useScreenNav,
@@ -25,7 +26,12 @@ const {
   // useScreen
 } = hooks;
 const { activeNavIndex, handleChangeNav } = useScreenNav();
-const { apiLoading, apiTimer, getScreenData } = useScreenApiData();
+const {
+  apiLoading,
+  getScreenData,
+  startLoopGetData,
+  stopLoopGetData,
+} = useScreenApiData();
 // const { screen } = useScreen(false);
 
 watch(
@@ -44,12 +50,11 @@ onUnmounted(() => {
 });
 
 const init = () => {
-  clearTimer([apiTimer.value]);
+  stopLoopGetData();
 
   apiLoading.value = true;
-  getScreenData(activeNavIndex.value);
-  apiTimer.value = setInterval(() => {
-    getScreenData(activeNavIndex.value);
+  startLoopGetData(() => {
+    getScreenData(Api.GetScreenData, activeNavIndex.value);
   }, 5000);
 };
 </script>

@@ -8,7 +8,13 @@
   </div>
 </template>
 
-<script setup name="BorderFrameFlyLight">
+<script setup>
+defineOptions(
+  {
+    name: "BorderFrameFlyLight"
+  }
+);
+
 const props = defineProps({
   direction: {
     type: String,

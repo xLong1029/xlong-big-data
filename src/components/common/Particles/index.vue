@@ -2,10 +2,16 @@
   <div :id="id"></div>
 </template>
 
-<script setup name="Particles">
+<script setup>
 import { watch, onMounted } from "vue";
 import particles from "./particles.js";
 import defaultParticlesConfig from "./particlesConfig.js";
+
+defineOptions(
+  {
+    name: "Particles"
+  }
+);
 
 const props = defineProps({
   id: {

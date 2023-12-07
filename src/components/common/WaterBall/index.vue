@@ -20,9 +20,15 @@
   </div>
 </template>
 
-<script setup name="WaterBall">
+<script setup>
 import { ref, watch } from "vue";
 import { useResizeObserver } from "@vueuse/core";
+
+defineOptions(
+  {
+    name: "WaterBall"
+  }
+);
 
 const props = defineProps({
   value: {

@@ -4,7 +4,13 @@
   </div>
 </template>
 
-<script setup name="FlexContent">
+<script setup>
+defineOptions(
+  {
+    name: "FlexContent"
+  }
+);
+
 const props = defineProps({
   className: {
     type: String,

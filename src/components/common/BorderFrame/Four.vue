@@ -8,7 +8,13 @@
   </div>
 </template>
 
-<script setup name="BorderFrameFour">
+<script setup>
+defineOptions(
+  {
+    name: "BorderFrameFour"
+  }
+);
+
 const props = defineProps({
   raidus: {
     type: Boolean,

@@ -2,10 +2,16 @@
   <Chart :option="option" :width="width" :height="height" />
 </template>
 
-<script setup name="CirclePercentChart">
+<script setup>
 import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch } from "vue";
 import { graphic } from "echarts";
+
+defineOptions(
+  {
+    name: "CirclePercentChart"
+  }
+);
 
 const props = defineProps({
   // 图表名称
@@ -104,6 +110,7 @@ const setOption = (chartValue = 0) => {
 
   // 提示
   let customTooltip = {
+    position: 'inside',
     textStyle: {
       fontSize,
       color: fontColor,

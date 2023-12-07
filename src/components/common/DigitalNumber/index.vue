@@ -17,9 +17,15 @@
   </div>
 </template>
 
-<script setup name="DigitalNumber">
+<script setup>
 import { ref, watch } from "vue";
 import hooks from "@/hooks";
+
+defineOptions(
+  {
+    name: "DigitalNumber"
+  }
+);
 
 const { useCountUp } = hooks;
 const { CountUp, countUpOption } = useCountUp();

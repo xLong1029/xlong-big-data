@@ -15,7 +15,13 @@
   </div>
 </template>
 
-<script setup name="StatisticsCardTwo">
+<script setup>
+defineOptions(
+  {
+    name: "StatisticsCardTwo"
+  }
+);
+
 const props = defineProps({
   value: {
     type: [String, Number],

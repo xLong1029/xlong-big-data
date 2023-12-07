@@ -2,11 +2,17 @@
   <Chart :option="option" :width="width" :height="height" />
 </template>
 
-<script setup name="WaterPercentChart">
+<script setup>
 import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch } from "vue";
 import { graphic } from "echarts";
 import "echarts-liquidfill";
+
+defineOptions(
+  {
+    name: "WaterPercentChart"
+  }
+);
 
 const props = defineProps({
   // 图表名称
@@ -105,6 +111,7 @@ const setOption = (chartValue = 0) => {
 
   // 提示
   let customTooltip = {
+    position: 'inside',
     show: false,
     ...tooltip,
   };

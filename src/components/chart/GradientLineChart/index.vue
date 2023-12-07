@@ -8,11 +8,17 @@
   />
 </template>
 
-<script setup name="GradientLineChart">
+<script setup>
 import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch } from "vue";
 import { graphic } from "echarts";
 import hooks from "@/hooks";
+
+defineOptions(
+  {
+    name: "GradientLineChart"
+  }
+);
 
 const props = defineProps({
   title: {
@@ -182,6 +188,7 @@ const setOption = (chartData = []) => {
 
   // 提示
   let customTooltip = {
+    position: 'inside',
     textStyle: {
       fontSize,
       color: fontColor,

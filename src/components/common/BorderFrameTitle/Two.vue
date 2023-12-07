@@ -7,7 +7,13 @@
   </div>
 </template>
 
-<script setup name="BorderFrameTitleTwo">
+<script setup>
+defineOptions(
+  {
+    name: "BorderFrameTitleTwo"
+  }
+);
+
 const props = defineProps({
   title: {
     type: String,

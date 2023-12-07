@@ -2,9 +2,15 @@
   <div ref="container" :style="{ height, width }" />
 </template>
 
-<script setup name="DoughnutChart">
+<script setup>
 import { ref, watch, onUnmounted } from "vue";
 import hooks from "@/hooks";
+
+defineOptions(
+  {
+    name: "DoughnutChart"
+  }
+);
 
 const props = defineProps({
   title: {
@@ -128,6 +134,7 @@ const setOption = (chartData = []) => {
 
   // 提示
   let customTooltip = {
+    position: 'inside',
     textStyle: {
       fontSize,
       color: fontColor,

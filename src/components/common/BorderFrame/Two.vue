@@ -26,7 +26,12 @@
   </div>
 </template>
 
-<script setup name="BorderFrameTwo">
+<script setup>
+defineOptions(
+  {
+    name: "BorderFrameTwo"
+  }
+);
 </script>
 
 <style lang="scss" scoped>

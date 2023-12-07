@@ -2,10 +2,16 @@
   <Chart :option="option" :width="width" :height="height" />
 </template>
 
-<script setup name="StatisticsDiagram">
+<script setup>
 import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch } from "vue";
 import symbolJson from "@/assets/json/symbol.json";
+
+defineOptions(
+  {
+    name: "StatisticsDiagram"
+  }
+);
 
 const props = defineProps({
   title: {
@@ -118,6 +124,7 @@ const setOption = (chartData = []) => {
 
   // 提示
   let customTooltip = {
+    position: 'inside',
     textStyle: {
       fontSize,
       color: fontColor,

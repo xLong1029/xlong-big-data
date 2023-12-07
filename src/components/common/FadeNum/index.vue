@@ -12,9 +12,15 @@
   </div>
 </template>
 
-<script setup name="FadeNum">
+<script setup>
 import { ref, watch } from "vue";
 import { clearTimer } from "@/utils";
+
+defineOptions(
+  {
+    name: "FadeNum"
+  }
+);
 
 const props = defineProps({
   // 数值

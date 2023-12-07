@@ -12,8 +12,14 @@
   </div>
 </template>
 
-<script setup name="Fire">
+<script setup>
 import { ref } from "vue";
+
+defineOptions(
+  {
+    name: "Fire"
+  }
+);
 
 const props = defineProps({
   width: {

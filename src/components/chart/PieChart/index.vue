@@ -2,9 +2,15 @@
   <div ref="container" :style="{ height, width }" />
 </template>
 
-<script setup name="PieChart">
+<script setup>
 import { ref, watch, onUnmounted } from "vue";
 import hooks from "@/hooks";
+
+defineOptions(
+  {
+    name: "PieChart"
+  }
+);
 
 const props = defineProps({
   title: {
@@ -129,6 +135,7 @@ const setOption = (chartData = []) => {
 
   // 提示
   let customTooltip = {
+    position: 'inside',
     textStyle: {
       fontSize,
       color: fontColor,

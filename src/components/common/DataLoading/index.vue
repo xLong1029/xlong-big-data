@@ -13,7 +13,13 @@
   </div>
 </template>
 
-<script setup name="DataLoading">
+<script setup>
+defineOptions(
+  {
+    name: "DataLoading"
+  }
+);
+
 const props = defineProps({
   loading: {
     type: Boolean,

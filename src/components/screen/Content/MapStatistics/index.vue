@@ -221,6 +221,10 @@ const formatContent = (val) => {
     flex: 1;
     position: relative;
   }
+
+  &__msg{
+    min-height: size(300);
+  }
 }
 
 .msg-item {

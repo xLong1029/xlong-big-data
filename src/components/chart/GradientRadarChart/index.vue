@@ -2,10 +2,16 @@
   <Chart :option="option" :width="width" :height="height" />
 </template>
 
-<script setup name="GradientRadarChart">
+<script setup>
 import Chart from "@/components/chart/Default/index.vue";
 import { ref, watch } from "vue";
 import { graphic } from "echarts";
+
+defineOptions(
+  {
+    name: "GradientRadarChart"
+  }
+);
 
 const props = defineProps({
   title: {

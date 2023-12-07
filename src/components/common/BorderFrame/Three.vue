@@ -30,9 +30,15 @@
   </div>
 </template>
 
-<script setup name="BorderFrameThree">
+<script setup>
 import { ref } from "vue";
 import { useResizeObserver } from '@vueuse/core'
+
+defineOptions(
+  {
+    name: "BorderFrameThree"
+  }
+);
 
 const el = ref(null);
 const elWidth = ref(50);

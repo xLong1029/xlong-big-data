@@ -26,9 +26,15 @@
   </transition>
 </template>
 
-<script setup name="ScaleContainer">
+<script setup>
 import { ref, onMounted, onUnmounted, provide, nextTick, watch } from "vue";
 import { debounce, clearTimer } from "@/utils";
+
+defineOptions(
+  {
+    name: "ScaleContainer"
+  }
+);
 
 const props = defineProps({
   // 设计稿宽度
